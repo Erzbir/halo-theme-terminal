@@ -177,9 +177,7 @@ select {
   ),
   linear-gradient(135deg, var(--foreground) 50%, transparent 50%);
   background-position: calc(100% - 20px), calc(100% - 1em);
-  background-size:
-    5px 5px,
-    5px 5px;
+  background-size: 5px 5px, 5px 5px;
   background-repeat: no-repeat;
   padding-right: 40px;
 }
@@ -281,12 +279,7 @@ ol li {
 
 code,
 kbd {
-  font-family:
-    "Fira Code",
-    Monaco,
-    Consolas,
-    "Ubuntu Mono",
-    monospace !important;
+  font-family: inherit !important;
   font-feature-settings: normal;
   background: color-mix(in srgb, var(--foreground) 5%, transparent);
   border: 1px solid var(--code-border);
@@ -310,6 +303,7 @@ code code {
 }
 
 pre {
+  font-family: inherit !important;
   tab-size: 4;
   background: color-mix(in srgb, var(--foreground) 5%, transparent) !important;
   color: var(--foreground);
