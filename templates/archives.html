@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html
+  xmlns:th="https://www.thymeleaf.org"
+  th:replace="~{modules/layout :: html(title = |#{page.archives.title} - ${site.title}|, header = null, content = ~{::content}, footer = null)}"
+>
+<th:block th:fragment="content">
+  <div class="content">
+    <div class="post">
+      <h1 class="post-title">Archives</h1>
+      <th:block th:each="archive : ${archives.items}">
+        <ul>
+          <th:block th:each="month : ${archive.months}">
+            <li class="post-list" th:each="post : ${month.posts}">
+              <a th:href="@{${post.status.permalink}}">
+                <span class="post-date"
+                      th:text="${#dates.format(post.spec.publishTime,'yyyy-MM-dd')}">Publish Time</span>
+                :: <a><span class="post-list-title" th:text="${post.spec.title}">Post Title</span></a>
+              </a>
+            </li>
+          </th:block>
+        </ul>
+      </th:block>
+    </div>
+    <div class="pagination" th:if="${archives.hasPrevious() || archives.hasNext()}">
+      <div class="pagination__buttons">
+          <span th:if="${archives.hasPrevious()}">
+            <a th:href="@{${archives.prevUrl}}" class="button prev inline">
+              <span class="button__icon"><</span>
+              <span class="button__text">Prev</span>
+            </a>
+          </span>
+        <span th:if="${archives.hasPrevious()} and ${archives.hasNext()}">
+          ::
+        </span>
+        <span th:if="${archives.hasNext()}">
+            <a th:href="@{${archives.nextUrl}}" class="button next inline">
+              <span class="button__text">Next</span>
+              <span class="button__icon">></span>
+            </a>
+          </span>
+      </div>
+    </div>
+  </div>
+</th:block>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html
+  xmlns:th="https://www.thymeleaf.org"
+  th:lang="${#locale.toLanguageTag}" 
+  th:fragment="html (header, content, footer)">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title th:text="${title}"></title>
+    <th:block th:if="${theme.config.development.enabled}">
+      <script type="module" src="http://localhost:5173/@vite/client"></script>
+      <script type="module" src="http://localhost:5173/main.ts"></script>
+    </th:block>
+
+    <th:block th:unless="${theme.config.development.enabled}">
+      <link rel="stylesheet" th:href="@{/assets/dist/main.css?v={version}(version=${theme.spec.version})}" />
+      <link rel="manifest" th:href="@{/assets/dist/manifest.json}" />
+      <script type="module" th:src="@{/assets/dist/main.js?v={version}(version=${theme.spec.version})}"></script>
+    </th:block>
+
+    <th:block th:if="${theme.config.basic.pixel_style}">
+      <style th:inline="css">
+        body {
+          font-family: Ark-Pixel-12-proportional-zh_cn, serif;
+        }
+      </style>
+    </th:block>
+  </head>
+
+  <body class="main">
+    <div class="center headings--one-size container">
+      <th:block th:if="${header != null}">
+        <th:block th:replace="${header}" />
+      </th:block>
+      <th:block th:if="${header == null}">
+        <th:block th:replace="~{modules/header :: header(isHome = true)}" />
+      </th:block>
+
+      <th:block th:replace="${content}" />
+
+      <th:block th:if="${footer == null}">
+        <th:block th:replace="~{modules/footer}" />
+      </th:block>
+      <th:block th:if="${footer != null}">
+        <th:block th:replace="${footer}" />
+      </th:block>
+    </div>
+  </body>
+</html>
