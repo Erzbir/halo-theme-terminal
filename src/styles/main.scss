@@ -18,6 +18,10 @@ html {
   scrollbar-gutter: stable;
 }
 
+* {
+  scrollbar-width: thin !important;
+}
+
 *,
 *::before,
 *::after {
@@ -307,7 +311,7 @@ pre {
   tab-size: 4;
   background: color-mix(in srgb, var(--foreground) 5%, transparent) !important;
   color: var(--foreground);
-  padding: 20px 10px;
+  padding: 10px 10px;
   font-size: calc(var(--font-size) * 0.95) !important;
   overflow: auto;
   border-radius: var(--radius);
