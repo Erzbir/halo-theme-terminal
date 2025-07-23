@@ -5,17 +5,15 @@
 >
 <th:block th:fragment="content">
   <div class="content">
-    <section>
-      <div class="post">
-        <h1 class="post-title" th:text="${error.title}">404</h1>
-        <div class="post-content">
-          <p th:text="${error?.detail}"></p>
-        </div>
-        <button th:onclick="'location.href=\'' + @{/} + '\''">
-          Back to home page
-        </button>
+    <div class="post">
+      <h1 class="post-title" th:text="${error.title}">404</h1>
+      <div class="post-content">
+        <p th:text="${error?.detail}"></p>
       </div>
-    </section>
+      <button th:onclick="'location.href=\'' + @{/} + '\''">
+        Back to home page
+      </button>
+    </div>
   </div>
 </th:block>
 </html>

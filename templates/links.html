@@ -6,39 +6,45 @@
 <th:block th:fragment="content">
   <script th:src="@{/assets/libs/pixelit.js}"></script>
   <div class="content">
-    <div class="post">
-      <h1 class="post-title">Links</h1>
-      <div class="post-content">
+    <article class="post">
+      <header>
+        <h1 class="post-title">Links</h1>
+      </header>
+      <section class="post-content">
         <section class="mb-6" th:each="group : ${groups}">
-          <h2 th:text="${!#strings.isEmpty(group.spec.displayName) ? group.spec.displayName:'links'}">
-            Links
-          </h2>
-          <table style="width: 100%">
-            <tbody>
-            <tr th:each="link : ${group.links}">
-              <td>
-                <a th:href="${link.spec.url}" target="_blank" class="mb-2 block">
-                  <div class="flex p-1">
-                    <div class="">
-                      <img class="w-16" src="" th:src="${link.spec.logo}" id="pixelitimg"
-                           th:alt="${link.spec.displayName}">
-                    </div>
-                    <div class="ml-4 flex flex-col justify-around">
-                      <div class="m-0">
-                        <span th:text="${link.spec.displayName}"></span>
-                        <span th:text="|(${link.spec.url})|"></span>
+          <section>
+            <h2 th:text="${!#strings.isEmpty(group.spec.displayName) ? group.spec.displayName:'links'}">
+              Links
+            </h2>
+          </section>
+          <section>
+            <table style="width: 100%">
+              <tbody>
+              <tr th:each="link : ${group.links}">
+                <td>
+                  <a th:href="${link.spec.url}" target="_blank" class="mb-2 block">
+                    <div class="flex p-1">
+                      <div class="">
+                        <img class="w-16" src="" th:src="${link.spec.logo}" id="pixelitimg"
+                             th:alt="${link.spec.displayName}">
                       </div>
-                      <div class="m-0" th:text="${link.spec.description}"></div>
+                      <div class="ml-4 flex flex-col justify-around">
+                        <div class="m-0">
+                          <span th:text="${link.spec.displayName}"></span>
+                          <span th:text="|(${link.spec.url})|"></span>
+                        </div>
+                        <div class="m-0" th:text="${link.spec.description}"></div>
+                      </div>
                     </div>
-                  </div>
-                </a>
-              </td>
-            </tr>
-            </tbody>
-          </table>
+                  </a>
+                </td>
+              </tr>
+              </tbody>
+            </table>
+          </section>
         </section>
-      </div>
-    </div>
+      </section>
+    </article>
     <script>
       //create object
       const px = new pixelit();

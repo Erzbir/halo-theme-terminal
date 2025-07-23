@@ -8,21 +8,22 @@
   <script src="https://cdn.jsdelivr.net/gh/mcstudios/glightbox/dist/js/glightbox.min.js"></script>
   <div class="content">
     <div class="moments" x-data="upvote('moment','moment.halo.run','moments')">
-      <div
+      <article
         class="moment on-list post"
         th:each="moment,iterStat : ${moments.items}"
         th:with="content=${moment.spec.content}"
-        th:attr="x-data=|{name:'${moment.metadata.name}',showComment:false}|"
-      >
-        <div class="post-meta">
+        th:attr="x-data=|{name:'${moment.metadata.name}',showComment:false}|">
+        <header>
+          <div class="post-meta">
             <span class="post-date" th:text="${#dates.format(moment.spec.releaseTime,'yyyy-MM-dd')}">
               Moment CreateTime
             </span>
-          <span class="post-author" th:with="owner = ${moment.owner}" th:text="${':: '+owner.displayName}">
+            <span class="post-author" th:with="owner = ${moment.owner}" th:text="${':: '+owner.displayName}">
               :: Author
             </span>
-        </div>
-        <div class="post-content" th:utext="${content.html}">Moment Content...</div>
+          </div>
+        </header>
+        <section class="post-content" th:utext="${content.html}">Moment Content...</section>
         <th:block th:with="medium=${moment.spec.content.medium}">
           <div
             th:unless="${#lists.isEmpty(moments)}"
@@ -75,7 +76,7 @@
             colorScheme="storedTheme"
           />
         </div>
-      </div>
+      </article>
     </div>
     <div class="pagination" th:if="${moments.hasPrevious()} or ${moments.hasNext()}">
       <div class="pagination__buttons">

@@ -5,14 +5,16 @@
 >
 <th:block th:fragment="content">
   <div class="content">
-    <div class="post">
-      <h1 class="post-title">Categories</h1>
-      <div class="post-content">
+    <article class="post">
+      <header>
+        <h1 class="post-title">Categories</h1>
+      </header>
+      <section class="post-content">
         <ul>
           <li th:replace="~{modules/category-tree :: single(categories=${categories})}"></li>
         </ul>
-      </div>
-    </div>
+      </section>
+    </article>
   </div>
 </th:block>
 </html>
