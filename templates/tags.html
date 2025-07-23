@@ -5,21 +5,17 @@
 >
 <th:block th:fragment="content">
   <div class="content">
-    <section>
-      <div class="post">
-        <h1 class="post-title">Tags</h1>
-        <div class="post-content">
-          <ul>
-            <li th:each="tag: ${tags}">
-              <a th:href="@{${tag.status.permalink}}"
-                 th:text="${tag.spec.displayName}+' ['+${tag.status.visiblePostCount?:0}+']'">
-                n
-              </a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </section>
+    <div class="terms">
+      <h1 class="post-title">Tags</h1>
+      <ul>
+        <li th:each="tag: ${tags}">
+          <a th:href="@{${tag.status.permalink}}"
+             th:text="${tag.spec.displayName}+' ['+${tag.status.visiblePostCount?:0}+']'">
+            n
+          </a>
+        </li>
+      </ul>
+    </div>
   </div>
 </th:block>
 </html>
