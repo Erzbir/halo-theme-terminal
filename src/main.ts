@@ -17,7 +17,8 @@ export function generateToc() {
   const content = document.getElementById("content");
   const titles = content?.querySelectorAll("h1, h2, h3, h4");
   if (!titles || titles.length === 0) {
-    const tocContainer = document.querySelector(".toc-container");
+    const tocContainer = document.querySelector(".toc");
+    (tocContainer as HTMLParagraphElement).style.display = "none";
     tocContainer?.remove();
     return;
   }

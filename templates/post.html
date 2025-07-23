@@ -62,7 +62,7 @@
     </div>
   </div>
   <script type="module" th:inline="javascript">
-    import {generateToc, locateToc} from '[(|${#theme.assets("/dist/main.js")}?version=${theme.spec.version}|)]'
+    import {generateToc, locateToc} from '[(|${#theme.assets("/dist/main.js")}?v=${theme.spec.version}|)]'
 
     generateToc();
     locateToc();
