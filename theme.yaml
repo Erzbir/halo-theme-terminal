@@ -7,11 +7,11 @@ spec:
   author:
     name: Erzbir
     website: https://github.com/Erzbir
-  description: Halo 2.x 版本 Terminal 主题
+  description: 一款 Terminal 风格的 Halo 主题, 基于 wan92hen 的 Terminal 修改
   logo: https://halo.run/logo
   website: https://github.com/Erzbir/halo-theme-terminal
   repo: https://github.com/Erzbir/halo-theme-terminal.git
   settingName: "theme-terminal-ez-setting"
   configMapName: "theme-terminal-ez-configMap"
-  version: 1.0.2
+  version: 1.0.3
   require: ">=2.8.0"
