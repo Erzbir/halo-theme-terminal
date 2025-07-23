@@ -16,11 +16,13 @@ Alpine.start();
 export function generateToc() {
   const content = document.getElementById("content");
   const titles = content?.querySelectorAll("h1, h2, h3, h4");
+  const tocContainer = document.querySelector(".toc");
   if (!titles || titles.length === 0) {
-    const tocContainer = document.querySelector(".toc");
     (tocContainer as HTMLParagraphElement).style.display = "none";
     tocContainer?.remove();
     return;
+  } else {
+    (tocContainer as HTMLParagraphElement).style.display = "block";
   }
   // @ts-ignore
   tocbot.init({

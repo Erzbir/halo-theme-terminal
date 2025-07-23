@@ -5,6 +5,7 @@
   background: var(--background);
   border: 1px solid var(--foreground);
   padding: 12px;
+  display: none;
 
   &::-webkit-scrollbar {
     width: 6px;
