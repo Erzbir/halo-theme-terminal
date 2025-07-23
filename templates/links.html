@@ -4,7 +4,6 @@
   th:replace="~{modules/layout :: html(title = |#{page.links.title} - ${site.title}|, header = null, content = ~{::content}, footer = null)}"
 >
 <th:block th:fragment="content">
-  <script th:src="@{/assets/libs/pixelit.js}"></script>
   <div class="content">
     <article class="post">
       <header>
@@ -25,7 +24,7 @@
                   <a th:href="${link.spec.url}" target="_blank" class="mb-2 block">
                     <div class="flex p-1">
                       <div class="">
-                        <img class="w-16" src="" th:src="${link.spec.logo}" id="pixelitimg"
+                        <img class="w-16" src="" th:src="${link.spec.logo}"
                              th:alt="${link.spec.displayName}">
                       </div>
                       <div class="ml-4 flex flex-col justify-around">
@@ -45,11 +44,6 @@
         </section>
       </section>
     </article>
-    <script>
-      //create object
-      const px = new pixelit();
-      px.draw().pixelate();
-    </script>
   </div>
 </th:block>
 </html>
