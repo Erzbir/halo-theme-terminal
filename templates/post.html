@@ -61,14 +61,32 @@
       />
     </div>
   </div>
-  <script type="module" th:inline="javascript">
-    import {generateToc, locateToc} from '[(|${#theme.assets("/dist/main.js")}?v=${theme.spec.version}|)]'
 
-    generateToc();
-    locateToc();
-    window.onresize = function () {
-      locateToc();
-    };
+  <script type="module" th:inline="javascript">
+    window.addEventListener('load', () => {
+      import('[(|${#theme.assets("/dist/main.js")}?v=${theme.spec.version}|)]').then(({generateToc, locateToc}) => {
+        generateToc();
+        locateToc();
+
+        let resizeTimer;
+        let isVisible = true;
+
+        document.addEventListener('visibilitychange', () => {
+          isVisible = !document.hidden;
+        });
+
+        window.addEventListener('resize', () => {
+          if (!isVisible) return;
+
+          clearTimeout(resizeTimer);
+          resizeTimer = setTimeout(() => {
+            requestAnimationFrame(() => {
+              locateToc();
+            });
+          }, 200);
+        });
+      });
+    });
   </script>
 </th:block>
 </html>
