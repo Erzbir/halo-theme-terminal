@@ -5,13 +5,15 @@
 >
 <th:block th:fragment="content">
   <div class="content">
-    <div class="post">
-      <h1
-        class="post-title"
-        th:text="'Category: '+${category.spec.displayName}+' ['+${category.status.visiblePostCount?:0}+']'">
-        Category: Category name [n]
-      </h1>
-      <div class="post-content">
+    <article class="post">
+      <header>
+        <h1
+          class="post-title"
+          th:text="'Category: '+${category.spec.displayName}+' ['+${category.status.visiblePostCount?:0}+']'">
+          Category: Category name [n]
+        </h1>
+      </header>
+      <section class="post-content">
         <ul>
           <li class="post-list" th:each="post : ${posts.items}">
             <a th:href="@{${post.status.permalink}}">
@@ -20,8 +22,8 @@
             </a>
           </li>
         </ul>
-      </div>
-    </div>
+      </section>
+    </article>
     <div class="pagination" th:if="${posts.hasPrevious() || posts.hasNext()}">
       <div class="pagination__buttons">
          <span th:if="${posts.hasPrevious()}">
