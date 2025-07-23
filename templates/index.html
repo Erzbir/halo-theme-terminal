@@ -10,7 +10,7 @@
       <div th:utext="${theme.config.basic.index_notice_content}"></div>
     </div>
     <div class="posts">
-      <div class="post on-list" th:each="post : ${posts.items}">
+      <article class="post on-list" th:each="post : ${posts.items}">
         <h1 class="post-title">
           <a th:text="${post.spec.title}" th:href="@{${post.status.permalink}}">Post Title</a>
         </h1>
@@ -43,7 +43,7 @@
         <div>
           <a class="read-more button inline" th:href="@{${post.status.permalink}}">[Read more]</a>
         </div>
-      </div>
+      </article>
     </div>
     <div class="pagination" th:if="${posts.hasPrevious() || posts.hasNext()}">
       <div class="pagination__buttons">

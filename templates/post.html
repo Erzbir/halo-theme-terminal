@@ -4,13 +4,14 @@
   th:replace="~{modules/layout :: html(title = |${post.spec.title} - ${site.title}|, header = null, content = ~{::content}, footer = null)}"
 >
 <th:block th:fragment="content">
-  <article class="post">
-    <h1 class="post-title" th:text="${post.spec.title}">Post Title</h1>
-    <div class="post-meta">
-      <span class="post-date" th:text="${#dates.format(post.spec.publishTime,'yyyy-MM-dd')}">Publish Time</span>
-      <span class="post-author" th:text="${post.owner.displayName}">Author</span>
-    </div>
-    <span class="post-tags">
+  <div class="content">
+    <article class="post">
+      <h1 class="post-title" th:text="${post.spec.title}">Post Title</h1>
+      <div class="post-meta">
+        <span class="post-date" th:text="${#dates.format(post.spec.publishTime,'yyyy-MM-dd')}">Publish Time</span>
+        <span class="post-author" th:text="${post.owner.displayName}">Author</span>
+      </div>
+      <span class="post-tags">
       <span th:each="tag : ${post.tags}">
         <a
           th:href="@{${tag.status.permalink}}"
@@ -21,42 +22,43 @@
         </a>
       </span>
     </span>
-    <div class="post-content">
-      <div th:utext="${post.content.content}" id="content">Post Content</div>
-    </div>
-    <div class="toc fixed top-60 z-10 p-2 max-xl:hidden" th:if="${theme.config.basic.show_toc}"></div>
-    <div th:if="${haloCommentEnabled}">
-      <h2>Comments</h2>
-      <halo:comment
-        group="content.halo.run"
-        kind="Post"
-        th:attr="name=${post.metadata.name}"
-      />
-    </div>
-    <div class="pagination">
-      <div class="pagination__title">
-        <span class="pagination__title-h">Read other posts</span>
-        <hr/>
+      <div class="post-content">
+        <div th:utext="${post.content.content}" id="content">Post Content</div>
       </div>
-      <div class="pagination__buttons" th:with="postCursor=${postFinder.cursor(post.metadata?.name)}">
+      <div class="toc fixed top-60 z-10 p-2 max-xl:hidden" th:if="${theme.config.basic.show_toc}"></div>
+      <div th:if="${haloCommentEnabled}">
+        <h2>Comments</h2>
+        <halo:comment
+          group="content.halo.run"
+          kind="Post"
+          th:attr="name=${post.metadata.name}"
+        />
+      </div>
+      <div class="pagination">
+        <div class="pagination__title">
+          <span class="pagination__title-h">Read other posts</span>
+          <hr/>
+        </div>
+        <div class="pagination__buttons" th:with="postCursor=${postFinder.cursor(post.metadata?.name)}">
         <span th:if="${postCursor.hasPrevious()}">
           <a th:href="@{${postCursor.previous?.status?.permalink}}" class="button prev inline">
             <span class="button__icon"><</span>
             <span class="button__text" th:text="|[${postCursor.previous?.spec?.title}]|">[prevPost]</span>
           </a>
         </span>
-        <span th:if="${postCursor.hasPrevious()} and ${postCursor.hasNext()}">
+          <span th:if="${postCursor.hasPrevious()} and ${postCursor.hasNext()}">
           ::
         </span>
-        <span th:if="${postCursor.hasNext()}">
+          <span th:if="${postCursor.hasNext()}">
           <a th:href="@{${postCursor.next?.status?.permalink}}" class="button next inline">
             <span class="button__text" th:text="|[${postCursor.next?.spec?.title}]|">[nextPost]</span>
             <span class="button__icon">></span>
           </a>
         </span>
+        </div>
       </div>
-    </div>
-  </article>
+    </article>
+  </div>
   <script type="module" th:inline="javascript">
     import {generateToc, locateToc} from '[(|${#theme.assets("/dist/main.js")}?version=${theme.spec.version}|)]'
 

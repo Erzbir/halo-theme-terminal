@@ -4,26 +4,28 @@
   th:replace="~{modules/layout :: html(title = |${singlePage.spec.title} - ${site.title}|, header = null, content = ~{::content}, footer = null)}"
 >
 <th:block th:fragment="content">
-  <article class="post">
-    <h1 class="post-title" th:text="${singlePage.spec.title}">Post Title</h1>
-    <div class="post-meta">
+  <div class="content">
+    <article class="post">
+      <h1 class="post-title" th:text="${singlePage.spec.title}">Post Title</h1>
+      <div class="post-meta">
         <span class="post-date" th:text="${#dates.format(singlePage.spec.publishTime,'yyyy-MM-dd')}">
           Publish Time
         </span>
-      <span class="post-author" th:text="${singlePage.owner.displayName}">Author</span>
-    </div>
-    <div class="post-content">
-      <div th:utext="${singlePage.content.content}">Post Content</div>
-    </div>
-  </article>
-  <div th:if="${haloCommentEnabled}">
-    <h2>Comments</h2>
-    <halo:comment
-      group="content.halo.run"
-      kind="SinglePage"
-      th:attr="name=${singlePage.metadata.name}"
-      colorScheme="localStorage.getItem('theme')"
-    />
+        <span class="post-author" th:text="${singlePage.owner.displayName}">Author</span>
+      </div>
+      <div class="post-content">
+        <div th:utext="${singlePage.content.content}">Post Content</div>
+      </div>
+      <div th:if="${haloCommentEnabled}">
+        <h2>Comments</h2>
+        <halo:comment
+          group="content.halo.run"
+          kind="SinglePage"
+          th:attr="name=${singlePage.metadata.name}"
+          colorScheme="localStorage.getItem('theme')"
+        />
+      </div>
+    </article>
   </div>
 </th:block>
 </html>
