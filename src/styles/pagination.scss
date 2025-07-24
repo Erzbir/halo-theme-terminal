@@ -13,8 +13,8 @@
   text-align: center;
   margin: 0 auto;
   padding: 5px 10px;
-  background: var(--background);
-  color: color-mix(in srgb, var(--foreground) 30%, transparent);
+  background: var(--color-theme-background);
+  color: color-mix(in srgb, var(--color-theme-foreground) 30%, transparent);
   font-size: calc(var(--font-size) * 0.8);
   text-transform: uppercase;
   text-decoration: none;

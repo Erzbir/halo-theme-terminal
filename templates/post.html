@@ -28,7 +28,7 @@
         <div th:utext="${post.content.content}" id="content">Post Content</div>
       </section>
     </article>
-    <div class="toc fixed top-60 z-10 p-2 max-xl:hidden" th:if="${theme.config.basic.show_toc}"></div>
+    <div class="toc" th:if="${theme.config.basic.show_toc}"></div>
     <div class="pagination">
       <div class="pagination__title">
         <span class="pagination__title-h">Read other posts</span>

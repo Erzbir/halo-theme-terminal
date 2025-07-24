@@ -1,13 +1,11 @@
-@tailwind base;
-@tailwind utilities;
-@tailwind components;
-
 @import "buttons";
 @import "fonts";
 @import "footer";
 @import "header";
+@import "links";
 @import "main";
 @import "menu";
+@import "moment";
 @import "pagination";
 @import "post";
 @import "terms";

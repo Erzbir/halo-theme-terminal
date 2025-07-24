@@ -7,12 +7,12 @@
 }
 
 .terms ul li a {
-  color: var(--accent);
+  color: var(--color-theme-accent);
 }
 
 .terms ul li:not(:empty)::before {
   content: var(--list-marker);
   position: absolute;
   left: -20px;
-  color: var(--accent);
+  color: var(--color-theme-accent);
 }

@@ -2,9 +2,10 @@
   margin-left: 12px;
   max-height: 60vh;
   overflow-y: auto;
-  background: var(--background);
-  border: 1px solid var(--foreground);
+  background: var(--color-theme-background);
+  border: 1px solid var(--color-theme-foreground);
   padding: 12px;
+  position: fixed;
   display: none;
 
   &::-webkit-scrollbar {
@@ -16,11 +17,11 @@
   }
 
   &::-webkit-scrollbar-thumb {
-    background: var(--foreground);
+    background: var(--color-theme-foreground);
     border-radius: 3px;
 
     &:hover {
-      background: var(--background);
+      background: var(--color-theme-background);
     }
   }
 
@@ -35,7 +36,7 @@
 
     .toc-list {
       margin-left: 16px;
-      border-left: 1px solid var(--foreground);
+      border-left: 1px solid var(--color-theme-foreground);
       padding-left: 8px;
     }
   }
@@ -44,19 +45,19 @@
     display: block;
     padding: 4px 8px;
     text-decoration: none;
-    color: var(--foreground);
+    color: var(--color-theme-foreground);
     font-size: 0.875rem;
     border-radius: 3px;
     transition: all 0.2s ease;
 
     &:hover {
-      background: var(--background);
-      color: var(--accent);
+      background: var(--color-theme-background);
+      color: var(--color-theme-accent);
     }
 
     &.is-active-link {
-      background: var(--background);
-      color: var(--accent);
+      background: var(--color-theme-background);
+      color: var(--color-theme-accent);
       font-weight: bold;
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 
@@ -66,8 +67,8 @@
 
   .is-active-li {
     > .toc-link {
-      background: var(--background);
-      color: var(--accent);
+      background: var(--color-theme-background);
+      color: var(--color-theme-accent);
       font-weight: bold;
     }
   }

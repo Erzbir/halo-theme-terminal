@@ -10,23 +10,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title th:text="${title}"></title>
 
-  <th:block th:unless="${theme.config.development.enabled}">
-    <link rel="stylesheet" th:href="@{/assets/dist/main.css?v={version}(version=${theme.spec.version})}"/>
-    <link rel="manifest" th:href="@{/assets/dist/manifest.json}"/>
-    <script type="module" th:src="@{/assets/dist/main.js?v={version}(version=${theme.spec.version})}"></script>
-  </th:block>
+  <link rel="stylesheet" th:href="@{/assets/dist/main.css?v={version}(version=${theme.spec.version})}"/>
+  <link rel="manifest" th:href="@{/assets/dist/manifest.json}"/>
+  <script type="module" th:src="@{/assets/dist/main.js?v={version}(version=${theme.spec.version})}"></script>
 
-  <th:block th:if="${theme.config.basic.pixel_style}">
-    <style th:inline="css">
-      body {
-        font-family: Ark-Pixel-12-proportional-zh_cn, serif;
-      }
-    </style>
-  </th:block>
+  <style th:if="${theme.config.basic.pixel_style}" th:inline="css">
+    body {
+      font-family: Ark-Pixel-12-proportional-zh_cn, serif;
+    }
+  </style>
 </head>
 
-<body class="main">
-<div class="center headings--one-size container">
+<body>
+<div class="center container">
   <th:block th:if="${header != null}">
     <th:block th:replace="${header}"/>
   </th:block>
