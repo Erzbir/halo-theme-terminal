@@ -63,30 +63,37 @@
   </div>
 
   <script type="module" th:inline="javascript">
-    window.addEventListener('load', () => {
-      import('[(|${#theme.assets("/dist/main.js")}?v=${theme.spec.version}|)]').then(({generateToc, locateToc}) => {
-        generateToc();
-        locateToc();
+    if (window.innerWidth >= 970) {
+      window.addEventListener('load', () => {
+        import('[(|${#theme.assets("/dist/main.js")}?v=${theme.spec.version}|)]')
+          .then(({generateToc, locateToc, destroyToc}) => {
+            generateToc();
+            locateToc();
 
-        let resizeTimer;
-        let isVisible = true;
+            let resizeTimer;
+            let isVisible = true;
 
-        document.addEventListener('visibilitychange', () => {
-          isVisible = !document.hidden;
-        });
-
-        window.addEventListener('resize', () => {
-          if (!isVisible) return;
-
-          clearTimeout(resizeTimer);
-          resizeTimer = setTimeout(() => {
-            requestAnimationFrame(() => {
-              locateToc();
+            document.addEventListener('visibilitychange', () => {
+              isVisible = !document.hidden;
             });
-          }, 200);
-        });
+
+            window.addEventListener('resize', () => {
+              if (window.innerWidth < 970) {
+                destroyToc();
+                return;
+              }
+              if (!isVisible) return;
+
+              clearTimeout(resizeTimer);
+              resizeTimer = setTimeout(() => {
+                requestAnimationFrame(() => {
+                  locateToc();
+                });
+              }, 200);
+            });
+          });
       });
-    });
+    }
   </script>
 </th:block>
 </html>

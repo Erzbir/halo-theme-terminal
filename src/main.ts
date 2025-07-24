@@ -16,27 +16,27 @@ Alpine.start();
 export function generateToc() {
   const content = document.getElementById("content");
   const titles = content?.querySelectorAll("h1, h2, h3, h4");
-  const tocContainer = document.querySelector(".toc");
+  const toc = document.querySelector(".toc") as HTMLElement;
   if (!titles || titles.length === 0) {
-    (tocContainer as HTMLParagraphElement).style.display = "none";
-    tocContainer?.remove();
+    toc.style.display = "none";
+    toc.remove();
     return;
   } else {
-    (tocContainer as HTMLParagraphElement).style.display = "block";
+    toc.style.display = "block";
   }
-  // @ts-ignore
-  tocbot.init({
-    tocSelector: ".toc",
-    contentSelector: "#content",
-    headingSelector: "h1, h2, h3, h4",
-    extraListClasses: "toc-list",
-    extraLinkClasses: "toc-link",
-    headingsOffset: 96,
-    scrollSmoothOffset: -96,
-    scrollSmooth: true,
-    // @ts-ignore
-    // tocScrollOffset: 50,
-  });
+  if (typeof tocbot !== 'undefined') {
+    tocbot.destroy();
+    tocbot.init({
+      tocSelector: ".toc",
+      contentSelector: "#content",
+      headingSelector: "h1, h2, h3, h4",
+      extraListClasses: "toc-list",
+      extraLinkClasses: "toc-link",
+      headingsOffset: 96,
+      scrollSmoothOffset: -96,
+      scrollSmooth: true,
+    });
+  }
 }
 
 export function locateToc() {
@@ -45,5 +45,14 @@ export function locateToc() {
   const contentRight = content?.getBoundingClientRect().right;
   if (toc && contentRight) {
     toc.style.left = `${contentRight}px`;
+  }
+}
+
+export function destroyToc() {
+  const toc = document.querySelector(".toc") as HTMLElement;
+  toc.style.display = "none";
+  toc.remove();
+  if (typeof tocbot !== 'undefined') {
+    tocbot.destroy();
   }
 }
