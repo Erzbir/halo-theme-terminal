@@ -95,24 +95,29 @@
         </li>
       </ul>
     </nav>
-    <script>
-      var toggle = document.getElementById("theme-toggle");
+    <script th:inline="javascript">
+      document.addEventListener("DOMContentLoaded", function () {
+        var toggle = document.getElementById("theme-toggle");
+        var darkTheme = /*[[${theme.config.basic.dark_color_schema}]]*/;
+        var lightTheme = /*[[${theme.config.basic.light_color_schema}]]*/;
+        var defaultMode = /*[[${theme.config.basic.default_schema_mode}]]*/;
+        var defaultTheme = (defaultMode === "light" ? lightTheme : darkTheme) || "dark";
 
-      var storedTheme =
-        localStorage.getItem("theme") || (window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark");
-      if (storedTheme) document.documentElement.setAttribute("data-color-scheme", storedTheme);
+        var storedTheme = localStorage.getItem("theme") || defaultTheme;
+        var storedMode = localStorage.getItem("theme-mode") || defaultMode;
+        if (storedTheme) document.documentElement.setAttribute("data-color-scheme", storedTheme);
 
-      toggle.onclick = function () {
-        var currentTheme = document.documentElement.getAttribute("data-color-scheme");
-        var targetTheme = "light";
+        toggle.addEventListener("click", function () {
+          var nextMode = storedMode === "dark" ? "light" : "dark";
+          var nextTheme = nextMode === "dark" ? darkTheme : lightTheme;
 
-        if (currentTheme === "light") {
-          targetTheme = "dark";
-        }
+          document.documentElement.setAttribute("data-color-scheme", nextTheme);
+          localStorage.setItem("theme", nextTheme);
+          localStorage.setItem("theme-mode", nextMode);
 
-        document.documentElement.setAttribute("data-color-scheme", targetTheme);
-        localStorage.setItem("theme", targetTheme);
-      };
+          storedMode = nextMode;
+        });
+      });
     </script>
   </div>
 </header>
