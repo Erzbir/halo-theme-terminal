@@ -11,11 +11,18 @@
   --font-size: 1rem;
   --line-height: 1.54em;
   --radius: 0;
+  --font-theme-family: "Fira Code", Monaco, Consolas, "Ubuntu Mono", monospace;
 }
 
 html {
   box-sizing: border-box;
   scrollbar-gutter: stable;
+}
+
+html[pixel_style='on'] {
+  --font-theme-family: Fusion-Pixel-12-proportional-zh_cn,
+  "Fusion Pixel 12px Monospaced zh_hans", "Fira Code",
+  Monaco, Consolas, "Ubuntu Mono", monospace, serif
 }
 
 * {
@@ -33,7 +40,7 @@ html {
 body {
   margin: 0;
   padding: 0;
-  font-family: "Fira Code", Monaco, Consolas, "Ubuntu Mono", monospace;
+  font-family: var(--font-theme-family), "Fira Code", Monaco, Consolas, "Ubuntu Mono", monospace, serif;
   font-size: var(--font-size);
   line-height: var(--line-height);
   background-color: var(--color-theme-background);

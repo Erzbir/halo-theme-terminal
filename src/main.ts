@@ -1,6 +1,5 @@
 import "./styles/style.scss";
 import "./styles/fonts.scss";
-import "./styles/font-pixel.scss";
 import Alpine from "alpinejs";
 import upvote from "./upvote";
 // @ts-ignore
