@@ -1,12 +1,12 @@
 :root {
-  --background: #1a170f;
-  --foreground: #eceae5;
-  --accent: #eec35e;
-  --tag: #eec35e;
-  --title: #eec35e;
-  --link: #eec35e;
-  --meta: #eceae5;
-  --framed: #eec35e;
+  --color-theme-background: #1a170f;
+  --color-theme-foreground: #eceae5;
+  --color-theme-accent: #eec35e;
+  --color-theme-tag: #eec35e;
+  --color-theme-title: #eec35e;
+  --color-theme-link: #eec35e;
+  --color-theme-meta: #eceae5;
+  --color-theme-framed: #eec35e;
   --list-marker: "-";
   --font-size: 1rem;
   --line-height: 1.54em;
@@ -36,8 +36,8 @@ body {
   font-family: "Fira Code", Monaco, Consolas, "Ubuntu Mono", monospace;
   font-size: var(--font-size);
   line-height: var(--line-height);
-  background-color: var(--background);
-  color: var(--foreground);
+  background-color: var(--color-theme-background);
+  color: var(--color-theme-foreground);
   text-rendering: optimizelegibility;
   -webkit-font-smoothing: antialiased;
   -webkit-overflow-scrolling: touch;
@@ -83,7 +83,7 @@ table {
 }
 
 a {
-  color: var(--link);
+  color: var(--color-theme-link);
 }
 
 button {
@@ -93,9 +93,9 @@ button {
   text-decoration: none;
   text-align: center;
   background: transparent;
-  color: var(--accent);
+  color: var(--color-theme-accent);
   padding: 5px 18px;
-  border: 4px solid var(--accent);
+  border: 4px solid var(--color-theme-accent);
   border-radius: var(--radius);
   transition: background 0.15s linear;
   appearance: none;
@@ -104,18 +104,18 @@ button {
 }
 
 button:hover {
-  background: color-mix(in srgb, var(--accent) 15%, transparent);
+  background: color-mix(in srgb, var(--color-theme-accent) 15%, transparent);
 }
 
 button:focus-visible,
 a:focus-visible {
-  outline: 1px solid var(--accent);
+  outline: 1px solid var(--color-theme-accent);
   outline-offset: 2px;
 }
 
 fieldset {
   display: inline-block;
-  border: 2px solid var(--foreground);
+  border: 2px solid var(--color-theme-foreground);
   border-radius: calc(var(--radius) * 1.6);
   padding: 10px;
 }
@@ -145,8 +145,8 @@ input,
 textarea,
 select {
   background: transparent;
-  color: var(--foreground);
-  border: 1px solid var(--foreground);
+  color: var(--color-theme-foreground);
+  border: 1px solid var(--color-theme-foreground);
   border-radius: var(--radius);
   padding: 10px;
   font: inherit;
@@ -163,8 +163,8 @@ textarea:focus-visible,
 textarea:active,
 select:focus-visible,
 select:active {
-  border-color: var(--accent);
-  outline: 1px solid var(--accent);
+  border-color: var(--color-theme-accent);
+  outline: 1px solid var(--color-theme-accent);
   outline-offset: 2px;
 }
 
@@ -178,9 +178,9 @@ select {
   background-image: linear-gradient(
       45deg,
       transparent 50%,
-      var(--foreground) 50%
+      var(--color-theme-foreground) 50%
   ),
-  linear-gradient(135deg, var(--foreground) 50%, transparent 50%);
+  linear-gradient(135deg, var(--color-theme-foreground) 50%, transparent 50%);
   background-position: calc(100% - 20px), calc(100% - 1em);
   background-size: 5px 5px, 5px 5px;
   background-repeat: no-repeat;
@@ -188,23 +188,23 @@ select {
 }
 
 select option {
-  background: var(--background);
+  background: var(--color-theme-background);
 }
 
 input[type="checkbox"] {
   vertical-align: middle;
   padding: 10px;
-  box-shadow: inset 0 0 0 3px var(--background);
+  box-shadow: inset 0 0 0 3px var(--color-theme-background);
 }
 
 input[type="checkbox"]:checked {
-  background: var(--accent);
+  background: var(--color-theme-accent);
 }
 
 img {
   display: block;
   max-width: 100%;
-  border: 4px solid var(--accent);
+  border: 4px solid var(--color-theme-accent);
   border-radius: var(--radius);
   padding: 4px;
   overflow: hidden;
@@ -246,8 +246,8 @@ figure video {
 }
 
 figure figcaption {
-  background: var(--accent);
-  color: var(--background);
+  background: var(--color-theme-accent);
+  color: var(--color-theme-background);
   text-align: center;
   font-size: var(--font-size);
   font-weight: normal;
@@ -274,7 +274,7 @@ ol ol {
 }
 
 li::marker {
-  color: var(--accent);
+  color: var(--color-theme-accent);
 }
 
 ul li,
@@ -286,7 +286,7 @@ code,
 kbd {
   font-family: inherit !important;
   font-feature-settings: normal;
-  background: color-mix(in srgb, var(--foreground) 5%, transparent);
+  background: color-mix(in srgb, var(--color-theme-foreground) 5%, transparent);
   border: 1px solid var(--code-border);
   padding: 1px 6px;
   margin: 0 2px;
@@ -294,10 +294,10 @@ kbd {
 }
 
 kbd {
-  border-top: 1px solid color-mix(in srgb, var(--accent) 25%, transparent);
-  border-left: 1px solid var(--accent);
-  border-right: 1px solid var(--accent);
-  border-bottom: 4px solid var(--accent);
+  border-top: 1px solid color-mix(in srgb, var(--color-theme-accent) 25%, transparent);
+  border-left: 1px solid var(--color-theme-accent);
+  border-right: 1px solid var(--color-theme-accent);
+  border-bottom: 4px solid var(--color-theme-accent);
   border-radius: 4px;
 }
 
@@ -310,13 +310,13 @@ code code {
 pre {
   font-family: inherit !important;
   tab-size: 4;
-  background: color-mix(in srgb, var(--foreground) 5%, transparent) !important;
-  color: var(--foreground);
+  background: color-mix(in srgb, var(--color-theme-foreground) 5%, transparent) !important;
+  color: var(--color-theme-foreground);
   padding: 10px 10px;
   font-size: calc(var(--font-size) * 0.95) !important;
   overflow: auto;
   border-radius: var(--radius);
-  border: 1px solid color-mix(in srgb, var(--foreground) 10%, transparent);
+  border: 1px solid color-mix(in srgb, var(--color-theme-foreground) 10%, transparent);
 }
 
 pre code {
@@ -333,7 +333,7 @@ sup {
 abbr {
   position: relative;
   text-decoration-style: wavy;
-  text-decoration-color: var(--accent);
+  text-decoration-color: var(--color-theme-accent);
   cursor: help;
 }
 
@@ -346,14 +346,14 @@ sup {
 }
 
 mark {
-  background: color-mix(in srgb, var(--accent) 45%, transparent);
-  color: var(--foreground);
+  background: color-mix(in srgb, var(--color-theme-accent) 45%, transparent);
+  color: var(--color-theme-foreground);
 }
 
 blockquote {
   position: relative;
-  border-top: 1px solid var(--accent);
-  border-bottom: 1px solid var(--accent);
+  border-top: 1px solid var(--color-theme-accent);
+  border-bottom: 1px solid var(--color-theme-accent);
   margin: 0;
   padding: 25px;
 }
@@ -363,7 +363,7 @@ blockquote::before {
   display: block;
   position: absolute;
   left: 0;
-  color: var(--accent);
+  color: var(--color-theme-accent);
 }
 
 blockquote p:first-child {
@@ -382,13 +382,13 @@ table {
 table,
 th,
 td {
-  border: 2px solid var(--foreground);
+  border: 2px solid var(--color-theme-foreground);
   padding: 10px;
 }
 
 th {
   border-style: solid;
-  color: var(--foreground);
+  color: var(--color-theme-foreground);
   text-align: left;
   text-transform: uppercase;
   letter-spacing: 0.04em;
@@ -397,7 +397,7 @@ th {
 hr {
   width: 100%;
   border: none;
-  background: var(--accent);
+  background: var(--color-theme-accent);
   height: 2px;
 }
 
@@ -424,15 +424,15 @@ hr {
 
 blockquote.twitter-tweet {
   position: relative;
-  background: var(--background);
+  background: var(--color-theme-background);
   font: inherit;
   color: inherit;
-  border: 1px solid var(--accent);
+  border: 1px solid var(--color-theme-accent);
   padding-top: 60px;
 }
 
 blockquote.twitter-tweet a {
-  color: var(--accent);
+  color: var(--color-theme-accent);
   text-decoration: underline;
 }
 
@@ -441,7 +441,7 @@ blockquote.twitter-tweet::before {
   position: absolute;
   top: 20px;
   left: 20px;
-  color: var(--accent);
+  color: var(--color-theme-accent);
   font-weight: bold;
 }
 
@@ -451,7 +451,7 @@ blockquote.twitter-tweet::before {
   padding: 40px;
   max-width: 864px;
   min-height: 100vh;
-  border-right: 1px solid color-mix(in srgb, var(--accent) 10%, transparent);
+  border-right: 1px solid color-mix(in srgb, var(--color-theme-accent) 10%, transparent);
 }
 
 .container.full, .container.center {
@@ -501,7 +501,7 @@ blockquote.twitter-tweet::before {
 }
 
 iframe[src*="youtube.com"] {
-  border: 8px solid var(--accent) !important;
+  border: 8px solid var(--color-theme-accent) !important;
   padding: 8px !important;
 }
 
@@ -528,14 +528,14 @@ iframe[src*="youtube.com"] {
 
 #theme-toggle {
   background-color: transparent;
-  color: var(--foreground);
+  color: var(--color-theme-foreground);
   margin: 0 0 0 .5rem;
   padding: 0;
 }
 
 #search-button {
   background-color: transparent;
-  color: var(--foreground);
+  color: var(--color-theme-foreground);
   margin: 0 0 0 .5rem;
   padding: 0;
 }

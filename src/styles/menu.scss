@@ -39,7 +39,7 @@
 
 .menu__trigger {
   margin-right: 0 !important;
-  color: var(--accent);
+  color: var(--color-theme-accent);
   user-select: none;
   cursor: pointer;
 }
@@ -48,10 +48,10 @@
   display: none;
   flex-direction: column;
   position: absolute;
-  background: var(--background);
-  box-shadow: 0 10px var(--background), -10px 10px var(--background), 10px 10px var(--background);
-  color: var(--accent);
-  border: 2px solid var(--accent);
+  background: var(--color-theme-background);
+  box-shadow: 0 10px var(--color-theme-background), -10px 10px var(--color-theme-background), 10px 10px var(--color-theme-background);
+  color: var(--color-theme-accent);
+  border: 2px solid var(--color-theme-accent);
   margin: 0;
   padding: 10px;
   top: 10px;
@@ -78,7 +78,7 @@
 }
 
 .menu--mobile .menu__trigger {
-  color: var(--accent);
+  color: var(--color-theme-accent);
   border: 2px solid;
   margin-left: 10px;
   height: 100%;
@@ -98,7 +98,7 @@
 }
 
 .menu--language-selector .menu__trigger {
-  color: var(--accent);
+  color: var(--color-theme-accent);
   border: 2px solid;
   margin-left: 5px;
   height: 100%;

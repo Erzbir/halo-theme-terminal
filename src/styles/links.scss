@@ -15,7 +15,7 @@
 }
 
 .link-item:hover {
-  background-color: var(--background);
+  background-color: var(--color-theme-background);
 }
 
 .link-container {
@@ -44,13 +44,13 @@
 }
 
 .link-url {
-  color: var(--accent);
+  color: var(--color-theme-accent);
   font-size: 0.9em;
 }
 
 .link-description {
   margin: 0;
-  color: var(--accent);
+  color: var(--color-theme-accent);
   font-size: 0.9em;
   line-height: 1.4;
 }
