@@ -23,3 +23,34 @@ spec:
           name: show_toc
           label: 显示文章目录
           help: 开启后, 将在文章页面显示文章目录
+        - $formkit: select
+          name: default_schema_mode
+          label: 默认模式
+          value: "dark"
+          options:
+            - label: "暗模式"
+              value: "dark"
+            - label: "亮模式"
+              value: "light"
+        - $formkit: select
+          name: dark_color_schema
+          label: 暗色模式配色方案
+          value: "dark"
+          options:
+            - label: "暗黑"
+              value: "dark"
+            - label: "亮色"
+              value: "light"
+            - label: "暗黄"
+              value: "inkGold"
+        - $formkit: select
+          name: light_color_schema
+          label: 亮色模式配色方案
+          value: "light"
+          options:
+            - label: "暗黑"
+              value: "dark"
+            - label: "亮色"
+              value: "light"
+            - label: "暗黄"
+              value: "inkGold"
