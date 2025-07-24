@@ -97,22 +97,26 @@
     </nav>
     <script th:inline="javascript">
       document.addEventListener("DOMContentLoaded", function () {
-        var toggle = document.getElementById("theme-toggle");
-        var darkTheme = /*[[${theme.config.basic.dark_color_schema}]]*/;
-        var lightTheme = /*[[${theme.config.basic.light_color_schema}]]*/;
-        var defaultMode = /*[[${theme.config.basic.default_schema_mode}]]*/;
-        var defaultTheme = (defaultMode === "light" ? lightTheme : darkTheme) || "dark";
+        const toggle = document.getElementById("theme-toggle");
+        let darkTheme = /*[[${theme.config.basic.dark_color_schema}]]*/;
+        let lightTheme = /*[[${theme.config.basic.light_color_schema}]]*/;
+        let defaultMode = /*[[${theme.config.basic.default_schema_mode}]]*/;
+        let storedMode = localStorage.getItem("theme-mode");
 
-        var storedTheme = localStorage.getItem("theme") || defaultTheme;
-        var storedMode = localStorage.getItem("theme-mode") || defaultMode;
-        if (storedTheme) document.documentElement.setAttribute("data-color-scheme", storedTheme);
+        if (!storedMode) {
+          localStorage.setItem("theme-mode", defaultMode);
+          storedMode = defaultMode;
+        }
 
+        const targetTheme = storedMode === "light" ? lightTheme : darkTheme;
+
+        document.documentElement.setAttribute("data-color-scheme", targetTheme);
+        
         toggle.addEventListener("click", function () {
-          var nextMode = storedMode === "dark" ? "light" : "dark";
-          var nextTheme = nextMode === "dark" ? darkTheme : lightTheme;
+          const nextMode = storedMode === "dark" ? "light" : "dark";
+          const nextTheme = nextMode === "dark" ? darkTheme : lightTheme;
 
           document.documentElement.setAttribute("data-color-scheme", nextTheme);
-          localStorage.setItem("theme", nextTheme);
           localStorage.setItem("theme-mode", nextMode);
 
           storedMode = nextMode;
