@@ -11,7 +11,9 @@
   --font-size: 1rem;
   --line-height: 1.54em;
   --radius: 0;
-  --font-theme-family: "Fira Code", Monaco, Consolas, "Ubuntu Mono", monospace;
+  --font-theme-family: Hack, 'JetBrains Mono', 'Fira Code',
+  Monaco, Consolas, -apple-system, BlinkMacSystemFont, 'segoe ui',
+  Roboto, Oxygen, Ubuntu, Cantarell, 'open sans', 'helvetica neue', sans-serif;
 }
 
 html {
@@ -20,9 +22,9 @@ html {
 }
 
 html[pixel_style='on'] {
-  --font-theme-family: Fusion-Pixel-12-proportional-zh_cn,
-  "Fusion Pixel 12px Monospaced zh_hans", "Fira Code",
-  Monaco, Consolas, "Ubuntu Mono", monospace, serif
+  --font-theme-family: Fusion-Pixel-proportional-zh, Hack, 'JetBrains Mono', 'Fira Code',
+  Monaco, Consolas, -apple-system, BlinkMacSystemFont, 'segoe ui',
+  Roboto, Oxygen, Ubuntu, Cantarell, 'open sans', 'helvetica neue', sans-serif;
 }
 
 * {
@@ -40,7 +42,9 @@ html[pixel_style='on'] {
 body {
   margin: 0;
   padding: 0;
-  font-family: var(--font-theme-family), "Fira Code", Monaco, Consolas, "Ubuntu Mono", monospace, serif;
+  font-family: var(--font-theme-family), Hack, 'JetBrains Mono', 'Fira Code',
+  Monaco, Consolas, -apple-system, BlinkMacSystemFont, 'segoe ui',
+  Roboto, Oxygen, Ubuntu, Cantarell, 'open sans', 'helvetica neue', sans-serif;
   font-size: var(--font-size);
   line-height: var(--line-height);
   background-color: var(--color-theme-background);
