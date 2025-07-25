@@ -11,7 +11,7 @@
   --font-size: 1rem;
   --line-height: 1.54em;
   --radius: 0;
-  --font-theme-family: Hack, 'JetBrains Mono', 'Fira Code',
+  --font-theme-family: 'JetBrains Mono', Hack, 'Fira Code',
   Monaco, Consolas, -apple-system, BlinkMacSystemFont, 'segoe ui',
   Roboto, Oxygen, Ubuntu, Cantarell, 'open sans', 'helvetica neue', sans-serif;
 }
@@ -22,7 +22,7 @@ html {
 }
 
 html[pixel_style='true'] {
-  --font-theme-family: Fusion-Pixel-proportional-zh, Hack, 'JetBrains Mono', 'Fira Code',
+  --font-theme-family: Fusion-Pixel-proportional-zh, 'JetBrains Mono', Hack, 'Fira Code',
   Monaco, Consolas, -apple-system, BlinkMacSystemFont, 'segoe ui',
   Roboto, Oxygen, Ubuntu, Cantarell, 'open sans', 'helvetica neue', sans-serif;
 }
