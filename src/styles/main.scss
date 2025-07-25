@@ -22,7 +22,7 @@ html {
 }
 
 html[pixel_style='true'] {
-  --font-theme-family: Fusion-Pixel-proportional-zh, 'JetBrains Mono', Hack, 'Fira Code',
+  --font-theme-family: 'Fusion Pixel 12px P zh_hans', 'JetBrains Mono', Hack, 'Fira Code',
   Monaco, Consolas, -apple-system, BlinkMacSystemFont, 'segoe ui',
   Roboto, Oxygen, Ubuntu, Cantarell, 'open sans', 'helvetica neue', sans-serif;
 }
@@ -42,7 +42,7 @@ html[pixel_style='true'] {
 body {
   margin: 0;
   padding: 0;
-  font-family: var(--font-theme-family), Hack, 'JetBrains Mono', 'Fira Code',
+  font-family: var(--font-theme-family), 'JetBrains Mono', Hack, 'Fira Code',
   Monaco, Consolas, -apple-system, BlinkMacSystemFont, 'segoe ui',
   Roboto, Oxygen, Ubuntu, Cantarell, 'open sans', 'helvetica neue', sans-serif;
   font-size: var(--font-size);
