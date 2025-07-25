@@ -19,7 +19,7 @@ html {
   scrollbar-gutter: stable;
 }
 
-html[pixel_style='on'] {
+html[pixel_style='true'] {
   --font-theme-family: Fusion-Pixel-12-proportional-zh_cn,
   "Fusion Pixel 12px Monospaced zh_hans", "Fira Code",
   Monaco, Consolas, "Ubuntu Mono", monospace, serif
@@ -532,15 +532,7 @@ iframe[src*="youtube.com"] {
   }
 }
 
-
-#theme-toggle {
-  background-color: transparent;
-  color: var(--color-theme-foreground);
-  margin: 0 0 0 .5rem;
-  padding: 0;
-}
-
-#search-button {
+#theme-toggle, #search-button, #pixel-toggle {
   background-color: transparent;
   color: var(--color-theme-foreground);
   margin: 0 0 0 .5rem;
