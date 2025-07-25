@@ -135,13 +135,15 @@
 
       const targetTheme = storedMode === "light" ? lightTheme : darkTheme;
 
-      document.documentElement.setAttribute("data-color-scheme", targetTheme);
+      document.documentElement.setAttribute("data-color-scheme", storedMode);
+      document.documentElement.setAttribute("theme-color-scheme", targetTheme);
 
       toggle.addEventListener("click", function () {
         const nextMode = storedMode === "dark" ? "light" : "dark";
         const nextTheme = nextMode === "dark" ? darkTheme : lightTheme;
 
-        document.documentElement.setAttribute("data-color-scheme", nextTheme);
+        document.documentElement.setAttribute("data-color-scheme", nextMode);
+        document.documentElement.setAttribute("theme-color-scheme", nextTheme);
         localStorage.setItem("theme-mode", nextMode);
 
         storedMode = nextMode;
