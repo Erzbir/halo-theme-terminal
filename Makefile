@@ -1,6 +1,9 @@
 NODE_MODS := node_modules
 BUILD_DIR := build
 DIST_DIR := templates/assets/dist
+NAME := $(shell grep '^[[:space:]]*name:' theme.yaml | head -n1 | cut -d ':' -f2 | xargs)
+VERSION := $(shell grep '^[[:space:]]*version:' theme.yaml | head -n1 | cut -d ':' -f2 | xargs)
+ARCHIVE := $(NAME)-$(VERSION).zip
 
 all: install build release
 
@@ -13,15 +16,19 @@ $(NODE_MODS):
 $(DIST_DIR): $(NODE_MODS)
 	pnpm build
 
+$(BUILD_DIR)/$(ARCHIVE): $(DIST_DIR) $(BUILD_DIR)
+	@mkdir $(BUILD_DIR)/$(NAME)
+	cp -r templates $(BUILD_DIR)/$(NAME)/
+	cp -r i18n $(BUILD_DIR)/$(NAME)/
+	cp settings.yaml $(BUILD_DIR)/$(NAME)/
+	cp theme.yaml $(BUILD_DIR)/$(NAME)/
+	zip -r $@ $(BUILD_DIR)/$(NAME) -x "*.DS_Store" -x "*.git*" -x "$(ARCHIVE)"
+
 install: $(NODE_MODS)
 
 build: $(DIST_DIR)
 
-release: $(DIST_DIR)
-	cp -r templates $(BUILD_DIR)/
-	cp -r i18n $(BUILD_DIR)/
-	cp settings.yaml $(BUILD_DIR)/
-	cp theme.yaml $(BUILD_DIR)/
+release: $(BUILD_DIR)/$(ARCHIVE)
 
 .PHNOY: clean
 clean:
