@@ -1,4 +1,4 @@
-html[data-color-scheme='day'] {
+html[theme-color-scheme='day'] {
   --color-theme-background: #ffffff;
   --color-theme-foreground: #1e1e1e;
   --color-theme-accent: #003e8a;
@@ -9,7 +9,7 @@ html[data-color-scheme='day'] {
   --color-theme-framed: #970b16;
 }
 
-html[data-color-scheme='night'] {
+html[theme-color-scheme='night'] {
   --color-theme-background: #101216;
   --color-theme-foreground: #8b949e;
   --color-theme-accent: #6ca4f8;
@@ -20,7 +20,7 @@ html[data-color-scheme='night'] {
   --color-theme-framed: #f78166;
 }
 
-html[data-color-scheme='niello'] {
+html[theme-color-scheme='niello'] {
   --color-theme-background: #1a170f;
   --color-theme-foreground: #eceae5;
   --color-theme-accent: #eec35e;
@@ -31,7 +31,7 @@ html[data-color-scheme='niello'] {
   --color-theme-framed: #eec35e;
 }
 
-html[data-color-scheme='matrix'] {
+html[theme-color-scheme='matrix'] {
   --color-theme-background: #000000;
   --color-theme-foreground: #4eee85;
   --color-theme-accent: #4eee85;
@@ -42,7 +42,7 @@ html[data-color-scheme='matrix'] {
   --color-theme-framed: #4eee85;
 }
 
-html[data-color-scheme='ink'] {
+html[theme-color-scheme='ink'] {
   --color-theme-background: #000000;
   --color-theme-foreground: #FFFFFF;
   --color-theme-accent: #FFFFFF;
@@ -53,7 +53,7 @@ html[data-color-scheme='ink'] {
   --color-theme-framed: #FFFFFF;
 }
 
-html[data-color-scheme='hopbush'] {
+html[theme-color-scheme='hopbush'] {
   --color-theme-background: #fff6f6;
   --color-theme-foreground: #462d2d;
   --color-theme-accent: #cc6099;
@@ -64,7 +64,7 @@ html[data-color-scheme='hopbush'] {
   --color-theme-framed: #cc6099;
 }
 
-html[data-color-scheme='pistachio'] {
+html[theme-color-scheme='pistachio'] {
   --color-theme-background: #1d2021;
   --color-theme-foreground: #ebdbb2;
   --color-theme-accent: #8ec07c;
@@ -75,7 +75,7 @@ html[data-color-scheme='pistachio'] {
   --color-theme-framed: #8ec07c;
 }
 
-html[data-color-scheme='blue'] {
+html[theme-color-scheme='blue'] {
   --color-theme-background: #153489;
   --color-theme-foreground: #eceae5;
   --color-theme-accent: #5ea5ee;
@@ -86,7 +86,7 @@ html[data-color-scheme='blue'] {
   --color-theme-framed: #5ea5ee;
 }
 
-html[data-color-scheme='studio'] {
+html[theme-color-scheme='studio'] {
   --color-theme-background: #fff4f2;
   --color-theme-foreground: #424140;
   --color-theme-accent: #8f6a5e;
@@ -97,7 +97,7 @@ html[data-color-scheme='studio'] {
   --color-theme-framed: #8f6a5e;
 }
 
-html[data-color-scheme='vanilla'] {
+html[theme-color-scheme='vanilla'] {
   --color-theme-background: #f7f4ff;
   --color-theme-foreground: #403352;
   --color-theme-accent: #6f49ab;
