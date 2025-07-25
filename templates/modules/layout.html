@@ -13,10 +13,6 @@
   <link rel="stylesheet" th:href="@{/assets/dist/main.css?v={version}(version=${theme.spec.version})}"/>
   <link rel="manifest" th:href="@{/assets/dist/manifest.json}"/>
   <script type="module" th:src="@{/assets/dist/main.js?v={version}(version=${theme.spec.version})}"></script>
-
-  <script th:if="${theme.config.basic.pixel_style}" th:inline="javascript">
-    document.documentElement.setAttribute("pixel_style", "on");
-  </script>
 </head>
 
 <body>

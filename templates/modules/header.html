@@ -50,6 +50,12 @@
           </svg>
         </th:block>
       </button>
+      <button id="pixel-toggle" type="button">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1.5rem" height="1.5rem" viewBox="0 0 24 24">
+          <path fill="currentColor"
+                d="M22 17h2v2h-2Zm-1 2h1v2h-1Zm1-6V9h1V6h-4v3h2v4h1zm-3 8h2v1h-2Zm0-8h2v1h-2Zm-1 9h1v2h-1Zm0-8h1v1h-1Zm-1 1h1v1h-1Zm-1 1h1v8h-1Zm1-3V3h1V0h-3v3h1v10ZM16 1h1v1h-1Zm-1 12h1v1h-1Zm-1 1h1v10h-1Zm-4-3h1v13h2V11h1V8h-4v3zm-1 3h1v10H9Zm-1-1h1v1H8Zm-1 5h1v6H7ZM8 7h1V3H6v4h1v6h1V7zM6 17h1v1H6Zm-1 5h1v2H5Zm0-6h1v1H5Zm1-1v-4H2v4h1v1h2v-1Zm-3-1v-1h2v1Zm0 7h2v1H3Zm-1-2h1v2H2Zm-2-2h2v2H0Z"/>
+        </svg>
+      </button>
     </div>
     <nav class="navigation-menu">
       <ul th:if="${menu != null} and ${not #lists.isEmpty(menu.menuItems)}"
@@ -95,6 +101,26 @@
         </li>
       </ul>
     </nav>
+    <script th:inline="javascript" defer>
+      const pixel_toggle = document.getElementById('pixel-toggle');
+      let storedStatus = localStorage.getItem("pixel_style");
+      if (!storedStatus) {
+        let status = /*[[${theme.config.basic.pixel_style}]]*/;
+        status = status.toString();
+        localStorage.setItem("pixel_style", status);
+        storedStatus = status;
+      }
+
+      document.documentElement.setAttribute("pixel_style", storedStatus);
+
+      pixel_toggle.addEventListener('click', function () {
+        let newStatus = storedStatus === 'true' ? 'false' : 'true';
+        document.documentElement.setAttribute("pixel_style", newStatus);
+        localStorage.setItem("pixel_style", newStatus);
+
+        storedStatus = newStatus;
+      });
+    </script>
     <script th:inline="javascript" defer>
       const toggle = document.getElementById("theme-toggle");
       let darkTheme = /*[[${theme.config.basic.dark_color_schema}]]*/;

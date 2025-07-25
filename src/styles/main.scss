@@ -21,7 +21,7 @@ html {
   scrollbar-gutter: stable;
 }
 
-html[pixel_style='on'] {
+html[pixel_style='true'] {
   --font-theme-family: Fusion-Pixel-proportional-zh, Hack, 'JetBrains Mono', 'Fira Code',
   Monaco, Consolas, -apple-system, BlinkMacSystemFont, 'segoe ui',
   Roboto, Oxygen, Ubuntu, Cantarell, 'open sans', 'helvetica neue', sans-serif;
@@ -536,15 +536,7 @@ iframe[src*="youtube.com"] {
   }
 }
 
-
-#theme-toggle {
-  background-color: transparent;
-  color: var(--color-theme-foreground);
-  margin: 0 0 0 .5rem;
-  padding: 0;
-}
-
-#search-button {
+#theme-toggle, #search-button, #pixel-toggle {
   background-color: transparent;
   color: var(--color-theme-foreground);
   margin: 0 0 0 .5rem;

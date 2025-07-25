@@ -18,7 +18,7 @@ spec:
         - $formkit: checkbox
           name: pixel_style
           label: 像素化风格
-          help: 开启后, 将使用像素风格字体及图标
+          help: 开启后, 将优先使用像素风格字体及图标
         - $formkit: checkbox
           name: show_toc
           label: 显示文章目录
