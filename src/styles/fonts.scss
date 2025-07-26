@@ -1,7 +1,7 @@
 @font-face {
-  font-family: 'Fira Code';
-  src: local("Fira Code"), url('../fonts/FiraCode-VF.woff2') format('woff2-variations');
-  font-weight: 300 700;
+  font-family: 'JetBrains Mono';
+  src: local('JetBrains Mono'), local('JetBrainsMono Nerd Font'), url('../fonts/JetBrainsMono-Regular.woff2') format('woff2');
+  font-weight: 400;
   font-style: normal;
 }
 
