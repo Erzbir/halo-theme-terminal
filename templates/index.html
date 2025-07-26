@@ -54,9 +54,7 @@
               <span class="button__text">Prev</span>
             </a>
           </span>
-        <span th:if="${posts.hasPrevious()} and${posts.hasNext()}">
-          ::
-        </span>
+        <span th:if="${posts.hasPrevious()} and${posts.hasNext()}">&nbsp;::&nbsp;</span>
         <span th:if="${posts.hasNext()}">
             <a th:href="@{${posts.nextUrl}}" class="button inline next">
               <span class="button__text">Next</span>

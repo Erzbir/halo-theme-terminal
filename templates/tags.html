@@ -13,9 +13,9 @@
         <ul class="post-tags">
           <li th:each="tag: ${tags}">
             <a class="post-tag" th:href="@{${tag.status.permalink}}"
-               th:text="${tag.spec.displayName}+' ['+${tag.status.visiblePostCount?:0}+']'">
-              n
+               th:text="${tag.spec.displayName}">
             </a>
+            <span th:text="' ['+${tag.status.visiblePostCount?:0}+']'"></span>
           </li>
         </ul>
       </section>

@@ -101,7 +101,7 @@
   content: var(--list-marker);
   position: absolute;
   left: -20px;
-  color: var(--color-theme-accent);
+  color: var(--color-theme-foreground);
 }
 
 .post--regulation h1 {
@@ -146,11 +146,6 @@ h6:hover .hanchor {
 .post-list {
 
   padding: .25rem 0;
-
-  .post-date {
-    color: var(--foreground);
-    text-decoration: none;
-  }
 
   a {
     text-decoration: none;
