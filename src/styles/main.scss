@@ -1,19 +1,17 @@
+@import "variables";
+
 :root {
-  --color-theme-background: ;
-  --color-theme-foreground: ;
-  --color-theme-accent: ;
-  --color-theme-tag: ;
-  --color-theme-title: ;
-  --color-theme-link: ;
-  --color-theme-meta: ;
-  --color-theme-framed: ;
-  --list-marker: "-";
+  --list-marker: "►";
   --font-size: 1rem;
   --line-height: 1.54em;
   --radius: 0;
   --font-theme-default: 'JetBrains Mono';
   --font--theme-fallback: Monaco, Consolas, -apple-system, BlinkMacSystemFont, 'segoe ui',
   Roboto, Oxygen, Ubuntu, Cantarell, 'open sans', 'helvetica neue';
+
+  @media (max-width: $phone-max-width) {
+    --font-size: 0.95rem;
+  }
 }
 
 html {
@@ -91,7 +89,8 @@ table {
 }
 
 a {
-  color: var(--color-theme-link);
+  color: var(--color-theme-accent);
+  text-decoration: none;
 }
 
 button {
@@ -325,6 +324,11 @@ pre {
   overflow: auto;
   border-radius: var(--radius);
   border: 1px solid color-mix(in srgb, var(--color-theme-foreground) 10%, transparent);
+
+  @media (max-width: $phone-max-width) {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
 }
 
 pre code {
@@ -360,10 +364,10 @@ mark {
 
 blockquote {
   position: relative;
-  border-top: 1px solid var(--color-theme-accent);
-  border-bottom: 1px solid var(--color-theme-accent);
+  border-top: 1px solid var(--color-theme-foreground);
+  border-bottom: 1px solid var(--color-theme-foreground);
   margin: 0;
-  padding: 25px;
+  padding: 20px;
 }
 
 blockquote::before {
@@ -371,7 +375,7 @@ blockquote::before {
   display: block;
   position: absolute;
   left: 0;
-  color: var(--color-theme-accent);
+  color: var(--color-theme-foreground);
 }
 
 blockquote p:first-child {
@@ -460,6 +464,10 @@ blockquote.twitter-tweet::before {
   max-width: 864px;
   min-height: 100vh;
   border-right: 1px solid color-mix(in srgb, var(--color-theme-accent) 10%, transparent);
+
+  @media (max-width: $phone-max-width) {
+    padding: 20px;
+  }
 }
 
 .container.full, .container.center {
@@ -511,16 +519,6 @@ blockquote.twitter-tweet::before {
 iframe[src*="youtube.com"] {
   border: 8px solid var(--color-theme-accent) !important;
   padding: 8px !important;
-}
-
-@media (max-width: 684px) {
-  :root {
-    --font-size: 0.95rem;
-  }
-
-  .container {
-    padding: 20px;
-  }
 }
 
 @media print {
