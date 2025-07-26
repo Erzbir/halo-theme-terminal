@@ -1,4 +1,4 @@
-<header class="header">
+<header class="header" xmlns:th="http://www.w3.org/1999/xhtml">
   <div th:fragment="header" th:with="menu = ${menuFinder.getPrimary()}">
     <div class="header__inner">
       <div class="header__logo">
@@ -56,43 +56,26 @@
       <ul th:if="${menu != null} and ${not #lists.isEmpty(menu.menuItems)}"
           class="navigation-menu__inner menu--desktop">
         <li th:each="menuItem : ${menu.menuItems}">
-          <a
-            th:href="@{${menuItem.status.href}}"
-            th:text="${menuItem.status.displayName}"
-          ></a>
-          <ul
-            th:if="${not #lists.isEmpty(menuItem.children)}"
-            @mouseenter="open()"
-            @mouseleave="close()"
-            class="menu"
-          >
-            <ul class="menu__dropdown">
-              <li th:each="childMenuItem : ${menuItem.children}">
-                <a th:href="@{${childMenuItem.status.href}}" th:text="${childMenuItem.status.displayName} "></a>
-              </li>
-            </ul>
-          </ul>
-        </li>
-      </ul>
-      <ul th:if="${menu != null} and ${not #lists.isEmpty(menu.menuItems)}"
-          class="navigation-menu__inner menu--mobile">
-        <li th:each="menuItem : ${menu.menuItems}">
-          <a
-            th:href="@{${menuItem.status.href}}"
-            th:text="${menuItem.status.displayName}"
-          ></a>
-          <ul
-            th:if="${not #lists.isEmpty(menuItem.children)}"
-            @mouseenter="open()"
-            @mouseleave="close()"
-            class="menu"
-          >
-            <ul class="menu__dropdown">
-              <li th:each="childMenuItem : ${menuItem.children}">
-                <a th:href="@{${childMenuItem.status.href}}" th:text="${childMenuItem.status.displayName} "></a>
-              </li>
-            </ul>
-          </ul>
+          <div th:if="${#lists.isEmpty(menuItem.children)}">
+            <a th:href="@{${menuItem.status.href}}"
+               th:text="${menuItem.status.displayName}"></a>
+          </div>
+
+          <div th:if="${not #lists.isEmpty(menuItem.children)}" class="menu">
+            <a th:href="@{${menuItem.status.href}}">
+              <span th:text="${menuItem.status.displayName}"></span>
+            </a>
+            <div class="sub-menu">
+              <div class="menu__trigger">▾</div>
+              <ul class="menu__dropdown">
+                <li th:each="childMenuItem : ${menuItem.children}">
+                  <a target="_blank"
+                     th:href="@{${childMenuItem.status.href}}"
+                     th:text="${childMenuItem.status.displayName}"></a>
+                </li>
+              </ul>
+            </div>
+          </div>
         </li>
       </ul>
     </nav>
