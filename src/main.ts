@@ -1,5 +1,4 @@
 import "./styles/style.scss";
-import "./styles/fonts.scss";
 import Alpine from "alpinejs";
 import upvote from "./upvote";
 // @ts-ignore

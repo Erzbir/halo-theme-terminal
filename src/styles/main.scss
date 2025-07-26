@@ -11,9 +11,9 @@
   --font-size: 1rem;
   --line-height: 1.54em;
   --radius: 0;
-  --font-theme-family: 'JetBrains Mono', Hack, 'Fira Code',
-  Monaco, Consolas, -apple-system, BlinkMacSystemFont, 'segoe ui',
-  Roboto, Oxygen, Ubuntu, Cantarell, 'open sans', 'helvetica neue', sans-serif;
+  --font-theme-default: 'JetBrains Mono';
+  --font--theme-fallback: Monaco, Consolas, -apple-system, BlinkMacSystemFont, 'segoe ui',
+  Roboto, Oxygen, Ubuntu, Cantarell, 'open sans', 'helvetica neue';
 }
 
 html {
@@ -22,15 +22,13 @@ html {
 }
 
 html[pixel_style='true'] {
-  --font-theme-family: 'Fusion Pixel 12px P zh_hans', 'JetBrains Mono', Hack, 'Fira Code',
-  Monaco, Consolas, -apple-system, BlinkMacSystemFont, 'segoe ui',
-  Roboto, Oxygen, Ubuntu, Cantarell, 'open sans', 'helvetica neue', sans-serif;
+  --font-theme-default: 'Fusion Pixel 12px P zh_hans';
 }
 
 * {
   scrollbar-width: thin !important;
   scrollbar-color: rgba(134, 134, 134, 0.45) rgba(255, 255, 255, 0);
-  font-feature-settings: "liga" 0, "calt" 0;
+  font-variant-ligatures: none;
 }
 
 *,
@@ -43,9 +41,7 @@ html[pixel_style='true'] {
 body {
   margin: 0;
   padding: 0;
-  font-family: var(--font-theme-family), 'JetBrains Mono', Hack, 'Fira Code',
-  Monaco, Consolas, -apple-system, BlinkMacSystemFont, 'segoe ui',
-  Roboto, Oxygen, Ubuntu, Cantarell, 'open sans', 'helvetica neue', sans-serif;
+  font-family: var(--font-theme-default), var(--font--theme-fallback), sans-serif;
   font-size: var(--font-size);
   line-height: var(--line-height);
   background-color: var(--color-theme-background);
