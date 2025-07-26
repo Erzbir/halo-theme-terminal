@@ -536,10 +536,3 @@ iframe[src*="youtube.com"] {
     display: initial;
   }
 }
-
-#theme-toggle, #search-button, #pixel-toggle {
-  background-color: transparent;
-  color: var(--color-theme-foreground);
-  margin: 0 0 0 .5rem;
-  padding: 0;
-}
