@@ -42,6 +42,8 @@ spec:
               value: "dark"
             - label: "亮模式"
               value: "light"
+            - label: "跟随系统"
+              value: "system"
         - $formkit: select
           name: dark_color_schema
           label: 暗色模式配色方案
