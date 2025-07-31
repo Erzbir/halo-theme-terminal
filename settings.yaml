@@ -38,15 +38,15 @@ spec:
           label: 默认模式
           value: "dark"
           options:
-            - label: "暗模式"
+            - label: "深色模式"
               value: "dark"
-            - label: "亮模式"
+            - label: "浅色模式"
               value: "light"
             - label: "跟随系统"
               value: "system"
         - $formkit: select
           name: dark_color_schema
-          label: 暗色模式配色方案
+          label: 深色模式配色方案
           value: "night"
           options:
             - label: "day"
@@ -73,7 +73,7 @@ spec:
               value: "vanilla"
         - $formkit: select
           name: light_color_schema
-          label: 亮色模式配色方案
+          label: 浅色模式配色方案
           value: "day"
           options:
             - label: "day"
