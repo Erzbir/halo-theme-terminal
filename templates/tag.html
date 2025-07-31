@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html
+        xmlns:th="https://www.thymeleaf.org"
+        th:replace="~{modules/layout :: html(title = |#{page.tag.title(${tag.spec.displayName})} - ${site.title}|, header = null, content = ~{::content}, footer = null)}"
+>
+<th:block th:fragment="content">
+    <article class="post">
+        <header>
+            <h1 class="post-title"
+                th:text="'Tag：'+${tag.spec.displayName}+' ['+${tag.status.visiblePostCount?:0}+']'">
+                Tag: [n]
+            </h1>
+        </header>
+        <section class="post-content">
+            <ul>
+                <li class="post-list" th:each="post : ${posts.items}">
+                    <a data-pjax th:href="@{${post.status.permalink}}">
+                        <span th:text="${#dates.format(post.spec.publishTime,'yyyy-MM-dd')}">Publish Time</span>
+                        <span>&nbsp;::&nbsp;</span>
+                        <span class="post-list-title" th:text="${post.spec.title}">Post Title</span>
+                    </a>
+                </li>
+            </ul>
+        </section>
+    </article>
+    <section class="pagination" th:if="${posts.hasPrevious() || posts.hasNext()}">
+        <div class="pagination__buttons">
+          <span th:if="${posts.hasPrevious()}">
+            <a data-pjax th:href="@{${posts.prevUrl}}" class="button inline prev">
+              <span class="button__text"><&nbsp;Prev</span>
+            </a>
+          </span>
+            <span th:if="${posts.hasNext()}">
+            <a data-pjax th:href="@{${posts.nextUrl}}" class="button inline next">
+              <span class="button__text">Next&nbsp;></span>
+            </a>
+          </span>
+        </div>
+    </section>
+</th:block>
+</html>

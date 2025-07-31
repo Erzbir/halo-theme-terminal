@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html
+        xmlns:th="https://www.thymeleaf.org"
+        th:lang="${#locale.toLanguageTag}"
+        th:fragment="html (header, content, footer)"
+        lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title th:text="${title}"></title>
+    <script no-pjax th:inline="javascript">
+        const dark_theme = /*[[${theme.config.style.dark_color_schema}]]*/;
+        const light_theme = /*[[${theme.config.style.light_color_schema}]]*/;
+        const default_mode = /*[[${theme.config.style.default_schema_mode}]]*/;
+        const pixel_status = /*[[${theme.config.style.pixel_style}]]*/;
+    </script>
+    <link no-pjax rel="stylesheet" th:href="@{/assets/dist/main.css?v={version}(version=${theme.spec.version})}"/>
+    <script no-pjax type="module" th:src="@{/assets/dist/main.js?v={version}(version=${theme.spec.version})}"></script>
+    <script no-pjax type="module" th:if="${theme.config.basic.pjax}"
+            th:src="@{/assets/dist/libs/pjax.js?v={version}(version=${theme.spec.version})}"></script>
+</head>
+
+<body>
+<section class="center container">
+    <header class="header">
+        <th:block th:replace="~{modules/header :: header(isHome = true)}"/>
+    </header>
+    <main>
+        <div class="content">
+            <th:block th:replace="${content}"/>
+        </div>
+    </main>
+</section>
+<footer class="footer">
+    <th:block th:replace="~{modules/footer}"/>
+</footer>
+</body>
+</html>

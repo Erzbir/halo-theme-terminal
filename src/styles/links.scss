@@ -1,0 +1,56 @@
+.link-section {
+  margin-bottom: 2rem;
+}
+
+.link-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.link-item {
+  display: block;
+  margin-bottom: 0.5rem;
+  text-decoration: none;
+  color: inherit;
+}
+
+.link-item:hover {
+  background-color: var(--color-theme-background);
+}
+
+.link-container {
+  display: flex;
+  padding: 0.25rem;
+  align-items: center;
+}
+
+.link-logo {
+  width: 4rem;
+  height: auto;
+  flex-shrink: 0;
+}
+
+.link-content {
+  margin-left: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  min-height: 4rem;
+}
+
+.link-title {
+  margin: 0;
+  font-weight: 500;
+}
+
+.link-url {
+  color: var(--color-theme-accent);
+  font-size: 0.9em;
+}
+
+.link-description {
+  margin: 0;
+  color: var(--color-theme-foreground);
+  font-size: 0.9em;
+  line-height: 1.4;
+}

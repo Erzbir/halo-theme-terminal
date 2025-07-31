@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org"
+      th:replace="~{modules/layout :: html(title = |#{page.links.title} - ${site.title}|, header = null, content = ~{::content}, footer = null)}">
+<th:block th:fragment="content">
+    <article class="post">
+        <header>
+            <h1 class="post-title">Links</h1>
+        </header>
+        <section class="post-content link-section" th:each="group : ${groups}">
+            <h2 th:text="${!#strings.isEmpty(group.spec.displayName) ? group.spec.displayName:'links'}">
+                Links
+            </h2>
+            <table class="link-table">
+                <tbody>
+                <tr th:each="link : ${group.links}">
+                    <td>
+                        <a th:href="${link.spec.url}" target="_blank" class="link-item">
+                            <div class="link-container">
+                                <div>
+                                    <img class="link-logo" src="" th:src="${link.spec.logo}"
+                                         th:alt="${link.spec.displayName}">
+                                </div>
+                                <div class="link-content">
+                                    <div class="link-title">
+                                        <span th:text="${link.spec.displayName}"></span>
+                                        <span class="link-url" th:text="|(${link.spec.url})|"></span>
+                                    </div>
+                                    <div class="link-description" th:text="${link.spec.description}"></div>
+                                </div>
+                            </div>
+                        </a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </section>
+    </article>
+</th:block>
+</html>

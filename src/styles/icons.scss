@@ -1,0 +1,12 @@
+.icon-pixel,
+.icon-regular {
+  display: none;
+}
+
+html[pixel_style='false'] .icon-regular {
+  display: inline;
+}
+
+html[pixel_style='true'] .icon-pixel {
+  display: inline;
+}

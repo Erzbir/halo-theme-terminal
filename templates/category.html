@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html
+        xmlns:th="https://www.thymeleaf.org"
+        th:replace="~{modules/layout :: html(title = |#{page.category.title(${category.spec.displayName})} - ${site.title}|, header = null, content = ~{::content}, footer = null)}"
+>
+<th:block th:fragment="content">
+    <article class="post">
+        <header>
+            <h1
+                    class="post-title"
+                    th:text="'Category: '+${category.spec.displayName}+' ['+${category.status.visiblePostCount?:0}+']'">
+                Category: Category name [n]
+            </h1>
+        </header>
+        <section class="post-content">
+            <ul>
+                <li class="post-list" th:each="post : ${posts.items}">
+                    <a data-pjax th:href="@{${post.status.permalink}}">
+                        <span th:text="${#dates.format(post.spec.publishTime,'yyyy-MM-dd')}">Publish Time</span>
+                        <span>&nbsp;::&nbsp;</span>
+                        <span class="post-list-title" th:text="${post.spec.title}">Post Title</span>
+                    </a>
+                </li>
+            </ul>
+        </section>
+    </article>
+    <section class="pagination" th:if="${posts.hasPrevious() || posts.hasNext()}">
+        <div class="pagination__buttons" th:with="postCursor=${postFinder.cursor(post.metadata?.name)}">
+      <span th:if="${postCursor.hasPrevious()}">
+          <a data-pjax th:href="@{${postCursor.previous?.status?.permalink}}" class="button prev inline">
+            <span class="button__text" th:text="|< ${postCursor.previous?.spec?.title}|">prevPost</span>
+          </a>
+      </span>
+            <span th:if="${postCursor.hasNext()}">
+          <a data-pjax th:href="@{${postCursor.next?.status?.permalink}}" class="button next inline">
+            <span class="button__text" th:text="|${postCursor.next?.spec?.title} >|">nextPost</span>
+          </a>
+        </span>
+        </div>
+    </section>
+</th:block>
+</html>

@@ -1,0 +1,38 @@
+{
+  "scripts": {
+    "build": "node build.js && theme-package",
+    "make": "node build.js"
+  },
+  "keywords": [
+    "halo",
+    "halo-theme",
+    "terminal",
+    "halo-theme-terminal",
+    "erzbir"
+  ],
+  "homepage": "https://github.com/Erzbir/halo-theme-terminal#readme",
+  "bugs": {
+    "url": "https://github.com/Erzbir/halo-theme-terminal/issues"
+  },
+  "author": {
+    "name": "Erzbir",
+    "url": "https://github.com/Erzbir"
+  },
+  "license": "MIT",
+  "repository": {
+    "url": "https://github.com/Erzbir/halo-theme-terminal",
+    "type": "git"
+  },
+  "devDependencies": {
+    "@halo-dev/theme-package-cli": "^1.0.0",
+    "sass": "^1.56.1",
+    "esbuild": "^0.20.2",
+    "esbuild-sass-plugin": "^3.3.1",
+    "pjax": "^0.2.8",
+    "tocbot": "^4.29.0"
+  },
+  "dependencies": {
+  },
+  "type": "module",
+  "packageManager": "pnpm@9.14.2+sha512.6e2baf77d06b9362294152c851c4f278ede37ab1eba3a55fda317a4a17b209f4dbb973fb250a77abc463a341fcb1f17f17cfa24091c4eb319cda0d9b84278387"
+}

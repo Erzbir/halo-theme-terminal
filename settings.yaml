@@ -1,0 +1,115 @@
+apiVersion: v1alpha1
+kind: Setting
+metadata:
+  name: theme-terminal-ez-setting
+spec:
+  forms:
+    - group: basic
+      label: 基本设置
+      formSchema:
+        - $formkit: text
+          name: index_notice_title
+          label: 首页公告标题
+          value: "Hello Terminal!"
+        - $formkit: textarea
+          name: index_notice_content
+          label: 首页公告内容
+          value: "一款 Terminal 风格的 Halo 主题."
+        - $formkit: checkbox
+          name: show_toc
+          label: 显示文章目录
+          value: true
+          help: 开启后, 将在文章页面显示文章目录
+        - $formkit: checkbox
+          name: pjax
+          label: 启用 PJAX
+          help: 是否启用 PJAX, 默认关闭
+          value: false
+    - group: style
+      label: 样式设置
+      formSchema:
+        - $formkit: checkbox
+          name: pixel_style
+          label: 像素化风格
+          value: false
+          help: 开启后, 将优先使用像素风格字体及图标
+        - $formkit: select
+          name: default_schema_mode
+          label: 默认模式
+          value: "dark"
+          options:
+            - label: "暗模式"
+              value: "dark"
+            - label: "亮模式"
+              value: "light"
+        - $formkit: select
+          name: dark_color_schema
+          label: 暗色模式配色方案
+          value: "night"
+          options:
+            - label: "day"
+              value: "day"
+            - label: "night"
+              value: "night"
+            - label: "niello"
+              value: "niello"
+            - label: "matrix"
+              value: "matrix"
+            - label: "ink"
+              value: "ink"
+            - label: "hopbush"
+              value: "hopbush"
+            - label: "pistachio"
+              value: "pistachio"
+            - label: "hopbush"
+              value: "hopbush"
+            - label: "blue"
+              value: "blue"
+            - label: "studio"
+              value: "studio"
+            - label: "vanilla"
+              value: "vanilla"
+        - $formkit: select
+          name: light_color_schema
+          label: 亮色模式配色方案
+          value: "day"
+          options:
+            - label: "day"
+              value: "day"
+            - label: "night"
+              value: "night"
+            - label: "niello"
+              value: "niello"
+            - label: "matrix"
+              value: "matrix"
+            - label: "ink"
+              value: "ink"
+            - label: "hopbush"
+              value: "hopbush"
+            - label: "pistachio"
+              value: "pistachio"
+            - label: "hopbush"
+              value: "hopbush"
+            - label: "blue"
+              value: "blue"
+            - label: "studio"
+              value: "studio"
+            - label: "vanilla"
+              value: "vanilla"
+    - group: icp
+      label: 备案设置
+      formSchema:
+        - $formkit: text
+          name: icp_text
+          label: ICP备案号
+        - $formkit: text
+          name: icp_link
+          label: ICP备案跳转链接
+          value: https://beian.miit.gov.cn/
+        - $formkit: text
+          name: filing_text
+          label: 公安备案号
+        - $formkit: text
+          name: filing_link
+          label: 公安备案跳转链接
+          value: https://www.beian.gov.cn/

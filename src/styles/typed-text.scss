@@ -1,0 +1,17 @@
+.typed-text {
+  color: var(--color-theme-framed);
+}
+
+.typed-text::after {
+  content: '|';
+  display: inline-block;
+  opacity: 0;
+  animation: blink 0.7s infinite alternate;
+  vertical-align: text-bottom;
+}
+
+@keyframes blink {
+  to {
+    opacity: 1;
+  }
+}

@@ -1,0 +1,160 @@
+@import "variables";
+
+.index-content {
+  margin: 25px 0;
+}
+
+.framed {
+  border: 1px solid var(--color-theme-framed);
+  padding: 20px;
+}
+
+.framed *:first-child {
+  margin-top: 0;
+}
+
+.framed *:last-child {
+  margin-bottom: 0;
+}
+
+.posts {
+  width: 100%;
+}
+
+.post {
+  width: 100%;
+  text-align: left;
+  padding: 30px 0;
+}
+
+.post:not(:last-of-type) {
+  border-bottom: 1px solid color-mix(in srgb, var(--color-theme-foreground) 10%, transparent);
+}
+
+.post-meta {
+  font-size: inherit;
+  margin-bottom: 10px;
+  color: color-mix(in srgb, var(--color-theme-meta) 65%, transparent);
+}
+
+.post-meta > *:not(:first-child)::before {
+  content: "::";
+  display: inline-block;
+  margin: 0 8px;
+}
+
+.post-title {
+  position: relative;
+  color: var(--color-theme-title);
+  margin-top: 0 !important;
+  margin-bottom: 15px !important;
+  padding-bottom: 15px;
+  border-bottom: 3px dotted var(--color-theme-accent);
+  text-decoration: none !important;
+}
+
+.post-title::after {
+  content: "";
+  position: absolute;
+  bottom: 2px;
+  display: block;
+  width: 100%;
+  border-bottom: 3px dotted var(--color-theme-accent);
+}
+
+.post-title a {
+  text-decoration: none;
+  color: var(--color-theme-title);
+}
+
+.post-tags {
+  display: block;
+  margin-bottom: 20px;
+  font-size: inherit;
+}
+
+.post-tag {
+  color: var(--color-theme-tag);
+
+  a {
+    color: inherit;
+  }
+}
+
+.table-of-contents {
+  margin: 40px 0;
+}
+
+.post-content {
+  margin-top: 25px;
+}
+
+.post-cover {
+  margin: 25px 0;
+}
+
+.post ul {
+  list-style: none;
+}
+
+.post ul li:not(:empty)::before {
+  content: var(--list-marker);
+  position: absolute;
+  left: -20px;
+  color: var(--color-theme-foreground);
+}
+
+.post--regulation h1 {
+  justify-content: center;
+}
+
+.post--regulation h2 {
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.post--regulation h2 + h2 {
+  margin-top: -10px;
+  margin-bottom: 20px;
+}
+
+.hanchor {
+  position: absolute;
+  color: var(--color-theme-accent);
+  text-decoration: none;
+  margin-left: 10px;
+  visibility: hidden;
+}
+
+h1:hover .hanchor,
+h2:hover .hanchor,
+h3:hover .hanchor,
+h4:hover .hanchor,
+h5:hover .hanchor,
+h6:hover .hanchor {
+  visibility: visible;
+}
+
+.footnotes {
+  color: color-mix(in srgb, var(--color-theme-foreground) 50%, transparent);
+}
+
+.footnotes hr {
+  background: color-mix(in srgb, var(--color-theme-foreground) 50%, transparent);
+}
+
+.post-list {
+
+  padding: .25rem 0;
+
+  a {
+    text-decoration: none;
+  }
+}
+
+@media (max-width: $phone-max-width) {
+  .post-cover {
+    padding: 10px;
+    border-width: 10px;
+  }
+}

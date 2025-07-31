@@ -1,0 +1,24 @@
+search-modal {
+  --halo-search-widget-base-font-family: var(--font-theme-default) !important;
+  --halo-search-widget-base-bg-color: var(--color-theme-background) !important;
+  --halo-search-widget-primary-color: var(--color-theme-accent) !important;
+  --halo-search-widget-muted-color: var(--color-theme-foreground) !important;
+  --halo-search-widget-content-color: var(--color-theme-accent) !important;
+  --halo-search-widget-hit-bg-color: var(--color-theme-background) !important;
+  --halo-search-widget-modal-bg-color: var(--color-theme-background) !important;
+  --halo-search-widget-modal-layer-color: #000000cc !important;
+  --halo-search-widget-divider-color: var(--color-theme-accent) !important;
+  --halo-search-widget-kbd-border-color: var(--color-theme-accent) !important;
+  --halo-search-widget-kbd-shadow: none !important;
+  --halo-search-widget-color-form-input-bg: var(--color-theme-background) !important;
+  --halo-search-widget-color-form-input: var(--color-theme-foreground);
+  --halo-search-widget-color-form-input-placeholder: var(--color-theme-accent) !important;
+  --halo-search-widget-color-form-divider: var(--color-theme-accent) !important;
+  --halo-search-widget-color-result-empty: var(--color-theme-accent) !important;
+  --halo-search-widget-color-result-item-bg: var(--color-theme-background) !important;
+  --halo-search-widget-color-result-item-hover-bg: var(--color-theme-background) !important;
+  --halo-search-widget-color-result-item-title: var(--color-theme-accent) !important;
+  --halo-search-widget-color-result-item-content: var(--color-theme-accent) !important;
+  --halo-search-widget-color-command-kbd-item: var(--color-theme-accent) !important;
+  --halo-search-widget-color-command-kbd-borde: var(--color-theme-accent) !important;
+}

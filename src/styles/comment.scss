@@ -1,0 +1,34 @@
+comment-widget {
+  --halo-comment-widget-base-font-family: var(--font-theme-default) !important;
+  --halo-comment-widget-base-border-radius: 0 !important;
+  --halo-comment-widget-base-color: var(--color-theme-accent) !important;
+  --halo-comment-widget-base-info-color: var(--color-theme-foreground) !important;
+  --halo-comment-widget-component-form-input-bg-color: var(--color-theme-background) !important;
+  --halo-comment-widget-component-form-input-color: var(--color-theme-foreground) !important;
+  --halo-comment-widget-component-form-input-border-color: var(--color-theme-accent) !important;
+  --halo-comment-widget-component-form-input-border-color-focus: var(--color-theme-accent) !important;
+  --halo-comment-widget-component-form-input-box-shadow-focus: var(--color-theme-accent) !important;
+  --halo-comment-widget-component-form-button-login-bg-color: var(--color-theme-background) !important;
+  --halo-comment-widget-component-form-button-login-bg-color-hover: var(--color-theme-background) !important;
+  --halo-comment-widget-component-form-button-login-border-color: var(--color-theme-background) !important;
+  --halo-comment-widget-component-form-button-submit-bg-color: var(--color-theme-background) !important;
+  --halo-comment-widget-component-form-button-submit-color: var(--color-theme-accent) !important;
+  --halo-comment-widget-component-form-button-submit-border-color: var(--color-theme-background) !important;
+  --halo-comment-widget-component-form-button-submit-border-color-hover: var(--color-theme-background) !important;
+  --halo-comment-widget-component-form-button-emoji-color: var(--color-theme-background) !important;
+  --halo-comment-widget-component-comment-item-action-bg-color-hover: var(--color-theme-background) !important;
+  --halo-comment-widget-component-comment-item-action-color-hover: var(--color-theme-accent) !important;
+  --halo-comment-widget-component-pagination-button-bg-color-hover: var(--color-theme-background) !important;
+  --halo-comment-widget-component-pagination-button-bg-color-active: var(--color-theme-background) !important;
+  --halo-comment-widget-component-pagination-button-border-color-active: var(--color-theme-background) !important;
+  --halo-comment-widget-component-emoji-picker-rgb-color: var(--color-theme-background) !important;
+  --halo-comment-widget-component-emoji-picker-rgb-accent: var(--color-theme-accent) !important;
+  --halo-comment-widget-component-emoji-picker-rgb-background: var(--color-theme-background) !important;
+  --halo-comment-widget-component-emoji-picker-rgb-input: var(--color-theme-accent) !important;
+  --halo-comment-widget-component-emoji-picker-color-border: var(--color-theme-background) !important;
+  --halo-comment-widget-component-emoji-picker-color-border-over: var(--color-theme-background) !important;
+}
+
+.comment {
+  margin-top: 80px;
+}

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html
+        xmlns:th="https://www.thymeleaf.org"
+        th:replace="~{modules/layout :: html(title = |#{page.moments.title} - ${site.title}|, header = null, content = ~{::content}, footer = null)}"
+>
+<th:block th:fragment="content">
+    <article
+            class="moment on-list post"
+            th:each="moment,iterStat : ${moments.items}"
+            th:with="content=${moment.spec.content}"
+            th:attr="x-data=|{name:'${moment.metadata.name}',showComment:false}|">
+        <header>
+            <div class="post-meta">
+            <span class="post-date" th:text="${#dates.format(moment.spec.releaseTime,'yyyy-MM-dd')}">
+              Moment CreateTime
+            </span>
+                <span class="post-author" th:with="owner = ${moment.owner}" th:text="${owner.displayName}">
+              Author
+            </span>
+            </div>
+        </header>
+        <section class="post-content" th:utext="${content.html}">Moment Content...</section>
+        <th:block th:with="medium=${moment.spec.content.medium}">
+            <div
+                    th:unless="${#lists.isEmpty(moments)}"
+                    class="moment-media"
+                    th:classappend="${(#lists.size(medium) > 4 ? 'grid-cols-3' : '') + (#lists.size(medium) == 1 ? 'grid-cols-1' :'') + ((#lists.size(medium) > 1 && #lists.size(medium) < 5) ? 'grid-cols-2' :'')}"
+            >
+                <div class="" th:each="media : ${medium}">
+                    <a th:class="|glightbox|" th:data-gallery="|gallery${iterStat.count}|" th:href="${media.url}">
+                        <img
+                                th:if="${#strings.equals(media.type,'PHOTO')}"
+                                class="transform-gpu rounded-lg object-cover"
+                                th:src="${media.url}"
+                        />
+                    </a>
+                    <div th:if="${#strings.equals(media.type,'VIDEO')}">
+                        <video controls th:src="${media.url}"></video>
+                    </div>
+                </div>
+            </div>
+        </th:block>
+    </article>
+    <section class="pagination" th:if="${moments.hasPrevious() || moments.hasNext()}">
+        <div class="pagination__buttons">
+         <span th:if="${moments.hasPrevious()}">
+            <a data-pjax th:href="@{${moments.prevUrl}}" class="button inline prev">
+              <span class="button__text"><&nbsp;Prev</span>
+            </a>
+          </span>
+            <span th:if="${moments.hasNext()}">
+            <a data-pjax th:href="@{${moments.nextUrl}}" class="button inline next">
+              <span class="button__text">Next&nbsp;</span>
+            </a>
+          </span>
+        </div>
+    </section>
+</th:block>
+</html>

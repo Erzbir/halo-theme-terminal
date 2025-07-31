@@ -1,0 +1,37 @@
+<th:block th:fragment="footer">
+    <halo:footer/>
+    <div class="footer-inner">
+        <section class="footer-copyright-engine">
+            <span>Powered by&nbsp;</span>
+            <span>
+            <a target="_blank" href="http://www.halo.run">Halo</a>
+            </span>
+            <span>&nbsp;::&nbsp;</span>
+            <span>Theme&nbsp;</span>
+            <a href="https://github.com/Erzbir/halo-theme-terminal">Terminal</a>
+        </section>
+        <section class="footer-copyright-site">
+            <div class="footer-user">
+                <span>©&nbsp;</span>
+                <span th:text="${#dates.year(#dates.createNow())}">2025</span>
+                <span>&nbsp;</span>
+                <span th:text="${site.title}"></span>
+            </div>
+            <div class="footer-icp">
+                <p>
+                    <span th:if="${not #strings.isEmpty(theme.config.icp.icp_text)}">
+                    <a target="_blank" href="https://beian.miit.gov.cn/"
+                       th:href="${theme.config.icp.icp_link}"
+                       th:text="${theme.config.icp.icp_text}"></a>
+                    </span>
+                    <span th:if="${not #strings.isEmpty(theme.config.icp.filing_text)}">
+                    <a target="_blank" href="https://www.beian.gov.cn/"
+                       th:href="${theme.config.icp.filing_link}"
+                       th:text="${theme.config.icp.filing_text}"></a>
+                    </span>
+                </p>
+            </div>
+
+        </section>
+    </div>
+</th:block>
