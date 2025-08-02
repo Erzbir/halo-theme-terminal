@@ -1,6 +1,8 @@
 .icon-pixel,
 .icon-regular {
   display: none;
+  width: 1.5rem;
+  height: 1.5rem;
 }
 
 html[pixel_style='false'] .icon-regular {
