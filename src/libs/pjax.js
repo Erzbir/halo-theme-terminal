@@ -81,8 +81,10 @@ function insertInlineScript(dom, parentElement, selectors) {
             } else {
                 let scripts = parentElement.querySelectorAll('script:not([src]):not([no-pjax])');
                 scripts.forEach((s) => {
-                    if (djb2(s.innerHTML) === hash) {
-                        parentElement.removeChild(s);
+                    if (s) {
+                        if (djb2(s.innerHTML) === hash) {
+                            parentElement.removeChild(s);
+                        }
                     }
                 });
             }
