@@ -464,7 +464,7 @@ blockquote.twitter-tweet::before {
   flex-direction: column;
   padding: 40px;
   max-width: 864px;
-  min-height: 100vh;
+  min-height: 80vh;
   border-right: 1px solid color-mix(in srgb, var(--color-theme-accent) 10%, transparent);
 
   @media (max-width: $phone-max-width) {
