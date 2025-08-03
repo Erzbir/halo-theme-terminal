@@ -2,7 +2,7 @@
 
 一款 Terminal 风格的 Halo 主题, 基于 wan92hen 的 [Terminal](https://github.com/wan92hen/theme-terminal) 修改
 
-<img src="preview/scheme.png" alt="scheme">
+<img src="https://raw.githubusercontent.com/Erzbir/halo-theme-terminal/refs/heads/main/preview/scheme.png" alt="scheme">
 
 前往: https://erzbir.com 查看
 
