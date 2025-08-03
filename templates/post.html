@@ -27,7 +27,10 @@
             <div th:utext="${post.content.content}" id="content">Post Content</div>
         </section>
     </article>
-    <section class="toc" th:if="${theme.config.basic.show_toc}"></section>
+    <nav id="toc" th:if="${theme.config.basic.show_toc}" class="toc">
+        <button id="toc-toggle" class="toc-toggle" aria-label="Hide Table of Contents"></button>
+        <div id="toc-content" class="toc-content"></div>
+    </nav>
     <section class="pagination">
         <div class="pagination__title">
             <span class="pagination__title-h">Read other posts</span>
