@@ -2,18 +2,20 @@ apiVersion: theme.halo.run/v1alpha1
 kind: Theme
 metadata:
   name: theme-terminal-ez
+  annotations:
+    "store.halo.run/app-id": "app-ehsrxtbn"
 spec:
   displayName: Terminal-EZ
   author:
     name: Erzbir
-    website: https://github.com/Erzbir
+    website: https://erzbir.com
   description: 一款 Terminal 风格的 Halo 主题, 基于 wan92hen 的 Terminal 修改, 包括功能增强以及个性化
   logo: https://halo.run/logo
-  website: https://github.com/Erzbir/halo-theme-terminal
+  homepage: https://www.halo.run/store/apps/app-ehsrxtbn
   repo: https://github.com/Erzbir/halo-theme-terminal.git
   settingName: "theme-terminal-ez-setting"
   configMapName: "theme-terminal-ez-configMap"
-  version: 1.1.0
+  version: 1.1.1
   require: ">=2.8.0"
   license:
     - name: "MIT"
