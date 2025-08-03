@@ -2,16 +2,15 @@ function register_themeToggle() {
     const toggle = document.getElementById("theme-toggle");
 
     toggle.addEventListener("click", function () {
-        let storedMode = localStorage.getItem("theme-mode");
+        const currentScheme = document.documentElement.getAttribute("data-color-scheme");
+        const nextMode = currentScheme === "dark" ? "light" : "dark";
 
-        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
-            if (localStorage.getItem("theme-mode") === "system") {
-                applyTheme("system");
-            }
-        });
-        const nextMode = storedMode === "dark" ? "light" : "dark";
         applyTheme(nextMode);
-        localStorage.setItem("theme-mode", nextMode);
+
+        const isSystemMode = currentScheme === "system";
+        if (!isSystemMode) {
+            localStorage.setItem("theme-mode", nextMode);
+        }
     });
 }
 

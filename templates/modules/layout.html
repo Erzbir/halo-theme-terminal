@@ -23,11 +23,19 @@
             document.documentElement.setAttribute("data-color-scheme", actualMode);
             document.documentElement.setAttribute("theme-color-scheme", targetTheme);
         }
-        if (!storedMode) {
+
+
+        if (default_mode === 'system' || !storedMode) {
             localStorage.setItem("theme-mode", default_mode);
             storedMode = default_mode;
         }
+
         applyTheme(storedMode);
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
+            if (localStorage.getItem("theme-mode") === "system") {
+                applyTheme("system");
+            }
+        });
     </script>
     <script no-pjax>
         const pixel_status = [[${theme.config.style.pixel_style}]];
