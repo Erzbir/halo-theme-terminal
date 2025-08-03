@@ -13,7 +13,30 @@
         const dark_theme = /*[[${theme.config.style.dark_color_schema}]]*/;
         const light_theme = /*[[${theme.config.style.light_color_schema}]]*/;
         const default_mode = /*[[${theme.config.style.default_schema_mode}]]*/;
-        const pixel_status = /*[[${theme.config.style.pixel_style}]]*/;
+        let storedMode = localStorage.getItem("theme-mode");
+        function getSystemScheme() {
+            return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        }
+        function applyTheme(mode) {
+            const actualMode = mode === 'system' ? getSystemScheme() : mode;
+            const targetTheme = actualMode === "light" ? light_theme : dark_theme;
+            document.documentElement.setAttribute("data-color-scheme", actualMode);
+            document.documentElement.setAttribute("theme-color-scheme", targetTheme);
+        }
+        if (!storedMode) {
+            localStorage.setItem("theme-mode", default_mode);
+            storedMode = default_mode;
+        }
+        applyTheme(storedMode);
+    </script>
+    <script no-pjax>
+        const pixel_status = [[${theme.config.style.pixel_style}]];
+        let storedStatus = localStorage.getItem("pixel_style");
+        if (!storedStatus) {
+            localStorage.setItem("pixel_style", pixel_status);
+            storedStatus = pixel_status.toString();
+        }
+        document.documentElement.setAttribute("pixel_style", storedStatus);
     </script>
     <link no-pjax rel="stylesheet" th:href="@{/assets/dist/main.css?v={version}(version=${theme.spec.version})}"/>
     <script no-pjax type="module" th:src="@{/assets/dist/main.js?v={version}(version=${theme.spec.version})}"></script>
