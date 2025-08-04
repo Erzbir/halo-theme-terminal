@@ -1,11 +1,5 @@
-$toc-bg: color-mix(in srgb, var(--color-theme-background) 70%, transparent);
-$toc-border: 1px solid var(--color-theme-foreground);
-
 .toc {
   margin-left: 12px;
-  max-height: 60vh;
-  background: $toc-bg;
-  border: $toc-border;
   position: fixed;
   display: block;
   z-index: 1000;
@@ -13,6 +7,7 @@ $toc-border: 1px solid var(--color-theme-foreground);
   padding: 40px 12px 12px;
 
   .toc-content {
+    overflow: auto;
     display: none;
   }
 
@@ -32,7 +27,7 @@ $toc-border: 1px solid var(--color-theme-foreground);
     background: var(--color-theme-foreground);
 
     &:hover {
-      background: var(--color-theme-background);
+      background: transparent;
     }
   }
 
@@ -40,6 +35,7 @@ $toc-border: 1px solid var(--color-theme-foreground);
     list-style: none;
     padding: 0;
     margin: 0;
+    max-height: calc(100vh - 120px);
   }
 
   .toc-list-item {
@@ -47,7 +43,7 @@ $toc-border: 1px solid var(--color-theme-foreground);
 
     .toc-list {
       margin-left: 16px;
-      border-left: $toc-border;
+      border-left: 1px solid var(--color-theme-foreground);
       padding-left: 8px;
     }
   }
@@ -99,15 +95,16 @@ $toc-border: 1px solid var(--color-theme-foreground);
   align-items: center;
   justify-content: center;
   outline: none;
-  background: inherit;
-  border: $toc-border;
+  background: transparent;
+  border: none;
   color: var(--color-theme-foreground);
   cursor: pointer;
   font-size: 16px;
   z-index: 1002;
 
   &:hover {
-    background: inherit;
+    background: transparent;
+    -webkit-tap-highlight-color: transparent;
   }
 }
 
@@ -116,9 +113,7 @@ $toc-border: 1px solid var(--color-theme-foreground);
     width: 32px;
     height: 32px;
     padding: 0;
-    background: $toc-bg;
     border: none;
-    max-height: none;
     overflow: visible;
     left: calc(100vw - 52px);
 
@@ -130,12 +125,10 @@ $toc-border: 1px solid var(--color-theme-foreground);
       width: 280px;
       max-width: calc(100vw - 20px);
       height: auto;
-      max-height: calc(100vh - 40px);
+      max-height: calc(100vh - 80px);
       padding: 40px 12px 12px;
-      background: $toc-bg;
-      border: $toc-border;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-      overflow-y: auto;
+      background: var(--color-theme-background);
+      border: 1px solid var(--color-theme-foreground);
       z-index: 1001;
 
       &.toc-overflow-right {
@@ -145,6 +138,10 @@ $toc-border: 1px solid var(--color-theme-foreground);
 
       .toc-content {
         display: block;
+      }
+
+      .toc-list {
+        max-height: calc(100vh - 120px);
       }
     }
 
@@ -163,5 +160,9 @@ $toc-border: 1px solid var(--color-theme-foreground);
   .toc.toc-visible {
     width: calc(100vw - 200px);
     max-height: 60vh;
+
+    .toc-list {
+      max-height: calc(60vh - 60px);
+    }
   }
 }
