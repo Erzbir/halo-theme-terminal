@@ -40,13 +40,13 @@ button.link,
 .button.link,
 a.button.link {
   background: none;
-  font-size: var(--font-size);
+  font-size: var(--font-theme-size);
 }
 
 button.small,
 .button.small,
 a.button.small {
-  font-size: calc(var(--font-size) * 0.8);
+  font-size: calc(var(--font-theme-size) * 0.8);
 }
 
 button.wide,

@@ -98,7 +98,7 @@
 }
 
 .post ul li:not(:empty)::before {
-  content: var(--list-marker);
+  content: var(--list-theme-marker);
   position: absolute;
   left: -20px;
   color: var(--color-theme-foreground);
