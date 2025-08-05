@@ -73,6 +73,9 @@
 
 <body>
 <div class="page">
+    <header>
+        <div id="header-slot"></div>
+    </header>
     <div class="main-wrapper">
         <div class="layout-wrapper">
             <aside class="sidebar-left">
@@ -90,7 +93,9 @@
         </div>
     </div>
     <footer class="footer">
+        <div id="footer-slot-fist"></div>
         <th:block th:replace="~{modules/footer}"/>
+        <div id="footer-slot-last"></div>
     </footer>
 </div>
 </body>
