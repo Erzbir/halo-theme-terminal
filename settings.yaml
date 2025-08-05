@@ -35,19 +35,19 @@ spec:
           help: 开启后, 将优先使用像素风格字体及图标
         - $formkit: select
           name: default_schema_mode
-          label: 默认模式
+          label: 默认配色方案
           value: "dark"
           options:
-            - label: "深色模式"
+            - label: "深色"
               value: "dark"
-            - label: "浅色模式"
+            - label: "浅色"
               value: "light"
             - label: "跟随系统"
               value: "system"
         - $formkit: select
           name: dark_color_schema
           id: dark_color_schema
-          label: 深色模式配色方案
+          label: 深色配色方案
           value: "night"
           options:
             - label: "custom"
@@ -82,7 +82,7 @@ spec:
         - $formkit: select
           name: light_color_schema
           id: light_color_schema
-          label: 浅色模式配色方案
+          label: 浅色配色方案
           value: "day"
           options:
             - label: "custom"
