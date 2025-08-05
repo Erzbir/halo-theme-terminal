@@ -10,13 +10,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title th:text="${title}"></title>
     <script no-pjax th:inline="javascript">
-        const dark_theme = /*[[${theme.config.style.dark_color_schema}]]*/;
-        const light_theme = /*[[${theme.config.style.light_color_schema}]]*/;
+        let dark_theme = /*[[${theme.config.style.dark_color_schema}]]*/;
+        let light_theme = /*[[${theme.config.style.light_color_schema}]]*/;
         const default_mode = /*[[${theme.config.style.default_schema_mode}]]*/;
+
+        if (dark_theme === 'custom') {
+            dark_theme = /*[[${theme.config.style.custom_dark}]]*/
+        }
+        if (light_theme === 'custom') {
+            light_theme = /*[[${theme.config.style.custom_light}]]*/
+        }
+
         let storedMode = localStorage.getItem("theme-mode");
+
         function getSystemScheme() {
             return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
         }
+
         function applyTheme(mode) {
             const actualMode = mode === 'system' ? getSystemScheme() : mode;
             const targetTheme = actualMode === "light" ? light_theme : dark_theme;
@@ -50,6 +60,16 @@
     <script no-pjax type="module" th:src="@{/assets/dist/main.js?v={version}(version=${theme.spec.version})}"></script>
     <script no-pjax type="module" th:if="${theme.config.basic.pjax}"
             th:src="@{/assets/dist/libs/pjax.js?v={version}(version=${theme.spec.version})}"></script>
+    <script no-pjax th:inline="javascript">
+        function applyRawCss(text) {
+            const style = document.createElement('style');
+            style.textContent = text;
+            document.head.appendChild(style);
+        }
+
+        const custom = /*[[${theme.config.style.custom}]]*/;
+        applyRawCss(custom);
+    </script>
 </head>
 
 <body>

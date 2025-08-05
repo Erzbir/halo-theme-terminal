@@ -46,9 +46,12 @@ spec:
               value: "system"
         - $formkit: select
           name: dark_color_schema
+          id: dark_color_schema
           label: 深色模式配色方案
           value: "night"
           options:
+            - label: "custom"
+              value: "custom"
             - label: "day"
               value: "day"
             - label: "night"
@@ -63,19 +66,27 @@ spec:
               value: "hopbush"
             - label: "pistachio"
               value: "pistachio"
-            - label: "hopbush"
-              value: "hopbush"
             - label: "blue"
               value: "blue"
             - label: "studio"
               value: "studio"
             - label: "vanilla"
               value: "vanilla"
+        - $formkit: text
+          name: custom_dark
+          if: "$get(dark_color_schema).value === 'custom'"
+          value: ""
+          help: "在此填写自定义配色的名称"
+          validation: "required"
+
         - $formkit: select
           name: light_color_schema
+          id: light_color_schema
           label: 浅色模式配色方案
           value: "day"
           options:
+            - label: "custom"
+              value: "custom"
             - label: "day"
               value: "day"
             - label: "night"
@@ -90,14 +101,27 @@ spec:
               value: "hopbush"
             - label: "pistachio"
               value: "pistachio"
-            - label: "hopbush"
-              value: "hopbush"
             - label: "blue"
               value: "blue"
             - label: "studio"
               value: "studio"
             - label: "vanilla"
               value: "vanilla"
+        - $formkit: text
+          name: custom_light
+          if: "$get(light_color_schema).value === 'custom'"
+          value: ""
+          help: "在此填写自定义配色的名称"
+          validation: "required"
+
+        - $formkit: code
+          name: custom
+          label: 自定义样式
+          language: css
+          height: 150px
+          value: ""
+          help: 可填写自定义的 CSS, 会覆盖主题的样式
+
     - group: icp
       label: 备案设置
       formSchema:
