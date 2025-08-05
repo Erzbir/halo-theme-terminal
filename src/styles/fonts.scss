@@ -1,6 +1,13 @@
 @font-face {
   font-family: 'JetBrains Mono';
-  src: local('JetBrains Mono'), local('JetBrainsMono Nerd Font'), url('../fonts/JetBrainsMono-Regular.woff2') format('woff2');
+  src: local('JetBrains Mono'),
+  local('JetBrains Mono Regular'),
+  local('JetBrainsMono-Regular'),
+  local('JetBrainsMonoNL Nerd Font'),
+  local('JetBrainsMonoNL Nerd Font Mono'),
+  local('JetBrainsMono Nerd Font'),
+  local('JetBrainsMono Nerd Font Mono'),
+  url('../fonts/JetBrainsMono-Regular.woff2') format('woff2');
   font-display: swap;
   font-style: normal;
 }
