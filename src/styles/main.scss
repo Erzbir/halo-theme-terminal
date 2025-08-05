@@ -17,6 +17,9 @@
   --font-theme-default: 'JetBrains Mono';
   --font-theme-fallback: Monaco, Consolas, -apple-system, BlinkMacSystemFont, 'segoe ui',
   Roboto, Oxygen, Ubuntu, Cantarell, 'open sans', 'helvetica neue';
+  --scrollbar-theme-width: thin;
+  --scrollbar-theme-color: rgba(134, 134, 134, 0.45) rgba(255, 255, 255, 0);
+  --font-theme-lig: none;
 }
 
 html {
@@ -29,9 +32,9 @@ html[pixel_style='true'] {
 }
 
 * {
-  scrollbar-width: thin !important;
-  scrollbar-color: rgba(134, 134, 134, 0.45) rgba(255, 255, 255, 0);
-  font-variant-ligatures: none;
+  scrollbar-width: var(--scrollbar-theme-width) !important;
+  scrollbar-color: var(--scrollbar-theme-color);
+  font-variant-ligatures: var(--font-theme-lig);
 }
 
 *,
