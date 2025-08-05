@@ -9,9 +9,9 @@
             <h1 class="post-title" th:text="#{page.tag.title}">Tags</h1>
         </header>
         <section class="post-content">
-            <ul class="post-tags">
+            <ul>
                 <li th:each="tag: ${tags}">
-                    <a data-pjax class="post-tag" th:href="@{${tag.status.permalink}}"
+                    <a data-pjax th:href="@{${tag.status.permalink}}"
                        th:text="${tag.spec.displayName}">
                     </a>
                     <span th:text="' ['+${tag.status.visiblePostCount?:0}+']'"></span>
