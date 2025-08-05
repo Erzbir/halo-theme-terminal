@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html
         xmlns:th="https://www.thymeleaf.org"
-        th:replace="~{modules/layout :: html(title = |#{page.tag.title(${tag.spec.displayName})} - ${site.title}|, header = null, content = ~{::content}, footer = null)}"
+        th:replace="~{modules/layout :: html(title = |#{page.tag.title}: ${tag.spec.displayName} - ${site.title}|, header = null, content = ~{::content}, footer = null)}"
 >
 <th:block th:fragment="content">
     <article class="post">
         <header>
             <h1 class="post-title"
-                th:text="'Tag：'+${tag.spec.displayName}+' ['+${tag.status.visiblePostCount?:0}+']'">
-                Tag: [n]
+                th:text="|#{page.tag.title}: ${tag.spec.displayName} [${tag.status.visiblePostCount ?: 0}]|">
+                Tag: Tag name [n]
             </h1>
         </header>
         <section class="post-content">

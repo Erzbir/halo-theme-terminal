@@ -34,7 +34,7 @@
                 <span th:text="${post.status.excerpt}">Post Excerpt...</span>
             </section>
             <section>
-                <a data-pjax class="read-more button inline" th:href="@{${post.status.permalink}}">[Read more]</a>
+                <a data-pjax class="read-more button inline" th:href="@{${post.status.permalink}}" th:text="#{page.post.more} + ' >'">READ MORE ></a>
             </section>
         </article>
     </section>
@@ -42,12 +42,12 @@
         <div class="pagination__buttons">
           <span th:if="${posts.hasPrevious()}">
             <a data-pjax th:href="@{${posts.prevUrl}}" class="button inline prev">
-              <span class="button__text"><&nbsp;Prev</span>
+              <span class="button__text" th:text="'< ' + #{page.pagination.prev}">&lt;&nbsp;Prev</span>
             </a>
           </span>
             <span th:if="${posts.hasNext()}">
             <a data-pjax th:href="@{${posts.nextUrl}}" class="button inline next">
-              <span class="button__text">Next&nbsp;></span>
+              <span class="button__text" th:text="#{page.pagination.next} + ' >'">Next&nbsp;&gt;</span>
             </a>
           </span>
         </div>

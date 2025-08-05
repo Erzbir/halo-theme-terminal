@@ -1,14 +1,13 @@
 <!DOCTYPE html>
 <html
         xmlns:th="https://www.thymeleaf.org"
-        th:replace="~{modules/layout :: html(title = |#{page.category.title(${category.spec.displayName})} - ${site.title}|, header = null, content = ~{::content}, footer = null)}"
+        th:replace="~{modules/layout :: html(title = |#{page.category.title}: ${category.spec.displayName} - ${site.title}|, header = null, content = ~{::content}, footer = null)}"
 >
 <th:block th:fragment="content">
     <article class="post">
         <header>
-            <h1
-                    class="post-title"
-                    th:text="'Category: '+${category.spec.displayName}+' ['+${category.status.visiblePostCount?:0}+']'">
+            <h1 class="post-title"
+                th:text="|#{page.category.title}: ${category.spec.displayName} [${category.status.visiblePostCount ?: 0}]|">
                 Category: Category name [n]
             </h1>
         </header>

@@ -15,8 +15,8 @@
               Moment CreateTime
             </span>
                 <span class="post-author" th:with="owner = ${moment.owner}" th:text="${owner.displayName}">
-              Author
-            </span>
+                    Author
+                </span>
             </div>
         </header>
         <section class="post-content" th:utext="${content.html}">Moment Content...</section>

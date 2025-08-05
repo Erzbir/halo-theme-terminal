@@ -33,7 +33,7 @@
     </nav>
     <section class="pagination">
         <div class="pagination__title">
-            <span class="pagination__title-h">Read other posts</span>
+            <span class="pagination__title-h" th:text="#{page.post.pagination}">READ OTHER POSTS</span>
             <hr/>
         </div>
         <div class="pagination__buttons" th:with="postCursor=${postFinder.cursor(post.metadata?.name)}">
@@ -50,7 +50,7 @@
         </div>
     </section>
     <section class="comment" th:if="${haloCommentEnabled}">
-        <h2>Comments</h2>
+        <h2 th:text="#{page.post.comment}">Comments</h2>
         <halo:comment group="content.halo.run" kind="Post" th:attr="name=${post.metadata.name}"/>
     </section>
 </th:block>
