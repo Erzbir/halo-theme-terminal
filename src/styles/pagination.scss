@@ -1,19 +1,19 @@
 @import "variables";
 
 .pagination {
-  margin-top: 10px;
+  margin-top: calc(var(--font-theme-size) * 0.625);
 
   .pagination__title {
     display: flex;
     text-align: center;
     position: relative;
-    margin: 10px 0 10px;
+    margin: calc(var(--font-theme-size) * 0.625) 0 calc(var(--font-theme-size) * 0.625);
   }
 
   .pagination__title-h {
     text-align: center;
     margin: 0 auto;
-    padding: 5px 10px;
+    padding: calc(var(--font-theme-size) * 0.3125) calc(var(--font-theme-size) * 0.625);
     background: var(--color-theme-background);
     color: color-mix(in srgb, var(--color-theme-foreground) 65%, transparent);
     font-size: calc(var(--font-theme-size) * 0.8);
@@ -29,7 +29,7 @@
     left: 0;
     right: 0;
     width: 100%;
-    margin-top: 15px;
+    margin-top:  calc(var(--font-theme-size) * 0.9375);
     z-index: 0;
   }
 
@@ -37,21 +37,21 @@
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
-    gap: 20px;
+    gap:  calc(var(--font-theme-size) * 1.25);
 
-    @media (min-width: calc(#{$phone-max-width} + 1px)) {
+    @media (min-width: $phone-min-width) {
       flex-direction: row;
     }
 
     @media (max-width: $phone-max-width) {
       flex-direction: column;
-      gap: 15px;
+      gap:  calc(var(--font-theme-size) * 0.9375);
     }
 
     span {
       display: flex;
 
-      @media (min-width: calc(#{$phone-max-width} + 1px)) {
+      @media (min-width: $phone-min-width) {
         &:first-child {
           margin-right: auto;
         }
@@ -98,11 +98,11 @@
   }
 
   .next .button__icon {
-    margin-left: 8px;
+    margin-left:  calc(var(--font-theme-size) * 0.5);
   }
 
   .prev .button__icon {
-    margin-right: 8px;
+    margin-right:  calc(var(--font-theme-size) * 0.5);
   }
 
   .pagination__buttons:has(span:only-child) {

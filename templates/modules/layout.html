@@ -53,18 +53,26 @@
 </head>
 
 <body>
-<section class="center container">
-    <header class="header">
-        <th:block th:replace="~{modules/header :: header(isHome = true)}"/>
-    </header>
-    <main>
-        <div class="content">
-            <th:block th:replace="${content}"/>
+<div class="page">
+    <div class="main-wrapper">
+        <div class="layout-wrapper">
+            <aside class="sidebar-left">
+            </aside>
+            <main class="center container">
+                <header class="header">
+                    <th:block th:replace="~{modules/header :: header(isHome = true)}"/>
+                </header>
+                <div class="content">
+                    <th:block th:replace="${content}"/>
+                </div>
+            </main>
+            <aside class="sidebar-right">
+            </aside>
         </div>
-    </main>
-</section>
-<footer class="footer">
-    <th:block th:replace="~{modules/footer}"/>
-</footer>
+    </div>
+    <footer class="footer">
+        <th:block th:replace="~{modules/footer}"/>
+    </footer>
+</div>
 </body>
 </html>

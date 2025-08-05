@@ -1,12 +1,12 @@
 @import "variables";
 
 .index-content {
-  margin: 25px 0;
+  margin: calc(var(--font-theme-size) * 1.5625) 0;
 }
 
 .framed {
-  border: 1px solid var(--color-theme-framed);
-  padding: 20px;
+  border: calc(var(--font-theme-size) * 0.0625) solid var(--color-theme-framed);
+  padding: calc(var(--font-theme-size) * 1.25);
 }
 
 .framed *:first-child {
@@ -24,42 +24,42 @@
 .post {
   width: 100%;
   text-align: left;
-  padding: 30px 0;
+  padding: calc(var(--font-theme-size) * 1.875) 0;
 }
 
 .post:not(:last-of-type) {
-  border-bottom: 1px solid color-mix(in srgb, var(--color-theme-foreground) 10%, transparent);
+  border-bottom: calc(var(--font-theme-size) * 0.0625) solid color-mix(in srgb, var(--color-theme-foreground) 10%, transparent);
 }
 
 .post-meta {
-  font-size: inherit;
-  margin-bottom: 10px;
+  font-size: calc(var(--font-theme-size) * 0.9);
+  margin-bottom: calc(var(--font-theme-size) * 0.625);
   color: color-mix(in srgb, var(--color-theme-meta) 65%, transparent);
 }
 
 .post-meta > *:not(:first-child)::before {
   content: "::";
   display: inline-block;
-  margin: 0 8px;
+  margin: 0 calc(var(--font-theme-size) * 0.5);
 }
 
 .post-title {
   position: relative;
   color: var(--color-theme-title);
   margin-top: 0 !important;
-  margin-bottom: 15px !important;
-  padding-bottom: 15px;
-  border-bottom: 3px dotted var(--color-theme-accent);
+  margin-bottom: calc(var(--font-theme-size) * 0.9375) !important;
+  padding-bottom: calc(var(--font-theme-size) * 0.9375) !important;
+  border-bottom: calc(var(--font-theme-size) * 0.1875) dotted var(--color-theme-accent);
   text-decoration: none !important;
 }
 
 .post-title::after {
   content: "";
   position: absolute;
-  bottom: 2px;
+  bottom: calc(var(--font-theme-size) * 0.125);
   display: block;
   width: 100%;
-  border-bottom: 3px dotted var(--color-theme-accent);
+  border-bottom: calc(var(--font-theme-size) * 0.1875) dotted var(--color-theme-accent);
 }
 
 .post-title a {
@@ -69,7 +69,7 @@
 
 .post-tags {
   display: block;
-  margin-bottom: 20px;
+  margin-bottom: calc(var(--font-theme-size) * 0.625);
   font-size: inherit;
 }
 
@@ -81,16 +81,26 @@
   }
 }
 
+.post-meta.post-tags {
+  font-size: calc(var(--font-theme-size) * 0.9);
+}
+
 .table-of-contents {
-  margin: 40px 0;
+  margin: calc(var(--font-theme-size) * 0.5) 0;
+}
+
+.post-excerpt {
+  font-size: calc(var(--font-theme-size) * 0.95);
+  margin-top: calc(var(--font-theme-size) * 0.625);
+  margin-bottom: calc(var(--font-theme-size) * 0.625);
 }
 
 .post-content {
-  margin-top: 25px;
+  margin-top: calc(var(--font-theme-size) * 1.5625);
 }
 
 .post-cover {
-  margin: 25px 0;
+  margin: calc(var(--font-theme-size) * 1.5625) 0;
 }
 
 .post ul {
@@ -100,7 +110,7 @@
 .post ul li:not(:empty)::before {
   content: var(--list-theme-marker);
   position: absolute;
-  left: -20px;
+  left: calc(var(--font-theme-size) * -1.25);
   color: var(--color-theme-foreground);
 }
 
@@ -110,19 +120,19 @@
 
 .post--regulation h2 {
   justify-content: center;
-  margin-bottom: 10px;
+  margin-bottom: calc(var(--font-theme-size) * -0.625);
 }
 
 .post--regulation h2 + h2 {
-  margin-top: -10px;
-  margin-bottom: 20px;
+  margin-top: calc(var(--font-theme-size) * -0.625);
+  margin-bottom: calc(var(--font-theme-size) * 1.25);
 }
 
 .hanchor {
   position: absolute;
   color: var(--color-theme-accent);
   text-decoration: none;
-  margin-left: 10px;
+  margin-left: calc(var(--font-theme-size) * 0.625);
   visibility: hidden;
 }
 
@@ -145,7 +155,7 @@ h6:hover .hanchor {
 
 .post-list {
 
-  padding: .25rem 0;
+  padding: calc(var(--font-theme-size) * 0.25) 0;
 
   a {
     text-decoration: none;
@@ -154,7 +164,7 @@ h6:hover .hanchor {
 
 @media (max-width: $phone-max-width) {
   .post-cover {
-    padding: 10px;
-    border-width: 10px;
+    padding: calc(var(--font-theme-size) * 0.625);
+    border-width: calc(var(--font-theme-size) * 0.625);
   }
 }

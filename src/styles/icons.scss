@@ -1,8 +1,8 @@
 .icon-pixel,
 .icon-regular {
   display: none;
-  width: 1.5rem;
-  height: 1.5rem;
+  width: calc(var(--font-theme-size) * 1.5);
+  height: calc(var(--font-theme-size) * 1.5);
 }
 
 html[pixel_style='false'] .icon-regular {
