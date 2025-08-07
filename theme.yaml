@@ -9,10 +9,11 @@ spec:
   author:
     name: Erzbir
     website: https://erzbir.com
-  description: 一款 Terminal 风格的 Halo 主题, 基于 wan92hen 的 Terminal 修改, 包括功能增强以及个性化
+  description: 一款简洁复古的 Halo 主题 / A simple, retro theme for Halo
   logo: https://halo.run/logo
-  homepage: https://www.halo.run/store/apps/app-ehsrxtbn
+  website: https://www.halo.run/store/apps/app-ehsrxtbn
   repo: https://github.com/Erzbir/halo-theme-terminal.git
+  issues: https://github.com/Erzbir/halo-theme-terminal/issues
   settingName: "theme-terminal-ez-setting"
   configMapName: "theme-terminal-ez-configMap"
   version: 1.2.0
