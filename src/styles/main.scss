@@ -15,8 +15,9 @@
   --line-theme-height: calc(var(--font-theme-size) * 1.54);
   --radius-theme-default: 0;
   --font-theme-default: 'JetBrains Mono';
-  --font-theme-fallback: Monaco, Consolas, -apple-system, BlinkMacSystemFont, 'segoe ui',
-  Roboto, Oxygen, Ubuntu, Cantarell, 'open sans', 'helvetica neue';
+  --font-theme-fallback: -apple-system, BlinkMacSystemFont, 'segoe ui', Roboto, Oxygen,
+  Ubuntu, Cantarell, 'open sans', 'helvetica neue', Arial, 'Noto Sans',
+  'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   --scrollbar-theme-width: thin;
   --scrollbar-theme-color: rgba(134, 134, 134, 0.45) rgba(255, 255, 255, 0);
   --font-theme-lig: none;
@@ -29,6 +30,10 @@ html {
 
 html[pixel_style='true'] {
   --font-theme-default: 'Fusion Pixel 12px P zh_hans';
+}
+
+html[system_font='true']:not([pixel_style='true']) {
+  --font-theme-default: var(--font-theme-fallback);
 }
 
 * {

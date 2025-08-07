@@ -9,6 +9,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title th:text="${title}"></title>
     <script no-pjax th:inline="javascript">
+        let system_font = /*[[${theme.config.style.system_font}]]*/;
+        document.documentElement.setAttribute("system_font", system_font);
+    </script>
+    <script no-pjax th:inline="javascript">
         let dark_theme = /*[[${theme.config.style.dark_color_schema}]]*/;
         let light_theme = /*[[${theme.config.style.light_color_schema}]]*/;
         const default_mode = /*[[${theme.config.style.default_schema_mode}]]*/;

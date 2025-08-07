@@ -29,6 +29,11 @@ spec:
       label: 样式设置
       formSchema:
         - $formkit: checkbox
+          label: 使用系统字体
+          name: system_font
+          value: false
+          help: 开启后将优先使用访问者的系统字体
+        - $formkit: checkbox
           name: pixel_style
           label: 像素化风格
           value: false
