@@ -1,4 +1,4 @@
-@import "variables";
+@use "variables" as *;
 
 .navigation-menu {
   display: flex;

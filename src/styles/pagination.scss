@@ -1,4 +1,4 @@
-@import "variables";
+@use "variables" as *;
 
 .pagination {
   margin-top: calc(var(--font-theme-size) * 0.625);
