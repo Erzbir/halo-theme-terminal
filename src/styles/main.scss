@@ -67,6 +67,70 @@ body {
   }
 }
 
+.page {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh
+}
+
+.main-wrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.layout-wrapper {
+  display: flex;
+  width: 100%;
+  flex: 1;
+}
+
+.sidebar-left,
+.sidebar-right {
+  width: 20%;
+  flex-shrink: 0;
+  padding: calc(var(--font-theme-size) * 1.25);
+}
+
+.center.container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: calc(var(--font-theme-size) * 2.5);
+  width: 60%;
+  margin: 0 auto;
+}
+
+.content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+@media (max-width: 1024px) {
+  .sidebar-left,
+  .sidebar-right {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .center.container {
+    padding: calc(var(--font-theme-size) * 1.25);
+  }
+}
+
+@media print {
+  .container {
+    display: initial;
+  }
+
+  .content {
+    display: initial;
+  }
+}
+
 h1 {
   font-size: calc(var(--font-theme-size) * 1.45);
   letter-spacing: 0;
@@ -466,59 +530,6 @@ blockquote.twitter-tweet::before {
   font-weight: bold;
 }
 
-.page {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh
-}
-
-.main-wrapper {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-}
-
-.layout-wrapper {
-  display: flex;
-  width: 100%;
-  flex: 1;
-}
-
-.sidebar-left,
-.sidebar-right {
-  width: 20%;
-  flex-shrink: 0;
-  padding: calc(var(--font-theme-size) * 1.25);
-}
-
-.center.container {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  padding: calc(var(--font-theme-size) * 2.5);
-  width: 60%;
-  margin: 0 auto;
-}
-
-.content {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-}
-
-@media (max-width: 1024px) {
-  .sidebar-left,
-  .sidebar-right {
-    display: none;
-  }
-}
-
-@media (max-width: 768px) {
-  .center.container {
-    padding: calc(var(--font-theme-size) * 1.25);
-  }
-}
-
 .hidden {
   display: none;
 }
@@ -554,14 +565,4 @@ blockquote.twitter-tweet::before {
 iframe[src*="youtube.com"] {
   border: calc(var(--font-theme-size) * 0.5) solid var(--color-theme-accent) !important;
   padding: calc(var(--font-theme-size) * 0.5) !important;
-}
-
-@media print {
-  .container {
-    display: initial;
-  }
-
-  .content {
-    display: initial;
-  }
 }
