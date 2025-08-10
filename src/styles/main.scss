@@ -33,7 +33,7 @@ html[pixel_style='true'] {
 }
 
 html[system_font='true']:not([pixel_style='true']) {
-  --font-theme-default: var(--font-theme-fallback);
+  --font-theme-default: system-ui;
 }
 
 * {
