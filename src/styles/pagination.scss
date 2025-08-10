@@ -24,7 +24,7 @@
 
   .pagination__title hr {
     position: absolute;
-    background-color: var(--color-theme-foreground);
+    background-color:  color-mix(in srgb, var(--color-theme-foreground) 65%, transparent);
     left: 0;
     right: 0;
     width: 100%;
