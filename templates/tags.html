@@ -8,7 +8,7 @@
         <header>
             <h1 class="post-title" th:text="#{page.tag.title}">Tags</h1>
         </header>
-        <section class="post-content">
+        <div class="post-content">
             <ul>
                 <li th:each="tag: ${tags}">
                     <a data-pjax th:href="@{${tag.status.permalink}}"
@@ -17,7 +17,7 @@
                     <span th:text="' ['+${tag.status.visiblePostCount?:0}+']'"></span>
                 </li>
             </ul>
-        </section>
+        </div>
     </article>
 </th:block>
 </html>

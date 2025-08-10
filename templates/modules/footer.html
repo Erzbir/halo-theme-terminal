@@ -1,6 +1,6 @@
 <th:block th:fragment="footer">
     <div class="footer-inner">
-        <section class="footer-copyright-engine">
+        <div class="footer-copyright-engine">
             <span>Powered by&nbsp;</span>
             <span>
             <a target="_blank" href="http://www.halo.run">Halo</a>
@@ -8,8 +8,8 @@
             <span>&nbsp;::&nbsp;</span>
             <span>Theme&nbsp;</span>
             <a target="_blank" href="https://github.com/Erzbir/halo-theme-terminal">Terminal</a>
-        </section>
-        <section class="footer-copyright-site">
+        </div>
+        <div class="footer-copyright-site">
             <div class="footer-user">
                 <span>©&nbsp;</span>
                 <span th:text="${#dates.year(#dates.createNow())}">2025</span>
@@ -31,7 +31,7 @@
                 </p>
             </div>
 
-        </section>
+        </div>
     </div>
     <halo:footer/>
 </th:block>

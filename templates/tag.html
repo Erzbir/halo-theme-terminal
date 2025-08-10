@@ -11,19 +11,19 @@
                 Tag: Tag name [n]
             </h1>
         </header>
-        <section class="post-content">
+        <div class="post-content">
             <ul>
                 <li class="post-list" th:each="post : ${posts.items}">
                     <a data-pjax th:href="@{${post.status.permalink}}">
-                        <span th:text="${#dates.format(post.spec.publishTime,'yyyy-MM-dd')}">Publish Time</span>
+                        <time th:text="${#dates.format(post.spec.publishTime,'yyyy-MM-dd')}">Publish Time</time>
                         <span>&nbsp;::&nbsp;</span>
                         <span class="post-list-title" th:text="${post.spec.title}">Post Title</span>
                     </a>
                 </li>
             </ul>
-        </section>
+        </div>
     </article>
-    <section class="pagination" th:if="${posts.hasPrevious() || posts.hasNext()}">
+    <nav class="pagination" th:if="${posts.hasPrevious() || posts.hasNext()}">
         <div class="pagination__buttons">
           <span th:if="${posts.hasPrevious()}">
             <a data-pjax th:href="@{${posts.prevUrl}}" class="button inline prev">
@@ -36,6 +36,6 @@
             </a>
           </span>
         </div>
-    </section>
+    </nav>
 </th:block>
 </html>

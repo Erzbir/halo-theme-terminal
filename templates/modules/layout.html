@@ -77,29 +77,27 @@
 
 <body>
 <div class="page">
-    <header>
-        <div id="header-slot"></div>
+    <header role="banner">
+        <div id="header-slot" aria-hidden="true"></div>
     </header>
-    <div class="main-wrapper">
-        <div class="layout-wrapper">
-            <aside class="sidebar-left">
-            </aside>
-            <main class="center container">
-                <header class="header">
-                    <th:block th:replace="~{modules/header :: header(isHome = true)}"/>
-                </header>
-                <div class="content">
-                    <th:block th:replace="${content}"/>
-                </div>
-            </main>
-            <aside class="sidebar-right">
-            </aside>
-        </div>
+    <div class="wrapper">
+        <aside class="sidebar-left">
+        </aside>
+        <main class="container" role="main">
+            <header class="header">
+                <th:block th:replace="~{modules/header :: header(isHome = true)}"/>
+            </header>
+            <div class="content">
+                <th:block th:replace="${content}"/>
+            </div>
+        </main>
+        <aside class="sidebar-right">
+        </aside>
     </div>
-    <footer class="footer">
-        <div id="footer-slot-fist"></div>
+    <footer class="footer" role="contentinfo">
+        <div id="footer-slot-fist" aria-hidden="true"></div>
         <th:block th:replace="~{modules/footer}"/>
-        <div id="footer-slot-last"></div>
+        <div id="footer-slot-last" aria-hidden="true"></div>
     </footer>
 </div>
 </body>

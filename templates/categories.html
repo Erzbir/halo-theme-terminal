@@ -8,11 +8,11 @@
         <header>
             <h1 class="post-title" th:text="#{page.categories.title}">Categories</h1>
         </header>
-        <section class="post-content">
+        <div class="post-content">
             <ul>
                 <li th:replace="~{modules/category-tree :: single(categories=${categories})}"></li>
             </ul>
-        </section>
+        </div>
     </article>
 </th:block>
 </html>

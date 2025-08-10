@@ -11,15 +11,15 @@
             th:attr="x-data=|{name:'${moment.metadata.name}',showComment:false}|">
         <header>
             <div class="post-meta">
-            <span class="post-date" th:text="${#dates.format(moment.spec.releaseTime,'yyyy-MM-dd')}">
-              Moment CreateTime
-            </span>
+                <time class="post-date" th:text="${#dates.format(moment.spec.releaseTime,'yyyy-MM-dd')}">
+                    Moment CreateTime
+                </time>
                 <span class="post-author" th:with="owner = ${moment.owner}" th:text="${owner.displayName}">
                     Author
                 </span>
             </div>
         </header>
-        <section class="post-content" th:utext="${content.html}">Moment Content...</section>
+        <div class="post-content" th:utext="${content.html}">Moment Content...</div>
         <th:block th:with="medium=${moment.spec.content.medium}">
             <div
                     th:unless="${#lists.isEmpty(moments)}"
@@ -32,7 +32,7 @@
                                 th:if="${#strings.equals(media.type,'PHOTO')}"
                                 class="transform-gpu rounded-lg object-cover"
                                 th:src="${media.url}"
-                        />
+                                alt="photo"/>
                     </a>
                     <div th:if="${#strings.equals(media.type,'VIDEO')}">
                         <video controls th:src="${media.url}"></video>
@@ -41,7 +41,7 @@
             </div>
         </th:block>
     </article>
-    <section class="pagination" th:if="${moments.hasPrevious() || moments.hasNext()}">
+    <nav class="pagination" th:if="${moments.hasPrevious() || moments.hasNext()}">
         <div class="pagination__buttons">
          <span th:if="${moments.hasPrevious()}">
             <a data-pjax th:href="@{${moments.prevUrl}}" class="button inline prev">
@@ -54,6 +54,6 @@
             </a>
           </span>
         </div>
-    </section>
+    </nav>
 </th:block>
 </html>

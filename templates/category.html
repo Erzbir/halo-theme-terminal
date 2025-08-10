@@ -11,7 +11,7 @@
                 Category: Category name [n]
             </h1>
         </header>
-        <section class="post-content">
+        <div class="post-content">
             <ul>
                 <li class="post-list" th:each="post : ${posts.items}">
                     <a data-pjax th:href="@{${post.status.permalink}}">
@@ -21,21 +21,21 @@
                     </a>
                 </li>
             </ul>
-        </section>
-    </article>
-    <section class="pagination" th:if="${posts.hasPrevious() || posts.hasNext()}">
-        <div class="pagination__buttons" th:with="postCursor=${postFinder.cursor(post.metadata?.name)}">
-      <span th:if="${postCursor.hasPrevious()}">
-          <a data-pjax th:href="@{${postCursor.previous?.status?.permalink}}" class="button prev inline">
-            <span class="button__text" th:text="|< ${postCursor.previous?.spec?.title}|">prevPost</span>
-          </a>
-      </span>
-            <span th:if="${postCursor.hasNext()}">
-          <a data-pjax th:href="@{${postCursor.next?.status?.permalink}}" class="button next inline">
-            <span class="button__text" th:text="|${postCursor.next?.spec?.title} >|">nextPost</span>
-          </a>
-        </span>
         </div>
-    </section>
+    </article>
+    <nav class="pagination" th:if="${posts.hasPrevious() || posts.hasNext()}">
+        <div class="pagination__buttons">
+          <span th:if="${posts.hasPrevious()}">
+            <a data-pjax th:href="@{${posts.prevUrl}}" class="button inline prev">
+              <span class="button__text" th:text="'< ' + #{page.pagination.prev}">&lt;&nbsp;Prev</span>
+            </a>
+          </span>
+            <span th:if="${posts.hasNext()}">
+            <a data-pjax th:href="@{${posts.nextUrl}}" class="button inline next">
+              <span class="button__text" th:text="#{page.pagination.next} + ' >'">Next&nbsp;&gt;</span>
+            </a>
+          </span>
+        </div>
+    </nav>
 </th:block>
 </html>

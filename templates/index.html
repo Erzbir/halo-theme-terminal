@@ -14,31 +14,31 @@
                 <h1 class="post-title">
                     <a data-pjax th:text="${post.spec.title}" th:href="@{${post.status.permalink}}">Post Title</a>
                 </h1>
-                <section class="post-meta">
-                    <span class="post-date"
-                          th:text="${#dates.format(post.spec.publishTime,'yyyy-MM-dd')}">Publish Time</span>
+                <div class="post-meta">
+                    <time class="post-date"
+                          th:text="${#dates.format(post.spec.publishTime,'yyyy-MM-dd')}">Publish Time</time>
                     <span class="post-author"
                           th:with="contributor = ${post.contributors[0]}"
                           th:text="${contributor.displayName}">Author</span>
-                </section>
-                <section class="post-tags">
+                </div>
+                <div class="post-tags">
                     <span class="post-tag" th:each="tag : ${post.tags}">
                         <a data-pjax
                            th:href="@{${tag.status.permalink}}"
                            th:title="${tag.spec.displayName}"
                            th:text="'#'+${tag.spec.displayName}">#Tag</a>
                     </span>
-                </section>
+                </div>
             </header>
-            <section class="post-excerpt">
+            <div class="post-excerpt">
                 <span th:text="${post.status.excerpt}">Post Excerpt...</span>
-            </section>
-            <section>
+            </div>
+            <div>
                 <a data-pjax class="read-more button inline" th:href="@{${post.status.permalink}}" th:text="#{page.post.more} + ' >'">READ MORE ></a>
-            </section>
+            </div>
         </article>
     </section>
-    <section class="pagination" th:if="${posts.hasPrevious() || posts.hasNext()}">
+    <nav class="pagination" th:if="${posts.hasPrevious() || posts.hasNext()}">
         <div class="pagination__buttons">
           <span th:if="${posts.hasPrevious()}">
             <a data-pjax th:href="@{${posts.prevUrl}}" class="button inline prev">
@@ -51,6 +51,6 @@
             </a>
           </span>
         </div>
-    </section>
+    </nav>
 </th:block>
 </html>

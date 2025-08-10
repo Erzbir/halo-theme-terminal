@@ -8,13 +8,12 @@
         <header>
             <h1 class="post-title" th:text="${singlePage.spec.title}">Post Title</h1>
         </header>
-        <section class="post-content">
+        <div class="post-content">
             <div th:utext="${singlePage.content.content}">Post Content</div>
-        </section>
+        </div>
     </article>
-    <section class="comment" th:if="${haloCommentEnabled}">
-        <h2>Comments</h2>
-        <halo:comment group="content.halo.run" kind="SinglePage" th:attr="name=${singlePage.metadata.name}"/>
-    </section>
+    <th:block
+            th:replace="~{modules/comment :: comment(group = 'content.halo.run', kind = 'SinglePage', name = ${singlePage.metadata.name})}"
+            th:if="${haloCommentEnabled}"/>
 </th:block>
 </html>

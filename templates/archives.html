@@ -8,13 +8,13 @@
         <header>
             <h1 class="post-title" th:text="#{page.archives.title}">Archives</h1>
         </header>
-        <section>
+        <div>
             <th:block th:each="archive : ${archives.items}">
                 <ul>
                     <th:block th:each="month : ${archive.months}">
                         <li class="post-list" th:each="post : ${month.posts}">
                             <a data-pjax th:href="@{${post.status.permalink}}">
-                                <span th:text="${#dates.format(post.spec.publishTime,'yyyy-MM-dd')}">Publish Time</span>
+                                <time th:text="${#dates.format(post.spec.publishTime,'yyyy-MM-dd')}">Publish Time</time>
                                 <span>&nbsp;::&nbsp;</span>
                                 <span class="post-list-title" th:text="${post.spec.title}">Post Title</span>
                             </a>
@@ -22,9 +22,9 @@
                     </th:block>
                 </ul>
             </th:block>
-        </section>
+        </div>
     </article>
-    <div class="pagination" th:if="${archives.hasPrevious() || archives.hasNext()}">
+    <nav class="pagination" th:if="${archives.hasPrevious() || archives.hasNext()}">
         <div class="pagination__buttons">
           <span th:if="${archives.hasPrevious()}">
             <a data-pjax th:href="@{${archives.prevUrl}}" class="button prev inline">
@@ -38,6 +38,6 @@
             </a>
           </span>
         </div>
-    </div>
+    </nav>
 </th:block>
 </html>
