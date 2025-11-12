@@ -1,34 +1,21 @@
 comment-widget {
-  --halo-comment-widget-base-font-family: var(--font-theme-default) !important;
-  --halo-comment-widget-base-border-radius: var(--radius-theme-default) !important;
-  --halo-comment-widget-base-font-size: var(--font-theme-size) !important;
+  --halo-cw-base-font-family: var(--font-theme-default) !important;
+  --halo-cw-base-rounded: var(--radius-theme-default) !important;
+  --halo-cw-base-font-size: var(--font-theme-size) !important;
   --halo-comment-widget-base-line-height: var(--line-theme-height) !important;
   --halo-comment-widget-base-color: var(--color-theme-foreground) !important;
   --halo-comment-widget-base-info-color: var(--color-theme-foreground) !important;
-  --halo-comment-widget-component-form-input-bg-color: var(--color-theme-background) !important;
-  --halo-comment-widget-component-form-input-color: var(--color-theme-foreground) !important;
-  --halo-comment-widget-component-form-input-border-color: var(var(--color-theme-foreground) !important) !important;
-  --halo-comment-widget-component-form-input-border-color-focus: var(--color-theme-accent) !important;
-  --halo-comment-widget-component-form-input-box-shadow-focus: var(--color-theme-accent) !important;
-  --halo-comment-widget-component-form-button-login-bg-color: var(--color-theme-background) !important;
-  --halo-comment-widget-component-form-button-login-bg-color-hover: var(--color-theme-background) !important;
-  --halo-comment-widget-component-form-button-login-border-color: var(--color-theme-background) !important;
-  --halo-comment-widget-component-form-button-submit-bg-color: var(--color-theme-background) !important;
-  --halo-comment-widget-component-form-button-submit-color: var(--color-theme-foreground) !important;
-  --halo-comment-widget-component-form-button-submit-border-color: var(--color-theme-background) !important;
-  --halo-comment-widget-component-form-button-submit-border-color-hover: var(--color-theme-background) !important;
-  --halo-comment-widget-component-form-button-emoji-color: var(--color-theme-background) !important;
-  --halo-comment-widget-component-comment-item-action-bg-color-hover: var(--color-theme-background) !important;
-  --halo-comment-widget-component-comment-item-action-color-hover: var(--color-theme-accent) !important;
-  --halo-comment-widget-component-pagination-button-bg-color-hover: var(--color-theme-background) !important;
-  --halo-comment-widget-component-pagination-button-bg-color-active: var(--color-theme-background) !important;
-  --halo-comment-widget-component-pagination-button-border-color-active: var(--color-theme-background) !important;
-  --halo-comment-widget-component-emoji-picker-rgb-color: var(--color-theme-background) !important;
-  --halo-comment-widget-component-emoji-picker-rgb-accent: var(--color-theme-foreground) !important;
-  --halo-comment-widget-component-emoji-picker-rgb-background: var(--color-theme-background) !important;
-  --halo-comment-widget-component-emoji-picker-rgb-input: var(--color-theme-foreground) !important;
-  --halo-comment-widget-component-emoji-picker-color-border: var(--color-theme-background) !important;
-  --halo-comment-widget-component-emoji-picker-color-border-over: var(--color-theme-background) !important;
+  --halo-cw-primary-1-color: var(--color-theme-accent) !important;
+  --halo-cw-primary-2-color: var(--color-theme-accent) !important;
+  --halo-cw-primary-3-color: var(var(--color-theme-accent) !important) !important;
+  --halo-cw-text-1-color: var(--color-theme-foreground) !important;
+  --halo-cw-text-2-color: var(--color-theme-foreground) !important;
+  --halo-cw-text-3-color: var(--color-theme-foreground) !important;
+  --halo-cw-muted-1-color: color-mix(in srgb,var(--color-theme-foreground) 65%,transparent) !important;
+  --halo-cw-muted-2-color: color-mix(in srgb,var(--color-theme-foreground) 65%,transparent) !important;
+  --halo-cw-muted-3-color: color-mix(in srgb,var(--color-theme-foreground) 65%,transparent) !important;
+  // --halo-cw-avatar-rounded:
+  // --halo-cw-avatar-size
 }
 
 .comment {
