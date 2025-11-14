@@ -4,7 +4,11 @@
 <th:block th:fragment="content">
     <article class="post">
         <header>
-            <h1 class="post-title" th:text="#{page.links.title}">Links</h1>
+            <h1 class="post-title"
+                th:with="title=${theme.config.page.links_title ?: page.links.title ?: 'Links'}"
+                th:text="${title}">
+                Links
+            </h1>
         </header>
         <section class="post-content link-section" th:each="group : ${groups}">
             <h2 th:text="${!#strings.isEmpty(group.spec.displayName) ? group.spec.displayName:'links'}">

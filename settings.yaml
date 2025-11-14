@@ -25,6 +25,34 @@ spec:
           label: 启用 PJAX
           help: 是否启用 PJAX, 默认关闭
           value: false
+    - group: page
+      label: 页面配置
+      formSchema:
+        - $formkit: text
+          name: archives_title
+          label: 归档页标题自定义
+          value:
+        - $formkit: text
+          name: categories_title
+          label: 分类页(复数) 标题自定义
+          value:
+        - $formkit: text
+          name: category_title
+          label: 分类页标题自定义
+          value:
+        - $formkit:
+          name: tags_title
+          label: 标签页(复数) 标题自定义
+          value:
+        - $formkit:
+          name: tag_title
+          label: 标签页标题自定义
+          value:
+        - $formkit: text
+          name: links_title
+          label: 友链页标题自定义
+          value:
+
     - group: style
       label: 样式设置
       formSchema:
