@@ -39,7 +39,7 @@ function renewElement(element) {
     return newElem;
 }
 
-function insertStyle(dom, parentElement, selectors) {
+function insertStyleLink(dom, parentElement, selectors) {
     const existingStyles = new Set();
 
     document.querySelectorAll(selectors).forEach(link => {
@@ -51,6 +51,41 @@ function insertStyle(dom, parentElement, selectors) {
         if (href && !existingStyles.has(href)) {
             const newLink = renewElement(link);
             parentElement.appendChild(newLink);
+        }
+    });
+}
+
+function insertStyle(dom, parentElement, selectors) {
+    dom.querySelectorAll(selectors).forEach(style => {
+        if (style.innerHTML.trim()) {
+            let hash = djb2(style.innerHTML);
+            let old = parentElement.querySelector(`style[data-hash="${hash}"]`);
+            if (old) {
+                parentElement.removeChild(old);
+            } else {
+                let styles = parentElement.querySelectorAll('style:not([no-pjax])');
+                styles.forEach((s) => {
+                    if (s) {
+                        if (djb2(s.innerHTML) === hash) {
+                            parentElement.removeChild(s);
+                        }
+                    }
+                });
+            }
+            style.setAttribute("data-hash", hash);
+            parentElement.appendChild(style);
+        }
+    });
+    const existingStyles = new Set();
+
+    document.querySelectorAll(selectors).forEach(style => {
+        let hash = djb2(style.innerHTML);
+        existingStyles.add(style);
+    });
+
+    dom.querySelectorAll(selectors).forEach(style => {
+        if (style && !existingStyles.has(style)) {
+            parentElement.appendChild(style);
         }
     });
 }
@@ -99,14 +134,15 @@ function insertInlineScript(dom, parentElement, selectors) {
 
 // 这个函数将请求的页面 head 中 script 和 link 都插入进来合成新页面
 function insertResourcesToHead(dom, parentElement) {
-    insertStyle(dom, parentElement, 'head link[rel="stylesheet"]:not([no-pjax])');
+    insertStyleLink(dom, parentElement, 'head link[rel="stylesheet"]:not([no-pjax])');
+    insertStyle(dom, parentElement, 'head style:not([no-pjax])');
     insertScript(dom, parentElement, 'head script[src]:not([no-pjax])');
     insertInlineScript(dom, parentElement, 'head script:not([src]):not([no-pjax])');
 }
 
 // 这个函数将请求的页面 footer 中 script 和 link 都插入进来合成新页面
 function insertResourcesToFooter(dom, parentElement) {
-    insertStyle(dom, parentElement, 'footer link[rel="stylesheet"][data-pjax]:not([no-pjax])');
+    insertStyleLink(dom, parentElement, 'footer link[rel="stylesheet"][data-pjax]:not([no-pjax])');
     insertScript(dom, parentElement, 'footer script[src][data-pjax]:not([no-pjax])');
     insertInlineScript(dom, parentElement, 'footer script:not([src])[data-pjax]:not([no-pjax])');
 }
