@@ -19,7 +19,7 @@ spec:
           name: show_toc
           label: 显示文章目录
           value: true
-          help: 开启后, 将在文章页面显示文章目录
+          help: 开启后将在文章页面显示文章目录
         - $formkit: checkbox
           name: pjax
           label: 启用 PJAX
@@ -65,7 +65,7 @@ spec:
           name: pixel_style
           label: 像素化风格
           value: false
-          help: 开启后, 将优先使用像素风格字体及图标
+          help: 开启后将优先使用像素风格字体及图标
         - $formkit: select
           name: default_schema_mode
           label: 默认配色方案
@@ -166,7 +166,7 @@ spec:
           name: switch
           label: 全局开关
           value: true
-          help: 关闭之后不会显示社交资料
+          help: 关闭后不会显示社交资料
         - $formkit: checkbox
           name: rss
           label: RSS
