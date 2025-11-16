@@ -4,7 +4,8 @@
         th:replace="~{modules/layout :: html(title = ${site.title}, header = null, content = ~{::content}, footer = null)}"
 >
 <th:block th:fragment="content">
-    <section class="index-content framed">
+    <section class="index-content framed"
+             th:if="${not #strings.isEmpty(theme.config.basic.index_notice_title) and not #strings.isEmpty(theme.config.basic.index_notice_content)}">
         <h1 class="typed-text" th:text="${theme.config.basic.index_notice_title}"></h1>
         <div th:utext="${theme.config.basic.index_notice_content}"></div>
     </section>
