@@ -159,6 +159,54 @@ spec:
           value: ""
           help: 可填写自定义的 CSS, 会覆盖主题的样式
 
+    - group: sns
+      label: 社交资料
+      formSchema:
+        - $formkit: checkbox
+          name: switch
+          label: 全局开关
+          value: true
+          help: 关闭之后不会显示社交资料
+        - $formkit: checkbox
+          name: rss
+          label: RSS
+          value: false
+        - $formkit: text
+          name: github
+          label: GitHub
+          placeholder: "用户名"
+          value:
+        - $formkit: text
+          name: email
+          label: Email
+          placeholder: "邮箱地址"
+          value:
+        - $formkit: text
+          name: discord
+          label: Discord
+          placeholder: "分享链接"
+          value:
+        - $formkit: text
+          name: telegram
+          label: Telegram
+          placeholder: "用户名"
+          value:
+        - $formkit: text
+          name: facebook
+          label: Facebook
+          placeholder: "用户名"
+          value:
+        - $formkit: text
+          name: instagram
+          label: Instagram
+          placeholder: "用户名"
+          value:
+        - $formkit: text
+          name: x
+          label: X
+          placeholder: "用户名"
+          value:
+
     - group: icp
       label: 备案设置
       formSchema:

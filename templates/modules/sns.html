@@ -1,0 +1,194 @@
+<th:block th:fragment="sns">
+    <div class="sns-container">
+        <!-- Email -->
+        <a class="sns-icon"
+           aria-label="Find me on Email"
+           target="_blank"
+           th:href="'mailto:'+${theme.config.sns.email}"
+           th:if="${not #strings.isEmpty(theme.config.sns.email)}">
+            <svg class="icon-regular" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                <polyline points="22,6 12,13 2,6"></polyline>
+            </svg>
+            <svg class="icon-pixel" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+                <g>
+                    <path d="M30.47 6.1H32v19.8h-1.53Z" fill="currentColor" stroke-width="1"></path>
+                    <path d="M28.95 25.9h1.52v1.53h-1.52Z" fill="currentColor" stroke-width="1"></path>
+                    <path d="M28.95 4.57h1.52V6.1h-1.52Z" fill="currentColor" stroke-width="1"></path>
+                    <path d="M27.43 7.62h1.52v3.05h-1.52Z" fill="currentColor" stroke-width="1"></path>
+                    <path d="M3.05 27.43h25.9v1.52H3.05Z" fill="currentColor" stroke-width="1"></path>
+                    <path d="M25.9 22.86h1.53v1.52H25.9Z" fill="currentColor" stroke-width="1"></path>
+                    <path d="M25.9 10.67h1.53v1.52H25.9Z" fill="currentColor" stroke-width="1"></path>
+                    <path d="M24.38 21.33h1.52v1.53h-1.52Z" fill="currentColor" stroke-width="1"></path>
+                    <path d="M24.38 12.19h1.52v1.52h-1.52Z" fill="currentColor" stroke-width="1"></path>
+                    <path d="M22.85 19.81h1.53v1.52h-1.53Z" fill="currentColor" stroke-width="1"></path>
+                    <path d="M22.85 13.71h1.53v1.53h-1.53Z" fill="currentColor" stroke-width="1"></path>
+                    <path d="M21.33 18.29h1.52v1.52h-1.52Z" fill="currentColor" stroke-width="1"></path>
+                    <path d="M21.33 15.24h1.52v1.52h-1.52Z" fill="currentColor" stroke-width="1"></path>
+                    <path d="M18.28 16.76h3.05v1.53h-3.05Z" fill="currentColor" stroke-width="1"></path>
+                    <path d="M13.71 18.29h4.57v1.52h-4.57Z" fill="currentColor" stroke-width="1"></path>
+                    <path d="M10.66 16.76h3.05v1.53h-3.05Z" fill="currentColor" stroke-width="1"></path>
+                    <path d="M9.14 18.29h1.52v1.52H9.14Z" fill="currentColor" stroke-width="1"></path>
+                    <path d="M9.14 15.24h1.52v1.52H9.14Z" fill="currentColor" stroke-width="1"></path>
+                    <path d="M7.62 19.81h1.52v1.52H7.62Z" fill="currentColor" stroke-width="1"></path>
+                    <path d="M7.62 13.71h1.52v1.53H7.62Z" fill="currentColor" stroke-width="1"></path>
+                    <path d="M6.09 21.33h1.53v1.53H6.09Z" fill="currentColor" stroke-width="1"></path>
+                    <path d="M6.09 12.19h1.53v1.52H6.09Z" fill="currentColor" stroke-width="1"></path>
+                    <path d="M4.57 22.86h1.52v1.52H4.57Z" fill="currentColor" stroke-width="1"></path>
+                    <path d="M4.57 10.67h1.52v1.52H4.57Z" fill="currentColor" stroke-width="1"></path>
+                    <path d="M3.05 3.05h25.9v1.52H3.05Z" fill="currentColor" stroke-width="1"></path>
+                    <path d="M3.05 7.62h1.52v3.05H3.05Z" fill="currentColor" stroke-width="1"></path>
+                    <path d="M1.52 25.9h1.53v1.53H1.52Z" fill="currentColor" stroke-width="1"></path>
+                    <path d="M1.52 4.57h1.53V6.1H1.52Z" fill="currentColor" stroke-width="1"></path>
+                    <path d="M0 6.1h1.52v19.8H0Z" fill="currentColor" stroke-width="1"></path>
+                </g>
+            </svg>
+        </a>
+
+        <!-- GitHub -->
+        <a class="sns-icon"
+           target="_blank"
+           aria-label="Find me on GitHub"
+           th:href="'https://github.com/'+${theme.config.sns.github}"
+           th:if="${not #strings.isEmpty(theme.config.sns.github)}">
+            <svg class="icon-regular" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5c.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34c-.46-1.16-1.11-1.47-1.11-1.47c-.91-.62.07-.6.07-.6c1 .07 1.53 1.03 1.53 1.03c.87 1.52 2.34 1.07 2.91.83c.09-.65.35-1.09.63-1.34c-2.22-.25-4.55-1.11-4.55-4.92c0-1.11.38-2 1.03-2.71c-.1-.25-.45-1.29.1-2.64c0 0 .84-.27 2.75 1.02c.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02c.55 1.35.2 2.39.1 2.64c.65.71 1.03 1.6 1.03 2.71c0 3.82-2.34 4.66-4.57 4.91c.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"></path>
+            </svg>
+            <svg class="icon-pixel" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path fill="currentColor" d="M6 2h12v2H6V2Zm4 12H8v-2h2v2Zm4 0v2h-4v-2h4Zm0 0v-2h2v2h-2Z"/>
+                <path fill="currentColor" d="M6 6V4H4v2H2v12h2v2h2v2h12v-2h2v-2h2V6h-2V4h-2v2h-2v2H8V6H6Zm2 6v-2h8v2h2V6h2v12h-2v2h-2v-4h-2v4h-4v-4H6v2h2v2H6v-2H4v-2h2v-2H4V6h2v6h2Z"/>
+            </svg>
+        </a>
+
+        <!-- Discord -->
+        <a class="sns-icon"
+           target="_blank"
+           aria-label="Find me on Discord"
+           th:href="${theme.config.sns.discord}"
+           th:if="${not #strings.isEmpty(theme.config.sns.discord)}">
+            <svg class="icon-regular" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515a.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0a12.64 12.64 0 0 0-.617-1.25a.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057a19.9 19.9 0 0 0 5.993 3.03a.078.078 0 0 0 .084-.028a14.09 14.09 0 0 0 1.226-1.994a.076.076 0 0 0-.041-.106a13.107 13.107 0 0 1-1.872-.892a.077.077 0 0 1-.008-.128a10.2 10.2 0 0 0 .372-.292a.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127a12.299 12.299 0 0 1-1.873.892a.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028a19.839 19.839 0 0 0 6.002-3.03a.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419c0-1.333.956-2.419 2.157-2.419c1.21 0 2.176 1.096 2.157 2.42c0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419c0-1.333.955-2.419 2.157-2.419c1.21 0 2.176 1.096 2.157 2.42c0 1.333-.946 2.418-2.157 2.418z"></path>
+            </svg>
+            <svg class="icon-pixel" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+                <g>
+                    <path d="M30.47 9.14h-1.52V6.09h-1.53V4.57H25.9V3.05h-3.05V1.52h-3.04V0h-7.62v1.52H9.14v1.53H6.09v1.52H4.57v1.52H3.04v3.05H1.52v3.05H0v7.62h1.52v3.05h1.52v3.04h1.53v1.53h1.52v1.52h3.05v1.53h3.05V32h7.62v-1.52h3.04v-1.53h3.05v-1.52h1.52V25.9h1.53v-3.04h1.52v-3.05H32v-7.62h-1.53Zm-1.52 12.19h-1.53v1.53H25.9v1.52h-1.52v1.52h-6.1v-1.52h4.57v-3.05H9.14v3.05h4.57v1.52h-6.1v-1.52H6.09v-1.52H4.57v-1.53H3.04v-7.62h1.53v-3.04h1.52V9.14h1.52V7.62h6.1v1.52h4.57V7.62h6.1v1.52h1.52v1.53h1.52v3.04h1.53Z" fill="currentColor" stroke-width="1"></path>
+                    <path d="M18.28 13.71h3.05v3.05h-3.05Z" fill="currentColor" stroke-width="1"></path>
+                    <path d="M10.66 13.71h3.05v3.05h-3.05Z" fill="currentColor" stroke-width="1"></path>
+                </g>
+            </svg>
+        </a>
+
+        <!-- Telegram -->
+        <a class="sns-icon"
+           target="_blank"
+           aria-label="Find me on Telegram"
+           th:href="'https://t.me/'+${theme.config.sns.telegram}"
+           th:if="${not #strings.isEmpty(theme.config.sns.telegram)}">
+            <svg class="icon-regular" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12a12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472c-.18 1.898-.962 6.502-1.36 8.627c-.168.9-.499 1.201-.82 1.23c-.696.065-1.225-.46-1.9-.902c-1.056-.693-1.653-1.124-2.678-1.8c-1.185-.78-.417-1.21.258-1.91c.177-.184 3.247-2.977 3.307-3.23c.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345c-.48.33-.913.49-1.302.48c-.428-.008-1.252-.241-1.865-.44c-.752-.245-1.349-.374-1.297-.789c.027-.216.325-.437.893-.663c3.498-1.524 5.83-2.529 6.998-3.014c3.332-1.386 4.025-1.627 4.476-1.635z"></path>
+            </svg>
+            <svg class="icon-pixel" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+                <g>
+                    <path d="M25.9 11.43H32v1.52h-6.1Z" fill="currentColor" stroke-width="1"></path>
+                    <path d="M28.95 14.48H32V16h-3.05Z" fill="currentColor" stroke-width="1"></path>
+                    <path d="m9.14 22.1 7.62 0 0 1.52 7.62 0 0 -3.05 4.57 0 0 -3.04 -1.52 0 0 1.52 -25.91 0 0 -1.52 -1.52 0 0 3.04 9.14 0 0 1.53z" fill="currentColor" stroke-width="1"></path>
+                    <path d="M24.38 16h3.05v1.53h-3.05Z" fill="currentColor" stroke-width="1"></path>
+                    <path d="M22.85 8.38h3.05v1.53h-3.05Z" fill="currentColor" stroke-width="1"></path>
+                    <path d="M21.33 14.48h3.05V16h-3.05Z" fill="currentColor" stroke-width="1"></path>
+                    <path d="m18.28 12.95 -1.52 0 0 1.53 4.57 0 0 -1.53 -1.52 0 0 -1.52 -1.53 0 0 1.52z" fill="currentColor" stroke-width="1"></path>
+                    <path d="m19.81 11.43 1.52 0 0 -3.05 -4.57 0 0 1.53 3.05 0 0 1.52z" fill="currentColor" stroke-width="1"></path>
+                    <path d="M13.71 9.91h3.05v1.52h-3.05Z" fill="currentColor" stroke-width="1"></path>
+                    <path d="M12.19 14.48h4.57V16h-4.57Z" fill="currentColor" stroke-width="1"></path>
+                    <path d="M10.66 11.43h3.05v1.52h-3.05Z" fill="currentColor" stroke-width="1"></path>
+                    <path d="M7.62 12.95h3.04v1.53H7.62Z" fill="currentColor" stroke-width="1"></path>
+                    <path d="M4.57 14.48h3.05V16H4.57Z" fill="currentColor" stroke-width="1"></path>
+                    <path d="M1.52 16h3.05v1.53H1.52Z" fill="currentColor" stroke-width="1"></path>
+                </g>
+            </svg>
+        </a>
+
+        <!-- Facebook -->
+        <a class="sns-icon"
+           target="_blank"
+           aria-label="Find me on Facebook"
+           th:href="'https://www.facebook.com/'+${theme.config.sns.facebook}"
+           th:if="${not #strings.isEmpty(theme.config.sns.facebook)}">
+            <svg class="icon-regular" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669c1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"></path>
+            </svg>
+            <svg class="icon-pixel" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+                <path d="m30.47 9.905 -1.52 0 0 -3.05 -1.53 0 0 -1.52 -1.52 0 0 -1.53 -3.05 0 0 -1.52 -3.04 0 0 -1.52 -7.62 0 0 1.52 -3.05 0 0 1.52 -3.05 0 0 1.53 -1.52 0 0 1.52 -1.53 0 0 3.05 -1.52 0 0 3.05 -1.52 0 0 7.61 1.52 0 0 3.05 1.52 0 0 3.05 1.53 0 0 1.52 1.52 0 0 1.53 3.05 0 0 1.52 4.57 0 0 -10.67 -4.57 0 0 -4.57 4.57 0 0 -6.09 1.52 0 0 -1.53 7.62 0 0 4.58 -4.57 0 0 3.04 6.1 0 0 1.53 -1.53 0 0 1.52 -1.52 0 0 1.52 -3.05 0 0 10.67 4.57 0 0 -1.52 3.05 0 0 -1.53 1.52 0 0 -1.52 1.53 0 0 -3.05 1.52 0 0 -3.05 1.53 0 0 -7.61 -1.53 0 0 -3.05z" fill="currentColor" stroke-width="1"></path>
+            </svg>
+        </a>
+
+        <!-- Instagram -->
+        <a class="sns-icon"
+           target="_blank"
+           aria-label="Find me on Instagram"
+           th:href="'https://www.instagram.com/'+${theme.config.sns.instagram}"
+           th:if="${not #strings.isEmpty(theme.config.sns.instagram)}">
+            <svg class="icon-regular" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2.163c3.204 0 3.584.012 4.85.07c3.252.148 4.771 1.691 4.919 4.919c.058 1.265.069 1.645.069 4.849c0 3.205-.012 3.584-.069 4.849c-.149 3.225-1.664 4.771-4.919 4.919c-1.266.058-1.644.07-4.85.07c-3.204 0-3.584-.012-4.849-.07c-3.26-.149-4.771-1.699-4.919-4.92c-.058-1.265-.07-1.644-.07-4.849c0-3.204.013-3.583.07-4.849c.149-3.227 1.664-4.771 4.919-4.919c1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072C2.695.272.273 2.69.073 7.052C.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948c.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072c4.354-.2 6.782-2.618 6.979-6.98c.059-1.28.073-1.689.073-4.948c0-3.259-.014-3.667-.072-4.947c-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324a6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8a4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881a1.44 1.44 0 0 0 0-2.881z"></path>
+            </svg>
+            <svg class="icon-pixel" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+                <g>
+                    <path d="M30.47 3.05H32v25.9h-1.53Z" fill="currentColor" stroke-width="1"></path>
+                    <path d="M28.95 28.95h1.52v1.53h-1.52Z" fill="currentColor" stroke-width="1"></path>
+                    <path d="M28.95 1.52h1.52v1.53h-1.52Z" fill="currentColor" stroke-width="1"></path>
+                    <path d="M3.04 30.48h25.91V32H3.04Z" fill="currentColor" stroke-width="1"></path>
+                    <path d="M27.42 4.57H25.9V3.05H6.09v1.52H4.57v1.52H3.04V25.9h1.53v1.53h1.52v1.52H25.9v-1.52h1.52V25.9h1.53V6.09h-1.53ZM25.9 24.38h-1.52v1.52H7.61v-1.52H6.09V7.62h1.52V6.09h16.77v1.53h1.52Z" fill="currentColor" stroke-width="1"></path>
+                    <path d="M21.33 7.62h3.05v3.05h-3.05Z" fill="currentColor" stroke-width="1"></path>
+                    <path d="M21.33 12.19h-1.52v-1.52h-7.62v1.52h-1.53v1.52H9.14v7.62h1.52v1.53h1.53v1.52h7.62v-1.52h1.52v-1.53h1.52v-7.62h-1.52Zm-1.52 7.62h-1.53v1.52h-4.57v-1.52h-1.52v-4.57h1.52v-1.53h4.57v1.53h1.53Z" fill="currentColor" stroke-width="1"></path>
+                    <path d="M3.04 0h25.91v1.52H3.04Z" fill="currentColor" stroke-width="1"></path>
+                    <path d="M1.52 28.95h1.52v1.53H1.52Z" fill="currentColor" stroke-width="1"></path>
+                    <path d="M1.52 1.52h1.52v1.53H1.52Z" fill="currentColor" stroke-width="1"></path>
+                    <path d="M0 3.05h1.52v25.9H0Z" fill="currentColor" stroke-width="1"></path>
+                </g>
+            </svg>
+        </a>
+
+        <!-- X -->
+        <a class="sns-icon"
+           target="_blank"
+           aria-label="Find me on X"
+           th:href="'https://x.com/'+${theme.config.sns.x}"
+           th:if="${not #strings.isEmpty(theme.config.sns.x)}">
+            <svg class="icon-regular" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M18.244 2.25h3.308l-7.227 8.26l8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path>
+            </svg>
+            <svg class="icon-pixel" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+                <g>
+                    <path d="M1.52 22.86h1.52v3.04h1.53v1.53h1.52v1.52h3.05v1.53h3.05V32h7.62v-1.52h3.04v-1.53h3.05v-1.52h1.52V25.9h1.53v-3.04h1.52v-3.05H32v-7.62h-1.53V9.14h-1.52V6.09h-1.53V4.57H25.9V3.05h-3.05V1.52h-3.04V0h-7.62v1.52H9.14v1.53H6.09v1.52H4.57v1.52H3.04v3.05H1.52v3.05H0v7.62h1.52ZM7.61 9.14h1.53v1.53h1.52v1.52h1.53v1.52h3.04V9.14h1.53V7.62h6.09v1.52h1.53v3.05h3.04v1.52H25.9v1.53h-1.52v4.57h-1.53v3.05h-1.52v1.52h-1.52v1.52H9.14v-1.52h1.52v-1.52h1.53v-1.53h1.52v-1.52h-3.05v-1.52H9.14v-1.53H7.61Z" fill="currentColor" stroke-width="1"></path>
+                    <path d="M19.81 10.67h3.04v3.04h-3.04Z" fill="currentColor" stroke-width="1"></path>
+                </g>
+            </svg>
+        </a>
+
+        <!-- Divider -->
+        <span class="divider" th:if="${theme.config.sns.rss}">|</span>
+
+        <!-- RSS -->
+        <a class="sns-icon"
+           target="_blank"
+           th:href="@{/rss.xml}"
+           aria-label="Find me on RSS"
+           th:if="${theme.config.sns.rss}">
+            <svg class="icon-regular" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 11a9 9 0 0 1 9 9"></path>
+                <path d="M4 4a16 16 0 0 1 16 16"></path>
+                <circle cx="5" cy="19" r="1"></circle>
+            </svg>
+            <svg class="icon-pixel" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+                <g>
+                    <path d="m28.955 15.235 -1.52 0 0 -3.05 -1.53 0 0 -1.52 -1.52 0 0 -1.52 -1.53 0 0 -1.53 -1.52 0 0 -1.52 -1.52 0 0 -1.52 -3.05 0 0 -1.53 -4.57 0 0 -1.52 -9.14 0 0 3.05 9.14 0 0 1.52 4.57 0 0 1.52 3.05 0 0 1.53 1.52 0 0 1.52 1.52 0 0 1.52 1.53 0 0 3.05 1.52 0 0 4.57 1.53 0 0 9.15 3.04 0 0 -9.15 -1.52 0 0 -4.57z" fill="currentColor" stroke-width="1"></path>
+                    <path d="m3.055 7.615 0 3.05 7.61 0 0 1.52 3.05 0 0 1.53 3.05 0 0 1.52 1.52 0 0 3.05 1.53 0 0 3.05 1.52 0 0 7.62 3.05 0 0 -7.62 -1.53 0 0 -3.05 -1.52 0 0 -3.05 -1.52 0 0 -1.52 -1.53 0 0 -1.53 -1.52 0 0 -1.52 -3.05 0 0 -1.52 -3.05 0 0 -1.53 -7.61 0z" fill="currentColor" stroke-width="1"></path>
+                    <path d="m3.055 16.765 6.09 0 0 1.52 3.05 0 0 1.52 1.52 0 0 3.05 1.53 0 0 6.1 3.04 0 0 -6.1 -1.52 0 0 -3.05 -1.52 0 0 -1.52 -1.53 0 0 -1.52 -1.52 0 0 -1.53 -3.05 0 0 -1.52 -6.09 0 0 3.05z" fill="currentColor" stroke-width="1"></path>
+                    <path d="m3.055 24.375 -1.53 0 0 4.58 1.53 0 0 1.52 4.57 0 0 -1.52 1.52 0 0 -4.58 -1.52 0 0 -1.52 -4.57 0 0 1.52z" fill="currentColor" stroke-width="1"></path>
+                </g>
+            </svg>
+
+        </a>
+    </div>
+</th:block>

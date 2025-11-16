@@ -1,0 +1,29 @@
+.sns-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: var(--font-theme-size);
+  flex-wrap: wrap;
+  padding: calc(var(--font-theme-size) * 0.75) 0;
+  font-size: inherit;
+}
+
+.sns-container .sns-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-theme-foreground);
+  text-decoration: none;
+}
+
+
+.sns-container .sns-icon svg {
+  width: calc(var(--font-theme-size) * 1.5);
+  height: calc(var(--font-theme-size) * 1.5);
+}
+
+.sns-container .divider {
+  color: var(--color-theme-foreground);
+  font-weight: 300;
+  user-select: none;
+}
