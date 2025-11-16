@@ -67,7 +67,7 @@ spec:
           value: false
           help: 开启后将默认使用像素风格字体及图标
         - $formkit: select
-          name: default_schema_mode
+          name: default_scheme_mode
           label: 默认配色方案
           value: "dark"
           options:
@@ -78,8 +78,8 @@ spec:
             - label: "跟随系统"
               value: "system"
         - $formkit: select
-          name: dark_color_schema
-          id: dark_color_schema
+          name: dark_color_scheme
+          id: dark_color_scheme
           label: 深色配色方案
           value: "night"
           options:
@@ -109,14 +109,14 @@ spec:
               value: "vanilla"
         - $formkit: text
           name: custom_dark
-          if: "$get(dark_color_schema).value === 'custom'"
+          if: "$get(dark_color_scheme).value === 'custom'"
           value: ""
           help: "在此填写自定义配色的名称"
           validation: "required"
 
         - $formkit: select
-          name: light_color_schema
-          id: light_color_schema
+          name: light_color_scheme
+          id: light_color_scheme
           label: 浅色配色方案
           value: "day"
           options:
@@ -146,7 +146,7 @@ spec:
               value: "vanilla"
         - $formkit: text
           name: custom_light
-          if: "$get(light_color_schema).value === 'custom'"
+          if: "$get(light_color_scheme).value === 'custom'"
           value: ""
           help: "在此填写自定义配色的名称"
           validation: "required"
