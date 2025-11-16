@@ -13,10 +13,13 @@
 1. PJAX
 2. 自定义 CSS
 3. 自定义主题配色
-4. 指定深色/浅色模式配色
+4. 指定深色/浅色模式配色, 且可跟随系统切换
 5. 子菜单
 6. 像素化开关
 7. 文章目录开关
+8. 可优先使用访问者系统字体
+9. 社交资料支持
+10. 自定义默认页面标题
 
 ### 样式
 
@@ -105,7 +108,7 @@ html[theme-color-scheme='default'] {
 
 将这段 CSS 代码填入 `自定义样式` 后, 在 `深色/浅色配色方案` 的下拉框中选择 `custom`, 并填入配色名: `default` 即可
 
-也可以通过直接覆盖的方式来修改主题颜色, 比如 `深色配色方案` 是 `day`, 在代码框中填入:
+也可以通过直接覆盖的方式来修改主题颜色, 在自定义样式的代码框中填入:
 
 ```css
 html[theme-color-scheme='day'] {
@@ -120,6 +123,8 @@ html[theme-color-scheme='day'] {
     --color-theme-header: #4eee85;
 }
 ```
+
+可覆盖名为 `day` 的配色方案
 
 ### 覆盖其他变量
 
@@ -141,8 +146,9 @@ html[theme-color-scheme='day'] {
     --line-theme-height: calc(var(--font-theme-size) * 1.54);
     --radius-theme-default: 0;
     --font-theme-default: 'JetBrains Mono';
-    --font-theme-fallback: Monaco, Consolas, -apple-system, BlinkMacSystemFont, 'segoe ui',
-    Roboto, Oxygen, Ubuntu, Cantarell, 'open sans', 'helvetica neue';
+    --font-theme-fallback: -apple-system, BlinkMacSystemFont, 'segoe ui', Roboto, Oxygen,
+    Ubuntu, Cantarell, 'open sans', 'helvetica neue', Arial, 'Noto Sans',
+    'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
     --scrollbar-theme-width: thin;
     --scrollbar-theme-color: rgba(134, 134, 134, 0.45) rgba(255, 255, 255, 0);
     --font-theme-lig: none;
@@ -156,8 +162,6 @@ html[theme-color-scheme='matrix'] {
     --font-theme-default: '-apple-system'
 }
 ```
-
-目前尚不方便, 等待将所有变量都放到 `:root` 中方便查看并覆盖
 
 ## 构建
 
@@ -173,7 +177,6 @@ make
 
 ## 计划
 
-- [ ] 调整代码高亮
 
 ## 原主题
 
