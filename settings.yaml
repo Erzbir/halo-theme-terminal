@@ -23,7 +23,7 @@ spec:
         - $formkit: checkbox
           name: pjax
           label: 启用 PJAX
-          help: 是否启用 PJAX, 默认关闭
+          help: 是否启用 PJAX, 默认关闭, 开启后点击站内链接时只更新主要内容区域而不是整个页面 (可能与一些插件存在兼容问题)
           value: false
     - group: page
       label: 页面配置
@@ -63,9 +63,9 @@ spec:
           help: 开启后将优先使用访问者的系统字体
         - $formkit: checkbox
           name: pixel_style
-          label: 像素化风格
+          label: 默认像素化风格
           value: false
-          help: 开启后将优先使用像素风格字体及图标
+          help: 开启后将默认使用像素风格字体及图标
         - $formkit: select
           name: default_schema_mode
           label: 默认配色方案
