@@ -14,6 +14,7 @@
         </header>
         <div>
             <th:block th:each="archive : ${archives.items}">
+                <h2 th:text="${archive.year}"></h2>
                 <ul>
                     <th:block th:each="month : ${archive.months}">
                         <li class="post-list" th:each="post : ${month.posts}">
@@ -29,8 +30,6 @@
                                 <th:block th:replace="~{modules/tag-list(post = ${post})}"
                                           th:if="${theme.config.page.archives_tags}"/></div>
                         </li>
-
-
                     </th:block>
                 </ul>
             </th:block>
