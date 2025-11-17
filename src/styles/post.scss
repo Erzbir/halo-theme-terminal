@@ -56,10 +56,10 @@
 .post-title::after {
   content: "";
   position: absolute;
-  bottom: calc(var(--font-theme-size) * 0.125);
+  bottom: calc(var(--font-theme-size) * 0.01);
   display: block;
   width: 100%;
-  border-bottom: calc(var(--font-theme-size) * 0.1875) dotted var(--color-theme-accent);
+  border-bottom: calc(var(--font-theme-size) * 0.125) dashed var(--color-theme-accent);
 }
 
 .post-title a {
