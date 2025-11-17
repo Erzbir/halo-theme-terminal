@@ -21,6 +21,7 @@
   --scrollbar-theme-width: thin;
   --scrollbar-theme-color: rgba(134, 134, 134, 0.45) rgba(255, 255, 255, 0);
   --font-theme-lig: none;
+  --border-theme-width: calc(var(--font-theme-size) * 0.125);
 }
 
 html {
@@ -170,7 +171,7 @@ button {
   background: transparent;
   color: var(--color-theme-accent);
   padding: calc(var(--font-theme-size) * 0.315) calc(var(--font-theme-size) * 1.125);
-  border: calc(var(--font-theme-size) * 0.25) solid var(--color-theme-accent);
+  border: calc(var(--border-theme-width) * 2) solid var(--color-theme-accent);
   border-radius: var(--radius-theme-default);
   transition: background 0.15s linear;
   appearance: none;
@@ -190,7 +191,7 @@ a:focus-visible {
 
 fieldset {
   display: inline-block;
-  border: calc(var(--font-theme-size) * 0.125) solid var(--color-theme-foreground);
+  border: var(--border-theme-width) solid var(--color-theme-foreground);
   border-radius: var(--radius-theme-default);
   padding: calc(var(--font-theme-size) * 0.625);
 }
@@ -221,7 +222,7 @@ textarea,
 select {
   background: transparent;
   color: var(--color-theme-foreground);
-  border: calc(var(--font-theme-size) * 0.0625) solid var(--color-theme-foreground);
+  border: calc(var(--border-theme-width) / 2) solid var(--color-theme-foreground);
   border-radius: var(--radius-theme-default);
   padding: calc(var(--font-theme-size) * 0.625);
   font: inherit;
@@ -278,7 +279,6 @@ input[type="checkbox"]:checked {
 img {
   display: block;
   max-width: 100%;
-  border: calc(var(--font-theme-size) * 0.25) solid var(--color-theme-accent);
   border-radius: var(--radius-theme-default);
   padding: calc(var(--font-theme-size) * 0.25);
   overflow: hidden;
@@ -347,10 +347,6 @@ ol ol {
   margin-top: 0;
 }
 
-li::marker {
-  color: var(--color-theme-accent);
-}
-
 ul li,
 ol li {
   position: relative;
@@ -360,18 +356,18 @@ code,
 kbd {
   font-family: inherit !important;
   font-feature-settings: normal;
-  background: color-mix(in srgb, var(--color-theme-foreground) 5%, transparent);
-  border: calc(var(--font-theme-size) * 0.0625) solid var(--code-border);
+  background: color-mix(in srgb, var(--color-theme-foreground) 15%, transparent);
+  border: calc(var(--border-theme-width) / 2) solid var(--code-border);
   padding: calc(var(--font-theme-size) * 0.0625) calc(var(--font-theme-size) * 0.375);
   margin: 0 calc(var(--font-theme-size) * 0.125);
   font-size: calc(var(--font-theme-size) * 0.95);
 }
 
 kbd {
-  border-top: calc(var(--font-theme-size) * 0.0625) solid color-mix(in srgb, var(--color-theme-accent) 25%, transparent);
-  border-left: calc(var(--font-theme-size) * 0.0625) solid var(--color-theme-accent);
-  border-right: calc(var(--font-theme-size) * 0.0625) solid var(--color-theme-accent);
-  border-bottom: calc(var(--font-theme-size) * 0.25) solid var(--color-theme-accent);
+  border-top: calc(var(--border-theme-width) / 2) solid color-mix(in srgb, var(--color-theme-accent) 25%, transparent);
+  border-left: calc(var(--border-theme-width) / 2) solid var(--color-theme-accent);
+  border-right: calc(var(--border-theme-width) / 2) solid var(--color-theme-accent);
+  border-bottom: calc(var(--border-theme-width) * 2) solid var(--color-theme-accent);
   border-radius: calc(var(--font-theme-size) * 0.25);
 }
 
@@ -390,7 +386,7 @@ pre {
   font-size: calc(var(--font-theme-size) * 0.95) !important;
   overflow: auto;
   border-radius: var(--radius-theme-default);
-  border: calc(var(--font-theme-size) * 0.0625) solid color-mix(in srgb, var(--color-theme-foreground) 10%, transparent);
+  border: calc(var(--border-theme-width) / 2) solid color-mix(in srgb, var(--color-theme-foreground) 10%, transparent);
 
   @media (max-width: $phone-max-width) {
     white-space: pre-wrap;
@@ -431,9 +427,7 @@ mark {
 
 blockquote {
   position: relative;
-  border-top: calc(var(--font-theme-size) * 0.0625) solid var(--color-theme-foreground);
-  border-bottom: calc(var(--font-theme-size) * 0.0625) solid var(--color-theme-foreground);
-  border-left: calc(var(--font-theme-size) * 0.4) solid var(--color-theme-foreground);
+  border-left: var(--border-theme-width) solid var(--color-theme-accent);
   margin: calc(var(--font-theme-size) * 0.625) 0 calc(var(--font-theme-size) * 0.625) 0;
   padding: calc(var(--font-theme-size) * 1.25);
 }
@@ -454,7 +448,7 @@ table {
 table,
 th,
 td {
-  border: calc(var(--font-theme-size) * 0.125) solid var(--color-theme-foreground);
+  border: var(--border-theme-width) solid var(--color-theme-foreground);
   padding: calc(var(--font-theme-size) * 0.625);
 }
 
@@ -499,7 +493,7 @@ blockquote.twitter-tweet {
   background: var(--color-theme-background);
   font: inherit;
   color: inherit;
-  border: calc(var(--font-theme-size) * 0.0625) solid var(--color-theme-accent);
+  border: calc(var(--border-theme-width) / 2) solid var(--color-theme-accent);
   padding-top: calc(var(--font-theme-size) * 3.75);
 }
 
@@ -550,6 +544,6 @@ blockquote.twitter-tweet::before {
 }
 
 iframe[src*="youtube.com"] {
-  border: calc(var(--font-theme-size) * 0.5) solid var(--color-theme-accent) !important;
+  border: calc(var(--border-theme-width) * 2) solid var(--color-theme-accent) !important;
   padding: calc(var(--font-theme-size) * 0.5) !important;
 }
