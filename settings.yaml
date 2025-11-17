@@ -28,6 +28,11 @@ spec:
     - group: page
       label: 页面配置
       formSchema:
+        - $formkit: checkbox
+          name: archives_tags
+          label: 归档页显示文章标签
+          value: false
+
         - $formkit: text
           name: archives_title
           label: 归档页标题自定义
