@@ -51,6 +51,7 @@
   padding-bottom: calc(var(--font-theme-size) * 0.9375) !important;
   border-bottom: calc(var(--font-theme-size) * 0.1875) dotted var(--color-theme-accent);
   text-decoration: none !important;
+  font-weight: 500;
 }
 
 .post-title::after {
