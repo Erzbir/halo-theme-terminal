@@ -37,7 +37,7 @@
   color: color-mix(in srgb, var(--color-theme-meta) 65%, transparent);
 }
 
-.post-meta > *:not(:first-child)::before {
+.post-meta > *:not(:first-child):not(:empty)::before {
   content: "::";
   display: inline-block;
   margin-right: 1ch;
@@ -67,10 +67,22 @@
   color: var(--color-theme-title);
 }
 
+.post-time {
+  color: var(--color-theme-foreground);
+}
+
+.post-meta > .post-time {
+  color: inherit;
+}
+
+.post-author {
+
+}
+
 .post-tags {
-  display: block;
   margin-bottom: calc(var(--font-theme-size) * 0.3125);
   font-size: inherit;
+  color: var(--color-theme-tag);
 }
 
 .post-tag {
@@ -79,6 +91,14 @@
   a {
     color: inherit;
   }
+}
+
+.post-meta > .post-tags {
+  color: inherit;
+}
+
+.post-tags > .post-tag {
+  color: inherit;
 }
 
 .post-meta .post-tags {

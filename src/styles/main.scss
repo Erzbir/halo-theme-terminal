@@ -22,6 +22,7 @@
   --scrollbar-theme-color: rgba(134, 134, 134, 0.45) rgba(255, 255, 255, 0);
   --font-theme-lig: none;
   --border-theme-width: calc(var(--font-theme-size) * 0.125);
+  white-space-collapse: discard;
 }
 
 html {
