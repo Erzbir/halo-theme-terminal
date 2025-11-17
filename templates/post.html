@@ -8,8 +8,9 @@
         <header>
             <h1 class="post-title" th:text="${post.spec.title}">Post Title</h1>
             <div class="post-meta">
-                <time class="post-date"
-                      th:text="${#dates.format(post.spec.publishTime,'yyyy-MM-dd')}">Publish Time
+                <time class="post-time"
+                      th:text="${#dates.format(post.spec.publishTime, '__${theme.config.style.time_style == 'custom' ?
+                                theme.config.style.custom_time_style : theme.config.style.time_style}__')}">Publish Time
                 </time>
                 <span class="post-author" th:text="${post.owner.displayName}">Author</span>
             </div>

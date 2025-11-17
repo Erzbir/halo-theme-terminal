@@ -61,11 +61,35 @@ spec:
           name: system_font
           value: false
           help: 开启后将优先使用访问者的系统字体
+
         - $formkit: checkbox
           name: pixel_style
           label: 默认像素化风格
           value: false
           help: 开启后将默认使用像素风格字体及图标
+
+        - $formkit: select
+          name: time_style
+          id: time_style
+          label: 时间格式
+          value: "yyyy-MM-dd"
+          options:
+            - label: "yyyy-MM-ddTHH:mm:ssXXX"
+              value: "yyyy-MM-dd''T''HH:mm:ssXXX"
+            - label: "yyyy-MM-dd HH:mm:ss"
+              value: "yyyy-MM-dd'' ''HH:mm:ss"
+            - label: "yyyy-MM-dd"
+              value: "yyyy-MM-dd"
+            - label: "custom"
+              value: "custom"
+
+        - $formkit: text
+          if: "$get(time_style).value === 'custom'"
+          name: custom_time_style
+          label: 自定义时间格式
+          placeholder: "yyyy-MM-dd"
+          validation: "required"
+
         - $formkit: select
           name: default_scheme_mode
           label: 默认配色方案

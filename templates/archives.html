@@ -17,12 +17,29 @@
                 <ul>
                     <th:block th:each="month : ${archive.months}">
                         <li class="post-list" th:each="post : ${month.posts}">
-                            <a data-pjax th:href="@{${post.status.permalink}}">
-                                <time th:text="${#dates.format(post.spec.publishTime,'yyyy-MM-dd')}">Publish Time</time>
-                                <span>&nbsp;::&nbsp;</span>
-                                <span class="post-list-title" th:text="${post.spec.title}">Post Title</span>
-                            </a>
+                            <div class="post-meta">
+                                <time class="post-time"
+                                      th:text="${#dates.format(post.spec.publishTime, '__${theme.config.style.time_style == 'custom' ?
+                                      theme.config.style.custom_time_style : theme.config.style.time_style}__')}">
+                                    Publish
+                                    Time
+                                </time>
+                                <a data-pjax th:href="@{${post.status.permalink}}">
+                                    <span class="post-list-title" th:text="${post.spec.title}">Post Title</span>
+                                </a>
+                                <span class="post-tags">
+                                    <span class="post-tag" th:each="tag : ${post.tags}">
+                                <a data-pjax
+                                   th:href="@{${tag.status.permalink}}"
+                                   th:title="${tag.spec.displayName}"
+                                   th:text="'#'+${tag.spec.displayName}"
+                                >#Tag</a>
+                            </span>
+                        </span>
+                            </div>
                         </li>
+
+
                     </th:block>
                 </ul>
             </th:block>
