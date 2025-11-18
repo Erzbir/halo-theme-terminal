@@ -53,6 +53,18 @@
   font-weight: 400;
 }
 
+.pin, .pin svg {
+  width: calc(1em * 0.8);
+}
+
+.pin.pin-left {
+  display: inline;
+}
+
+.pin.pin-above {
+  display: block;
+}
+
 .post-title::after {
   content: "";
   position: absolute;

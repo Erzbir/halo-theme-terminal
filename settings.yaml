@@ -33,6 +33,20 @@ spec:
           label: 归档页显示文章标签
           value: false
 
+        - $formkit: checkbox
+          name: show_pin
+          label: 主页置顶文章显示 pin 图标
+          value: true
+
+        - $formkit: select
+          name: pin_pos
+          label: pin 图标显示位置
+          options:
+            - label: "left"
+              value: "pin-left"
+            - label: "above"
+              value: "pin-above"
+
         - $formkit: text
           name: archives_title
           label: 归档页标题自定义
