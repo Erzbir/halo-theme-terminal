@@ -7,6 +7,11 @@ spec:
     - group: basic
       label: 基本设置
       formSchema:
+        - $formkit: text
+          label: logo
+          name: logo
+          value:
+          help: 设置左上角 logo 文本, 不设置默认为 halo 中设置的站点标题
         - $formkit: checkbox
           name: pjax_enable
           label: 启用 PJAX

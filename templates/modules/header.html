@@ -2,7 +2,10 @@
     <div class="header__inner">
         <div class="header__logo">
             <a data-pjax href="/">
-                <div class="logo" th:text="${site.title}">Blog Title</div>
+                <div class="logo"
+                     th:text="${#strings.isEmpty(theme.config.basic.logo) ? site.title : theme.config.basic.logo}">
+                    Blog Title
+                </div>
             </a>
         </div>
         <button
