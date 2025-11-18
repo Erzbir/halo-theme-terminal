@@ -7,77 +7,18 @@ spec:
     - group: basic
       label: 基本设置
       formSchema:
-        - $formkit: text
-          name: index_notice_title
-          label: 首页公告标题
-          value: "Hello Terminal!"
-        - $formkit: textarea
-          name: index_notice_content
-          label: 首页公告内容
-          value: "一款 Terminal 风格的 Halo 主题."
         - $formkit: checkbox
-          name: show_toc
-          label: 显示文章目录
-          value: true
-          help: 开启后将在文章页面显示文章目录
-        - $formkit: checkbox
-          name: pjax
+          name: pjax_enable
           label: 启用 PJAX
           help: 是否启用 PJAX, 默认关闭, 开启后点击站内链接时只更新主要内容区域而不是整个页面 (可能与一些插件存在兼容问题)
           value: false
-    - group: page
-      label: 页面配置
-      formSchema:
-        - $formkit: checkbox
-          name: archives_tags
-          label: 归档页显示文章标签
-          value: false
-
-        - $formkit: checkbox
-          name: show_pin
-          label: 主页置顶文章显示 pin 图标
-          value: true
-
-        - $formkit: select
-          name: pin_pos
-          label: pin 图标显示位置
-          options:
-            - label: "left"
-              value: "pin-left"
-            - label: "above"
-              value: "pin-above"
-
-        - $formkit: text
-          name: archives_title
-          label: 归档页标题自定义
-          value:
-        - $formkit: text
-          name: categories_title
-          label: 分类页(复数) 标题自定义
-          value:
-        - $formkit: text
-          name: category_title
-          label: 分类页标题自定义
-          value:
-        - $formkit:
-          name: tags_title
-          label: 标签页(复数) 标题自定义
-          value:
-        - $formkit:
-          name: tag_title
-          label: 标签页标题自定义
-          value:
-        - $formkit: text
-          name: links_title
-          label: 友链页标题自定义
-          value:
 
     - group: style
-      label: 样式设置
+      label: 全局样式
       formSchema:
         - $formkit: checkbox
           label: 使用系统字体
-          name: system_font
+          name: system_font_enable
           value: false
           help: 开启后将优先使用访问者的系统字体
 
@@ -86,21 +27,6 @@ spec:
           label: 默认像素化风格
           value: false
           help: 开启后将默认使用像素风格字体及图标
-
-        - $formkit: select
-          name: time_style
-          id: time_style
-          label: 时间格式
-          value: "yyyy-MM-dd"
-          options:
-            - label: "yyyy-MM-ddTHH:mm:ssXXX"
-              value: "yyyy-MM-dd''T''HH:mm:ssXXX"
-            - label: "yyyy-MM-dd HH:mm:ss"
-              value: "yyyy-MM-dd'' ''HH:mm:ss"
-            - label: "yyyy-MM-dd"
-              value: "yyyy-MM-dd"
-            - label: "custom"
-              value: "custom"
 
         - $formkit: checkbox
           name: custom_font_enable
@@ -119,6 +45,21 @@ spec:
           label: 字体名称
           help: "填写上传字体文件内部声明的 字体全名 或 PostScript. 如果和上传的字体文件不匹配, 将从网络上下载字体"
           value: ""
+
+        - $formkit: select
+          name: time_style
+          id: time_style
+          label: 时间格式
+          value: "yyyy-MM-dd"
+          options:
+            - label: "yyyy-MM-ddTHH:mm:ssXXX"
+              value: "yyyy-MM-dd''T''HH:mm:ssXXX"
+            - label: "yyyy-MM-dd HH:mm:ss"
+              value: "yyyy-MM-dd'' ''HH:mm:ss"
+            - label: "yyyy-MM-dd"
+              value: "yyyy-MM-dd"
+            - label: "custom"
+              value: "custom"
 
         - $formkit: text
           if: "$get(time_style).value === 'custom'"
@@ -219,15 +160,89 @@ spec:
           height: 150px
           value: ""
           help: 可填写自定义的 CSS, 会覆盖主题的样式
+    - group: index_page
+      label: 首页
+      formSchema:
+        - $formkit: text
+          name: notice_title
+          label: 公告标题
+          value: "Hello Terminal!"
+        - $formkit: textarea
+          name: notice_content
+          label: 公告内容
+          value: "一款 Terminal 风格的 Halo 主题."
+        - $formkit: checkbox
+          name: show_sns
+          label: 展示社交资料
+          value: true
+        - $formkit: checkbox
+          name: show_pin
+          label: 置顶文章显示 pin 图标
+          value: true
+        - $formkit: select
+          name: pin_pos
+          label: pin 图标显示位置
+          options:
+            - label: "left"
+              value: "pin-left"
+            - label: "above"
+              value: "pin-above"
+
+    - group: post_page
+      label: 文章页
+      formSchema:
+        - $formkit: checkbox
+          name: show_toc
+          label: 显示文章目录
+          value: true
+
+    - group: categories_page
+      label: 分类页
+      formSchema:
+        - $formkit: text
+          name: title_s
+          label: 分类页(复数) 标题自定义
+          value:
+        - $formkit: text
+          name: title
+          label: 分类页标题自定义
+          value:
+
+    - group: archives_page
+      label: 归档页
+      formSchema:
+        - $formkit: text
+          name: title
+          label: 归档页标题自定义
+          value:
+        - $formkit: checkbox
+          name: show_tags
+          label: 归档页显示文章标签
+          value: false
+
+    - group: tags_page
+      label: 标签页
+      formSchema:
+        - $formkit: text
+          name: title_s
+          label: 标签页(复数) 标题自定义
+          value:
+        - $formkit: text
+          name: title
+          label: 标签页标题自定义
+          value:
+
+    - group: links_page
+      label: 友链页
+      formSchema:
+        - $formkit: text
+          name: title
+          label: 友链页标题自定义
+          value:
 
     - group: sns
       label: 社交资料
       formSchema:
-        - $formkit: checkbox
-          name: switch
-          label: 全局开关
-          value: true
-          help: 关闭后不会显示社交资料
         - $formkit: checkbox
           name: rss
           label: RSS
@@ -269,7 +284,7 @@ spec:
           value:
 
     - group: icp
-      label: 备案设置
+      label: 备案
       formSchema:
         - $formkit: text
           name: icp_text

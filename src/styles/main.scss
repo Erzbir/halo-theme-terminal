@@ -34,7 +34,7 @@ html[pixel_style='true'] {
   --font-theme-default: 'Fusion Pixel 12px P zh_hans';
 }
 
-html[system_font='true']:not([pixel_style='true']) {
+html[system_font_enable='true']:not([pixel_style='true']) {
   --font-theme-default: system-ui;
 }
 

@@ -5,18 +5,18 @@
 >
 <th:block th:fragment="content">
     <section class="index-content framed"
-             th:if="${not #strings.isEmpty(theme.config.basic.index_notice_title) and not #strings.isEmpty(theme.config.basic.index_notice_content)}">
-        <h1 class="typed-text" th:text="${theme.config.basic.index_notice_title}"></h1>
-        <div th:utext="${theme.config.basic.index_notice_content}"></div>
+             th:if="${not #strings.isEmpty(theme.config.index_page.notice_title) and not #strings.isEmpty(theme.config.index_page.notice_content)}">
+        <h1 class="typed-text" th:text="${theme.config.index_page.notice_title}"></h1>
+        <div th:utext="${theme.config.index_page.notice_content}"></div>
     </section>
-    <section id="sns" th:if="${theme.config.sns.switch}">
+    <section id="sns" th:if="${theme.config.index_page.show_sns}">
         <th:block th:replace="~{modules/sns}"/>
     </section>
     <section class="posts">
         <article class="post on-list" th:each="post : ${posts.items}">
             <header>
                 <h1 class="post-title">
-                    <span class="pin" th:classappend="${theme.config?.page?.pin_pos}"  th:if="${post.spec.pinned} and ${theme.config?.page?.show_pin}">
+                    <span class="pin" th:classappend="${theme.config?.index_page?.pin_pos}"  th:if="${post.spec.pinned} and ${theme.config?.index_page?.show_pin}">
                         <svg class="icon-regular" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                             <path fill="currentColor" d="M5 2h14a1 1 0 0 1 1 1v19.143a.5.5 0 0 1-.766.424L12 18.03l-7.234 4.536A.5.5 0 0 1 4 22.143V3a1 1 0 0 1 1-1m13 2H6v15.432l6-3.761l6 3.761z" />
                         </svg>

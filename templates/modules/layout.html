@@ -9,8 +9,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title th:text="${title}"></title>
     <script no-pjax th:inline="javascript">
-        let system_font = /*[[${theme.config.style.system_font}]]*/;
-        document.documentElement.setAttribute("system_font", system_font);
+        let system_font_enable = /*[[${theme.config.style.system_font_enable}]]*/;
+        document.documentElement.setAttribute("system_font_enable", system_font_enable);
     </script>
     <script no-pjax th:inline="javascript">
         let dark_theme = /*[[${theme.config.style.dark_color_scheme}]]*/;
@@ -61,7 +61,7 @@
     </script>
     <link no-pjax rel="stylesheet" th:href="@{/assets/dist/main.css?v={version}(version=${theme.spec.version})}"/>
     <script no-pjax type="module" th:src="@{/assets/dist/main.js?v={version}(version=${theme.spec.version})}"></script>
-    <script no-pjax type="module" th:if="${theme.config.basic.pjax}"
+    <script no-pjax type="module" th:if="${theme.config.basic.pjax_enable}"
             th:src="@{/assets/dist/libs/pjax.js?v={version}(version=${theme.spec.version})}"></script>
     <script no-pjax th:inline="javascript">
         function applyRawCss(text) {
@@ -74,7 +74,7 @@
         applyRawCss(custom);
     </script>
     <th:block
-            th:if="${theme.config?.style?.custom_font_enable and not theme.config?.style?.system_font}"
+            th:if="${theme.config?.style?.custom_font_enable and not theme.config?.style?.system_font_enable}"
             th:with="font=${#objects.nullSafe(theme.config?.style?.custom_font_file, #theme.assets('/dist/JetBrainsMono-Regular.woff2'))},
               ext=${font.substring(font.lastIndexOf('.') + 1)},
               format=${ext == 'woff2' ? 'woff2' :

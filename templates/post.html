@@ -19,7 +19,7 @@
             <div th:utext="${post.content.content}" id="content">Post Content</div>
         </section>
     </article>
-    <nav id="toc" th:if="${theme.config.basic.show_toc}" class="toc">
+    <nav id="toc" th:if="${theme.config.post_page.show_toc}" class="toc">
         <button id="toc-toggle" class="toc-toggle" aria-label="Hide Table of Contents"></button>
         <div id="toc-content" class="toc-content"></div>
     </nav>
