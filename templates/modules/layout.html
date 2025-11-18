@@ -73,6 +73,41 @@
         const custom = /*[[${theme.config.style.custom}]]*/;
         applyRawCss(custom);
     </script>
+    <th:block
+            th:if="${theme.config?.style?.custom_font_enable and not theme.config?.style?.system_font}"
+            th:with="font=${#objects.nullSafe(theme.config?.style?.custom_font_file, #theme.assets('/dist/JetBrainsMono-Regular.woff2'))},
+              ext=${font.substring(font.lastIndexOf('.') + 1)},
+              format=${ext == 'woff2' ? 'woff2' :
+                (ext == 'woff' ? 'woff' :
+                (ext == 'ttf' ? 'truetype' :
+                (ext == 'otf' ? 'opentype' :
+                (ext == 'eot' ? 'embedded-opentype' :
+                ((ext == 'ttc' or ext == 'otc') ? 'collection' : ext)))))},
+              mime=${ext == 'woff2' ? 'font/woff2' :
+                (ext == 'woff' ? 'font/woff' :
+                (ext == 'ttf' ? 'font/ttf' :
+                (ext == 'otf' ? 'font/otf' :
+                (ext == 'sfnt' ? 'font/sfnt' :
+                (ext == 'eot' ? 'application/vnd.ms-fontobject' :
+                ((ext == 'ttc' or ext == 'otc') ? 'font/collection' : 'application/octet-stream'))))))}">
+        <link rel="preload" th:href="${font}" as="font" th:type="${mime}" crossorigin />
+        <!--/*/
+        <style th:inline="css">
+          @font-face {
+            font-display: swap;
+            font-family: "custom";
+            font-style: normal;
+            font-weight: 400;
+            src:
+              local("[(${theme.config?.style?.custom_font_name})]"),
+              url("[(${font})]") format("[(${format})]");
+          }
+          :root {
+            --font-theme-default: custom;
+          }
+        </style>
+        /*/-->
+    </th:block>
 </head>
 
 <body>

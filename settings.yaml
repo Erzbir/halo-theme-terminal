@@ -102,6 +102,24 @@ spec:
             - label: "custom"
               value: "custom"
 
+        - $formkit: checkbox
+          name: custom_font_enable
+          id: custom_font_enable
+          label: 启用自定义字体文件
+          value: false
+          help: '如果启用 "使用系统字体", 此配置项不生效'
+        - $formkit: attachment
+          if: "$get(custom_font_enable).value === true"
+          name: custom_font_file
+          label: 自定义字体文件
+          value: ""
+        - $formkit: text
+          if: "$get(custom_font_enable).value === true"
+          name: custom_font_name
+          label: 字体名称
+          help: "填写上传字体文件内部声明的 字体全名 或 PostScript. 如果和上传的字体文件不匹配, 将从网络上下载字体"
+          value: ""
+
         - $formkit: text
           if: "$get(time_style).value === 'custom'"
           name: custom_time_style
