@@ -48,7 +48,7 @@ spec:
           if: "$get(custom_font_enable).value === true"
           name: custom_font_name
           label: 字体名称
-          help: "填写上传字体文件内部声明的 字体全名 或 PostScript. 如果和上传的字体文件不匹配, 将从网络上下载字体"
+          help: "填写上传字体文件内部声明的 字体全名 或 PostScript 名. 如果和上传的字体文件不匹配, 将使用系统默认字体"
           value: ""
 
         - $formkit: select
