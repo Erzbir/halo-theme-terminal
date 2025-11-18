@@ -13,7 +13,7 @@
   --color-theme-scrollbar: rgba(134, 134, 134, 0.45) rgba(255, 255, 255, 0);
   --list-theme-marker: "►";
   --size-theme-font: 1rem;
-  --height-theme-line: calc(var(--size-theme-font) * 1.54);
+  --height-theme-line: calc(var(--size-theme-font) * 1.6);
   --radius-theme-border: 0;
   --family-theme-font: 'JetBrains Mono';
   --family-theme-fallback-font: -apple-system, BlinkMacSystemFont, 'segoe ui', Roboto, Oxygen,
@@ -359,18 +359,17 @@ code,
 kbd {
   font-family: inherit !important;
   font-feature-settings: normal;
-  background: color-mix(in srgb, var(--color-theme-foreground) 15%, transparent);
-  border: calc(var(--width-theme-border) / 2) var(--style-theme-border) var(--code-border);
+  background: color-mix(in srgb, var(--color-theme-foreground) 10%, transparent);
   padding: calc(var(--size-theme-font) * 0.0625) calc(var(--size-theme-font) * 0.375);
   margin: 0 calc(var(--size-theme-font) * 0.125);
   font-size: calc(var(--size-theme-font) * 0.95);
 }
 
 kbd {
-  border-top: calc(var(--width-theme-border) / 2) var(--style-theme-border) color-mix(in srgb, var(--color-theme-accent) 25%, transparent);
-  border-left: calc(var(--width-theme-border) / 2) var(--style-theme-border) var(--color-theme-accent);
-  border-right: calc(var(--width-theme-border) / 2) var(--style-theme-border) var(--color-theme-accent);
-  border-bottom: calc(var(--width-theme-border) * 2) var(--style-theme-border) var(--color-theme-accent);
+  border-top: calc(var(--width-theme-border) / 2) solid color-mix(in srgb, var(--color-theme-accent) 25%, transparent);
+  border-left: calc(var(--width-theme-border) / 2) solid var(--color-theme-accent);
+  border-right: calc(var(--width-theme-border) / 2) solid var(--color-theme-accent);
+  border-bottom: calc(var(--width-theme-border) * 2) solid var(--color-theme-accent);
   border-radius: calc(var(--size-theme-font) * 0.25);
 }
 
