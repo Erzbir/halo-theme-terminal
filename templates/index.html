@@ -32,7 +32,7 @@
                                       theme.config.style.custom_time_style : theme.config.style.time_style}__')}">Publish Time</time>
                     <span class="post-author"
                           th:with="contributor = ${post.contributors[0]}"
-                          th:text="${contributor.displayName}">Author</span><th:block th:replace="~{modules/tag-list(post = ${post})}"/>
+                          th:text="${contributor.displayName}">Author</span><th:block th:replace="~{modules/tag-list(post = ${post}, show = ${theme.config.index_page.show_tags})}"/>
                 </div>
             </header>
             <div class="post-excerpt">

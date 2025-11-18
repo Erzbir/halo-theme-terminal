@@ -187,6 +187,10 @@ spec:
               value: "pin-left"
             - label: "above"
               value: "pin-above"
+        - $formkit: checkbox
+          name: show_tags
+          label: 显示文章标签
+          value: true
 
     - group: post_page
       label: 文章页
@@ -194,6 +198,10 @@ spec:
         - $formkit: checkbox
           name: show_toc
           label: 显示文章目录
+          value: true
+        - $formkit: checkbox
+          name: show_tags
+          label: 显示文章标签
           value: true
 
     - group: categories_page
@@ -217,7 +225,7 @@ spec:
           value:
         - $formkit: checkbox
           name: show_tags
-          label: 归档页显示文章标签
+          label: 显示文章标签
           value: false
 
     - group: tags_page
