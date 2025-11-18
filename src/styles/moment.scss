@@ -1,14 +1,14 @@
 .moment-media {
   display: grid;
-  gap: calc(var(--font-theme-size) * 0.5);
-  margin: var(--font-theme-size) 0;
+  gap: calc(var(--size-theme-font) * 0.5);
+  margin: var(--size-theme-font) 0;
   width: 80%;
 }
 
 .moment-media video {
   width: 100%;
-  height: calc(var(--font-theme-size) * 12.5);
+  height: calc(var(--size-theme-font) * 12.5);
   object-fit: cover;
-  border-radius: var(--font-theme-size);
+  border-radius: var(--size-theme-font);
   transition: transform 0.3s ease;
 }

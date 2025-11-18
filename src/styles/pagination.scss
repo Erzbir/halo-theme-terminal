@@ -1,22 +1,22 @@
 @use "variables" as *;
 
 .pagination {
-  margin-top: calc(var(--font-theme-size) * 0.625);
+  margin-top: calc(var(--size-theme-font) * 0.625);
 
   .pagination__title {
     display: flex;
     text-align: center;
     position: relative;
-    margin: calc(var(--font-theme-size) * 0.625) 0 calc(var(--font-theme-size) * 0.625);
+    margin: calc(var(--size-theme-font) * 0.625) 0 calc(var(--size-theme-font) * 0.625);
   }
 
   .pagination__title-h {
     text-align: center;
     margin: 0 auto;
-    padding: calc(var(--font-theme-size) * 0.3125) calc(var(--font-theme-size) * 0.625);
+    padding: calc(var(--size-theme-font) * 0.3125) calc(var(--size-theme-font) * 0.625);
     background: var(--color-theme-background);
     color: color-mix(in srgb, var(--color-theme-foreground) 65%, transparent);
-    font-size: calc(var(--font-theme-size) * 0.8);
+    font-size: calc(var(--size-theme-font) * 0.8);
     text-decoration: none;
     letter-spacing: 0.1em;
     z-index: 1;
@@ -28,7 +28,7 @@
     left: 0;
     right: 0;
     width: 100%;
-    margin-top:  calc(var(--font-theme-size) * 0.9375);
+    margin-top:  calc(var(--size-theme-font) * 0.9375);
     z-index: 0;
   }
 
@@ -36,7 +36,7 @@
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
-    gap:  calc(var(--font-theme-size) * 1.25);
+    gap:  calc(var(--size-theme-font) * 1.25);
 
     @media (min-width: $phone-min-width) {
       flex-direction: row;
@@ -44,7 +44,7 @@
 
     @media (max-width: $phone-max-width) {
       flex-direction: column;
-      gap:  calc(var(--font-theme-size) * 0.9375);
+      gap:  calc(var(--size-theme-font) * 0.9375);
     }
 
     span {
@@ -97,11 +97,11 @@
   }
 
   .next .button__icon {
-    margin-left:  calc(var(--font-theme-size) * 0.5);
+    margin-left:  calc(var(--size-theme-font) * 0.5);
   }
 
   .prev .button__icon {
-    margin-right:  calc(var(--font-theme-size) * 0.5);
+    margin-right:  calc(var(--size-theme-font) * 0.5);
   }
 
   .pagination__buttons:has(span:only-child) {

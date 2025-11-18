@@ -1,7 +1,7 @@
 @use "variables" as *;
 
 .footer {
-  padding: calc(var(--font-theme-size) * 1.25) 0;
+  padding: calc(var(--size-theme-font) * 1.25) 0;
   flex-grow: 0;
   opacity: 0.65;
   position: relative;
@@ -13,10 +13,10 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
-  padding: calc(var(--font-theme-size) * 1.25);
-  max-width: calc(var(--font-theme-size) * 75);
+  padding: calc(var(--size-theme-font) * 1.25);
+  max-width: calc(var(--size-theme-font) * 75);
   margin: 0 auto;
-  gap: calc(var(--font-theme-size) * 0.75);
+  gap: calc(var(--size-theme-font) * 0.75);
 
   a {
     color: inherit;
@@ -28,7 +28,7 @@
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  font-size: calc(var(--font-theme-size) * 0.9);
+  font-size: calc(var(--size-theme-font) * 0.9);
   line-height: 1.5;
 }
 
@@ -42,9 +42,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: calc(var(--font-theme-size) * 0.625);
+  gap: calc(var(--size-theme-font) * 0.625);
   flex-wrap: wrap;
-  font-size: calc(var(--font-theme-size) * 0.9);
+  font-size: calc(var(--size-theme-font) * 0.9);
   line-height: 1.5;
 }
 
@@ -58,42 +58,42 @@
   margin: 0;
   display: flex;
   align-items: center;
-  gap: calc(var(--font-theme-size) * 0.625);
+  gap: calc(var(--size-theme-font) * 0.625);
   flex-wrap: wrap;
   justify-content: center;
 }
 
 @media (max-width: 768px) {
   .footer-inner {
-    padding: calc(var(--font-theme-size) * 0.9375) calc(var(--font-theme-size) * 0.625);
-    gap: calc(var(--font-theme-size) * 0.625);
+    padding: calc(var(--size-theme-font) * 0.9375) calc(var(--size-theme-font) * 0.625);
+    gap: calc(var(--size-theme-font) * 0.625);
   }
 
   .footer-copyright-engine {
-    font-size: calc(var(--font-theme-size) * 0.8125);
+    font-size: calc(var(--size-theme-font) * 0.8125);
     line-height: 1.6;
   }
 
   .footer-copyright-site {
     flex-direction: column;
-    gap: calc(var(--font-theme-size) * 0.5);
-    font-size: calc(var(--font-theme-size) * 0.8125);
+    gap: calc(var(--size-theme-font) * 0.5);
+    font-size: calc(var(--size-theme-font) * 0.8125);
   }
 
   .footer-icp p {
     flex-direction: column;
-    gap: calc(var(--font-theme-size) * 0.3125);
+    gap: calc(var(--size-theme-font) * 0.3125);
   }
 }
 
 @media (max-width: 480px) {
   .footer-inner {
-    padding: calc(var(--font-theme-size) * 0.75) calc(var(--font-theme-size) * 0.5);
+    padding: calc(var(--size-theme-font) * 0.75) calc(var(--size-theme-font) * 0.5);
   }
 
   .footer-copyright-engine,
   .footer-copyright-site {
-    font-size: calc(var(--font-theme-size) * 0.75);
+    font-size: calc(var(--size-theme-font) * 0.75);
   }
 
   .footer-copyright-engine span,

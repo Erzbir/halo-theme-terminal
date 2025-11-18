@@ -1,12 +1,12 @@
 @use "variables" as *;
 
 .index-content {
-  margin: calc(var(--font-theme-size) * 1.5625) 0;
+  margin: calc(var(--size-theme-font) * 1.5625) 0;
 }
 
 .framed {
-  border: calc(var(--font-theme-size) * 0.0625) solid var(--color-theme-framed);
-  padding: calc(var(--font-theme-size) * 1.25);
+  border: calc(var(--size-theme-font) * 0.0625) var(--style-theme-border) var(--color-theme-framed);
+  padding: calc(var(--size-theme-font) * 1.25);
 }
 
 .framed *:first-child {
@@ -24,16 +24,16 @@
 .post {
   width: 100%;
   text-align: left;
-  padding: calc(var(--font-theme-size) * 1.875) 0;
+  padding: calc(var(--size-theme-font) * 1.875) 0;
 }
 
 .post:not(:last-of-type) {
-  border-bottom: calc(var(--font-theme-size) * 0.0625) solid color-mix(in srgb, var(--color-theme-foreground) 10%, transparent);
+  border-bottom: calc(var(--size-theme-font) * 0.0625) var(--style-theme-border) color-mix(in srgb, var(--color-theme-foreground) 10%, transparent);
 }
 
 .post-meta {
-  font-size: calc(var(--font-theme-size) * 0.96);
-  margin-bottom: calc(var(--font-theme-size) * 0.3125);
+  font-size: calc(var(--size-theme-font) * 0.96);
+  margin-bottom: calc(var(--size-theme-font) * 0.3125);
   color: color-mix(in srgb, var(--color-theme-meta) 65%, transparent);
 }
 
@@ -47,8 +47,8 @@
   position: relative;
   color: var(--color-theme-title);
   margin-top: 0 !important;
-  margin-bottom: calc(var(--font-theme-size) * 0.9375) !important;
-  padding-bottom: calc(var(--font-theme-size) * 0.9375) !important;
+  margin-bottom: calc(var(--size-theme-font) * 0.9375) !important;
+  padding-bottom: calc(var(--size-theme-font) * 0.9375) !important;
   text-decoration: none !important;
   font-weight: 400;
 }
@@ -68,10 +68,10 @@
 .post-title::after {
   content: "";
   position: absolute;
-  bottom: calc(var(--font-theme-size) * 0.01);
+  bottom: calc(var(--size-theme-font) * 0.01);
   display: block;
   width: 100%;
-  border-bottom: calc(var(--font-theme-size) * 0.125) dashed var(--color-theme-accent);
+  border-bottom: calc(var(--size-theme-font) * 0.125) var(--style-theme-title-divider) var(--color-theme-accent);
 }
 
 .post-title a {
@@ -92,7 +92,7 @@
 }
 
 .post-tags {
-  margin-bottom: calc(var(--font-theme-size) * 0.3125);
+  margin-bottom: calc(var(--size-theme-font) * 0.3125);
   font-size: inherit;
   color: var(--color-theme-tag);
 }
@@ -114,25 +114,25 @@
 }
 
 .post-meta .post-tags {
-  font-size: calc(var(--font-theme-size) * 0.95);
+  font-size: calc(var(--size-theme-font) * 0.95);
 }
 
 .table-of-contents {
-  margin: calc(var(--font-theme-size) * 0.5) 0;
+  margin: calc(var(--size-theme-font) * 0.5) 0;
 }
 
 .post-excerpt {
-  font-size: calc(var(--font-theme-size) * 0.98);
-  margin-top: calc(var(--font-theme-size) * 1.25);
-  margin-bottom: calc(var(--font-theme-size) * 1.25);
+  font-size: calc(var(--size-theme-font) * 0.98);
+  margin-top: calc(var(--size-theme-font) * 1.25);
+  margin-bottom: calc(var(--size-theme-font) * 1.25);
 }
 
 .post-content {
-  margin-top: calc(var(--font-theme-size) * 1.5625);
+  margin-top: calc(var(--size-theme-font) * 1.5625);
 }
 
 .post-cover {
-  margin: calc(var(--font-theme-size) * 1.5625) 0;
+  margin: calc(var(--size-theme-font) * 1.5625) 0;
 }
 
 .post ul {
@@ -142,7 +142,7 @@
 .post ul li:not(:empty)::before {
   content: var(--list-theme-marker);
   position: absolute;
-  left: calc(var(--font-theme-size) * -1.25);
+  left: calc(var(--size-theme-font) * -1.25);
   color: var(--color-theme-foreground);
 }
 
@@ -152,19 +152,19 @@
 
 .post--regulation h2 {
   justify-content: center;
-  margin-bottom: calc(var(--font-theme-size) * -0.625);
+  margin-bottom: calc(var(--size-theme-font) * -0.625);
 }
 
 .post--regulation h2 + h2 {
-  margin-top: calc(var(--font-theme-size) * -0.625);
-  margin-bottom: calc(var(--font-theme-size) * 1.25);
+  margin-top: calc(var(--size-theme-font) * -0.625);
+  margin-bottom: calc(var(--size-theme-font) * 1.25);
 }
 
 .hanchor {
   position: absolute;
   color: var(--color-theme-accent);
   text-decoration: none;
-  margin-left: calc(var(--font-theme-size) * 0.625);
+  margin-left: calc(var(--size-theme-font) * 0.625);
   visibility: hidden;
 }
 
@@ -187,7 +187,7 @@ h6:hover .hanchor {
 
 .post-list {
 
-  padding: calc(var(--font-theme-size) * 0.25) 0;
+  padding: calc(var(--size-theme-font) * 0.25) 0;
 
   a {
     text-decoration: none;
@@ -196,7 +196,7 @@ h6:hover .hanchor {
 
 @media (max-width: $phone-max-width) {
   .post-cover {
-    padding: calc(var(--font-theme-size) * 0.625);
-    border-width: calc(var(--font-theme-size) * 0.625);
+    padding: calc(var(--size-theme-font) * 0.625);
+    border-width: calc(var(--size-theme-font) * 0.625);
   }
 }

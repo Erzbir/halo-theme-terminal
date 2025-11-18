@@ -11,7 +11,7 @@ a.button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: calc(var(--font-theme-size) * 0.5) calc(var(--font-theme-size) * 1.125);
+  padding: calc(var(--size-theme-font) * 0.5) calc(var(--size-theme-font) * 1.125);
   text-decoration: none;
   text-align: center;
   font: inherit;
@@ -26,7 +26,7 @@ button.outline,
 a.button.outline {
   background: transparent;
   box-shadow: none;
-  padding: calc(var(--font-theme-size) * 0.5) calc(var(--font-theme-size) * 1.125);
+  padding: calc(var(--size-theme-font) * 0.5) calc(var(--size-theme-font) * 1.125);
 }
 
 button.outline :hover,
@@ -40,20 +40,20 @@ button.link,
 .button.link,
 a.button.link {
   background: none;
-  font-size: var(--font-theme-size);
+  font-size: var(--size-theme-font);
 }
 
 button.small,
 .button.small,
 a.button.small {
-  font-size: calc(var(--font-theme-size) * 0.8);
+  font-size: calc(var(--size-theme-font) * 0.8);
 }
 
 button.wide,
 .button.wide,
 a.button.wide {
-  min-width: calc(var(--font-theme-size) * 12.5);
-  padding: calc(var(--font-theme-size) * 0.875) calc(var(--font-theme-size) * 1.5);
+  min-width: calc(var(--size-theme-font) * 12.5);
+  padding: calc(var(--size-theme-font) * 0.875) calc(var(--size-theme-font) * 1.5);
 }
 
 a.button.inline {

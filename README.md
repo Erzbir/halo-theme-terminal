@@ -101,17 +101,20 @@ html[theme-color-scheme='day'] {
     --color-theme-framed: ;
     --color-theme-menu: ;
     --color-theme-header: ;
+    --color-theme-scrollbar: rgba(134, 134, 134, 0.45) rgba(255, 255, 255, 0);
     --list-theme-marker: "►";
-    --font-theme-size: 1rem;
-    --line-theme-height: calc(var(--font-theme-size) * 1.54);
-    --radius-theme-default: 0;
-    --font-theme-default: 'JetBrains Mono';
-    --font-theme-fallback: -apple-system, BlinkMacSystemFont, 'segoe ui', Roboto, Oxygen,
+    --size-theme-font: 1rem;
+    --height-theme-line: calc(var(--size-theme-font) * 1.54);
+    --radius-theme-border: 0;
+    --family-theme-font: 'JetBrains Mono';
+    --family-theme-fallback-font: -apple-system, BlinkMacSystemFont, 'segoe ui', Roboto, Oxygen,
     Ubuntu, Cantarell, 'open sans', 'helvetica neue', Arial, 'Noto Sans',
     'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
-    --scrollbar-theme-width: thin;
-    --scrollbar-theme-color: rgba(134, 134, 134, 0.45) rgba(255, 255, 255, 0);
-    --font-theme-lig: none;
+    --width-theme-scrollbar: thin;
+    --lig-theme-font: none;
+    --width-theme-border: calc(var(--size-theme-font) * 0.125);
+    --style-theme-border: solid;
+    --style-theme-title-divider: dashed;
 }
 ```
 
@@ -119,7 +122,7 @@ html[theme-color-scheme='day'] {
 
 ```css
 html[theme-color-scheme='matrix'] {
-    --font-theme-default: '-apple-system'
+    --family-theme-font: '-apple-system'
 }
 ```
 

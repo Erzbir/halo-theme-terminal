@@ -1,7 +1,7 @@
 comment-widget {
-  --halo-cw-base-font-family: var(--font-theme-default) !important;
-  --halo-cw-base-rounded: var(--radius-theme-default) !important;
-  --halo-cw-base-font-size: var(--font-theme-size) !important;
+  --halo-cw-base-font-family: var(--family-theme-font) !important;
+  --halo-cw-base-rounded: var(--radius-theme-border) !important;
+  --halo-cw-base-font-size: var(--size-theme-font) !important;
 
   --halo-cw-primary-1-color: var(--color-theme-accent) !important;
   --halo-cw-primary-2-color: var(--color-theme-accent) !important;
@@ -25,10 +25,10 @@ comment-widget {
   // --halo-cw-avatar-rounded:
   // --halo-cw-avatar-size
 
-  --halo-comment-widget-base-font-family: var(--font-theme-default) !important;
-  --halo-comment-widget-base-border-radius: var(--radius-theme-default) !important;
-  --halo-comment-widget-base-font-size: var(--font-theme-size) !important;
-  --halo-comment-widget-base-line-height: var(--line-theme-height) !important;
+  --halo-comment-widget-base-font-family: var(--family-theme-font) !important;
+  --halo-comment-widget-base-border-radius: var(--radius-theme-border) !important;
+  --halo-comment-widget-base-font-size: var(--size-theme-font) !important;
+  --halo-comment-widget-base-line-height: var(--height-theme-line) !important;
   --halo-comment-widget-base-color: var(--color-theme-foreground) !important;
   --halo-comment-widget-base-info-color: var(--color-theme-foreground) !important;
   --halo-comment-widget-component-form-input-bg-color: var(--color-theme-background) !important;
@@ -58,5 +58,5 @@ comment-widget {
 }
 
 .comment {
-  margin-top: calc(var(--font-theme-size) * 2.5);
+  margin-top: calc(var(--size-theme-font) * 2.5);
 }

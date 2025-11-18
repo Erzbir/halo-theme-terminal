@@ -2,9 +2,9 @@
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  gap: var(--font-theme-size);
+  gap: var(--size-theme-font);
   flex-wrap: wrap;
-  padding: calc(var(--font-theme-size) * 0.75) 0;
+  padding: calc(var(--size-theme-font) * 0.75) 0;
   font-size: inherit;
 }
 
@@ -18,8 +18,8 @@
 
 
 .sns-container .sns-icon svg {
-  width: calc(var(--font-theme-size) * 1.2);
-  height: calc(var(--font-theme-size) * 1.2);
+  width: calc(var(--size-theme-font) * 1.2);
+  height: calc(var(--size-theme-font) * 1.2);
 }
 
 .sns-container .divider {

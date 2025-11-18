@@ -1,15 +1,15 @@
 .toc {
-  margin-left: calc(var(--font-theme-size) * 0.75);
+  margin-left: calc(var(--size-theme-font) * 0.75);
   position: fixed;
   display: block;
   z-index: 1000;
   top: 20vh;
-  padding: calc(var(--font-theme-size) * 2.5) calc(var(--font-theme-size) * 0.75) calc(var(--font-theme-size) * 0.75);
+  padding: calc(var(--size-theme-font) * 2.5) calc(var(--size-theme-font) * 0.75) calc(var(--size-theme-font) * 0.75);
 
   .toc-content {
     overflow: hidden;
     display: none;
-    max-height: calc(100vh - 20vh - var(--font-theme-size) * 5);
+    max-height: calc(100vh - 20vh - var(--size-theme-font) * 5);
   }
 
   &.toc-visible .toc-content {
@@ -17,7 +17,7 @@
   }
 
   .toc-content::-webkit-scrollbar {
-    width: calc(var(--font-theme-size) * 0.375);
+    width: calc(var(--size-theme-font) * 0.375);
   }
 
   .toc-content::-webkit-scrollbar-track {
@@ -39,21 +39,21 @@
   }
 
   .toc-list-item {
-    margin: calc(var(--font-theme-size) * 0.25) 0;
+    margin: calc(var(--size-theme-font) * 0.25) 0;
 
     .toc-list {
-      margin-left: var(--font-theme-size);
-      border-left:  calc(var(--font-theme-size) * 0.0625) solid var(--color-theme-foreground);
-      padding-left: calc(var(--font-theme-size) * 0.5);
+      margin-left: var(--size-theme-font);
+      border-left:  calc(var(--size-theme-font) * 0.0625) solid var(--color-theme-foreground);
+      padding-left: calc(var(--size-theme-font) * 0.5);
     }
   }
 
   .toc-link {
     display: block;
-    padding: calc(var(--font-theme-size) * 0.25) calc(var(--font-theme-size) * 0.5);
+    padding: calc(var(--size-theme-font) * 0.25) calc(var(--size-theme-font) * 0.5);
     text-decoration: none;
     color: var(--color-theme-foreground);
-    font-size: calc(var(--font-theme-size) * 0.875);
+    font-size: calc(var(--size-theme-font) * 0.875);
 
     &:hover {
       background: transparent;
@@ -72,8 +72,8 @@
 
 @media (min-width: 1401px) {
   .toc:not(.toc-visible) {
-    width: calc(var(--font-theme-size) * 2);
-    height: calc(var(--font-theme-size) * 2);
+    width: calc(var(--size-theme-font) * 2);
+    height: calc(var(--size-theme-font) * 2);
     padding: 0;
     background: transparent;
     border: none;
@@ -86,10 +86,10 @@
 
 .toc-toggle {
   position: absolute;
-  top: calc(var(--font-theme-size) * -0.0625);
-  left: calc(var(--font-theme-size) * -0.0625);
-  width: calc(var(--font-theme-size) * 2);
-  height: calc(var(--font-theme-size) * 2);
+  top: calc(var(--size-theme-font) * -0.0625);
+  left: calc(var(--size-theme-font) * -0.0625);
+  width: calc(var(--size-theme-font) * 2);
+  height: calc(var(--size-theme-font) * 2);
   padding: 0;
   display: flex;
   align-items: center;
@@ -99,7 +99,7 @@
   border: none;
   color: var(--color-theme-foreground);
   cursor: pointer;
-  font-size: var(--font-theme-size);
+  font-size: var(--size-theme-font);
   z-index: 1002;
 
   &:hover {
@@ -110,36 +110,36 @@
 
 @media (max-width: 1400px) {
   .toc {
-    width: calc(var(--font-theme-size) * 2);
-    height: calc(var(--font-theme-size) * 2);
+    width: calc(var(--size-theme-font) * 2);
+    height: calc(var(--size-theme-font) * 2);
     padding: 0;
     border: none;
     overflow: visible;
-    left: calc(100vw - var(--font-theme-size) * 3.25);
+    left: calc(100vw - var(--size-theme-font) * 3.25);
 
     .toc-content {
       display: none;
     }
 
     &.toc-visible {
-      width: calc(var(--font-theme-size) * 17.5);
-      max-width: calc(100vw - var(--font-theme-size) * 1.25);
+      width: calc(var(--size-theme-font) * 17.5);
+      max-width: calc(100vw - var(--size-theme-font) * 1.25);
       height: auto;
-      max-height: calc(100vh - var(--font-theme-size) * 5);
-      padding: calc(var(--font-theme-size) * 2.5) calc(var(--font-theme-size) * 0.75) calc(var(--font-theme-size) * 0.75);
+      max-height: calc(100vh - var(--size-theme-font) * 5);
+      padding: calc(var(--size-theme-font) * 2.5) calc(var(--size-theme-font) * 0.75) calc(var(--size-theme-font) * 0.75);
       background: var(--color-theme-background);
-      border:  calc(var(--font-theme-size) * 0.0625) solid var(--color-theme-foreground);
+      border:  calc(var(--size-theme-font) * 0.0625) solid var(--color-theme-foreground);
       z-index: 1001;
 
       &.toc-overflow-right {
         left: auto !important;
-        right: calc(var(--font-theme-size) * 0.625);
+        right: calc(var(--size-theme-font) * 0.625);
       }
 
       .toc-content {
         display: block;
         overflow-y: auto;
-        max-height: calc(100vh - var(--font-theme-size) * 8.5);
+        max-height: calc(100vh - var(--size-theme-font) * 8.5);
       }
 
       .toc-list {
@@ -148,23 +148,23 @@
     }
 
     .toc-link {
-      font-size: calc(var(--font-theme-size) * 0.85);
-      padding: calc(var(--font-theme-size) * 0.3125) calc(var(--font-theme-size) * 0.5);
+      font-size: calc(var(--size-theme-font) * 0.85);
+      padding: calc(var(--size-theme-font) * 0.3125) calc(var(--size-theme-font) * 0.5);
     }
 
     .toc-list-item {
-      margin: calc(var(--font-theme-size) * 0.1875) 0;
+      margin: calc(var(--size-theme-font) * 0.1875) 0;
     }
   }
 }
 
 @media (max-width: 480px) {
   .toc.toc-visible {
-    max-width: max(calc(100vw - (var(--font-theme-size) * 12.5)), 50vw);
+    max-width: max(calc(100vw - (var(--size-theme-font) * 12.5)), 50vw);
     max-height: 60vh;
 
     .toc-content {
-      max-height: calc(60vh - var(--font-theme-size) * 3.75);
+      max-height: calc(60vh - var(--size-theme-font) * 3.75);
       overflow-y: auto;
     }
 
@@ -172,12 +172,12 @@
     }
 
     .toc-list-item {
-      margin: calc(var(--font-theme-size) * 0.125) 0;
+      margin: calc(var(--size-theme-font) * 0.125) 0;
     }
 
     .toc-link {
-      font-size: calc(var(--font-theme-size) * 0.70);
-      padding: calc(var(--font-theme-size) * 0.1) calc(var(--font-theme-size) * 0.1);
+      font-size: calc(var(--size-theme-font) * 0.70);
+      padding: calc(var(--size-theme-font) * 0.1) calc(var(--size-theme-font) * 0.1);
     }
   }
 }
