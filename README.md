@@ -40,9 +40,9 @@ html[theme-color-scheme='default'] {
     --color-theme-meta: #4eee85;
     /* 有边框的元素颜色, 如卡片边框 */
     --color-theme-framed: #4eee85;
-    /* 多级菜单颜色 */
-    --color-theme-menu: #4eee85;
     /* 菜单文字颜色 */
+    --color-theme-menu: #4eee85;
+    /* 页头文字以及边框等颜色 */
     --color-theme-header: #4eee85;
 }
 ```
