@@ -118,7 +118,7 @@
     <div class="wrapper">
         <aside class="sidebar-left">
         </aside>
-        <main class="container" role="main">
+        <main class="container" role="main" th:attr="style=${#strings.isEmpty(theme.config.style.max_width) ? '' : 'max-width:' + theme.config.style.max_width}">
             <header class="header">
                 <th:block th:replace="~{modules/header :: header(isHome = true)}"/>
             </header>

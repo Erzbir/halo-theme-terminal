@@ -21,6 +21,12 @@ spec:
     - group: style
       label: 全局样式
       formSchema:
+        - $formkit: text
+          label: 正文区域最大宽度
+          name: max_width
+          value:
+          help: 填写的值为 max-width 属性的值
+
         - $formkit: checkbox
           label: 使用系统字体
           name: system_font_enable
