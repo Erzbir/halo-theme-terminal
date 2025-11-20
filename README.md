@@ -9,16 +9,14 @@
 ## 功能
 
 1. PJAX
-2. 自定义 CSS
-3. 自定义主题配色
-4. 指定深色/浅色模式配色, 且可跟随系统切换
-5. 子菜单
-6. 像素化开关
-7. 文章目录开关
-8. 可优先使用访问者系统字体
-9. 社交资料支持
-10. 自定义默认页面标题
-11. 时间格式自定义
+2. 样式自定义
+3. 配色切换
+4. 深色/浅色模式 
+5. 页面自定义 
+6. 文章目录 
+7. 社交资料 
+8. 子菜单 
+9. 像素化
 
 ## 关于 PJAX
 
@@ -54,14 +52,23 @@
 
 ```css
 html[theme-color-scheme='default'] {
+    /* 页面背景色 */
     --color-theme-background: #000000;
+    /* 页面主要文本颜色 */
     --color-theme-foreground: #4eee85;
+    /* 主要强调色，例如按钮、链接等 */
     --color-theme-accent: #4eee85;
+    /* 标签文本颜色 */
     --color-theme-tag: #4eee85;
+    /* 文章标题颜色 */
     --color-theme-title: #4eee85;
+    /* 元信息(如时间, 作者等) 颜色 */
     --color-theme-meta: #4eee85;
+    /* 有边框的元素颜色, 如卡片边框 */
     --color-theme-framed: #4eee85;
+    /* 多级菜单颜色 */
     --color-theme-menu: #4eee85;
+    /* 菜单文字颜色 */
     --color-theme-header: #4eee85;
 }
 ```
@@ -102,27 +109,40 @@ html[theme-color-scheme='day'] {
     --color-theme-menu: ;
     --color-theme-header: ;
     --color-theme-scrollbar: rgba(134, 134, 134, 0.45) rgba(255, 255, 255, 0);
+    /* 无序列表前缀修饰符号 */
     --list-theme-marker: "►";
+    /* 基本字体大小. 所有元素大小都根据此大小变化 */
     --size-theme-font: 1rem;
-    --height-theme-line: calc(var(--size-theme-font) * 1.54);
+    --height-theme-line: calc(var(--size-theme-font) * 1.6);
+    --width-theme-scrollbar: thin;
+    --width-theme-border: calc(var(--size-theme-font) * 0.125);
+    /* 边框样式 */
+    --style-theme-border: solid;
+    /* 文章标题分界线样式, 与边框样式填写逻辑一样 */
+    --style-theme-title-divider: dashed;
     --radius-theme-border: 0;
     --family-theme-font: 'JetBrains Mono';
+    /* 在字体不可用时尝试使用系统的默认字体 */
     --family-theme-fallback-font: -apple-system, BlinkMacSystemFont, 'segoe ui', Roboto, Oxygen,
     Ubuntu, Cantarell, 'open sans', 'helvetica neue', Arial, 'Noto Sans',
     'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
-    --width-theme-scrollbar: thin;
+    /* 字体连字 */
     --lig-theme-font: none;
-    --width-theme-border: calc(var(--size-theme-font) * 0.125);
-    --style-theme-border: solid;
-    --style-theme-title-divider: dashed;
 }
 ```
 
-比如这里要让某个配色下面的字体使用 MacOS 默认的字体
+比如这里要让某个配色下面的字体使用 MacOS 默认的字体:
 
 ```css
 html[theme-color-scheme='matrix'] {
-    --family-theme-font: '-apple-system'
+    --family-theme-font: '-apple-system';
+}
+```
+
+自定义行高:
+```css
+html {
+    --height-theme-line: 25px;
 }
 ```
 
