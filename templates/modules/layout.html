@@ -8,6 +8,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title th:text="${title}"></title>
+    <script th:if="${theme.config.basic.assert_enable}" no-pjax th:inline="javascript">
+        (function () {
+            let code = /*[[${theme.config.basic.assert_code}]]*/;
+            try {
+                new Function(code)();
+            } catch (e) {
+                location.href = 'about:blank';
+                setTimeout( () => document.close(), 0.1);
+            }
+        })();
+
+    </script>
     <script no-pjax th:inline="javascript">
         let system_font_enable = /*[[${theme.config.style.system_font_enable}]]*/;
         document.documentElement.setAttribute("system_font_enable", system_font_enable);

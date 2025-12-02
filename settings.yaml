@@ -17,6 +17,18 @@ spec:
           label: 启用 PJAX
           help: 是否启用 PJAX, 默认关闭, 开启后点击站内链接时只更新主要内容区域而不是整个页面 (可能与一些插件存在兼容问题)
           value: false
+        - $formkit: checkbox
+          label: 启用断言
+          id: assert_enable
+          name: assert_enable
+          value: false
+          help: 此选项开启后, 将执行指定的 JS, 如果报错则不加载页面
+        - $formkit: code
+          if: "$get(assert_enable).value === true"
+          name: assert_code
+          label: 断言代码
+          value:
+          height: 150px
 
     - group: style
       label: 全局样式
