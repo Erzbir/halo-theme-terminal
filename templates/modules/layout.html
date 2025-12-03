@@ -125,6 +125,7 @@
             const pixel_style = document.documentElement.getAttribute('pixel_style');
 
             const link = document.createElement('link');
+            link.setAttribute('no-pjax', '');
             link.rel = 'stylesheet';
 
             if (pixel_style === 'true') {
