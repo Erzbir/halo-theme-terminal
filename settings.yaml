@@ -15,7 +15,7 @@ spec:
         - $formkit: checkbox
           name: pjax_enable
           label: 启用 PJAX
-          help: 是否启用 PJAX, 默认关闭, 开启后点击站内链接时只更新主要内容区域而不是整个页面 (可能与一些插件存在兼容问题)
+          help: 默认关闭, 开启后点击站内链接时只更新主要内容区域而不是整个页面 (可能与一些插件存在兼容问题)
           value: false
         - $formkit: checkbox
           label: 启用断言
@@ -66,7 +66,7 @@ spec:
           if: "$get(custom_font_enable).value === true"
           name: custom_font_name
           label: 字体名称
-          help: "填写上传字体文件内部声明的 字体全名 或 PostScript 名. 如果和上传的字体文件不匹配, 将使用系统默认字体"
+          help: "填写上传字体文件内部声明的 字体全名 或 PostScript 名. 如果字体名称不正确, 则无法从访问者本地加载字体"
           value: ""
 
         - $formkit: select
