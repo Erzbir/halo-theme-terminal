@@ -120,6 +120,27 @@
         </style>
         /*/-->
     </th:block>
+    <script no-pjax th:inline="javascript">
+        function appendPixelFont() {
+            const pixel_style = document.documentElement.getAttribute('pixel_style');
+
+            const link = document.createElement('link');
+            link.rel = 'stylesheet';
+
+            if (pixel_style === 'true') {
+                link.href = /*[[@{/assets/dist/pixel.css?v={version}(version=${theme.spec.version})}]]*/;
+            }
+            document.head.appendChild(link);
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            appendPixelFont();
+
+            document.getElementById('pixel-toggle').addEventListener('click', () => {
+                appendPixelFont();
+            })
+        });
+    </script>
 </head>
 
 <body>

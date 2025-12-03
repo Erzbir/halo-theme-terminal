@@ -2,6 +2,7 @@ import esbuild from 'esbuild'
 import {sassPlugin} from 'esbuild-sass-plugin';
 import {readdirSync} from 'fs';
 import {join} from 'path';
+import * as fs from "node:fs";
 
 async function build_main() {
     const srcfile = 'src/main.js';
@@ -25,6 +26,31 @@ async function build_main() {
         minify: true,
         sourcemap: false
     })
+
+    const tempEntry = "src/pixel.js"
+    const tempOutfile = "templates/assets/dist/pixel.js";
+    await esbuild.build({
+        entryPoints: [tempEntry],
+        bundle: true,
+        outfile: tempOutfile,
+        assetNames: '[name]',
+        plugins: [
+            sassPlugin(),
+        ],
+        loader: {
+            '.woff': 'file',
+            '.woff2': 'file',
+            '.ttf': 'file',
+        },
+        format: 'esm',
+        target: 'es2020',
+        minify: true,
+        sourcemap: false
+    })
+
+    if (fs.existsSync(tempOutfile)) {
+        fs.unlinkSync(tempOutfile);
+    }
 }
 
 
