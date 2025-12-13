@@ -1,5 +1,5 @@
 <th:block th:fragment="comment(group, kind, name)">
-    <section class="comment" th:attr="name=${name},kind=${kind},group=${group}">
+    <section th:if="${haloCommentEnabled}" class="comment" th:attr="name=${name},kind=${kind},group=${group}">
         <h2 th:text="#{page.post.comment}">Comments</h2>
         <halo:comment th:attr="name=${name},kind=${kind},group=${group}"/>
     </section>
