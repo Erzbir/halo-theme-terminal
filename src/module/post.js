@@ -98,7 +98,7 @@ async function locateToc() {
         const buttonWidth = toc_toggle.offsetWidth;
         const tocWidth = toc.classList.contains('toc-visible') ? toc.offsetWidth : buttonWidth;
 
-        const maxLeft = screenWidth - tocWidth - 30;
+        const maxLeft = screenWidth - content.offsetLeft - 20;
         leftPosition = Math.min(leftPosition, maxLeft);
         leftPosition = Math.max(leftPosition, 30);
 

@@ -82,6 +82,10 @@
       display: none;
     }
   }
+
+  .toc.toc-visible {
+    max-width: 25vw
+  }
 }
 
 .toc-toggle {
