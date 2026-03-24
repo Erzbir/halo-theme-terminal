@@ -22,7 +22,9 @@
   --width-theme-scrollbar: thin;
   --lig-theme-font: none;
   --width-theme-border: calc(var(--size-theme-font) * 0.125);
+  --width-theme-table-border: calc(var(--size-theme-font) * 0.0625);
   --style-theme-border: solid;
+  --style-theme-table-border: dashed;
   --style-theme-title-divider: dashed;
 }
 
@@ -281,9 +283,9 @@ input[type="checkbox"]:checked {
 img {
   display: block;
   max-width: 100%;
-  border: var(--width-theme-border) var(--style-theme-border) var(--color-theme-foreground);
+  border: var(--width-theme-border) var(--style-theme-border) var(--color-theme-accent);
   border-radius: var(--radius-theme-border);
-  padding: calc(var(--size-theme-font) * 0.25);
+  padding: calc(var(--size-theme-font) * 0.125);
   overflow: hidden;
 }
 
@@ -450,13 +452,13 @@ table {
 table,
 th,
 td {
-  border: var(--width-theme-border) var(--style-theme-border) var(--color-theme-foreground);
+  border: var(--width-theme-table-border) var(--style-theme-table-border) var(--color-theme-accent);
   padding: calc(var(--size-theme-font) * 0.625);
 }
 
 th {
-  border-style: var(--style-theme-border);
-  color: var(--color-theme-foreground);
+  border-style: var(--style-theme-table-border);
+  color: var(--color-theme-accent);
   text-align: left;
   text-transform: uppercase;
   letter-spacing: calc(var(--size-theme-font) * 0.04);
