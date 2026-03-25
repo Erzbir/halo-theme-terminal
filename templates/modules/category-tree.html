@@ -1,6 +1,6 @@
 <ul th:fragment="next (categories)">
     <li th:fragment="single (categories)" th:each="category : ${categories}">
-        <a th:href="@{${category.status.permalink}}">
+        <a data-pjax th:href="@{${category.status.permalink}}">
             <span th:text="${category.spec.displayName}"></span>
         </a>
         <span th:text="' ['+${category.status.visiblePostCount?:0}+']'"></span>
