@@ -459,6 +459,7 @@ td {
 th {
   border-style: var(--style-theme-table-border);
   color: var(--color-theme-accent);
+  white-space: nowrap;
   text-align: left;
   text-transform: uppercase;
   letter-spacing: calc(var(--size-theme-font) * 0.04);
