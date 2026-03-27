@@ -14,7 +14,6 @@ function toggleToc() {
 
     if (isVisible) {
         toc.classList.remove('toc-visible');
-        toc.classList.remove('toc-overflow-right');
         toc_toggle.innerHTML = toc_icon;
         toc_toggle.setAttribute('aria-label', 'Show Table of Contents');
 
@@ -82,39 +81,40 @@ function setupToggleButton() {
     toc_toggle.addEventListener('click', toggleToc);
 }
 
+function hasEnoughSpace() {
+    const content = document.getElementById("content");
+    const toc = document.getElementById("toc");
+    if (!content || !toc) return false;
+
+    const contentRect = content.getBoundingClientRect();
+    const gap = 12;
+    const tocExpandedWidth = toc.offsetWidth > 0
+        ? toc.offsetWidth
+        : parseInt(getComputedStyle(document.documentElement).fontSize) * 17.5;
+
+    const spaceRight = window.innerWidth - contentRect.right - gap;
+    return spaceRight >= tocExpandedWidth;
+}
+
 async function locateToc() {
     const toc = document.getElementById("toc");
     if (!toc) return;
-    const toc_toggle = document.getElementById("toc-toggle");
 
     const content = document.getElementById("content");
+    if (!content) return;
+
     const contentRect = content.getBoundingClientRect();
-    const contentRight = contentRect.right;
+    const gap = 12;
 
-    if (contentRight) {
-        let leftPosition = contentRight + 12;
-
-        const screenWidth = window.innerWidth;
-        const buttonWidth = toc_toggle.offsetWidth;
-        const tocWidth = toc.classList.contains('toc-visible') ? toc.offsetWidth : buttonWidth;
-
-        const maxLeft = screenWidth - content.offsetLeft - 20;
-        leftPosition = Math.min(leftPosition, maxLeft);
-        leftPosition = Math.max(leftPosition, 30);
-
-
-        toc.style.left = `${leftPosition}px`;
-
-        if (toc.classList.contains('toc-visible')) {
-            const rightEdge = leftPosition + tocWidth;
-
-            if (rightEdge > window.innerWidth) {
-                toc.classList.add('toc-overflow-right');
-            } else {
-                toc.classList.remove('toc-overflow-right');
-            }
-        }
+    if (hasEnoughSpace()) {
+        toc.style.left = `${contentRect.right + gap}px`;
+        toc.style.right = 'auto';
+    } else {
+        toc.style.left = 'auto';
+        toc.style.right = `${gap}px`;
+        toc.style.top = 'auto';
     }
+
 }
 
 function handleResize() {
@@ -154,7 +154,7 @@ async function init_toc() {
 
 }
 
-function register_toc() {
+function registerToc() {
     document.addEventListener('DOMContentLoaded', () => {
         void init_toc();
     });
@@ -162,4 +162,4 @@ function register_toc() {
 
 
 terminal.registerRefresh(generateToc);
-terminal.registerInitFunc(register_toc);
+terminal.registerInitFunc(registerToc);
