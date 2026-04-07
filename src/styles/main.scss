@@ -174,8 +174,8 @@ button {
   text-align: center;
   background: transparent;
   color: var(--color-theme-accent);
-  padding: calc(var(--size-theme-font) * 0.315) calc(var(--size-theme-font) * 1.125);
-  border: calc(var(--width-theme-border) * 2) var(--style-theme-border) var(--color-theme-accent);
+  padding: calc(var(--size-theme-font) * 0.2) calc(var(--size-theme-font) * .7);
+  border: calc(var(--width-theme-border) * 1.25) var(--style-theme-border) var(--color-theme-accent);
   border-radius: var(--radius-theme-border);
   transition: background 0.15s linear;
   appearance: none;
