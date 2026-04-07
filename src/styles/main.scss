@@ -357,6 +357,10 @@ ol li {
   position: relative;
 }
 
+li::marker {
+  color: var(--color-theme-accent);
+}
+
 code {
   color: var(--color-theme-accent);
 }
