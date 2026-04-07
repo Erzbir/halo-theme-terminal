@@ -357,6 +357,10 @@ ol li {
   position: relative;
 }
 
+code {
+  color: var(--color-theme-accent);
+}
+
 code,
 kbd {
   font-family: inherit !important;
