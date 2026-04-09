@@ -129,6 +129,10 @@
 
 .post-content {
   margin-top: calc(var(--size-theme-font) * 1.5625);
+
+  #content a {
+    text-decoration: underline;
+  }
 }
 
 .post-cover {
