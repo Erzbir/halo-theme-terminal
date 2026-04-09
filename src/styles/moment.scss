@@ -12,3 +12,37 @@
   border-radius: var(--size-theme-font);
   transition: transform 0.3s ease;
 }
+
+.moment-footer {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: calc(var(--size-theme-font) * 0.8);
+}
+
+.moment-action-btn {
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35em;
+  border: none;
+  font-size: calc(var(--size-theme-font) * 0.85);
+  color: var(--color-theme-foreground);
+
+  &:hover {
+    background: none;
+  }
+
+  &.active {
+    color: var(--color-theme-accent);
+  }
+
+}
+
+.moment-comment-section {
+  display: none;
+
+  &.active {
+    display: block;
+  }
+}
