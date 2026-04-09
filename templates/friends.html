@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html
+        xmlns:th="https://www.thymeleaf.org"
+        th:replace="~{modules/layout :: html(title = |#{page.friends.title} - ${site.title}|, header = null, content = ~{::content}, footer = null)}"
+>
+<th:block th:fragment="content">
+    <article class="post">
+        <header>
+            <h1 class="post-title" th:text="#{page.friends.title}">Friends</h1>
+        </header>
+        <div>
+            <th:block th:each="friend, iterStat : ${friends.items}" th:with="spec = ${friend.spec}">
+
+                <h2 th:if="${iterStat.first
+                             or (#temporals.format(spec.pubDate, 'yyyy-MM-dd') != #temporals.format(friends.items[iterStat.index - 1].spec.pubDate, 'yyyy-MM-dd'))}"
+                    th:text="${#temporals.format(spec.pubDate, 'yyyy-MM-dd')}">
+                </h2>
+
+                <ul>
+                    <li class="post-list friend-post-list">
+                        <a th:href="@{${spec.postLink}}" target="_blank" rel="noopener noreferrer">
+                            <h2 class="post-list-title friend-post-title" th:text="${spec.title}">Post Title</h2>
+                        </a>
+                        <div class="post-meta friend-post-meta">
+                            <a class="friend-author" th:href="@{${spec.authorUrl}}" target="_blank"
+                               rel="noopener noreferrer">
+                                <span class="post-author" th:text="${spec.author}">Author</span>
+                            </a>
+                        </div>
+                        <p class="friend-post-desc" th:if="${spec.description}" th:text="${spec.description}"></p>
+                    </li>
+                </ul>
+
+            </th:block>
+        </div>
+    </article>
+
+    <nav class="pagination" th:if="${friends.hasPrevious() || friends.hasNext()}">
+        <div class="pagination__buttons">
+            <span th:if="${friends.hasPrevious()}">
+                <a data-pjax th:href="@{${friends.prevUrl}}" class="button prev inline">
+                    <span class="button__text" th:text="'< ' + #{page.pagination.prev}">&lt;&nbsp;Prev</span>
+                </a>
+            </span>
+            <span th:if="${friends.hasNext()}">
+                <a data-pjax th:href="@{${friends.nextUrl}}" class="button inline next">
+                    <span class="button__text" th:text="#{page.pagination.next} + ' >'">Next&nbsp;&gt;</span>
+                </a>
+            </span>
+        </div>
+    </nav>
+</th:block>
+</html>

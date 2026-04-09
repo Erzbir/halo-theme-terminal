@@ -1,0 +1,28 @@
+.friend-post-list {
+  padding: 0;
+}
+
+.friend-post-title {
+  margin-bottom: calc(var(--size-theme-font) * .3125);
+  padding: 0;
+}
+
+.friend-post-meta {
+  margin-bottom: calc(var(--size-theme-font) * .3125);
+  padding: 0;
+}
+
+.friend-author {
+  display: inline-flex;
+  align-items: center;
+  gap: calc(var(--size-theme-font) * 0.35);
+  color: var(--color-theme-meta);
+  text-decoration: none;
+}
+
+.friend-post-desc {
+  margin: 0;
+  padding: 0;
+  color: var(--color-theme-foreground);
+  font-size: calc(var(--size-theme-font) * 0.875);
+}
