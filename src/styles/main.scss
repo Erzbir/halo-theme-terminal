@@ -183,10 +183,6 @@ button {
   outline: none;
 }
 
-button:hover {
-  background: color-mix(in srgb, var(--color-theme-accent) 15%, transparent);
-}
-
 button:focus-visible,
 a:focus-visible {
   outline: 1px solid var(--color-theme-accent);
