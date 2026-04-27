@@ -437,7 +437,7 @@ blockquote {
   position: relative;
   border-left: var(--width-theme-border) var(--style-theme-border) var(--color-theme-accent);
   margin: calc(var(--size-theme-font) * 0.625) 0 calc(var(--size-theme-font) * 0.625) 0;
-  padding: calc(var(--size-theme-font) * 1.25);
+  padding: calc(var(--size-theme-font) * 0.625) calc(var(--size-theme-font) * 1.25);
 }
 
 blockquote p:first-child {
