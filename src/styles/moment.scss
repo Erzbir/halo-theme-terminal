@@ -3,14 +3,14 @@
   gap: calc(var(--size-theme-font) * 0.5);
   margin: var(--size-theme-font) 0;
   width: 80%;
-}
 
-.moment-media video {
-  width: 100%;
-  height: calc(var(--size-theme-font) * 12.5);
-  object-fit: cover;
-  border-radius: var(--size-theme-font);
-  transition: transform 0.3s ease;
+  video {
+    width: 100%;
+    height: calc(var(--size-theme-font) * 12.5);
+    object-fit: cover;
+    border-radius: var(--size-theme-font);
+    transition: transform 0.3s ease;
+  }
 }
 
 .moment-footer {
@@ -36,7 +36,6 @@
   &.active {
     color: var(--color-theme-accent);
   }
-
 }
 
 .moment-comment-section {

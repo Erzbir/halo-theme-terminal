@@ -1,6 +1,6 @@
 <th:block th:fragment="header" th:with="menu = ${menuFinder.getPrimary()}">
-    <div class="header__inner">
-        <div class="header__logo">
+    <div class="header-inner">
+        <div class="header-logo">
             <a data-pjax href="/">
                 <div class="logo"
                      th:text="${#strings.isEmpty(theme.config.basic.logo) ? site.title : theme.config.basic.logo}">
@@ -51,7 +51,7 @@
     </div>
     <nav class="navigation-menu">
         <ul th:if="${menu != null} and ${not #lists.isEmpty(menu.menuItems)}"
-            class="navigation-menu__inner menu--desktop">
+            class="navigation-menu-inner menu--desktop">
             <li th:each="menuItem : ${menu.menuItems}">
                 <div th:if="${#lists.isEmpty(menuItem.children)}">
                     <a data-pjax th:href="@{${menuItem.status.href}}"
@@ -63,8 +63,8 @@
                         <span th:text="${menuItem.status.displayName}"></span>
                     </a>
                     <div class="sub-menu">
-                        <div class="menu__trigger">▾</div>
-                        <ul class="menu__dropdown">
+                        <div class="menu-trigger">▾</div>
+                        <ul class="menu-dropdown">
                             <li th:each="childMenuItem : ${menuItem.children}">
                                 <a data-pjax
                                    th:href="@{${childMenuItem.status.href}}">
@@ -78,4 +78,3 @@
         </ul>
     </nav>
 </th:block>
-

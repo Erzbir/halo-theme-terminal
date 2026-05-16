@@ -24,19 +24,19 @@
         <div id="toc-content" class="toc-content"></div>
     </nav>
     <nav class="pagination">
-        <div class="pagination__title">
-            <span class="pagination__title-h" th:text="#{page.post.pagination}">READ OTHER POSTS</span>
+        <div class="pagination-title">
+            <span class="pagination-title-h" th:text="#{page.post.pagination}">READ OTHER POSTS</span>
             <hr/>
         </div>
-        <div class="pagination__buttons" th:with="postCursor=${postFinder.cursor(post.metadata?.name)}">
+        <div class="pagination-buttons" th:with="postCursor=${postFinder.cursor(post.metadata?.name)}">
       <span th:if="${postCursor.hasPrevious()}">
           <a data-pjax th:href="@{${postCursor.previous?.status?.permalink}}" class="button prev inline">
-            <span class="button__text" th:text="|< ${postCursor.previous?.spec?.title}|">prevPost</span>
+            <span class="button-text" th:text="|< ${postCursor.previous?.spec?.title}|">prevPost</span>
           </a>
       </span>
             <span th:if="${postCursor.hasNext()}">
           <a data-pjax th:href="@{${postCursor.next?.status?.permalink}}" class="button next inline">
-            <span class="button__text" th:text="|${postCursor.next?.spec?.title} >|">nextPost</span>
+            <span class="button-text" th:text="|${postCursor.next?.spec?.title} >|">nextPost</span>
           </a>
         </span>
         </div>

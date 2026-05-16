@@ -36,15 +36,15 @@
     </article>
 
     <nav class="pagination" th:if="${friends.hasPrevious() || friends.hasNext()}">
-        <div class="pagination__buttons">
+        <div class="pagination-buttons">
             <span th:if="${friends.hasPrevious()}">
                 <a data-pjax th:href="@{${friends.prevUrl}}" class="button prev inline">
-                    <span class="button__text" th:text="'< ' + #{page.pagination.prev}">&lt;&nbsp;Prev</span>
+                    <span class="button-text" th:text="'< ' + #{page.pagination.prev}">&lt;&nbsp;Prev</span>
                 </a>
             </span>
             <span th:if="${friends.hasNext()}">
                 <a data-pjax th:href="@{${friends.nextUrl}}" class="button inline next">
-                    <span class="button__text" th:text="#{page.pagination.next} + ' >'">Next&nbsp;&gt;</span>
+                    <span class="button-text" th:text="#{page.pagination.next} + ' >'">Next&nbsp;&gt;</span>
                 </a>
             </span>
         </div>

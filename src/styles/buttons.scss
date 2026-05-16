@@ -29,9 +29,9 @@ a.button.outline {
   padding: calc(var(--size-theme-font) * 0.5) calc(var(--size-theme-font) * 1.125);
 }
 
-button.outline :hover,
-.button.outline :hover,
-a.button.outline :hover {
+button.outline:hover,
+.button.outline:hover,
+a.button.outline:hover {
   transform: none;
   box-shadow: none;
 }

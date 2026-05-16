@@ -14,7 +14,7 @@ comment-widget {
   --halo-cw-muted-1-color: color-mix(in srgb, var(--color-theme-foreground) 65%, transparent) !important;
   --halo-cw-muted-2-color: color-mix(in srgb, var(--color-theme-background) 65%, var(--color-theme-accent)) !important;
   --halo-cw-muted-3-color: color-mix(in srgb, var(--color-theme-background) 95%, var(--color-theme-accent)) !important;
-  
+
   --halo-cw-emoji-picker-rgb-color: var(--color-theme-background) !important;
   --halo-cw-emoji-picker-rgb-accent: var(--color-theme-foreground) !important;
   --halo-cw-emoji-picker-rgb-background: var(--color-theme-background) !important;
@@ -33,7 +33,7 @@ comment-widget {
   --halo-comment-widget-base-info-color: var(--color-theme-foreground) !important;
   --halo-comment-widget-component-form-input-bg-color: var(--color-theme-background) !important;
   --halo-comment-widget-component-form-input-color: var(--color-theme-foreground) !important;
-  --halo-comment-widget-component-form-input-border-color: var(var(--color-theme-foreground) !important) !important;
+  --halo-comment-widget-component-form-input-border-color: var(--color-theme-foreground) !important;
   --halo-comment-widget-component-form-input-border-color-focus: var(--color-theme-accent) !important;
   --halo-comment-widget-component-form-input-box-shadow-focus: var(--color-theme-accent) !important;
   --halo-comment-widget-component-form-button-login-bg-color: var(--color-theme-background) !important;

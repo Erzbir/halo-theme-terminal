@@ -34,15 +34,15 @@
         </div>
     </article>
     <nav class="pagination" th:if="${archives.hasPrevious() || archives.hasNext()}">
-        <div class="pagination__buttons">
+        <div class="pagination-buttons">
             <span th:if="${archives.hasPrevious()}">
                 <a data-pjax th:href="@{${archives.prevUrl}}" class="button prev inline">
-                    <span class="button__text">&lt;&nbsp;Prev</span>
+                    <span class="button-text">&lt;&nbsp;Prev</span>
                 </a>
             </span>
             <span th:if="${archives.hasNext()}">
                 <a data-pjax th:href="@{${archives.nextUrl}}" class="button inline next">
-                    <span class="button__text">Next&nbsp;&gt;</span>
+                    <span class="button-text">Next&nbsp;&gt;</span>
                 </a>
             </span>
         </div>
