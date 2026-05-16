@@ -15,7 +15,7 @@
     <section class="posts">
         <article class="post on-list" th:each="post : ${posts.items}">
             <header>
-                <h1 class="post-title">
+                <h2 class="post-title">
                     <span class="pin" th:classappend="${theme.config?.index_page?.pin_pos}"  th:if="${post.spec.pinned} and ${theme.config?.index_page?.show_pin}">
                         <svg class="icon-regular" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                             <path fill="currentColor" d="M5 2h14a1 1 0 0 1 1 1v19.143a.5.5 0 0 1-.766.424L12 18.03l-7.234 4.536A.5.5 0 0 1 4 22.143V3a1 1 0 0 1 1-1m13 2H6v15.432l6-3.761l6 3.761z" />
@@ -25,7 +25,7 @@
                         </svg>
                     </span>
                     <a data-pjax th:text="${post.spec.title}" th:href="@{${post.status.permalink}}">Post Title</a>
-                </h1>
+                </h2>
                 <div class="post-meta">
                     <time class="post-date"
                           th:text="${#dates.format(post.spec.publishTime, '__${theme.config.style.time_style == 'custom' ?
