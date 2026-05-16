@@ -10,6 +10,7 @@
   --color-theme-framed: ;
   --color-theme-menu: ;
   --color-theme-header: ;
+  --color-theme-code-text: var(--color-theme-foreground);
   --color-theme-scrollbar: rgba(134, 134, 134, 0.45) rgba(255, 255, 255, 0);
   --list-theme-marker: "►";
   --size-theme-font: 1rem;
@@ -358,7 +359,7 @@ li::marker {
 }
 
 code {
-  color: var(--color-theme-foreground);
+  color: var(--color-theme-code-text);
 }
 
 code,
