@@ -144,7 +144,7 @@
     </script>
 </head>
 
-<body>
+<body th:attr="layout_mode=${theme.config.style.fullscreen_layout ? 'fullscreen' : 'normal'}">
 <div class="page">
     <header role="banner">
         <div id="header-slot" aria-hidden="true"></div>

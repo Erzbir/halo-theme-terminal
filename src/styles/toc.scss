@@ -113,6 +113,12 @@
   }
 }
 
+body[layout_mode='fullscreen'] {
+  .toc.toc-visible {
+    border: calc(var(--size-theme-font) * 0.0625) solid var(--color-theme-foreground);
+  }
+}
+
 @media (max-width: 1400px) {
   .toc.toc-visible {
     border: calc(var(--size-theme-font) * 0.0625) solid var(--color-theme-foreground);

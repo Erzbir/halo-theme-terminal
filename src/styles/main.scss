@@ -99,6 +99,24 @@ body {
   flex-direction: column;
 }
 
+body[layout_mode='fullscreen'] {
+  .wrapper {
+    display: block;
+  }
+
+  .sidebar-left,
+  .sidebar-right {
+    display: none;
+    width: 0;
+    padding: 0;
+  }
+
+  .container {
+    width: 100%;
+    max-width: none !important;
+  }
+}
+
 @media (max-width: 1024px) {
   .sidebar-left,
   .sidebar-right {

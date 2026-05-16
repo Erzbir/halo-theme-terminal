@@ -40,6 +40,12 @@ spec:
           help: 填写的值为 max-width 属性的值
 
         - $formkit: checkbox
+          label: 启用全屏布局
+          name: fullscreen_layout
+          value: false
+          help: 开启后隐藏左右侧边栏并让正文区域占满可用宽度
+
+        - $formkit: checkbox
           label: 使用系统字体
           name: system_font_enable
           value: false
