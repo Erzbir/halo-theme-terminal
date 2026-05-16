@@ -141,7 +141,7 @@
   .menu-dropdown > li a {
     display: flex;
     padding: calc(var(--size-theme-font) * 0.3125);
-    text-decoration: underline;
+    text-decoration: none;
   }
 
   .sub-menu {
