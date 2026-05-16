@@ -134,10 +134,6 @@
     flex: 0 0 auto;
   }
 
-  .menu-dropdown > li:not(:last-of-type) {
-    margin-bottom: calc(var(--size-theme-font) * 0.625);
-  }
-
   .menu-dropdown > li a {
     display: flex;
     padding: calc(var(--size-theme-font) * 0.3125);
