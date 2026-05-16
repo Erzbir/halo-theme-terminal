@@ -12,6 +12,8 @@
   --color-theme-header: ;
   --color-theme-code-text: var(--color-theme-foreground);
   --color-theme-scrollbar: rgba(134, 134, 134, 0.45) rgba(255, 255, 255, 0);
+  --color-theme-link: var(--color-theme-accent);
+  --text-decoration-theme-link: none;
   --list-theme-marker: "►";
   --size-theme-font: 1rem;
   --height-theme-line: calc(var(--size-theme-font) * 1.8);
@@ -163,8 +165,8 @@ table {
 }
 
 a {
-  color: var(--color-theme-accent);
-  text-decoration: none;
+  color: var(--color-theme-link);
+  text-decoration: var(--text-decoration-theme-link);
 }
 
 button {
