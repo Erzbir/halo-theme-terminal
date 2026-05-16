@@ -252,9 +252,9 @@ select:active {
 
 select {
   background-image: linear-gradient(
-                  45deg,
-                  transparent 50%,
-                  var(--color-theme-foreground) 50%
+          45deg,
+          transparent 50%,
+          var(--color-theme-foreground) 50%
   ),
   linear-gradient(135deg, var(--color-theme-foreground) 50%, transparent 50%);
   background-position: calc(100% - 1.25em), calc(100% - 1em);

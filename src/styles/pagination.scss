@@ -44,7 +44,7 @@
 
     @media (max-width: $phone-max-width) {
       flex-direction: column;
-      gap:  calc(var(--size-theme-font) * 0.9375);
+      gap: calc(var(--size-theme-font) * 0.9375);
     }
 
     span {
@@ -101,11 +101,11 @@
   }
 
   .next .button-icon {
-    margin-left:  calc(var(--size-theme-font) * 0.5);
+    margin-left: calc(var(--size-theme-font) * 0.5);
   }
 
   .prev .button-icon {
-    margin-right:  calc(var(--size-theme-font) * 0.5);
+    margin-right: calc(var(--size-theme-font) * 0.5);
   }
 }
 
