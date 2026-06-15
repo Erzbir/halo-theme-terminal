@@ -137,6 +137,11 @@
     <script no-pjax type="module" th:src="@{/assets/dist/main.js?v={version}(version=${theme.spec.version})}"></script>
     <script no-pjax type="module" th:if="${theme.config.basic.pjax_enable}"
             th:src="@{/assets/dist/libs/pjax.js?v={version}(version=${theme.spec.version})}"></script>
+    <style no-pjax th:if="${not #strings.isEmpty(theme.config.style.media_max_width)}" th:inline="css">
+        :root {
+            --width-theme-media-max: [(${theme.config.style.media_max_width})];
+        }
+    </style>
     <script no-pjax>
         window.TerminalTheme?.applyCustomCss?.();
     </script>

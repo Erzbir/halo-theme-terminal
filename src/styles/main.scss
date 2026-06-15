@@ -26,6 +26,7 @@
   --lig-theme-font: none;
   --width-theme-border: calc(var(--size-theme-font) * 0.125);
   --width-theme-table-border: calc(var(--size-theme-font) * 0.0625);
+  --width-theme-media-max: 60%;
   --style-theme-border: solid;
   --style-theme-table-border: dashed;
   --style-theme-title-divider: dashed;
@@ -100,8 +101,6 @@ body {
 }
 
 body[layout_mode='fullscreen'] {
-  --width-theme-media-max: calc(var(--size-theme-font) * 75);
-
   .wrapper {
     display: block;
   }
@@ -121,7 +120,7 @@ body[layout_mode='fullscreen'] {
   .content img,
   .content video,
   .content figure {
-    max-width: 60%;
+    max-width: var(--width-theme-media-max);
     margin-left: auto;
     margin-right: auto;
   }
