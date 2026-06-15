@@ -158,6 +158,11 @@
             --list-theme-marker: [(${theme.config.style.list_marker})];
         }
     </style>
+    <style no-pjax th:if="${not #strings.isEmpty(theme.config.style.border_width)}" th:inline="css">
+        :root {
+            --width-theme-border: [(${theme.config.style.border_width})];
+        }
+    </style>
     <script no-pjax>
         window.TerminalTheme?.applyCustomCss?.();
     </script>
