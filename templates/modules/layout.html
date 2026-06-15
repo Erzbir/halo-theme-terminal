@@ -147,6 +147,12 @@
             --size-theme-font: [(${theme.config.style.font_size})];
         }
     </style>
+    <style no-pjax th:if="${not #strings.isEmpty(theme.config.style.content_padding)}" th:inline="css">
+        :root {
+            --spacing-theme-container-padding: [(${theme.config.style.content_padding})];
+            --spacing-theme-container-padding-mobile: [(${theme.config.style.content_padding})];
+        }
+    </style>
     <script no-pjax>
         window.TerminalTheme?.applyCustomCss?.();
     </script>

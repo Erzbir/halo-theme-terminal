@@ -27,6 +27,8 @@
   --width-theme-border: calc(var(--size-theme-font) * 0.125);
   --width-theme-table-border: calc(var(--size-theme-font) * 0.0625);
   --width-theme-media-max: 60%;
+  --spacing-theme-container-padding: calc(var(--size-theme-font) * 2.5);
+  --spacing-theme-container-padding-mobile: calc(var(--size-theme-font) * 1.25);
   --style-theme-border: solid;
   --style-theme-table-border: dashed;
   --style-theme-title-divider: dashed;
@@ -90,7 +92,7 @@ body {
 .container {
   display: flex;
   flex-direction: column;
-  padding: calc(var(--size-theme-font) * 2.5);
+  padding: var(--spacing-theme-container-padding);
   width: 60%;
   margin: 0 auto;
 }
@@ -145,7 +147,7 @@ body[table_full_width='true'] {
 
 @media (max-width: 768px) {
   .container {
-    padding: calc(var(--size-theme-font) * 1.25);
+    padding: var(--spacing-theme-container-padding-mobile);
   }
 }
 
