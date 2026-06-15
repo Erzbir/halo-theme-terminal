@@ -141,6 +141,25 @@ spec:
             - label: "none"
               value: "none"
 
+        - $formkit: select
+          label: 标题分隔线样式
+          name: title_divider_style
+          value: ""
+          help: 控制文章标题分隔线样式, 留空使用主题默认值
+          options:
+            - label: "default"
+              value: ""
+            - label: "solid"
+              value: "solid"
+            - label: "dashed"
+              value: "dashed"
+            - label: "dotted"
+              value: "dotted"
+            - label: "double"
+              value: "double"
+            - label: "none"
+              value: "none"
+
         - $formkit: checkbox
           label: 使用系统字体
           name: system_font_enable

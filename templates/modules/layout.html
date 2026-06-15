@@ -178,6 +178,11 @@
             --style-theme-table-border: [(${theme.config.style.table_border_style})];
         }
     </style>
+    <style no-pjax th:if="${not #strings.isEmpty(theme.config.style.title_divider_style)}" th:inline="css">
+        :root {
+            --style-theme-title-divider: [(${theme.config.style.title_divider_style})];
+        }
+    </style>
     <script no-pjax>
         window.TerminalTheme?.applyCustomCss?.();
     </script>
