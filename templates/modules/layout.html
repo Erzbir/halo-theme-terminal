@@ -142,6 +142,11 @@
             --width-theme-media-max: [(${theme.config.style.media_max_width})];
         }
     </style>
+    <style no-pjax th:if="${not #strings.isEmpty(theme.config.style.font_size)}" th:inline="css">
+        :root {
+            --size-theme-font: [(${theme.config.style.font_size})];
+        }
+    </style>
     <script no-pjax>
         window.TerminalTheme?.applyCustomCss?.();
     </script>

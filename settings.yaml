@@ -58,6 +58,13 @@ spec:
           placeholder: "60%"
           help: 控制文章内容中图片、视频、figure 的最大宽度, 留空使用主题默认值
 
+        - $formkit: text
+          label: 基础字体大小
+          name: font_size
+          value:
+          placeholder: "1rem"
+          help: 控制全站基础字体大小, 例如 16px、1rem、18px, 留空使用主题默认值
+
         - $formkit: checkbox
           label: 使用系统字体
           name: system_font_enable
