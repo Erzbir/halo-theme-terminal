@@ -20,7 +20,8 @@
         </section>
     </article>
     <nav id="toc" th:if="${theme.config.post_page.show_toc}" class="toc"
-         th:attr="data-default-open=${theme.config.style.fullscreen_layout ? 'false' : 'true'}">
+         th:with="tocDefaultOpen=${theme.config.post_page.toc_default_open ?: 'auto'}"
+         th:attr="data-default-open=${tocDefaultOpen == 'open' ? 'true' : (tocDefaultOpen == 'closed' ? 'false' : (theme.config.style.fullscreen_layout ? 'false' : 'true'))}">
         <button id="toc-toggle" class="toc-toggle" aria-label="Hide Table of Contents"></button>
         <div id="toc-content" class="toc-content"></div>
     </nav>

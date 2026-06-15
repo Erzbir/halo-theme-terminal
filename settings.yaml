@@ -255,6 +255,18 @@ spec:
           name: show_toc
           label: 显示文章目录
           value: true
+        - $formkit: select
+          name: toc_default_open
+          label: 文章目录默认状态
+          value: "auto"
+          help: 自动模式会在普通布局默认展开, 全屏布局默认收起
+          options:
+            - label: "自动"
+              value: "auto"
+            - label: "默认展开"
+              value: "open"
+            - label: "默认收起"
+              value: "closed"
         - $formkit: checkbox
           name: show_tags
           label: 显示文章标签
