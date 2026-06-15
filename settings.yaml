@@ -56,21 +56,21 @@ spec:
           name: media_max_width
           value:
           placeholder: "60%"
-          help: 控制文章内容中图片、视频、figure 的最大宽度, 留空使用主题默认值
+          help: 控制文章内容中图片 / 视频 / figure 的最大宽度, 留空使用主题默认值
 
         - $formkit: text
           label: 基础字体大小
           name: font_size
           value:
           placeholder: "1rem"
-          help: 控制全站基础字体大小, 例如 16px、1rem、18px, 留空使用主题默认值
+          help: 控制全站基础字体大小, 例如 16px / 1rem / 18px, 留空使用主题默认值
 
         - $formkit: text
           label: 正文区域内边距
           name: content_padding
           value:
           placeholder: "calc(var(--size-theme-font) * 2.5)"
-          help: 控制正文容器内边距, 例如 2rem、24px、calc(var(--size-theme-font) * 2), 留空使用主题默认值
+          help: 控制正文容器内边距, 例如 2rem / 24px / calc(var(--size-theme-font) * 2), 留空使用主题默认值
 
         - $formkit: checkbox
           label: 使用系统字体
