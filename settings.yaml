@@ -122,6 +122,25 @@ spec:
           placeholder: "calc(var(--size-theme-font) * 0.0625)"
           help: 控制表格边线宽度, 留空使用主题默认值
 
+        - $formkit: select
+          label: 表格边线样式
+          name: table_border_style
+          value: ""
+          help: 控制表格边线样式, 留空使用主题默认值
+          options:
+            - label: "default"
+              value: ""
+            - label: "solid"
+              value: "solid"
+            - label: "dashed"
+              value: "dashed"
+            - label: "dotted"
+              value: "dotted"
+            - label: "double"
+              value: "double"
+            - label: "none"
+              value: "none"
+
         - $formkit: checkbox
           label: 使用系统字体
           name: system_font_enable
