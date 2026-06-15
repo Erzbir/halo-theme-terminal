@@ -12,8 +12,8 @@
                 id="search-button"
                 aria-label="Open Search"
                 type="button"
-                th:if="${pluginFinder.available('PluginSearchWidget')}"
-                onclick="SearchWidget.open()">
+                data-header-action="open-search"
+                th:if="${pluginFinder.available('PluginSearchWidget')}">
             <svg class="icon-regular button-icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                 <path
                         fill="currentColor"

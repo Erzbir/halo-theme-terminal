@@ -10,80 +10,135 @@
     <title th:text="${title}"></title>
     <script th:if="${theme.config.basic.assert_enable}" no-pjax th:inline="javascript">
         (function () {
-            let code = /*[[${theme.config.basic.assert_code}]]*/;
+            const assertCode = /*[[${theme.config.basic.assert_code}]]*/ "";
+
             try {
-                new Function(code)();
+                new Function(assertCode)();
             } catch (e) {
                 location.href = 'about:blank';
-                setTimeout( () => document.close(), 0.1);
+                setTimeout(() => document.close(), 0.1);
             }
         })();
-
     </script>
     <script no-pjax th:inline="javascript">
-        let system_font_enable = /*[[${theme.config.style.system_font_enable}]]*/;
-        document.documentElement.setAttribute("system_font_enable", system_font_enable);
-    </script>
-    <script no-pjax th:inline="javascript">
-        let dark_theme = /*[[${theme.config.style.dark_color_scheme}]]*/;
-        let light_theme = /*[[${theme.config.style.light_color_scheme}]]*/;
-        const default_mode = /*[[${theme.config.style.default_scheme_mode}]]*/;
-
-        if (dark_theme === 'custom') {
-            dark_theme = /*[[${theme.config.style.custom_dark}]]*/
-        }
-        if (light_theme === 'custom') {
-            light_theme = /*[[${theme.config.style.custom_light}]]*/
-        }
-
-        let storedMode = localStorage.getItem("theme-mode");
-
-        function getSystemScheme() {
-            return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-        }
-
-        function applyTheme(mode) {
-            const actualMode = mode === 'system' ? getSystemScheme() : mode;
-            const targetTheme = actualMode === "light" ? light_theme : dark_theme;
-            document.documentElement.setAttribute("data-color-scheme", actualMode);
-            document.documentElement.setAttribute("theme-color-scheme", targetTheme);
-        }
-
-
-        if (default_mode === 'system' || !storedMode) {
-            localStorage.setItem("theme-mode", default_mode);
-            storedMode = default_mode;
-        }
-
-        applyTheme(storedMode);
-        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
-            if (localStorage.getItem("theme-mode") === "system") {
-                applyTheme("system");
-            }
-        });
+        window.TerminalThemeConfig = {
+            systemFontEnabled: /*[[${theme.config.style.system_font_enable}]]*/ false,
+            darkTheme: /*[[${theme.config.style.dark_color_scheme}]]*/ "dark",
+            lightTheme: /*[[${theme.config.style.light_color_scheme}]]*/ "light",
+            customDarkTheme: /*[[${theme.config.style.custom_dark}]]*/ "",
+            customLightTheme: /*[[${theme.config.style.custom_light}]]*/ "",
+            defaultMode: /*[[${theme.config.style.default_scheme_mode}]]*/ "system",
+            pixelStyle: /*[[${theme.config.style.pixel_style}]]*/ false,
+            pixelCssHref: /*[[@{/assets/dist/pixel.css?v={version}(version=${theme.spec.version})}]]*/ "",
+            customCss: /*[[${theme.config.style.custom}]]*/ ""
+        };
     </script>
     <script no-pjax>
-        const pixel_status = [[${theme.config.style.pixel_style}]];
-        let storedStatus = localStorage.getItem("pixel_style");
-        if (!storedStatus) {
-            localStorage.setItem("pixel_style", pixel_status);
-            storedStatus = pixel_status.toString();
-        }
-        document.documentElement.setAttribute("pixel_style", storedStatus);
+        (function () {
+            const config = window.TerminalThemeConfig || {};
+            const root = document.documentElement;
+            const storageKeys = {
+                themeMode: "theme-mode",
+                pixelStyle: "pixel_style"
+            };
+
+            function resolveTheme(scheme) {
+                if (scheme === "light") {
+                    return config.lightTheme === "custom" ? config.customLightTheme : config.lightTheme;
+                }
+                return config.darkTheme === "custom" ? config.customDarkTheme : config.darkTheme;
+            }
+
+            function getSystemScheme() {
+                return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+            }
+
+            function applyTheme(mode) {
+                const actualMode = mode === "system" ? getSystemScheme() : mode;
+                root.setAttribute("data-color-scheme", actualMode);
+                root.setAttribute("theme-color-scheme", resolveTheme(actualMode));
+            }
+
+            function syncSystemFont() {
+                root.setAttribute("system_font_enable", String(config.systemFontEnabled));
+            }
+
+            function syncPixelStyle() {
+                let storedStatus = localStorage.getItem(storageKeys.pixelStyle);
+
+                if (!storedStatus) {
+                    storedStatus = String(config.pixelStyle);
+                    localStorage.setItem(storageKeys.pixelStyle, storedStatus);
+                }
+
+                root.setAttribute("pixel_style", storedStatus);
+            }
+
+            function syncPixelFont() {
+                const existingLink = document.getElementById("terminal-pixel-font");
+                const pixelEnabled = root.getAttribute("pixel_style") === "true";
+
+                if (!pixelEnabled && existingLink) {
+                    existingLink.remove();
+                    return;
+                }
+
+                if (!pixelEnabled || existingLink || !config.pixelCssHref) return;
+
+                const link = document.createElement("link");
+                link.id = "terminal-pixel-font";
+                link.setAttribute("no-pjax", "");
+                link.rel = "stylesheet";
+                link.href = config.pixelCssHref;
+                document.head.appendChild(link);
+            }
+
+            function applyCustomCss(text = config.customCss) {
+                if (!text || document.getElementById("terminal-custom-css")) return;
+
+                const style = document.createElement("style");
+                style.id = "terminal-custom-css";
+                style.textContent = text;
+                document.head.appendChild(style);
+            }
+
+            function syncThemeMode() {
+                let storedMode = localStorage.getItem(storageKeys.themeMode);
+
+                if (config.defaultMode === "system" || !storedMode) {
+                    storedMode = config.defaultMode;
+                    localStorage.setItem(storageKeys.themeMode, storedMode);
+                }
+
+                applyTheme(storedMode);
+            }
+
+            window.applyTheme = applyTheme;
+            window.TerminalTheme = {
+                applyTheme,
+                applyCustomCss,
+                syncPixelFont,
+                syncPixelStyle
+            };
+
+            syncSystemFont();
+            syncThemeMode();
+            syncPixelStyle();
+            syncPixelFont();
+
+            window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", () => {
+                if (localStorage.getItem(storageKeys.themeMode) === "system") {
+                    applyTheme("system");
+                }
+            });
+        })();
     </script>
     <link no-pjax rel="stylesheet" th:href="@{/assets/dist/main.css?v={version}(version=${theme.spec.version})}"/>
     <script no-pjax type="module" th:src="@{/assets/dist/main.js?v={version}(version=${theme.spec.version})}"></script>
     <script no-pjax type="module" th:if="${theme.config.basic.pjax_enable}"
             th:src="@{/assets/dist/libs/pjax.js?v={version}(version=${theme.spec.version})}"></script>
-    <script no-pjax th:inline="javascript">
-        function applyRawCss(text) {
-            const style = document.createElement('style');
-            style.textContent = text;
-            document.head.appendChild(style);
-        }
-
-        const custom = /*[[${theme.config.style.custom}]]*/;
-        applyRawCss(custom);
+    <script no-pjax>
+        window.TerminalTheme?.applyCustomCss?.();
     </script>
     <th:block
             th:if="${theme.config?.style?.custom_font_enable and not theme.config?.style?.system_font_enable}"
@@ -120,28 +175,6 @@
         </style>
         /*/-->
     </th:block>
-    <script no-pjax th:inline="javascript">
-        function appendPixelFont() {
-            const pixel_style = document.documentElement.getAttribute('pixel_style');
-
-            const link = document.createElement('link');
-            link.setAttribute('no-pjax', '');
-            link.rel = 'stylesheet';
-
-            if (pixel_style === 'true') {
-                link.href = /*[[@{/assets/dist/pixel.css?v={version}(version=${theme.spec.version})}]]*/;
-            }
-            document.head.appendChild(link);
-        }
-
-        document.addEventListener('DOMContentLoaded', () => {
-            appendPixelFont();
-
-            document.getElementById('pixel-toggle').addEventListener('click', () => {
-                appendPixelFont();
-            })
-        });
-    </script>
 </head>
 
 <body th:attr="layout_mode=${theme.config.style.fullscreen_layout ? 'fullscreen' : 'normal'}">

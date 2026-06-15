@@ -1,169 +1,172 @@
+import {terminal} from "../terminal.js";
+import {debounce, toggleClass} from "../utils/dom.js";
 import tocbot from "tocbot";
 
-let toc_icon = "☰"
-let toc_close_icon = "✕"
+const TOC_SELECTOR = "#toc";
+const TOC_CONTENT_SELECTOR = ".toc-content";
+const CONTENT_SELECTOR = "#content";
+const HEADING_SELECTOR = "h1, h2, h3, h4";
+const TOC_VISIBLE_CLASS = "toc-visible";
+const TOC_TOGGLE_ID = "toc-toggle";
+const TOC_OPEN_ICON = "☰";
+const TOC_CLOSE_ICON = "✕";
+const DESKTOP_TOC_WIDTH = 1400;
+const TOC_GAP = 12;
+const FALLBACK_TOC_WIDTH_REM = 17.5;
+const RESIZE_DEBOUNCE_MS = 250;
+
+let resizeListenerRegistered = false;
 
 function isTocDefaultOpen(toc) {
     return toc?.dataset?.defaultOpen !== "false";
 }
 
-function toggleToc() {
-    const toc = document.getElementById("toc");
-    if (!toc) return;
-    const toc_toggle = document.getElementById("toc-toggle");
-
-    if (!toc_toggle) return;
-
-    const isVisible = toc.classList.contains('toc-visible');
-
-    if (isVisible) {
-        toc.classList.remove('toc-visible');
-        toc_toggle.innerHTML = toc_icon;
-        toc_toggle.setAttribute('aria-label', 'Show Table of Contents');
-
-    } else {
-        toc.classList.add('toc-visible');
-        toc_toggle.innerHTML = toc_close_icon;
-        toc_toggle.setAttribute('aria-label', 'Hide Table of Contents');
-    }
-    void locateToc();
+function getToc() {
+    return document.querySelector(TOC_SELECTOR);
 }
 
-async function generateToc() {
-    const toc = document.getElementById("toc");
-    if (!toc) return;
+function getTocToggle() {
+    return document.getElementById(TOC_TOGGLE_ID);
+}
 
-    const content = document.getElementById("content");
-    const titles = content.querySelectorAll("h1, h2, h3, h4");
+function getContent() {
+    return document.querySelector(CONTENT_SELECTOR);
+}
 
-    if (!titles || titles.length === 0) {
-        toc.style.display = "none";
-        toc.remove();
-        return;
-    }
-
-    if (typeof tocbot !== 'undefined') {
+function destroyTocbot() {
+    if (typeof tocbot !== "undefined") {
         tocbot.destroy();
-        tocbot.init({
-            tocSelector: ".toc-content",
-            contentSelector: "#content",
-            headingSelector: "h1, h2, h3, h4",
-            extraListClasses: "toc-list",
-            extraLinkClasses: "toc-link",
-            headingsOffset: 96,
-            scrollSmoothOffset: -96,
-            scrollSmooth: true,
-        });
     }
-
-    setupTocVisibility();
-    setupToggleButton();
-    void locateToc();
 }
 
-function setupTocVisibility() {
-    const toc = document.querySelector(".toc");
+function syncToggleButton(toc = getToc()) {
+    const tocToggle = getTocToggle();
+    if (!toc || !tocToggle) return;
+
+    const isVisible = toc.classList.contains(TOC_VISIBLE_CLASS);
+    tocToggle.textContent = isVisible ? TOC_CLOSE_ICON : TOC_OPEN_ICON;
+    tocToggle.setAttribute("aria-label", isVisible ? "Hide Table of Contents" : "Show Table of Contents");
+
+    if (tocToggle.dataset.tocBound === "true") return;
+    tocToggle.addEventListener("click", toggleToc);
+    tocToggle.dataset.tocBound = "true";
+}
+
+function setTocVisible(toc, visible) {
+    toggleClass(toc, TOC_VISIBLE_CLASS, visible);
+    syncToggleButton(toc);
+}
+
+function toggleToc() {
+    const toc = getToc();
+    if (!toc) return;
+
+    const isVisible = toc.classList.contains(TOC_VISIBLE_CLASS);
+    setTocVisible(toc, !isVisible);
+    locateToc();
+}
+
+function hideToc(toc) {
+    toc.style.display = "none";
+    toc.remove();
+    destroyTocbot();
+}
+
+function initTocbot() {
+    destroyTocbot();
+    tocbot.init({
+        tocSelector: TOC_CONTENT_SELECTOR,
+        contentSelector: CONTENT_SELECTOR,
+        headingSelector: HEADING_SELECTOR,
+        extraListClasses: "toc-list",
+        extraLinkClasses: "toc-link",
+        headingsOffset: 96,
+        scrollSmoothOffset: -96,
+        scrollSmooth: true,
+    });
+}
+
+function shouldShowExpandedToc(toc) {
+    return isTocDefaultOpen(toc) && window.innerWidth > DESKTOP_TOC_WIDTH;
+}
+
+function setupTocVisibility(toc = getToc()) {
     if (!toc) return;
 
     toc.style.display = "block";
+    setTocVisible(toc, shouldShowExpandedToc(toc));
+}
 
-    if (isTocDefaultOpen(toc) && window.innerWidth > 1400) {
-        toc.classList.add('toc-visible');
-    } else {
-        toc.classList.remove('toc-visible');
+function generateToc() {
+    const toc = getToc();
+    const content = getContent();
+
+    if (!toc || !content) {
+        destroyTocbot();
+        return;
     }
+
+    const titles = content.querySelectorAll(HEADING_SELECTOR);
+    if (!titles || titles.length === 0) {
+        hideToc(toc);
+        return;
+    }
+
+    initTocbot();
+    setupTocVisibility(toc);
+    syncToggleButton(toc);
+    locateToc();
 }
 
-function setupToggleButton() {
-    const toc = document.getElementById("toc");
-    const toc_toggle = document.getElementById("toc-toggle");
-
-    const isVisible = toc.classList.contains('toc-visible');
-    toc_toggle.innerHTML = isVisible ? toc_close_icon : toc_icon;
-    toc_toggle.setAttribute('aria-label', isVisible ? 'Hide Table of Contents' : 'Show Table of Contents');
-
-    toc_toggle.addEventListener('click', toggleToc);
-}
-
-function hasEnoughSpace() {
-    const content = document.getElementById("content");
-    const toc = document.getElementById("toc");
-    if (!content || !toc) return false;
-
-    const contentRect = content.getBoundingClientRect();
-    const gap = 12;
-    const tocExpandedWidth = toc.offsetWidth > 0
+function getTocExpandedWidth(toc) {
+    return toc.offsetWidth > 0
         ? toc.offsetWidth
-        : parseInt(getComputedStyle(document.documentElement).fontSize) * 17.5;
+        : Number.parseFloat(getComputedStyle(document.documentElement).fontSize) * FALLBACK_TOC_WIDTH_REM;
+}
 
-    const spaceRight = window.innerWidth - contentRect.right - gap;
+function hasEnoughSpace(content, toc) {
+    const contentRect = content.getBoundingClientRect();
+    const tocExpandedWidth = getTocExpandedWidth(toc);
+
+    const spaceRight = window.innerWidth - contentRect.right - TOC_GAP;
     return spaceRight >= tocExpandedWidth;
 }
 
-async function locateToc() {
-    const toc = document.getElementById("toc");
+function locateToc() {
+    const toc = getToc();
     if (!toc) return;
 
-    const content = document.getElementById("content");
+    const content = getContent();
     if (!content) return;
 
     const contentRect = content.getBoundingClientRect();
-    const gap = 12;
 
-    if (hasEnoughSpace()) {
-        toc.style.left = `${contentRect.right + gap}px`;
-        toc.style.right = 'auto';
+    if (hasEnoughSpace(content, toc)) {
+        toc.style.left = `${contentRect.right + TOC_GAP}px`;
+        toc.style.right = "auto";
     } else {
-        toc.style.left = 'auto';
-        toc.style.right = `${gap}px`;
-        toc.style.top = 'auto';
+        toc.style.left = "auto";
+        toc.style.right = `${TOC_GAP}px`;
+        toc.style.top = "auto";
     }
 
 }
 
 function handleResize() {
-    const toc = document.getElementById("toc");
+    const toc = getToc();
     if (!toc) return;
 
-    setupTocVisibility();
-    setupToggleButton();
-    void locateToc();
+    setupTocVisibility(toc);
+    syncToggleButton(toc);
+    locateToc();
 }
 
-function debounce(func, wait) {
-    let timeout;
-    return function executedFunction(...args) {
-        const later = () => {
-            clearTimeout(timeout);
-            func(...args);
-        };
-        clearTimeout(timeout);
-        timeout = setTimeout(later, wait);
-    };
-}
-
-function destroyToc() {
-    const toc = document.getElementById("toc")
-    if (!toc) return;
-    toc.style.display = "none";
-    toc.remove();
-    if (typeof tocbot !== 'undefined') {
-        tocbot.destroy();
-    }
-}
-
-async function init_toc() {
-    void generateToc();
-    window.addEventListener('resize', debounce(handleResize, 250));
-
-}
-
-function registerToc() {
-    document.addEventListener('DOMContentLoaded', () => {
-        void init_toc();
-    });
+function initToc() {
+    if (resizeListenerRegistered) return;
+    window.addEventListener("resize", debounce(handleResize, RESIZE_DEBOUNCE_MS));
+    resizeListenerRegistered = true;
 }
 
 
 terminal.registerRefresh(generateToc);
-terminal.registerInitFunc(registerToc);
+terminal.registerInitFunc(initToc);

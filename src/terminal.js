@@ -6,10 +6,12 @@ export class Terminal {
     }
 
     registerRefresh(func) {
+        if (typeof func !== "function") return;
         this._refreshFunctions.push(func);
     }
 
     registerInitFunc(func) {
+        if (typeof func !== "function") return;
         this._initFunctions.push(func);
     }
 
@@ -22,5 +24,5 @@ export class Terminal {
     }
 }
 
-export var terminal = new Terminal();
+export const terminal = new Terminal();
 window.terminal = terminal;
