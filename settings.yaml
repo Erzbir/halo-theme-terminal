@@ -46,6 +46,12 @@ spec:
           help: 开启后隐藏左右侧边栏并让正文区域占满可用宽度
 
         - $formkit: checkbox
+          label: 表格宽度铺满父元素
+          name: table_full_width
+          value: false
+          help: 开启后文章内容中的 table 会占满正文内容区域宽度
+
+        - $formkit: checkbox
           label: 使用系统字体
           name: system_font_enable
           value: false

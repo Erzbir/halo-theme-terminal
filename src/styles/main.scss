@@ -118,16 +118,18 @@ body[layout_mode='fullscreen'] {
     max-width: none !important;
   }
 
-  .content table {
-    width: 100%;
-  }
-
   .content img,
   .content video,
   .content figure {
     max-width: 60%;
     margin-left: auto;
     margin-right: auto;
+  }
+}
+
+body[table_full_width='true'] {
+  .content table {
+    width: 100%;
   }
 }
 

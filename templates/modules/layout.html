@@ -177,7 +177,8 @@
     </th:block>
 </head>
 
-<body th:attr="layout_mode=${theme.config.style.fullscreen_layout ? 'fullscreen' : 'normal'}">
+<body th:attr="layout_mode=${theme.config.style.fullscreen_layout ? 'fullscreen' : 'normal'},
+               table_full_width=${theme.config.style.table_full_width ? 'true' : 'false'}">
 <div class="page">
     <header role="banner">
         <div id="header-slot" aria-hidden="true"></div>
