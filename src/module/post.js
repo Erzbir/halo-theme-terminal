@@ -3,6 +3,10 @@ import tocbot from "tocbot";
 let toc_icon = "☰"
 let toc_close_icon = "✕"
 
+function isTocDefaultOpen(toc) {
+    return toc?.dataset?.defaultOpen !== "false";
+}
+
 function toggleToc() {
     const toc = document.getElementById("toc");
     if (!toc) return;
@@ -63,10 +67,10 @@ function setupTocVisibility() {
 
     toc.style.display = "block";
 
-    if (window.innerWidth <= 1400) {
-        toc.classList.remove('toc-visible');
-    } else {
+    if (isTocDefaultOpen(toc) && window.innerWidth > 1400) {
         toc.classList.add('toc-visible');
+    } else {
+        toc.classList.remove('toc-visible');
     }
 }
 
