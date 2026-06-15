@@ -153,6 +153,11 @@
             --spacing-theme-container-padding-mobile: [(${theme.config.style.content_padding})];
         }
     </style>
+    <style no-pjax th:if="${not #strings.isEmpty(theme.config.style.list_marker)}" th:inline="css">
+        :root {
+            --list-theme-marker: [(${theme.config.style.list_marker})];
+        }
+    </style>
     <script no-pjax>
         window.TerminalTheme?.applyCustomCss?.();
     </script>

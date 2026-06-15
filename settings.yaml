@@ -72,6 +72,23 @@ spec:
           placeholder: "calc(var(--size-theme-font) * 2.5)"
           help: 控制正文容器内边距, 例如 2rem / 24px / calc(var(--size-theme-font) * 2), 留空使用主题默认值
 
+        - $formkit: select
+          label: 无序列表标记
+          name: list_marker
+          value: ""
+          help: 控制文章中无序列表项前的标记, 留空使用主题默认值
+          options:
+            - label: "default"
+              value: ""
+            - label: "-"
+              value: '"-"'
+            - label: "*"
+              value: '"*"'
+            - label: "+"
+              value: '"+"'
+            - label: ">"
+              value: '">"'
+
         - $formkit: checkbox
           label: 使用系统字体
           name: system_font_enable
