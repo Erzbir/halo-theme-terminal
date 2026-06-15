@@ -168,6 +168,11 @@
             --style-theme-border: [(${theme.config.style.border_style})];
         }
     </style>
+    <style no-pjax th:if="${not #strings.isEmpty(theme.config.style.table_border_width)}" th:inline="css">
+        :root {
+            --width-theme-table-border: [(${theme.config.style.table_border_width})];
+        }
+    </style>
     <script no-pjax>
         window.TerminalTheme?.applyCustomCss?.();
     </script>

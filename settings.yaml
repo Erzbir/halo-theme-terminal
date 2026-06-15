@@ -115,6 +115,13 @@ spec:
             - label: "none"
               value: "none"
 
+        - $formkit: text
+          label: 表格边线宽度
+          name: table_border_width
+          value:
+          placeholder: "calc(var(--size-theme-font) * 0.0625)"
+          help: 控制表格边线宽度, 留空使用主题默认值
+
         - $formkit: checkbox
           label: 使用系统字体
           name: system_font_enable
