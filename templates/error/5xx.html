@@ -10,9 +10,9 @@
             <div class="post-content">
                 <p th:text="${error?.detail}"></p>
             </div>
-            <a class="button" data-pjax th:href="@{/}" th:text="#{page.error.back}">
+            <button data-pjax th:href="@{/}" th:text="#{page.error.back}">
                 Back to home page
-            </a>
+            </button>
         </div>
     </div>
 </th:block>
