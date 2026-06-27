@@ -1,0 +1,116 @@
+{
+  "fontFamily": "ChillBitmapSE 16px",
+  "generated": "2026-06-27T13:03:54.721Z",
+  "chunks": [
+    {
+      "index": 1,
+      "file": "001-U+2AE0_U+FE6B.woff2",
+      "unicodeRange": "U+2AE0-U+2B11, U+2B16-U+2B1A, U+2B30-U+2B44, U+2B47-U+2B4C, U+2B95, U+2C60-U+2C7F, U+2CF9-U+2CFC, U+2CFE-U+2CFF, U+2D70, U+2D7F, U+2E00-U+2E2E, U+2E30-U+2E39, U+2E3B-U+2E42, U+2E52, U+3000, U+3003, U+301A-U+301F, U+302A-U+302D, U+3030, U+303D, U+A6F0-U+A6F7, U+A722-U+A761, U+A764-U+A76F, U+A771-U+A787, U+A78B-U+A793, U+A7A0-U+A7AD, U+A7B0-U+A7B7, U+A7F7, U+A7FA-U+A7FF, U+A838, U+A926-U+A92F, U+A980-U+A982, U+A9B3, U+A9B6-U+A9B9, U+A9BC-U+A9BD, U+A9BF, U+A9C1-U+A9CD, U+A9DE-U+A9DF, U+A9E5, U+AA29-U+AA2E, U+AA31-U+AA32, U+AA35-U+AA36, U+AA43, U+AA4C, U+AA5C-U+AA5F, U+AA7C, U+AB30-U+AB5F, U+AB64, U+FB00-U+FB06, U+FB1E, U+FB29, U+FE00-U+FE19, U+FE22-U+FE26, U+FE29-U+FE40, U+FE45-U+FE4E, U+FE50-U+FE52, U+FE54-U+FE66, U+FE68-U+FE6B"
+    },
+    {
+      "index": 2,
+      "file": "002-U+22DA_U+2ADF.woff2",
+      "unicodeRange": "U+22DA-U+22EE, U+22F0-U+22FF, U+2304, U+2308-U+230B, U+2310, U+2320-U+2321, U+2324, U+2329-U+232A, U+237C, U+239B-U+23B3, U+23DC-U+23E1, U+2501-U+25CE, U+25D0-U+25FF, U+2669-U+266F, U+2756, U+2768-U+2775, U+2794, U+2798-U+27AF, U+27B1-U+27BE, U+27C0-U+27FF, U+2900-U+2ADF"
+    },
+    {
+      "index": 3,
+      "file": "003-U+1DFE_U+22D9.woff2",
+      "unicodeRange": "U+1DFE-U+1EFF, U+2000-U+200A, U+2010-U+2012, U+2015-U+2017, U+201A-U+201B, U+201E-U+201F, U+2023-U+2025, U+202F-U+2031, U+2034-U+203B, U+203D-U+2046, U+2048-U+205F, U+2070-U+2071, U+2074-U+208E, U+2090-U+2094, U+20A0-U+20BF, U+20D0-U+20DC, U+20E1, U+20E5-U+20F0, U+210C, U+2111, U+211C, U+2126-U+2128, U+212D, U+2135-U+2138, U+2140-U+2144, U+214B, U+2150-U+2189, U+2190-U+21DD, U+21E0-U+21E9, U+21EB-U+22D9"
+    },
+    {
+      "index": 4,
+      "file": "004-U+0300_U+1DFD.woff2",
+      "unicodeRange": "U+0300-U+036F, U+0559-U+055F, U+0589-U+058A, U+058F, U+0591-U+05C7, U+05F3-U+05F4, U+07A6-U+07B0, U+07EB-U+07F3, U+07F7-U+07F9, U+0816-U+0819, U+081B-U+0823, U+0825-U+0827, U+0829-U+082D, U+0830-U+083E, U+0859-U+085B, U+085E, U+0A01-U+0A02, U+0A3C, U+0A41-U+0A42, U+0A47-U+0A48, U+0A4B-U+0A4D, U+0A51, U+0A70-U+0A71, U+0A75, U+0A81-U+0A82, U+0ABC, U+0AC1-U+0AC5, U+0AC7-U+0AC8, U+0ACD, U+0AE2-U+0AE3, U+0AF0-U+0AF1, U+0B01, U+0B3C, U+0B3F, U+0B41-U+0B44, U+0B4D, U+0B56, U+0B62-U+0B63, U+0B82, U+0BC0, U+0BCD, U+0BF9, U+0C00, U+0C3F-U+0C40, U+0C46-U+0C48, U+0C4A-U+0C4D, U+0C55-U+0C56, U+0C62-U+0C63, U+0C81, U+0C84, U+0CBC, U+0CBF, U+0CC6, U+0CE2-U+0CE3, U+0D01, U+0D4D, U+0D62-U+0D63, U+0DCA, U+0DD2-U+0DD4, U+0DD6, U+0DF4, U+0EAF, U+0EB1, U+0EB4-U+0EBC, U+0EC6, U+0EC8-U+0ECD, U+102D-U+1030, U+1032-U+1037, U+1039-U+103A, U+103D-U+103E, U+104A-U+104F, U+1058-U+1059, U+105E-U+1060, U+1071-U+1074, U+1082, U+1085-U+1086, U+108D, U+109D, U+10FB, U+135D-U+1368, U+1400, U+166D-U+166E, U+16EB-U+16ED, U+1A17-U+1A18, U+1A1B, U+1A1E-U+1A1F, U+1A56, U+1A58-U+1A5E, U+1A60, U+1A62, U+1A65-U+1A6C, U+1A73-U+1A7C, U+1A7F, U+1AA3-U+1AAD, U+1AB0-U+1ABD, U+1B00-U+1B03, U+1B34, U+1B36-U+1B3A, U+1B3C, U+1B42-U+1B43, U+1B5A-U+1B60, U+1B6B-U+1B73, U+1BE6, U+1BE8-U+1BE9, U+1BED-U+1BF1, U+1BFC-U+1BFF, U+1C2C-U+1C33, U+1C36-U+1C37, U+1C3B-U+1C3F, U+1D00-U+1D25, U+1D45, U+1D62-U+1D65, U+1D6B-U+1D77, U+1D79-U+1D9B, U+1DB2, U+1DC0-U+1DF5, U+1DFC-U+1DFD"
+    },
+    {
+      "index": 5,
+      "file": "005-U+FF04_U+FFEC.woff2",
+      "unicodeRange": "U+FF04, U+FF0B, U+FF1C-U+FF1E, U+FF21-U+FF3A, U+FF41-U+FF5A, U+FF5F-U+FF65, U+FF70, U+FF9E-U+FF9F, U+FFE0-U+FFE2, U+FFE5-U+FFE6, U+FFE9-U+FFEC"
+    },
+    {
+      "index": 6,
+      "file": "006-U+1800_U+18A9.woff2",
+      "unicodeRange": "U+1800-U+180D, U+18A9"
+    },
+    {
+      "index": 7,
+      "file": "007-U+0F04_U+0FDA.woff2",
+      "unicodeRange": "U+0F04-U+0F12, U+0F14, U+0F18-U+0F19, U+0F35, U+0F37, U+0F39-U+0F3D, U+0F71-U+0F7E, U+0F80-U+0F87, U+0F8D-U+0F97, U+0F99-U+0FBC, U+0FC6, U+0FD0-U+0FD4, U+0FD9-U+0FDA"
+    },
+    {
+      "index": 8,
+      "file": "008-U+17B7_U+17DD.woff2",
+      "unicodeRange": "U+17B7-U+17BE, U+17C6, U+17C9-U+17DB, U+17DD"
+    },
+    {
+      "index": 9,
+      "file": "009-U+0E2F_U+0E5B.woff2",
+      "unicodeRange": "U+0E2F, U+0E31, U+0E34-U+0E3A, U+0E3F, U+0E46-U+0E4F, U+0E5A-U+0E5B"
+    },
+    {
+      "index": 10,
+      "file": "010-U+0900_U+A8FD.woff2",
+      "unicodeRange": "U+0900-U+097F, U+A8E0-U+A8FD"
+    },
+    {
+      "index": 11,
+      "file": "011-U+0600_U+FDFC.woff2",
+      "unicodeRange": "U+0600-U+0603, U+0606-U+061B, U+061E-U+061F, U+064B-U+065F, U+066A, U+066D, U+0670, U+06D4, U+06D6-U+06E4, U+06E7-U+06E8, U+06EA-U+06ED, U+06FD, U+08D3-U+08FF, U+FBB2-U+FBBF, U+FBC1, U+FC5E-U+FC63, U+FD3E-U+FD3F, U+FDFC"
+    },
+    {
+      "index": 12,
+      "file": "012-U+0981_U+09F3.woff2",
+      "unicodeRange": "U+0981, U+09BC, U+09C1-U+09C4, U+09CD, U+09E2-U+09E3, U+09F2-U+09F3"
+    },
+    {
+      "index": 13,
+      "file": "013-U+3099_U+30FE.woff2",
+      "unicodeRange": "U+3099-U+309A, U+309D-U+309E, U+30A0, U+30FC-U+30FE"
+    },
+    {
+      "index": 14,
+      "file": "014-U+2500.woff2",
+      "unicodeRange": "U+2500"
+    },
+    {
+      "index": 15,
+      "file": "015-U+2013_U+FF5E.woff2",
+      "unicodeRange": "U+2013-U+2014, U+2018-U+2019, U+201C-U+201D, U+2022, U+2026-U+2027, U+203C, U+2047, U+22EF, U+25CF, U+2E3A, U+3001-U+3002, U+3008-U+3011, U+3014-U+3019, U+30FB, U+FE41-U+FE44, U+FE4F, U+FF08-U+FF09, U+FF0D, U+FF3B, U+FF3D, U+FF5B-U+FF5E"
+    },
+    {
+      "index": 16,
+      "file": "016-U+0483_U+A69F.woff2",
+      "unicodeRange": "U+0483-U+0487, U+A66F, U+A673-U+A67E, U+A69E-U+A69F"
+    },
+    {
+      "index": 17,
+      "file": "017-U+037E_U+03F6.woff2",
+      "unicodeRange": "U+037E, U+0387, U+03F6"
+    },
+    {
+      "index": 18,
+      "file": "018-U+0250_U+02E3.woff2",
+      "unicodeRange": "U+0250-U+02C1, U+02C8, U+02CC-U+02D1, U+02E0-U+02E3"
+    },
+    {
+      "index": 19,
+      "file": "019-U+0180_U+024F.woff2",
+      "unicodeRange": "U+0180-U+024F"
+    },
+    {
+      "index": 20,
+      "file": "020-U+0100_U+017F.woff2",
+      "unicodeRange": "U+0100-U+017F"
+    },
+    {
+      "index": 21,
+      "file": "021-U+00A0_U+00FF.woff2",
+      "unicodeRange": "U+00A0-U+00A5, U+00AA-U+00AD, U+00B1-U+00B3, U+00B5, U+00B7, U+00B9-U+00FF"
+    },
+    {
+      "index": 22,
+      "file": "022-U+0020_U+007E.woff2",
+      "unicodeRange": "U+0020-U+0025, U+0027-U+003F, U+0041-U+005F, U+0061-U+007B, U+007D-U+007E"
+    }
+  ]
+}

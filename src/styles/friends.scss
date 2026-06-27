@@ -1,30 +1,155 @@
-.friend {
-  &-post-list {
-    padding: 0;
+@use "variables" as *;
+
+.friend-log {
+  &-post {
+    .post-title {
+      margin-bottom: calc(var(--size-theme-font) * 0.25);
+    }
   }
 
-  &-post-title {
-    margin-bottom: calc(var(--size-theme-font) * 0.3125);
-    padding: 0;
+  &-subtitle {
+    font-size: calc(var(--size-theme-font) * 0.85);
+    color: var(--color-theme-meta);
+    opacity: 0.7;
+    margin-bottom: calc(var(--size-theme-font) * 1.75);
+    font-family: var(--family-theme-font), monospace;
   }
 
-  &-post-meta {
-    margin-bottom: calc(var(--size-theme-font) * 0.3125);
-    padding: 0;
+  &-container {
+    display: flex;
+    flex-direction: column;
+    gap: calc(var(--size-theme-font) * 0.125);
+    font-family: var(--family-theme-font), monospace;
+  }
+
+  &-date-divider {
+    margin: calc(var(--size-theme-font) * 1.5) 0 calc(var(--size-theme-font) * 0.75);
+    color: var(--color-theme-meta);
+    opacity: 0.55;
+    font-size: calc(var(--size-theme-font) * 0.85);
+    text-align: center;
+
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+
+  &-date-line {
+    font-family: var(--family-theme-font), monospace;
+  }
+
+  &-entry {
+    display: flex;
+    align-items: flex-start;
+    gap: calc(var(--size-theme-font) * 0.875);
+    padding: calc(var(--size-theme-font) * 0.5) calc(var(--size-theme-font) * 0.625);
+    border-left: var(--width-theme-border) solid transparent;
+    position: relative;
+    transition: border-color 0.15s ease;
+
+    &:hover {
+      border-left-color: var(--color-theme-accent);
+
+      &::before {
+        content: ">";
+        position: absolute;
+        left: calc(var(--size-theme-font) * -0.35);
+        color: var(--color-theme-accent);
+        font-size: calc(var(--size-theme-font) * 0.9);
+        line-height: var(--height-theme-line);
+      }
+    }
+
+    &-new {
+      .friend-log-level {
+        color: var(--color-theme-tag);
+        font-weight: bold;
+      }
+    }
+  }
+
+  &-meta {
+    display: flex;
+    gap: calc(var(--size-theme-font) * 0.5);
+    flex-shrink: 0;
+    font-size: calc(var(--size-theme-font) * 0.82);
+    color: var(--color-theme-meta);
+    opacity: 0.85;
+    padding-top: calc(var(--size-theme-font) * 0.15);
+    min-width: calc(var(--size-theme-font) * 12);
+    font-family: var(--family-theme-font), monospace;
+  }
+
+  &-timestamp {
+    font-family: var(--family-theme-font), monospace;
+  }
+
+  &-level {
+    font-family: var(--family-theme-font), monospace;
+    color: var(--color-theme-meta);
+  }
+
+  &-content {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: calc(var(--size-theme-font) * 0.4);
+    flex: 1;
+    min-width: 0;
+  }
+
+  &-title {
+    color: var(--color-theme-title);
+    text-decoration: none;
+    font-weight: normal;
+    font-size: var(--size-theme-font);
+
+    &:hover {
+      text-decoration: underline;
+      text-underline-offset: calc(var(--size-theme-font) * 0.2);
+    }
+  }
+
+  &-separator {
+    color: var(--color-theme-meta);
+    opacity: 0.4;
+    font-size: calc(var(--size-theme-font) * 0.85);
   }
 
   &-author {
-    display: inline-flex;
-    align-items: center;
-    gap: calc(var(--size-theme-font) * 0.35);
-    color: var(--color-theme-meta);
+    color: var(--color-theme-accent);
     text-decoration: none;
+    font-size: calc(var(--size-theme-font) * 0.9);
+
+    &:hover {
+      text-decoration: underline;
+      text-underline-offset: calc(var(--size-theme-font) * 0.15);
+    }
   }
 
-  &-post-desc {
-    margin: 0;
+  &-desc {
+    width: 100%;
+    margin: calc(var(--size-theme-font) * 0.3) 0 0;
     padding: 0;
     color: var(--color-theme-foreground);
-    font-size: calc(var(--size-theme-font) * 0.875);
+    opacity: 0.7;
+    font-size: calc(var(--size-theme-font) * 0.85);
+    line-height: var(--height-theme-line);
+  }
+
+  @media (max-width: $phone-max-width) {
+    &-entry {
+      flex-direction: column;
+      gap: calc(var(--size-theme-font) * 0.25);
+    }
+
+    &-meta {
+      min-width: auto;
+      width: 100%;
+    }
+
+    &-content {
+      padding-left: 0;
+    }
   }
 }

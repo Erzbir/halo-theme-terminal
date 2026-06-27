@@ -4,32 +4,32 @@
         th:replace="~{modules/layout :: html(title = |#{page.friends.title} - ${site.title}|, header = null, content = ~{::content}, footer = null)}"
 >
 <th:block th:fragment="content">
-    <article class="post">
+    <article class="post friend-log-post">
         <header>
             <h1 class="post-title" th:text="#{page.friends.title}">Friends</h1>
+            <div class="friend-log-subtitle">&gt; tail -f /var/log/friends.log</div>
         </header>
-        <div>
+        <div class="friend-log-container">
             <th:block th:each="friend, iterStat : ${friends.items}" th:with="spec = ${friend.spec}">
 
-                <h2 th:if="${iterStat.first
-                             or (#temporals.format(spec.pubDate, 'yyyy-MM-dd') != #temporals.format(friends.items[iterStat.index - 1].spec.pubDate, 'yyyy-MM-dd'))}"
-                    th:text="${#temporals.format(spec.pubDate, 'yyyy-MM-dd')}">
-                </h2>
+                <div class="friend-log-date-divider"
+                     th:if="${iterStat.first
+                             or (#temporals.format(spec.pubDate, 'yyyy-MM-dd') != #temporals.format(friends.items[iterStat.index - 1].spec.pubDate, 'yyyy-MM-dd'))}">
+                    <span class="friend-log-date-line">========== <span th:text="${#temporals.format(spec.pubDate, 'yyyy-MM-dd')}">2024-01-15</span> ==========</span>
+                </div>
 
-                <ul>
-                    <li class="post-list friend-post-list">
-                        <a th:href="@{${spec.postLink}}" target="_blank" rel="noopener noreferrer">
-                            <h2 class="post-list-title friend-post-title" th:text="${spec.title}">Post Title</h2>
-                        </a>
-                        <div class="post-meta friend-post-meta">
-                            <a class="friend-author" th:href="@{${spec.authorUrl}}" target="_blank"
-                               rel="noopener noreferrer">
-                                <span class="post-author" th:text="${spec.author}">Author</span>
-                            </a>
-                        </div>
-                        <p class="friend-post-desc" th:if="${spec.description}" th:text="${spec.description}"></p>
-                    </li>
-                </ul>
+                <div class="friend-log-entry" th:classappend="${iterStat.index < 3} ? 'friend-log-entry-new'">
+                    <div class="friend-log-meta">
+                        <span class="friend-log-timestamp" th:text="'[' + ${#temporals.format(spec.pubDate, 'HH:mm:ss')} + ']'">[14:32:01]</span>
+                        <span class="friend-log-level" th:text="${iterStat.index < 3} ? '[NEW]' : '[INFO]'">[INFO]</span>
+                    </div>
+                    <div class="friend-log-content">
+                        <a class="friend-log-title" th:href="@{${spec.postLink}}" target="_blank" rel="noopener noreferrer" th:text="${spec.title}">Post Title</a>
+                        <span class="friend-log-separator">—</span>
+                        <a class="friend-log-author" th:href="@{${spec.authorUrl}}" target="_blank" rel="noopener noreferrer" th:text="'@' + ${spec.author}">@author</a>
+                        <p class="friend-log-desc" th:if="${spec.description}" th:text="${spec.description}"></p>
+                    </div>
+                </div>
 
             </th:block>
         </div>
