@@ -1,118 +1,83 @@
 <!DOCTYPE html>
 <html
         xmlns:th="https://www.thymeleaf.org"
-        th:with="platformLabels=${projectFinder.platformLabels()}, typeLabels=${projectFinder.typeLabels()},
-                 platformLabel=${platformLabels[project.platform] ?: project.platform},
-                 typeLabel=${typeLabels[project.type] ?: project.type},
-                 hasCover=${project.cover != null && !project.cover.isEmpty()},
-                 hasRepoUrl=${project.repoUrl != null && !project.repoUrl.isEmpty()},
-                 hasDemoUrl=${project.demoUrl != null && !project.demoUrl.isEmpty()},
-                 hasDocsUrl=${project.docsUrl != null && !project.docsUrl.isEmpty()}"
-        th:replace="~{modules/layout :: html(title = |${project.title} - ${site.title}|, header = null, content = ~{::content}, footer = null)}"
+        th:replace="~{modules/layout :: html(title = |${project.title} - #{page.portfolio.title} - ${site.title}|, header = null, content = ~{::content}, footer = null)}"
 >
-<th:block th:fragment="content">
+<th:block th:fragment="content"
+          th:with="hasCover=${project.cover != null and !project.cover.isEmpty()},
+                   hasRepoUrl=${project.repoUrl != null and !project.repoUrl.isEmpty()},
+                   hasDemoUrl=${project.demoUrl != null and !project.demoUrl.isEmpty()},
+                   hasDocsUrl=${project.docsUrl != null and !project.docsUrl.isEmpty()},
+                   hasSummary=${project.summary != null and !project.summary.isEmpty()},
+                   hasContent=${project.content != null and !project.content.isEmpty()},
+                   hasRenderedContent=${projectContentHtml != null and !projectContentHtml.isEmpty()},
+                   platformLabel=${platformLabels != null and project.platform != null ? (platformLabels[project.platform] ?: project.platform) : project.platform},
+                   typeLabel=${typeLabels != null and project.type != null ? (typeLabels[project.type] ?: project.type) : project.type}">
     <article class="post portfolio-detail-post">
         <header>
             <h1 class="post-title" th:text="${project.title}">Project Title</h1>
-            <div class="portfolio-detail-subtitle">&gt; cat ~/portfolio/<span th:text="${project.slug}">project-slug</span></div>
+            <div class="post-meta portfolio-meta"
+                 th:if="${project.featured == true
+                         or !#strings.isEmpty(platformLabel)
+                         or !#strings.isEmpty(typeLabel)
+                         or (project.techStacks != null and !project.techStacks.isEmpty())
+                         or (project.tags != null and !project.tags.isEmpty())}">
+                <span class="post-meta portfolio-meta-line"
+                      th:if="${project.featured == true
+                              or !#strings.isEmpty(platformLabel)
+                              or !#strings.isEmpty(typeLabel)
+                              or (project.tags != null and !project.tags.isEmpty())}">
+                    <span class="portfolio-meta-group" th:if="${project.featured == true or !#strings.isEmpty(platformLabel) or !#strings.isEmpty(typeLabel)}">
+                        <span th:if="${project.featured == true}" th:text="#{page.portfolio.featured}">Featured</span>
+                        <span class="portfolio-card-label" th:if="${!#strings.isEmpty(platformLabel)}" th:text="|[${platformLabel}]|">[GitHub]</span>
+                        <span class="portfolio-card-label" th:if="${!#strings.isEmpty(typeLabel)}" th:text="|[${typeLabel}]|">[Open Source]</span>
+                    </span><span class="portfolio-meta-group post-tags portfolio-tags" th:if="${project.tags != null and !project.tags.isEmpty()}"><span class="post-tag portfolio-tag" th:each="tag : ${project.tags}" th:text="|#${tag}|">#tag</span></span>
+                </span>
+                <span class="portfolio-techs" th:if="${project.techStacks != null and !project.techStacks.isEmpty()}">
+                    <span class="portfolio-term" th:each="tech : ${project.techStacks}" th:text="|[${tech}]|">[Rust]</span>
+                </span>
+            </div>
         </header>
 
-        <div class="portfolio-detail-container">
-            <!-- Cover Image -->
-            <div class="portfolio-detail-cover" th:if="${hasCover}">
-                <img th:src="${project.cover}" th:alt="${project.title}" class="portfolio-detail-cover-img" />
-            </div>
+        <section class="post-content portfolio-detail">
+            <img th:if="${hasCover == true}" th:src="${project.cover}" th:alt="${project.title}" class="portfolio-detail-cover" />
 
-            <!-- Metadata Section -->
-            <div class="portfolio-detail-meta" th:if="${platformLabel or typeLabel or project.slug or project.createTime}">
-                <div class="portfolio-detail-meta-header"># Metadata</div>
-                <div class="portfolio-detail-meta-grid">
-                    <div class="portfolio-detail-meta-row" th:if="${project.title}">
-                        <span class="portfolio-detail-meta-key">title</span>
-                        <span class="portfolio-detail-meta-val" th:text="${project.title}">Project Name</span>
-                    </div>
-                    <div class="portfolio-detail-meta-row" th:if="${platformLabel}">
-                        <span class="portfolio-detail-meta-key">platform</span>
-                        <span class="portfolio-detail-meta-val" th:text="${platformLabel}">GitHub</span>
-                    </div>
-                    <div class="portfolio-detail-meta-row" th:if="${typeLabel}">
-                        <span class="portfolio-detail-meta-key">type</span>
-                        <span class="portfolio-detail-meta-val" th:text="${typeLabel}">Open Source</span>
-                    </div>
-                    <div class="portfolio-detail-meta-row" th:if="${project.slug}">
-                        <span class="portfolio-detail-meta-key">slug</span>
-                        <span class="portfolio-detail-meta-val" th:text="${project.slug}">project-slug</span>
-                    </div>
-                    <div class="portfolio-detail-meta-row" th:if="${project.featured}">
-                        <span class="portfolio-detail-meta-key">featured</span>
-                        <span class="portfolio-detail-meta-val portfolio-detail-meta-val-true">true</span>
-                    </div>
-                    <div class="portfolio-detail-meta-row" th:if="${project.createTime}">
-                        <span class="portfolio-detail-meta-key">created</span>
-                        <span class="portfolio-detail-meta-val" th:text="${#strings.substring(project.createTime, 0, 10)} + ' ' + ${#strings.substring(project.createTime, 11, 16)}">2024-01-01 00:00</span>
-                    </div>
-                    <div class="portfolio-detail-meta-row" th:if="${project.updateTime}">
-                        <span class="portfolio-detail-meta-key">updated</span>
-                        <span class="portfolio-detail-meta-val" th:text="${#strings.substring(project.updateTime, 0, 10)} + ' ' + ${#strings.substring(project.updateTime, 11, 16)}">2024-01-15 14:30</span>
-                    </div>
-                </div>
-            </div>
+            <blockquote class="portfolio-detail-summary" th:if="${hasSummary == true}" th:text="${project.summary}">
+                Summary text here.
+            </blockquote>
 
-            <!-- Links Section -->
-            <div class="portfolio-detail-section" th:if="${hasRepoUrl or hasDemoUrl or hasDocsUrl}">
-                <div class="portfolio-detail-section-header"># Links</div>
-                <div class="portfolio-detail-links">
-                    <a class="portfolio-detail-link" th:if="${hasRepoUrl}" th:href="${project.repoUrl}" target="_blank" rel="noopener noreferrer">
-                        <span class="portfolio-detail-link-marker">↪</span>
-                        <span class="portfolio-detail-link-label">repository</span>
-                        <span class="portfolio-detail-link-url" th:text="${project.repoUrl}">https://github.com/...</span>
-                    </a>
-                    <a class="portfolio-detail-link" th:if="${hasDemoUrl}" th:href="${project.demoUrl}" target="_blank" rel="noopener noreferrer">
-                        <span class="portfolio-detail-link-marker">↪</span>
-                        <span class="portfolio-detail-link-label">live demo</span>
-                        <span class="portfolio-detail-link-url" th:text="${project.demoUrl}">https://example.com</span>
-                    </a>
-                    <a class="portfolio-detail-link" th:if="${hasDocsUrl}" th:href="${project.docsUrl}" target="_blank" rel="noopener noreferrer">
-                        <span class="portfolio-detail-link-marker">↪</span>
-                        <span class="portfolio-detail-link-label">documentation</span>
-                        <span class="portfolio-detail-link-url" th:text="${project.docsUrl}">https://docs.example.com</span>
-                    </a>
-                </div>
-            </div>
+            <section class="portfolio-detail-section portfolio-detail-links" th:if="${hasRepoUrl == true or hasDemoUrl == true or hasDocsUrl == true}">
+                <h2 th:text="#{page.portfolio.links}">Links</h2>
+                <ul class="portfolio-link-list">
+                    <li class="portfolio-link-row" th:if="${hasRepoUrl == true}">
+                        <a class="portfolio-action button inline" th:href="${project.repoUrl}" target="_blank" rel="noopener noreferrer"
+                           th:text="#{page.portfolio.repository}">Repository</a>
+                        <span class="portfolio-link-url" th:text="${project.repoUrl}">https://github.com/example/repo</span>
+                    </li>
+                    <li class="portfolio-link-row" th:if="${hasDemoUrl == true}">
+                        <a class="portfolio-action button inline" th:href="${project.demoUrl}" target="_blank" rel="noopener noreferrer"
+                           th:text="#{page.portfolio.demo}">Demo</a>
+                        <span class="portfolio-link-url" th:text="${project.demoUrl}">https://example.com</span>
+                    </li>
+                    <li class="portfolio-link-row" th:if="${hasDocsUrl == true}">
+                        <a class="portfolio-action button inline" th:href="${project.docsUrl}" target="_blank" rel="noopener noreferrer"
+                           th:text="#{page.portfolio.docs}">Docs</a>
+                        <span class="portfolio-link-url" th:text="${project.docsUrl}">https://docs.example.com</span>
+                    </li>
+                </ul>
+            </section>
 
-            <!-- Tech Stacks -->
-            <div class="portfolio-detail-section" th:if="${project.techStacks != null && !project.techStacks.isEmpty()}">
-                <div class="portfolio-detail-section-header"># Tech Stack</div>
-                <div class="portfolio-detail-techstacks">
-                    <span class="portfolio-detail-techstack" th:each="tech : ${project.techStacks}" th:text="${tech}">Rust</span>
-                </div>
-            </div>
+            <section class="portfolio-detail-section" th:if="${hasRenderedContent == true}">
+                <h2 th:text="#{page.portfolio.content}">Content</h2>
+                <div class="portfolio-detail-content" th:utext="${projectContentHtml}"></div>
+            </section>
 
-            <!-- Tags -->
-            <div class="portfolio-detail-section" th:if="${project.tags != null && !project.tags.isEmpty()}">
-                <div class="portfolio-detail-section-header"># Tags</div>
-                <div class="portfolio-detail-tags">
-                    <span class="portfolio-detail-tag" th:each="tag : ${project.tags}" th:text="${tag}">tag</span>
-                </div>
+            <div class="portfolio-detail-nav">
+                <a data-pjax class="button inline portfolio-detail-back" th:href="@{/portfolio}">
+                    <span th:text="'< ' + #{page.portfolio.back}">&lt; portfolio</span>
+                </a>
             </div>
-
-            <!-- Summary -->
-            <div class="portfolio-detail-section" th:if="${project.summary}">
-                <div class="portfolio-detail-section-header"># Summary</div>
-                <blockquote class="portfolio-detail-summary" th:text="${project.summary}">Summary text here.</blockquote>
-            </div>
-
-            <!-- Content (Markdown rendered as HTML) -->
-            <div class="portfolio-detail-section" th:if="${project.content}">
-                <div class="portfolio-detail-section-header"># Description</div>
-                <div class="portfolio-detail-content" th:utext="${projectFinder.renderContent(project)}"></div>
-            </div>
-
-            <!-- Terminal prompt footer -->
-            <div class="portfolio-detail-footer">
-                <span class="portfolio-detail-footer-prompt">$ <span class="portfolio-detail-footer-blink">█</span></span>
-            </div>
-        </div>
+        </section>
     </article>
 </th:block>
 </html>
