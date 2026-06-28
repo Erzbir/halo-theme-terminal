@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html
+        xmlns:th="https://www.thymeleaf.org"
+        th:with="platformLabels=${projectFinder.platformLabels()}, typeLabels=${projectFinder.typeLabels()}"
+        th:replace="~{modules/layout :: html(title = |${projectFinder.setting().seoTitle} - ${site.title}|, header = null, content = ~{::content}, footer = null)}"
+>
+<th:block th:fragment="content">
+    <article class="post portfolio-listing-post">
+        <header>
+            <h1 class="post-title" th:text="${projectFinder.setting().seoTitle}">Portfolio</h1>
+            <div class="portfolio-listing-subtitle">&gt; ls -la ~/portfolio/</div>
+        </header>
+
+        <div class="portfolio-listing-header">
+            <span class="portfolio-listing-header-perms">PERMISSIONS</span>
+            <span class="portfolio-listing-header-type">TYPE</span>
+            <span class="portfolio-listing-header-platform">PLATFORM</span>
+            <span class="portfolio-listing-header-name">NAME</span>
+        </div>
+
+        <div class="portfolio-listing-container">
+            <div class="portfolio-listing-divider">
+                <span>═══════════════════════════════════════════════════════════════════════</span>
+            </div>
+
+            <th:block th:each="project, iterStat : ${projects.items}" th:with="
+                platformLabel = ${platformLabels[project.platform] ?: project.platform},
+                typeLabel = ${typeLabels[project.type] ?: project.type}
+            ">
+                <div class="portfolio-listing-entry" th:classappend="${project.featured} ? 'portfolio-listing-entry-featured' : ''">
+                    <div class="portfolio-listing-permissions">
+                        <span th:if="${project.featured}" class="portfolio-listing-star" title="Featured">*</span>
+                        <span th:if="${!project.featured}" class="portfolio-listing-star portfolio-listing-star-empty">-</span>
+                        <span class="portfolio-listing-perms">rw-r--r--</span>
+                    </div>
+                    <span class="portfolio-listing-type" th:text="${typeLabel ?: '-'}">open_source</span>
+                    <span class="portfolio-listing-platform" th:text="${platformLabel ?: '-'}">GitHub</span>
+                    <div class="portfolio-listing-info">
+                        <a class="portfolio-listing-name" th:href="@{/portfolio/{slug}(slug=${project.slug})}" th:text="${project.title}">Project Name</a>
+                        <p class="portfolio-listing-summary" th:if="${project.summary}" th:text="${project.summary}">A brief summary of the project.</p>
+                        <div class="portfolio-listing-techstacks" th:if="${project.techStacks != null && !project.techStacks.isEmpty()}">
+                            <span class="portfolio-listing-techstack" th:each="tech : ${project.techStacks}" th:text="${tech}">Rust</span>
+                        </div>
+                        <div class="portfolio-listing-tags" th:if="${project.tags != null && !project.tags.isEmpty()}">
+                            <span class="portfolio-listing-tag" th:each="tag : ${project.tags}" th:text="${tag}">tag</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-listing-divider">
+                    <span>───────────────────────────────────────────────────────────────</span>
+                </div>
+            </th:block>
+
+            <div th:if="${projects.items == null or projects.items.isEmpty()}" class="portfolio-listing-empty">
+                <span class="portfolio-listing-empty-text">No projects found.</span>
+            </div>
+        </div>
+
+        <nav class="pagination" th:if="${projects.hasPrevious() || projects.hasNext()}">
+            <div class="pagination-buttons">
+                <span th:if="${projects.hasPrevious()}">
+                    <a data-pjax th:href="@{/portfolio(page=${projects.page - 1})}" th:classappend="${projects.page == 1} ? 'first-page' : ''" class="button prev inline">
+                        <span class="button-text" th:text="'< ' + #{page.pagination.prev}">&lt;&nbsp;Prev</span>
+                    </a>
+                </span>
+                <span th:if="${projects.hasNext()}">
+                    <a data-pjax th:href="@{/portfolio(page=${projects.page + 1})}" class="button inline next">
+                        <span class="button-text" th:text="#{page.pagination.next} + ' >'">Next&nbsp;&gt;</span>
+                    </a>
+                </span>
+            </div>
+        </nav>
+    </article>
+</th:block>
+</html>
