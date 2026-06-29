@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html
+        xmlns:th="https://www.thymeleaf.org"
+        th:replace="~{modules/layout :: html(title = |#{page.portfolio.title} - ${site.title}|, header = null, content = ~{::content}, footer = null)}"
+>
+<th:block th:fragment="content">
+    <article class="portfolio-page">
+        <header>
+            <h1 class="post-title" th:text="#{page.portfolio.title}">Portfolio</h1>
+        </header>
+
+        <section class="posts portfolio-list" th:if="${projects.items != null and !projects.items.isEmpty()}">
+            <article class="post on-list portfolio-item" th:each="project, iterStat : ${projects.items}"
+                     th:with="platformLabel=${platformLabels != null and project.platform != null ? (platformLabels[project.platform] ?: project.platform) : project.platform},
+                              typeLabel=${typeLabels != null and project.type != null ? (typeLabels[project.type] ?: project.type) : project.type}">
+                <a data-pjax class="portfolio-card-cover" th:if="${!#strings.isEmpty(project.cover)}"
+                   th:href="@{/portfolio/{slug}(slug=${project.slug})}">
+                    <img th:src="${project.cover}" th:alt="${project.title}" />
+                </a>
+
+                <header>
+                    <h2 class="post-title">
+                        <a data-pjax th:href="@{/portfolio/{slug}(slug=${project.slug})}" th:text="${project.title}">Project Name</a>
+                    </h2>
+                    <div class="post-meta portfolio-meta"
+                         th:if="${project.featured == true
+                                 or !#strings.isEmpty(platformLabel)
+                                 or !#strings.isEmpty(typeLabel)
+                                 or (project.tags != null and !project.tags.isEmpty())
+                                 or (project.techStacks != null and !project.techStacks.isEmpty())}">
+                        <span class="portfolio-meta-line"
+                              th:if="${project.featured == true
+                                      or !#strings.isEmpty(platformLabel)
+                                      or !#strings.isEmpty(typeLabel)
+                                      or (project.tags != null and !project.tags.isEmpty())}">
+                            <span class="portfolio-meta-group" th:if="${project.featured == true or !#strings.isEmpty(platformLabel) or !#strings.isEmpty(typeLabel)}">
+                                <span th:if="${project.featured == true}" th:text="#{page.portfolio.featured}">Featured</span>
+                                <span class="portfolio-card-label" th:if="${!#strings.isEmpty(platformLabel)}" th:text="|[${platformLabel}]|">[GitHub]</span>
+                                <span class="portfolio-card-label" th:if="${!#strings.isEmpty(typeLabel)}" th:text="|[${typeLabel}]|">[Open Source]</span>
+                            </span>
+                            <span class="portfolio-meta-group post-tags portfolio-tags" th:if="${project.tags != null and !project.tags.isEmpty()}">
+                                <span class="post-tag portfolio-tag" th:each="tag : ${project.tags}" th:text="|#${tag}|">#tag</span>
+                            </span>
+                        </span>
+                        <span class="portfolio-techs" th:if="${project.techStacks != null and !project.techStacks.isEmpty()}">
+                            <span class="portfolio-term" th:each="tech : ${project.techStacks}" th:text="|[${tech}]|">[Rust]</span>
+                        </span>
+                    </div>
+                </header>
+
+                <div class="post-excerpt" th:if="${!#strings.isEmpty(project.summary)}">
+                    <span th:text="${project.summary}">A brief summary of the project.</span>
+                </div>
+
+                <div class="portfolio-actions">
+                    <a data-pjax class="portfolio-action button inline" th:href="@{/portfolio/{slug}(slug=${project.slug})}"
+                       th:text="#{page.portfolio.detail}">Detail</a>
+                    <a class="portfolio-action button inline" th:if="${!#strings.isEmpty(project.repoUrl)}"
+                       th:href="${project.repoUrl}" target="_blank" rel="noopener noreferrer"
+                       th:text="#{page.portfolio.repository}">Repository</a>
+                    <a class="portfolio-action button inline" th:if="${!#strings.isEmpty(project.demoUrl)}"
+                       th:href="${project.demoUrl}" target="_blank" rel="noopener noreferrer"
+                       th:text="#{page.portfolio.demo}">Demo</a>
+                </div>
+            </article>
+        </section>
+
+        <section class="post-content">
+            <p th:if="${projects.items == null or projects.items.isEmpty()}" class="portfolio-empty" th:text="#{page.portfolio.empty}">
+                No projects found.
+            </p>
+        </section>
+
+        <nav class="pagination" th:if="${projects.hasPrevious() or projects.hasNext()}">
+            <div class="pagination-buttons">
+                <span th:if="${projects.hasPrevious()}">
+                    <a data-pjax th:href="@{/portfolio(page=${projects.page - 1})}" th:classappend="${projects.page == 1} ? 'first-page' : ''" class="button prev inline">
+                        <span class="button-text" th:text="'< ' + #{page.pagination.prev}">&lt;&nbsp;Prev</span>
+                    </a>
+                </span>
+                <span th:if="${projects.hasNext()}">
+                    <a data-pjax th:href="@{/portfolio(page=${projects.page + 1})}" class="button inline next">
+                        <span class="button-text" th:text="#{page.pagination.next} + ' >'">Next&nbsp;&gt;</span>
+                    </a>
+                </span>
+            </div>
+        </nav>
+    </article>
+</th:block>
+</html>
