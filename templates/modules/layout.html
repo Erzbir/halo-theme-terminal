@@ -27,24 +27,45 @@
             const root = document.documentElement;
             const storageKeys = {
                 themeMode: "theme-mode",
-                pixelStyle: "pixel_style"
+                pixelStyle: "pixel_style",
+                colorScheme: "theme-color-scheme"
             };
 
-            function resolveTheme(scheme) {
-                if (scheme === "light") {
+            function resolveTheme(mode) {
+                if (mode === "light") {
                     return config.lightTheme === "custom" ? config.customLightTheme : config.lightTheme;
                 }
                 return config.darkTheme === "custom" ? config.customDarkTheme : config.darkTheme;
+            }
+
+            function getStoredColorScheme() {
+                const scheme = localStorage.getItem(storageKeys.colorScheme);
+                return scheme && scheme !== "default" ? scheme : "";
             }
 
             function getSystemScheme() {
                 return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
             }
 
-            function applyTheme(mode) {
+            function applyTheme(mode, options = {}) {
+                if (options.clearColorScheme) {
+                    localStorage.removeItem(storageKeys.colorScheme);
+                }
+
                 const actualMode = mode === "system" ? getSystemScheme() : mode;
                 root.setAttribute("data-color-scheme", actualMode);
-                root.setAttribute("theme-color-scheme", resolveTheme(actualMode));
+                root.setAttribute("theme-color-scheme", getStoredColorScheme() || resolveTheme(actualMode));
+            }
+
+            function applyColorScheme(scheme) {
+                if (!scheme || scheme === "default") {
+                    localStorage.removeItem(storageKeys.colorScheme);
+                    syncThemeMode();
+                    return;
+                }
+
+                localStorage.setItem(storageKeys.colorScheme, scheme);
+                root.setAttribute("theme-color-scheme", scheme);
             }
 
             function syncSystemFont() {
@@ -104,6 +125,7 @@
             window.applyTheme = applyTheme;
             window.TerminalTheme = {
                 applyTheme,
+                applyColorScheme,
                 applyCustomCss,
                 syncPixelFont,
                 syncPixelStyle

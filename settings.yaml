@@ -210,6 +210,11 @@ spec:
               value: "light"
             - label: "跟随系统"
               value: "system"
+        - $formkit: checkbox
+          name: color_scheme_switcher_enable
+          label: 启用访客配色切换
+          value: false
+          help: 开启后在页头显示配色选择下拉框
         - $formkit: select
           name: dark_color_scheme
           id: dark_color_scheme

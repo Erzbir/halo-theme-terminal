@@ -8,20 +8,91 @@
     align-items: center;
     justify-content: space-between;
 
+    .color-scheme-picker {
+      position: relative;
+      display: flex;
+      align-items: center;
+      flex: 0 0 auto;
+      width: max-content;
+      margin-left: calc(var(--size-theme-font) * 0.5);
+    }
+
+    .color-scheme-trigger {
+      transition: none;
+      animation: none;
+    }
+
+    .color-scheme-menu {
+      position: absolute;
+      z-index: 20;
+      top: calc(100% + var(--width-theme-border));
+      right: 0;
+      display: block;
+      width: max-content;
+      min-width: 100%;
+      max-height: calc(var(--size-theme-font) * 12);
+      overflow-y: auto;
+      margin: 0;
+      padding: 0;
+      background: var(--color-theme-background);
+      border: var(--width-theme-border) var(--style-theme-border) var(--color-theme-header);
+
+      &[hidden] {
+        display: none;
+      }
+    }
+
+    .color-scheme-option {
+      display: block;
+      width: 100%;
+      margin: 0;
+      padding: calc(var(--size-theme-font) * 0.35) calc(var(--size-theme-font) * 0.4);
+      color: var(--color-theme-header);
+      background: var(--color-theme-background);
+      border: 0;
+      border-bottom: calc(var(--width-theme-border) / 2) var(--style-theme-border) var(--color-theme-header);
+      border-radius: 0;
+      font-size: calc(var(--size-theme-font) * 0.8);
+      font-weight: 500;
+      text-align: left;
+      white-space: nowrap;
+      transition: none;
+      animation: none;
+
+      &:last-child {
+        border-bottom: 0;
+      }
+
+      &:focus-visible,
+      &[aria-selected="true"] {
+        color: var(--color-theme-background);
+        background: var(--color-theme-header);
+        outline: none;
+      }
+    }
+
+    #color-scheme-trigger,
     #theme-toggle,
     #search-button,
     #pixel-toggle {
       background-color: transparent;
       color: var(--color-theme-header);
       border: var(--width-theme-border) var(--style-theme-border) var(--color-theme-header);
-      margin: 0 0 0 calc(var(--size-theme-font) * 0.5);
+      margin: 0;
       padding: 0;
+    }
+
+    #theme-toggle,
+    #search-button,
+    #pixel-toggle {
+      margin-left: calc(var(--size-theme-font) * 0.5);
     }
   }
 
   &-logo {
     display: flex;
     flex: 1;
+    min-width: 0;
 
     &::after {
       content: "";

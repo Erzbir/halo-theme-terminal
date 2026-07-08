@@ -25,6 +25,42 @@
                       d="M6 2h8v2H6zM4 6V4h2v2zm0 8H2V6h2zm2 2H4v-2h2zm8 0v2H6v-2zm2-2h-2v2h2v2h2v2h2v2h2v-2h-2v-2h-2v-2h-2zm0-8h2v8h-2zm0 0V4h-2v2z"/>
             </svg>
         </button>
+        <div
+                id="color-scheme-picker"
+                class="color-scheme-picker"
+                th:if="${theme.config.style.color_scheme_switcher_enable != false}">
+            <button
+                    id="color-scheme-trigger"
+                    class="color-scheme-trigger"
+                    type="button"
+                    aria-label="Selector Scheme"
+                    aria-haspopup="listbox"
+                    aria-expanded="false"
+                    aria-controls="color-scheme-menu">
+                <svg class="icon-regular button-icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path fill="currentColor" d="M12.6 3.6c-5.96 0-10.8 4.3-10.8 9.6c0 3.97 3.23 7.2 7.2 7.2h1.98c.98 0 1.62-1 1.25-1.91c-.5-1.22.4-2.59 1.73-2.59h2.24c3.31 0 6-2.69 6-6c0-3.48-4.3-6.3-9.6-6.3ZM6 14.4a1.8 1.8 0 1 1 0-3.6a1.8 1.8 0 0 1 0 3.6Zm3.6-4.8a1.8 1.8 0 1 1 0-3.6a1.8 1.8 0 0 1 0 3.6Zm6 0a1.8 1.8 0 1 1 0-3.6a1.8 1.8 0 0 1 0 3.6Zm3.6 4.8a1.8 1.8 0 1 1 0-3.6a1.8 1.8 0 0 1 0 3.6Z"></path>
+                </svg>
+                <svg class="icon-pixel button-icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                     viewBox="0 0 24 24">
+                    <g fill="currentColor"><path d="M22.29 6.285h1.14V12h-1.14ZM21.143 12h1.147v2.287h-1.147ZM21.143 3.998h1.147v2.287h-1.147ZM20.003 14.288h1.14v1.14h-1.14ZM20.003 2.858h1.14v1.14h-1.14ZM18.855 15.428h1.148v1.147h-1.148ZM18.855 8.573h1.148v4.567h-1.148ZM17.715 16.575h1.14v1.14h-1.14ZM17.715 13.14h1.14v1.148h-1.14ZM17.715 1.718h2.287v1.14h-2.287ZM16.575 17.715h1.14v1.14h-1.14ZM16.575 14.288h1.14v1.14h-1.14ZM15.428 7.433h3.427v1.14h-3.427ZM15.428 18.855h1.147v1.148h-1.147ZM14.288 20.003h1.14v1.14h-1.14ZM12 15.428h4.575v1.147H12ZM14.288 8.573h1.14v1.14h-1.14ZM14.288 6.285h2.287v-1.14h1.14V3.998h-1.14v-1.14h-2.287v1.14h-1.14v1.147h1.14zM13.148 21.143h1.14v1.14h-1.14ZM13.148 9.712h1.14v1.148h-1.14ZM12 10.86h1.148V12H12ZM6.285 22.283h6.863v1.147H6.285ZM10.86 12H12v3.428h-1.14ZM9.712.57h8.003v1.148H9.712ZM10.86 16.575H8.573v1.14h-1.14v2.288h1.14v1.14h2.287v-1.14H12v-2.288h-1.14zM7.433 1.718h2.28v1.14h-2.28ZM7.433 9.712h2.28v-1.14h1.147V6.285H9.713v-1.14h-2.28v1.14H6.284v2.287h1.147zM4.005 15.428h2.28v-1.14h1.148V12H6.285v-1.14h-2.28V12H2.858v2.287h1.147zM5.145 2.858h2.288v1.14H5.145ZM5.145 21.143h1.14v1.14h-1.14ZM2.858 20.003h2.287v1.14H2.858ZM4.005 3.998h1.14v1.147h-1.14ZM2.858 5.145h1.147v2.288H2.858ZM1.718 17.715h1.14v2.287h-1.14ZM1.718 7.433h1.14v2.28h-1.14Z"/><path d="M.57 9.712h1.148v8.003H.57Z"/></g>
+                </svg>
+            </button>
+            <div
+                    id="color-scheme-menu"
+                    class="color-scheme-menu"
+                    role="listbox"
+                    aria-label="Color Scheme List"
+                    hidden>
+                <button
+                        class="color-scheme-option"
+                        type="button"
+                        role="option"
+                        aria-selected="true"
+                        data-color-scheme="default">
+                    default
+                </button>
+            </div>
+        </div>
         <button id="theme-toggle" aria-label="Toggle Theme" type="button">
             <svg class="icon-regular button-icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                  preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
