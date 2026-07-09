@@ -114,8 +114,8 @@
             function syncThemeMode() {
                 let storedMode = localStorage.getItem(storageKeys.themeMode);
 
-                if (config.defaultMode === "system" || !storedMode) {
-                    storedMode = config.defaultMode;
+                if (!storedMode) {
+                    storedMode = config.defaultMode || "system";
                     localStorage.setItem(storageKeys.themeMode, storedMode);
                 }
 
