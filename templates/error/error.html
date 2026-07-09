@@ -10,7 +10,7 @@
             <div class="post-content">
                 <p th:text="${error?.detail}"></p>
             </div>
-            <button data-pjax th:href="@{/}" th:text="#{page.error.back}">
+            <button type="button" th:onclick="|location.href='@{/}'|" th:text="#{page.error.back}">
                 Back to home page
             </button>
         </div>
