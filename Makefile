@@ -7,22 +7,22 @@ ARCHIVE := $(THEME).zip
 
 all: install build test
 
-$(NODE_MODS): package.json
+$(NODE_MODS): package.json pnpm-lock.yaml
 	pnpm install
 
-$(DIST_DIR): $(NODE_MODS) theme.yaml settings.yaml build.js templates
+$(DIST_DIR)/$(ARCHIVE): $(NODE_MODS) theme.yaml settings.yaml build.js templates
 	pnpm build
 
 install: $(NODE_MODS)
 
-build: $(DIST_DIR)
+build: $(DIST_DIR)/$(ARCHIVE)
 
-test: $(DIST_DIR)/$(ARCHIVE)
+test: build
 	@unzip $(DIST_DIR)/$(ARCHIVE) -d $(DIST_DIR)/$(NAME)
 
-.PHNOY: clean
+.PHONY: all install build clean test
+
 clean:
 	@rm -rf $(DIST_DIR)
-	@rm -rf $(BUILD_DIR)
 	@rm -rf $(NODE_MODS)
 	@rm -rf templates/assets/$(DIST_DIR)
