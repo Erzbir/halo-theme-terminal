@@ -2,7 +2,8 @@ import {terminal} from "../terminal.js";
 
 const THEME_MODE_STORAGE_KEY = "theme-mode";
 const COLOR_SCHEME_STORAGE_KEY = "theme-color-scheme";
-const PIXEL_STYLE_STORAGE_KEY = "pixel_style";
+const PIXEL_STYLE_STORAGE_KEY = "pixel-style";
+const PIXEL_STYLE_ATTRIBUTE = "pixel_style";
 const COLOR_SCHEME_SELECTOR_PATTERN = /html\[theme-color-scheme\s*=\s*(['"]?)([^'"\]\s]+)\1\]/g;
 
 function getStoredPreference(key) {
@@ -222,9 +223,9 @@ function registerPixelToggle() {
     pixelToggle.addEventListener("click", function () {
         const storedStatus = getStoredPreference(PIXEL_STYLE_STORAGE_KEY);
         const currentStatus = storedStatus
-            || document.documentElement.getAttribute(PIXEL_STYLE_STORAGE_KEY);
+            || document.documentElement.getAttribute(PIXEL_STYLE_ATTRIBUTE);
         const newStatus = currentStatus === "true" ? "false" : "true";
-        document.documentElement.setAttribute(PIXEL_STYLE_STORAGE_KEY, newStatus);
+        document.documentElement.setAttribute(PIXEL_STYLE_ATTRIBUTE, newStatus);
         setStoredPreference(PIXEL_STYLE_STORAGE_KEY, newStatus);
         window.TerminalTheme?.syncPixelFont?.();
     });
