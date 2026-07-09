@@ -1,163 +1,332 @@
-# Terminal
+# Terminal-EZ
 
-<img src="https://raw.githubusercontent.com/Erzbir/halo-theme-terminal/refs/heads/main/preview/scheme.png" alt="scheme">
+一款简洁, 复古的 Terminal 风格 Halo 主题
 
-前往: https://erzbir.com 查看
+![配色预览](https://raw.githubusercontent.com/Erzbir/halo-theme-terminal/refs/heads/main/preview/scheme.png)
 
 ## 功能
 
-1. PJAX
-2. 样式自定义
-3. 配色切换
-4. 深色/浅色模式 
-5. 页面自定义 
-6. 文章目录 
-7. 社交资料 
-8. 子菜单 
-9. 像素化
+- Terminal 风格的响应式页面布局
+- 深色, 浅色和跟随系统 3 种默认模式
+- 12 套内置配色
+- 访客配色选择器
+- 常规图标和像素图标切换
+- JetBrains Mono, 系统字体, 自定义字体和内置像素字体
+- 首页公告打字效果
+- 文章目录和目录展开状态配置
+- 文章标签, 置顶标记和上一篇/下一篇导航
+- Halo 评论组件适配
+- Halo 搜索组件适配
+- PJAX 页面切换
+- 多级菜单
+- 社交资料和 RSS
+- ICP 备案和公安备案信息
+- 首页, 文章, 独立页面, 归档, 分类, 标签, 友链和错误页模板
+- 瞬间, 朋友圈和项目作品集页面模板
+- 英文, 简体中文, 繁体中文和西班牙文界面文本
 
-## 关于自定义 CSS
+## 页面和集成
 
-目前只有原始 CSS 输入, 在样式设置中可以填入原始 CSS, 主题会直接将这段 CSS 插入到 head
+| 页面或功能     | 模板或条件                                                                  |
+|-----------|------------------------------------------------------------------------|
+| 首页        | `templates/index.html`                                                 |
+| 文章页       | `templates/post.html`                                                  |
+| 独立页面      | `templates/page.html`                                                  |
+| 归档页       | `templates/archives.html`                                              |
+| 分类列表和分类详情 | `templates/categories.html`, `templates/category.html`                 |
+| 标签列表和标签详情 | `templates/tags.html`, `templates/tag.html`                            |
+| 友链页       | `templates/links.html`                                                 |
+| 朋友圈       | `templates/friends.html`, 需要朋友圈插件                                      |
+| 瞬间        | `templates/moments.html`, 需要瞬间插件                                       |
+| 项目作品集     | `templates/portfolio.html`, `templates/portfolio-detail.html`, 需要作品集插件 |
+| 搜索        | 启用搜索组件时页头显示搜索按钮                                                        |
+| 评论        | 启用评论插件并开启评论功能时显示评论组件                                                   |
+| 错误页       | 提供 `404`, `5xx` 和通用错误模板                                                |
 
-### 新增自定义主题配色
+## 主题设置
 
-比如这里增加一个名字叫 `default` 的配色:
+### 基本设置
+
+| 设置      | 配置名                 | 说明                   |
+|---------|---------------------|----------------------|
+| Logo 文本 | `basic.logo`        | 留空时使用 Halo 站点标题      |
+| 启用 PJAX | `basic.pjax_enable` | 默认关闭, 开启后站内链接只更新主要内容 |
+
+### 布局和样式
+
+| 设置       | 配置名                                                    | 说明                                                |
+|----------|--------------------------------------------------------|---------------------------------------------------|
+| 全屏布局     | `style.fullscreen_layout`                              | 隐藏两侧占位区域, 正文使用全部可用宽度                              |
+| 正文最大宽度   | `style.max_width`                                      | 接受 `960px`, `80vw` 等 CSS 长度                       |
+| 正文内边距    | `style.content_padding`                                | 同时控制桌面端和移动端正文内边距                                  |
+| 正文媒体最大宽度 | `style.media_max_width`                                | 全屏布局中控制图片, 视频和 `figure` 宽度                        |
+| 表格铺满正文   | `style.table_full_width`                               | 让正文中的表格宽度为 `100%`                                 |
+| 基础字体大小   | `style.font_size`                                      | 接受 `16px`, `1rem` 等 CSS 长度                        |
+| 使用系统字体   | `style.system_font_enable`                             | 使用访问者的 `system-ui` 字体                             |
+| 默认像素风格   | `style.pixel_style`                                    | 使用像素字体和像素图标                                       |
+| 自定义字体    | `style.custom_font_enable`                             | 上传字体文件并填写字体内部名称                                   |
+| 无序列表标记   | `style.list_marker`                                    | 可选 `-`, `*`, `+`, `>` 或默认标记                       |
+| 通用边线     | `style.border_width`, `style.border_style`             | 控制通用边线宽度和样式                                       |
+| 表格边线     | `style.table_border_width`, `style.table_border_style` | 控制表格边线宽度和样式                                       |
+| 标题分隔线    | `style.title_divider_style`                            | 可选 `solid`, `dashed`, `dotted`, `double` 或 `none` |
+| 时间格式     | `style.time_style`                                     | 支持预设格式或 Java 时间格式字符串                              |
+| 自定义 CSS  | `style.custom`                                         | 将 CSS 写入页面 `<head>` 中的 `<style>` 标签               |
+
+字体优先级如下:
+
+1. 开启像素风格时使用内置 `Fusion Pixel 12px Prop zh_hans`
+2. 未开启像素风格且开启系统字体时使用 `system-ui`
+3. 启用自定义字体且未开启系统字体时使用上传的字体
+4. 其他情况使用内置 `JetBrains Mono`
+
+访客手动选择的模式, 配色和像素风格会保存在浏览器的 `localStorage` 中
+
+### 配色设置
+
+| 设置      | 配置名                                  | 说明                  |
+|---------|--------------------------------------|---------------------|
+| 默认配色模式  | `style.default_scheme_mode`          | 可选深色, 浅色或跟随系统       |
+| 访客配色切换  | `style.color_scheme_switcher_enable` | 在页头显示可用配色列表         |
+| 深色配色    | `style.dark_color_scheme`            | 深色模式使用的内置或自定义配色     |
+| 浅色配色    | `style.light_color_scheme`           | 浅色模式使用的内置或自定义配色     |
+| 自定义深色名称 | `style.custom_dark`                  | 深色配色选择 `custom` 时填写 |
+| 自定义浅色名称 | `style.custom_light`                 | 浅色配色选择 `custom` 时填写 |
+
+访客配色列表会从页面样式表中自动发现 `html[theme-color-scheme='name']` 选择器, 列表中的 `default` 用于清除访客选择并恢复主题设置,
+因此不要将 `default` 用作自定义配色名称
+
+### 页面设置
+
+| 页面  | 可配置内容                             |
+|-----|-----------------------------------|
+| 首页  | 公告标题, 公告内容, 社交资料, 置顶图标, 图标位置和文章标签 |
+| 文章页 | 文章目录, 目录默认状态和文章标签                 |
+| 归档页 | 页面标题和文章标签                         |
+| 分类页 | 分类列表标题和分类详情标题                     |
+| 标签页 | 标签列表标题和标签详情标题                     |
+| 友链页 | 页面标题                              |
+
+文章目录会读取正文中的 `h1` 到 `h4`, `auto` 模式在普通布局中默认展开, 在全屏布局中默认收起, 目录也会根据浏览器宽度和正文右侧空间调整位置
+
+### 社交资料
+
+首页可以显示以下资料:
+
+- Email
+- GitHub
+- Discord
+- Telegram
+- Facebook
+- Instagram
+- X
+- RSS
+
+### 备案信息
+
+页脚支持 ICP 备案号, ICP 跳转链接, 公安备案号和公安备案跳转链接
+
+## 内置配色
+
+| 名称          | 背景色       | 前景色       | 强调色       |
+|-------------|-----------|-----------|-----------|
+| `day`       | `#f4f4f4` | `#3e3e3e` | `#003e8a` |
+| `night`     | `#101216` | `#8b949e` | `#6ca4f8` |
+| `niello`    | `#1a170f` | `#eceae5` | `#eec35e` |
+| `matrix`    | `#000000` | `#4eee85` | `#4eee85` |
+| `ink`       | `#000000` | `#e3e3e3` | `#e3e3e3` |
+| `paper`     | `#ffffff` | `#000000` | `#000000` |
+| `hopbush`   | `#fff6f6` | `#462d2d` | `#cc6099` |
+| `pistachio` | `#1d2021` | `#ebdbb2` | `#8ec07c` |
+| `blue`      | `#153489` | `#eceae5` | `#5ea5ee` |
+| `vanilla`   | `#fff4f2` | `#424140` | `#8f6a5e` |
+| `studio`    | `#f7f4ff` | `#403352` | `#6f49ab` |
+| `blood`     | `#221f29` | `#ffffff` | `#ff6266` |
+
+`day` 和 `night` 对标签, 元信息, 边框, 菜单和页头使用了额外的语义颜色, 其他配色默认从前景色和强调色派生这些颜色
+
+## 自定义 CSS
+
+在主题设置的 `全局样式 -> 自定义样式` 中填写原始 CSS, 自定义内容在主题主样式之后加载, 可以覆盖内置规则
+
+### 新增自定义配色
+
+下面的示例增加名为 `forest` 的配色:
 
 ```css
-html[theme-color-scheme='default'] {
-    /* 页面背景色 */
-    --color-theme-background: #000000;
-    /* 页面主要文本颜色 */
-    --color-theme-foreground: #4eee85;
-    /* 主要强调色，例如按钮、链接等 */
-    --color-theme-accent: #4eee85;
-    /* 标签文本颜色 */
-    --color-theme-tag: #4eee85;
-    /* 文章标题颜色 */
-    --color-theme-title: #4eee85;
-    /* 元信息(如时间, 作者等) 颜色 */
-    --color-theme-meta: #4eee85;
-    /* 有边框的元素颜色, 如卡片边框 */
-    --color-theme-framed: #4eee85;
-    /* 菜单文字颜色 */
-    --color-theme-menu: #4eee85;
-    /* 页头文字以及边框等颜色 */
-    --color-theme-header: #4eee85;
+html[theme-color-scheme='forest'] {
+    --color-theme-background: #0f1a14;
+    --color-theme-foreground: #c7d8cc;
+    --color-theme-accent: #68d391;
+
+    /* Optional semantic colors */
+    --color-theme-tag: #9ae6b4;
+    --color-theme-meta: #81a88d;
+    --color-theme-framed: #48bb78;
+    --color-theme-menu: #c7d8cc;
+    --color-theme-header: #68d391;
 }
 ```
 
-将这段 CSS 代码填入 `自定义样式` 后, 在 `深色/浅色配色方案` 的下拉框中选择 `custom`, 并填入配色名: `default` 即可
+保存后可以使用以下任一方式启用:
 
-也可以通过直接覆盖的方式来修改主题颜色, 在自定义样式的代码框中填入:
+1. 在 `深色配色方案` 或 `浅色配色方案` 中选择 `custom`, 再填写名称 `forest`
+2. 开启 `启用访客配色切换`, 然后由访客在页头选择 `forest`
 
-```css
-html[theme-color-scheme='day'] {
-    --color-theme-background: #000000;
-    --color-theme-foreground: #4eee85;
-    --color-theme-accent: #4eee85;
-    --color-theme-tag: #4eee85;
-    --color-theme-title: #4eee85;
-    --color-theme-meta: #4eee85;
-    --color-theme-framed: #4eee85;
-    --color-theme-menu: #4eee85;
-    --color-theme-header: #4eee85;
-}
-```
+### 覆盖内置配色
 
-可覆盖名为 `day` 的配色方案
-
-### 覆盖其他变量
-
-如果要覆盖其他变量, 需要查看主题定义的 `css` 并根据需要来覆盖, 一些全局变量在 `:root` 中定义:
-
-```css
-:root {
-    --color-theme-background: ;
-    --color-theme-foreground: ;
-    --color-theme-accent: ;
-    --color-theme-tag: ;
-    --color-theme-title: ;
-    --color-theme-meta: ;
-    --color-theme-framed: ;
-    --color-theme-menu: ;
-    --color-theme-header: ;
-    --color-theme-scrollbar: rgba(134, 134, 134, 0.45) rgba(255, 255, 255, 0);
-    /* 无序列表前缀修饰符号 */
-    --list-theme-marker: "►";
-    /* 基本字体大小. 所有元素大小都根据此大小变化 */
-    --size-theme-font: 1rem;
-    --height-theme-line: calc(var(--size-theme-font) * 1.6);
-    --width-theme-scrollbar: thin;
-    --width-theme-border: calc(var(--size-theme-font) * 0.125);
-    /* 边框样式 */
-    --style-theme-border: solid;
-    /* 文章标题分界线样式, 与边框样式填写逻辑一样 */
-    --style-theme-title-divider: dashed;
-    --radius-theme-border: 0;
-    --family-theme-font: 'JetBrains Mono';
-    /* 在字体不可用时尝试使用系统的默认字体 */
-    --family-theme-fallback-font: -apple-system, BlinkMacSystemFont, 'segoe ui', Roboto, Oxygen,
-    Ubuntu, Cantarell, 'open sans', 'helvetica neue', Arial, 'Noto Sans',
-    'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
-    /* 字体连字 */
-    --lig-theme-font: none;
-}
-```
-
-比如这里要让某个配色下面的字体使用 MacOS 默认的字体:
+直接使用内置配色名称即可覆盖对应变量:
 
 ```css
 html[theme-color-scheme='matrix'] {
-    --family-theme-font: '-apple-system';
+    --color-theme-background: #07130b;
+    --color-theme-foreground: #7dff9b;
+    --color-theme-accent: #39ff68;
 }
 ```
 
-自定义行高:
+### 常用颜色变量
+
+| 变量                               | 用途            |
+|----------------------------------|---------------|
+| `--color-theme-background`       | 页面背景          |
+| `--color-theme-foreground`       | 正文和主要文本       |
+| `--color-theme-accent`           | 链接, 按钮和主要强调元素 |
+| `--color-theme-tag`              | 文章标签          |
+| `--color-theme-title`            | 文章标题          |
+| `--color-theme-meta`             | 时间, 作者和其他元信息  |
+| `--color-theme-framed`           | 公告框和强调边框      |
+| `--color-theme-menu`             | 导航菜单          |
+| `--color-theme-header`           | 页头文字和边框       |
+| `--color-theme-code-text`        | 行内代码和代码块文字    |
+| `--color-theme-link`             | 链接            |
+| `--color-theme-muted`            | 次要文字          |
+| `--color-theme-foreground-muted` | 弱化前景色         |
+| `--color-theme-accent-muted`     | 弱化强调色         |
+| `--color-theme-accent-subtle`    | 低对比度强调色       |
+| `--color-theme-surface`          | 代码块和组件表面      |
+| `--color-theme-surface-hover`    | 组件悬停表面        |
+| `--color-theme-border-muted`     | 低对比度边框        |
+| `--color-theme-highlight`        | 高亮文本背景        |
+| `--color-theme-overlay`          | 遮罩层           |
+| `--color-theme-scrollbar`        | 滚动条           |
+
+派生颜色使用 CSS `color-mix()`, 自定义配色通常只需要设置背景色, 前景色和强调色, 其余变量可以按需要覆盖
+
+### 常用布局变量
+
+| 变量                                         | 默认值                                     |
+|--------------------------------------------|-----------------------------------------|
+| `--size-theme-font`                        | `1rem`                                  |
+| `--height-theme-line`                      | `calc(var(--size-theme-font) * 1.8)`    |
+| `--family-theme-font`                      | `'JetBrains Mono'`                      |
+| `--list-theme-marker`                      | `"►"`                                   |
+| `--width-theme-border`                     | `calc(var(--size-theme-font) * 0.125)`  |
+| `--width-theme-table-border`               | `calc(var(--size-theme-font) * 0.0625)` |
+| `--width-theme-media-max`                  | `60%`                                   |
+| `--spacing-theme-container-padding`        | `calc(var(--size-theme-font) * 2.5)`    |
+| `--spacing-theme-container-padding-mobile` | `calc(var(--size-theme-font) * 1.25)`   |
+| `--style-theme-border`                     | `solid`                                 |
+| `--style-theme-table-border`               | `dashed`                                |
+| `--style-theme-title-divider`              | `dashed`                                |
+| `--radius-theme-border`                    | `0`                                     |
+| `--text-decoration-theme-link`             | `none`                                  |
+| `--lig-theme-font`                         | `none`                                  |
+| `--width-theme-scrollbar`                  | `thin`                                  |
+
+修改特定配色下的字体:
+
 ```css
-html {
-    --height-theme-line: 25px;
+html[theme-color-scheme='matrix'] {
+    --family-theme-font: system-ui;
 }
 ```
 
-## 关于 PJAX
+修改全局行高:
 
-**目前 PJAX 功能需要手动开启**
+```css
+:root {
+    --height-theme-line: calc(var(--size-theme-font) * 1.7);
+}
+```
 
-### 代码注入需注意的事项
+## PJAX
+
+PJAX 默认关闭, 开启后站内 `a[data-pjax]` 链接会更新以下区域:
+
+- `<head>` 中的 `<title>`
+- `.content`
+- `.ex-pjax`
 
 预留了一个 `.ex-pjax` 类名, 可以通过将注入的标签设置 `class="ex-pjax"` 来使用 PJAX, 也可以直接使用 `data-pjax` 属性
 
-如果要注入 `<script>`, 根据插入的位置需要为标签添加一些属性才能保证行为正常
+```html
 
-在 `<head>`, `<footer>`, 以及 `.content` 下的 `<script>` 会被重新执行, 行为略有不同
+<div class="ex-pjax">
+    Dynamic content
+</div>
+```
 
-- `<head>`: 重新执行所有请求页面新插入的无 `no-pjax` 属性的 `<script>`
-- `<footer>`: 重新执行有 `data-pjax` 属性的 `<script>`
-- `.content`: 重新执行有 `data-pjax` 属性的 `<script>`
+OR:
 
-设置 `no-pjax` 属性, 可以防止 `<script>` 被 PJAX 重新执行
+```html
+
+<div data-pjax>
+    Dynamic content
+</div>
+```
+
+如果要注入 `<script>` 或 `<link rel="stylesheet">`, 根据插入的位置需要为标签添加一些属性才能保证行为正常
+
+- `<head>`: 重新执行所有请求页面新插入的无 `no-pjax` 属性的 `<script>` 和 `<link rel="stylesheet">`
+- `<footer>`: 重新执行有 `data-pjax` 属性的 `<script>` 和 `<link rel="stylesheet">`
+- `.content`: 重新执行有 `data-pjax` 属性的 `<script>` 和 `<link rel="stylesheet">`
+
+设置 `no-pjax` 属性, 可以防止被 PJAX 处理
 
 ### 已知的问题
 
-首屏就加载全部 css 和 script 的情况下不会出现问题, 只有在动态注入的时候会出现一些问题
+动态注入 JS 的时候可能会出现一些问题
 
-- highlightjs 插件的 _复制按扭_ 数量会随页面切换增加
+- <del>highlightjs 插件的 _复制按扭_ 数量会随页面切换增加</del> (此插件目前已过时)
 
-## 构建
+## 开发和构建
+
+### 环境
 
 项目使用原生 ES 模块, 用 `esbuild` 来构建, 使用 `pnpm` 管理依赖
 
 确保已安装 `nodejs`
 
-执行:
+### 使用 Make
 
 ```shell
 make
 ```
 
-## 计划
+其他目标:
 
+```shell
+make install
+make build
+make test
+make clean
+```
+
+`make test` 会构建主题并将压缩包解压到 `dist/theme-terminal-ez`
+
+### 使用 pnpm
+
+```shell
+corepack enable
+pnpm install --frozen-lockfile
+pnpm build
+```
+
+构建产物位于:
+
+```text
+dist/theme-terminal-ez-<version>.zip
+```
 
 ## 原主题
 
