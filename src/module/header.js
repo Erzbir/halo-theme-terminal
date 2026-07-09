@@ -5,6 +5,20 @@ const COLOR_SCHEME_STORAGE_KEY = "theme-color-scheme";
 const PIXEL_STYLE_STORAGE_KEY = "pixel_style";
 const COLOR_SCHEME_SELECTOR_PATTERN = /html\[theme-color-scheme\s*=\s*(['"]?)([^'"\]\s]+)\1\]/g;
 
+function getStoredPreference(key) {
+    return window.TerminalTheme?.storage
+        ? window.TerminalTheme.storage.get(key)
+        : localStorage.getItem(key);
+}
+
+function setStoredPreference(key, value) {
+    if (window.TerminalTheme?.storage) {
+        window.TerminalTheme.storage.set(key, value);
+        return;
+    }
+    localStorage.setItem(key, value);
+}
+
 function registerSearchButton() {
     const searchButton = document.querySelector('[data-header-action="open-search"]');
     if (!searchButton) return;
@@ -25,7 +39,7 @@ function registerThemeToggle() {
         const nextMode = currentScheme === "dark" ? "light" : "dark";
 
         window.applyTheme(nextMode, {clearColorScheme: true});
-        localStorage.setItem(THEME_MODE_STORAGE_KEY, nextMode);
+        setStoredPreference(THEME_MODE_STORAGE_KEY, nextMode);
         syncColorSchemePicker();
     });
 }
@@ -82,13 +96,13 @@ function syncColorSchemePicker() {
     const picker = document.getElementById("color-scheme-picker");
     if (!picker) return;
 
-    const storedScheme = localStorage.getItem(COLOR_SCHEME_STORAGE_KEY);
+    const storedScheme = getStoredPreference(COLOR_SCHEME_STORAGE_KEY);
     const options = Array.from(picker.querySelectorAll("[data-color-scheme]"));
     const hasStoredOption = storedScheme && options
         .some(option => option.dataset.colorScheme === storedScheme);
 
     if (storedScheme && !hasStoredOption) {
-        const storedMode = localStorage.getItem(THEME_MODE_STORAGE_KEY)
+        const storedMode = getStoredPreference(THEME_MODE_STORAGE_KEY)
             || window.TerminalThemeConfig?.defaultMode
             || "system";
 
@@ -206,10 +220,12 @@ function registerPixelToggle() {
     if (!pixelToggle) return;
 
     pixelToggle.addEventListener("click", function () {
-        const storedStatus = localStorage.getItem(PIXEL_STYLE_STORAGE_KEY);
-        const newStatus = storedStatus === "true" ? "false" : "true";
+        const storedStatus = getStoredPreference(PIXEL_STYLE_STORAGE_KEY);
+        const currentStatus = storedStatus
+            || document.documentElement.getAttribute(PIXEL_STYLE_STORAGE_KEY);
+        const newStatus = currentStatus === "true" ? "false" : "true";
         document.documentElement.setAttribute(PIXEL_STYLE_STORAGE_KEY, newStatus);
-        localStorage.setItem(PIXEL_STYLE_STORAGE_KEY, newStatus);
+        setStoredPreference(PIXEL_STYLE_STORAGE_KEY, newStatus);
         window.TerminalTheme?.syncPixelFont?.();
     });
 }

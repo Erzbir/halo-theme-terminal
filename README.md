@@ -79,18 +79,21 @@
 3. 启用自定义字体且未开启系统字体时使用上传的字体
 4. 其他情况使用内置 `JetBrains Mono`
 
-访客手动选择的模式, 配色和像素风格会保存在浏览器的 `localStorage` 中
+访客手动选择的模式, 配色和像素风格会保存在浏览器的 `localStorage` 中. 默认有效期为 24 小时,
+可通过 `style.prefer_ttl` 调整，设为 `0` 时永久保存. 偏好过期后会在下次访问时恢复默认值,
+已有偏好数据会在升级后的首次访问时开始计算有效期
 
 ### 配色设置
 
-| 设置      | 配置名                                  | 说明                  |
-|---------|--------------------------------------|---------------------|
-| 默认配色模式  | `style.default_scheme_mode`          | 可选深色, 浅色或跟随系统       |
-| 访客配色切换  | `style.color_scheme_switcher_enable` | 在页头显示可用配色列表         |
-| 深色配色    | `style.dark_color_scheme`            | 深色模式使用的内置或自定义配色     |
-| 浅色配色    | `style.light_color_scheme`           | 浅色模式使用的内置或自定义配色     |
-| 自定义深色名称 | `style.custom_dark`                  | 深色配色选择 `custom` 时填写 |
-| 自定义浅色名称 | `style.custom_light`                 | 浅色配色选择 `custom` 时填写 |
+| 设置      | 配置名                                  | 说明                          |
+|---------|--------------------------------------|-----------------------------|
+| 默认配色模式  | `style.default_scheme_mode`          | 可选深色, 浅色或跟随系统               |
+| 访客偏好有效期 | `style.prefer_ttl`                   | 模式, 配色和像素风格的保存小时数, `0` 表示永久 |
+| 访客配色切换  | `style.color_scheme_switcher_enable` | 在页头显示可用配色列表                 |
+| 深色配色    | `style.dark_color_scheme`            | 深色模式使用的内置或自定义配色             |
+| 浅色配色    | `style.light_color_scheme`           | 浅色模式使用的内置或自定义配色             |
+| 自定义深色名称 | `style.custom_dark`                  | 深色配色选择 `custom` 时填写         |
+| 自定义浅色名称 | `style.custom_light`                 | 浅色配色选择 `custom` 时填写         |
 
 访客配色列表会从页面样式表中自动发现 `html[theme-color-scheme='name']` 选择器, 列表中的 `default` 用于清除访客选择并恢复主题设置,
 因此不要将 `default` 用作自定义配色名称

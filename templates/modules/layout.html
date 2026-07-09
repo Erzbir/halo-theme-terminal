@@ -16,6 +16,7 @@
             customDarkTheme: /*[[${theme.config.style.custom_dark}]]*/ "",
             customLightTheme: /*[[${theme.config.style.custom_light}]]*/ "",
             defaultMode: /*[[${theme.config.style.default_scheme_mode}]]*/ "system",
+            preferTTL: /*[[${theme.config.style.prefer_ttl ?: 24}]]*/ 24,
             pixelStyle: /*[[${theme.config.style.pixel_style}]]*/ false,
             pixelCssHref: /*[[@{/assets/dist/pixel.css?v={version}(version=${theme.spec.version})}]]*/ "",
             customCss: /*[[${theme.config.style.custom}]]*/ ""
@@ -30,6 +31,49 @@
                 pixelStyle: "pixel_style",
                 colorScheme: "theme-color-scheme"
             };
+            const expirationSuffix = "-expires-at";
+            const expirationHours = Number(config.preferTTL);
+            const storageTtl = Number.isFinite(expirationHours) && expirationHours > 0
+                ? expirationHours * 60 * 60 * 1000
+                : 0;
+
+            function removeStoredPreference(key) {
+                localStorage.removeItem(key);
+                localStorage.removeItem(key + expirationSuffix);
+            }
+
+            function getStoredPreference(key) {
+                const value = localStorage.getItem(key);
+                if (value === null) return null;
+
+                const expirationKey = key + expirationSuffix;
+                if (!storageTtl) {
+                    localStorage.removeItem(expirationKey);
+                    return value;
+                }
+
+                const expiresAt = Number(localStorage.getItem(expirationKey));
+                if (!Number.isFinite(expiresAt) || expiresAt <= 0) {
+                    localStorage.setItem(expirationKey, String(Date.now() + storageTtl));
+                    return value;
+                }
+
+                if (expiresAt <= Date.now()) {
+                    removeStoredPreference(key);
+                    return null;
+                }
+
+                return value;
+            }
+
+            function setStoredPreference(key, value) {
+                localStorage.setItem(key, value);
+                if (storageTtl) {
+                    localStorage.setItem(key + expirationSuffix, String(Date.now() + storageTtl));
+                } else {
+                    localStorage.removeItem(key + expirationSuffix);
+                }
+            }
 
             function resolveTheme(mode) {
                 if (mode === "light") {
@@ -39,7 +83,7 @@
             }
 
             function getStoredColorScheme() {
-                const scheme = localStorage.getItem(storageKeys.colorScheme);
+                const scheme = getStoredPreference(storageKeys.colorScheme);
                 return scheme && scheme !== "default" ? scheme : "";
             }
 
@@ -49,7 +93,7 @@
 
             function applyTheme(mode, options = {}) {
                 if (options.clearColorScheme) {
-                    localStorage.removeItem(storageKeys.colorScheme);
+                    removeStoredPreference(storageKeys.colorScheme);
                 }
 
                 const actualMode = mode === "system" ? getSystemScheme() : mode;
@@ -59,12 +103,12 @@
 
             function applyColorScheme(scheme) {
                 if (!scheme || scheme === "default") {
-                    localStorage.removeItem(storageKeys.colorScheme);
+                    removeStoredPreference(storageKeys.colorScheme);
                     syncThemeMode();
                     return;
                 }
 
-                localStorage.setItem(storageKeys.colorScheme, scheme);
+                setStoredPreference(storageKeys.colorScheme, scheme);
                 root.setAttribute("theme-color-scheme", scheme);
             }
 
@@ -73,12 +117,8 @@
             }
 
             function syncPixelStyle() {
-                let storedStatus = localStorage.getItem(storageKeys.pixelStyle);
-
-                if (!storedStatus) {
-                    storedStatus = String(config.pixelStyle);
-                    localStorage.setItem(storageKeys.pixelStyle, storedStatus);
-                }
+                const storedStatus = getStoredPreference(storageKeys.pixelStyle)
+                    || String(config.pixelStyle);
 
                 root.setAttribute("pixel_style", storedStatus);
             }
@@ -112,12 +152,9 @@
             }
 
             function syncThemeMode() {
-                let storedMode = localStorage.getItem(storageKeys.themeMode);
-
-                if (!storedMode) {
-                    storedMode = config.defaultMode || "system";
-                    localStorage.setItem(storageKeys.themeMode, storedMode);
-                }
+                const storedMode = getStoredPreference(storageKeys.themeMode)
+                    || config.defaultMode
+                    || "system";
 
                 applyTheme(storedMode);
             }
@@ -127,6 +164,11 @@
                 applyTheme,
                 applyColorScheme,
                 applyCustomCss,
+                storage: {
+                    get: getStoredPreference,
+                    set: setStoredPreference,
+                    remove: removeStoredPreference
+                },
                 syncPixelFont,
                 syncPixelStyle
             };
@@ -137,7 +179,10 @@
             syncPixelFont();
 
             window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", () => {
-                if (localStorage.getItem(storageKeys.themeMode) === "system") {
+                const mode = getStoredPreference(storageKeys.themeMode)
+                    || config.defaultMode
+                    || "system";
+                if (mode === "system") {
                     applyTheme("system");
                 }
             });

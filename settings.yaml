@@ -64,6 +64,12 @@ spec:
               value: "light"
             - label: "跟随系统"
               value: "system"
+        - $formkit: number
+          name: prefer_ttl
+          label: 访客偏好有效期 (小时)
+          value: 24
+          min: 0
+          help: 访客手动选择的模式, 配色和像素风格过期后会在下次访问时恢复默认值, 设为 0 表示永久保存
         - $formkit: checkbox
           name: color_scheme_switcher_enable
           label: 启用访客配色切换
