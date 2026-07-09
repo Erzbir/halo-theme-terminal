@@ -23,12 +23,12 @@
     "type": "git"
   },
   "devDependencies": {
-    "@halo-dev/theme-package-cli": "^1.0.0",
-    "sass": "^1.56.1",
-    "esbuild": "^0.27.3",
-    "esbuild-sass-plugin": "^3.3.1",
+    "@halo-dev/theme-package-cli": "^1.1.1",
+    "sass": "^1.101.0",
+    "esbuild": "^0.28.1",
+    "esbuild-sass-plugin": "^3.7.0",
     "pjax": "^0.2.8",
-    "tocbot": "^4.29.0"
+    "tocbot": "^4.36.8"
   },
   "dependencies": {},
   "type": "module",
