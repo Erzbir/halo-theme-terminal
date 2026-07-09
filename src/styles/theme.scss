@@ -58,6 +58,18 @@ html[theme-color-scheme='ink'] {
   --color-theme-header: #E3E3E3;
 }
 
+html[theme-color-scheme='paper'] {
+  --color-theme-background: #FFFFFF;
+  --color-theme-foreground: #000000;
+  --color-theme-accent: #000000;
+  --color-theme-tag: #000000;
+  --color-theme-title: #000000;
+  --color-theme-meta: #000000;
+  --color-theme-framed: #000000;
+  --color-theme-menu: #000000;
+  --color-theme-header: #000000;
+}
+
 html[theme-color-scheme='hopbush'] {
   --color-theme-background: #fff6f6;
   --color-theme-foreground: #462d2d;
