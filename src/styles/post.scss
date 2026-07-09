@@ -28,13 +28,13 @@
 }
 
 .post:not(:last-of-type) {
-  border-bottom: calc(var(--size-theme-font) * 0.0625) var(--style-theme-border) color-mix(in srgb, var(--color-theme-foreground) 10%, transparent);
+  border-bottom: calc(var(--size-theme-font) * 0.0625) var(--style-theme-border) var(--color-theme-border-muted);
 }
 
 .post-meta {
   font-size: calc(var(--size-theme-font) * 0.96);
   margin-bottom: calc(var(--size-theme-font) * 0.3125);
-  color: color-mix(in srgb, var(--color-theme-meta) 65%, transparent);
+  color: var(--color-theme-meta);
 }
 
 .post-meta > *:not(:first-child):not(:empty)::before {
@@ -178,11 +178,11 @@ h6:hover .hanchor {
 }
 
 .footnotes {
-  color: color-mix(in srgb, var(--color-theme-foreground) 50%, transparent);
+  color: var(--color-theme-muted);
 }
 
 .footnotes hr {
-  background: color-mix(in srgb, var(--color-theme-foreground) 50%, transparent);
+  background: var(--color-theme-border-muted);
 }
 
 .post-list {

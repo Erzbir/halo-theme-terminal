@@ -1,18 +1,6 @@
 @use "variables" as *;
 
 :root {
-  --color-theme-background: ;
-  --color-theme-foreground: ;
-  --color-theme-accent: ;
-  --color-theme-tag: ;
-  --color-theme-title: ;
-  --color-theme-meta: ;
-  --color-theme-framed: ;
-  --color-theme-menu: ;
-  --color-theme-header: ;
-  --color-theme-code-text: var(--color-theme-foreground);
-  --color-theme-scrollbar: rgba(134, 134, 134, 0.45) rgba(255, 255, 255, 0);
-  --color-theme-link: var(--color-theme-accent);
   --text-decoration-theme-link: none;
   --list-theme-marker: "►";
   --size-theme-font: 1rem;
@@ -403,14 +391,14 @@ code,
 kbd {
   font-family: inherit !important;
   font-feature-settings: normal;
-  background: color-mix(in srgb, var(--color-theme-foreground) 10%, transparent);
+  background: var(--color-theme-surface-hover);
   padding: calc(var(--size-theme-font) * 0.0625) calc(var(--size-theme-font) * 0.375);
   margin: 0 calc(var(--size-theme-font) * 0.125);
   font-size: calc(var(--size-theme-font) * 0.95);
 }
 
 kbd {
-  border-top: calc(var(--width-theme-border) / 2) solid color-mix(in srgb, var(--color-theme-accent) 25%, transparent);
+  border-top: calc(var(--width-theme-border) / 2) solid var(--color-theme-accent-subtle);
   border-left: calc(var(--width-theme-border) / 2) solid var(--color-theme-accent);
   border-right: calc(var(--width-theme-border) / 2) solid var(--color-theme-accent);
   border-bottom: calc(var(--width-theme-border) * 2) solid var(--color-theme-accent);
@@ -426,13 +414,13 @@ code code {
 pre {
   font-family: inherit !important;
   tab-size: 4;
-  background: color-mix(in srgb, var(--color-theme-foreground) 5%, transparent) !important;
+  background: var(--color-theme-surface) !important;
   color: var(--color-theme-foreground);
   padding: calc(var(--size-theme-font) * 0.625) calc(var(--size-theme-font) * 0.625);
   font-size: calc(var(--size-theme-font) * 0.95) !important;
   overflow: auto;
   border-radius: var(--radius-theme-border);
-  border: calc(var(--width-theme-border) / 2) var(--style-theme-border) color-mix(in srgb, var(--color-theme-foreground) 10%, transparent);
+  border: calc(var(--width-theme-border) / 2) var(--style-theme-border) var(--color-theme-border-muted);
 
   @media (max-width: $phone-max-width) {
     white-space: pre-wrap;
@@ -467,7 +455,7 @@ sup {
 }
 
 mark {
-  background: color-mix(in srgb, var(--color-theme-accent) 45%, transparent);
+  background: var(--color-theme-highlight);
   color: var(--color-theme-foreground);
 }
 

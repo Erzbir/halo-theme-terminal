@@ -1,0 +1,116 @@
+:root {
+  --color-theme-background: #f4f4f4;
+  --color-theme-foreground: #3e3e3e;
+  --color-theme-accent: #003e8a;
+  --color-theme-tag: #07962a;
+  --color-theme-title: #003e8a;
+  --color-theme-meta: #2e6cba;
+  --color-theme-framed: #970b16;
+  --color-theme-menu: #3e3e3e;
+  --color-theme-header: #3e3e3e;
+
+  --color-theme-code-text: var(--color-theme-foreground);
+  --color-theme-link: var(--color-theme-accent);
+  --color-theme-muted: var(--color-theme-meta);
+  --color-theme-foreground-muted: color-mix(in srgb, var(--color-theme-foreground) 85%, var(--color-theme-background));
+  --color-theme-accent-muted: color-mix(in srgb, var(--color-theme-accent) 60%, var(--color-theme-background));
+  --color-theme-accent-subtle: color-mix(in srgb, var(--color-theme-accent) 30%, var(--color-theme-background));
+  --color-theme-surface: color-mix(in srgb, var(--color-theme-foreground) 5%, var(--color-theme-background));
+  --color-theme-surface-hover: color-mix(in srgb, var(--color-theme-foreground) 10%, var(--color-theme-background));
+  --color-theme-border-muted: color-mix(in srgb, var(--color-theme-foreground) 18%, var(--color-theme-background));
+  --color-theme-highlight: color-mix(in srgb, var(--color-theme-accent) 45%, var(--color-theme-background));
+  --color-theme-overlay: rgb(0 0 0 / 80%);
+  --color-theme-scrollbar: color-mix(in srgb, var(--color-theme-foreground) 45%, var(--color-theme-background)) transparent;
+}
+
+html[theme-color-scheme] {
+  --color-theme-tag: var(--color-theme-accent);
+  --color-theme-title: var(--color-theme-accent);
+  --color-theme-meta: var(--color-theme-foreground);
+  --color-theme-framed: var(--color-theme-accent);
+  --color-theme-menu: var(--color-theme-accent);
+  --color-theme-header: var(--color-theme-accent);
+}
+
+$color-schemes: (
+        "day": (
+                "background": #f4f4f4,
+                "foreground": #3e3e3e,
+                "accent": #003e8a,
+                "tag": #07962a,
+                "meta": #2e6cba,
+                "framed": #970b16,
+                "menu": var(--color-theme-foreground),
+                "header": var(--color-theme-foreground)
+        ),
+        "night": (
+                "background": #101216,
+                "foreground": #8b949e,
+                "accent": #6ca4f8,
+                "tag": #56d364,
+                "meta": #6ca4f8,
+                "framed": #f78166,
+                "menu": var(--color-theme-foreground),
+                "header": var(--color-theme-foreground)
+        ),
+        "niello": (
+                "background": #1a170f,
+                "foreground": #eceae5,
+                "accent": #eec35e
+        ),
+        "matrix": (
+                "background": #000000,
+                "foreground": #4eee85,
+                "accent": #4eee85
+        ),
+        "ink": (
+                "background": #000000,
+                "foreground": #e3e3e3,
+                "accent": #e3e3e3
+        ),
+        "paper": (
+                "background": #ffffff,
+                "foreground": #000000,
+                "accent": #000000
+        ),
+        "hopbush": (
+                "background": #fff6f6,
+                "foreground": #462d2d,
+                "accent": #cc6099
+        ),
+        "pistachio": (
+                "background": #1d2021,
+                "foreground": #ebdbb2,
+                "accent": #8ec07c
+        ),
+        "blue": (
+                "background": #153489,
+                "foreground": #eceae5,
+                "accent": #5ea5ee
+        ),
+        "vanilla": (
+                "background": #fff4f2,
+                "foreground": #424140,
+                "accent": #8f6a5e
+        ),
+        "studio": (
+                "background": #f7f4ff,
+                "foreground": #403352,
+                "accent": #6f49ab
+        ),
+        "blood": (
+                "background": #221f29,
+                "foreground": #ffffff,
+                "accent": #ff6266,
+                "meta": var(--color-theme-accent),
+                "menu": var(--color-theme-foreground)
+        )
+);
+
+@each $scheme-name, $scheme-colors in $color-schemes {
+  html[theme-color-scheme="#{$scheme-name}"] {
+    @each $role, $color in $scheme-colors {
+      --color-theme-#{$role}: #{$color};
+    }
+  }
+}

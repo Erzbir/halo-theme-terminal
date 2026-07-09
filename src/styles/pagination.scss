@@ -11,7 +11,7 @@
 
     hr {
       position: absolute;
-      background-color: color-mix(in srgb, var(--color-theme-foreground) 65%, transparent);
+      background-color: var(--color-theme-border-muted);
       left: 0;
       right: 0;
       width: 100%;
@@ -24,7 +24,7 @@
       margin: 0 auto;
       padding: calc(var(--size-theme-font) * 0.3125) calc(var(--size-theme-font) * 0.625);
       background: var(--color-theme-background);
-      color: color-mix(in srgb, var(--color-theme-foreground) 65%, transparent);
+      color: var(--color-theme-muted);
       font-size: calc(var(--size-theme-font) * 0.8);
       text-decoration: none;
       letter-spacing: 0.1em;

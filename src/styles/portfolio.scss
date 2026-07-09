@@ -104,13 +104,13 @@
 
 .portfolio-item .portfolio-tags,
 .portfolio-item .portfolio-tags .portfolio-tag {
-  color: color-mix(in srgb, var(--color-theme-accent) 72%, transparent);
+  color: var(--color-theme-tag);
 }
 
 .portfolio-detail-post .portfolio-meta-line,
 .portfolio-detail-post .portfolio-meta-line .portfolio-card-label,
 .portfolio-detail-post .portfolio-meta-line .portfolio-tag {
-  color: color-mix(in srgb, var(--color-theme-meta) 72%, transparent);
+  color: var(--color-theme-meta);
 }
 
 .portfolio-detail-post .portfolio-meta-line.post-meta {
@@ -123,7 +123,7 @@
 }
 
 .portfolio-item .post-excerpt {
-  color: color-mix(in srgb, var(--color-theme-foreground) 82%, transparent);
+  color: var(--color-theme-foreground);
   font-size: calc(var(--size-theme-font) * 0.86);
   line-height: calc(var(--size-theme-font) * 1.55);
   margin-top: calc(var(--size-theme-font) * 0.625);
@@ -158,7 +158,7 @@
 }
 
 .portfolio-empty {
-  color: color-mix(in srgb, var(--color-theme-foreground) 65%, transparent);
+  color: var(--color-theme-muted);
 }
 
 .portfolio-detail-nav {
@@ -173,7 +173,7 @@
 }
 
 .portfolio-detail-summary {
-  color: color-mix(in srgb, var(--color-theme-foreground) 86%, transparent);
+  color: var(--color-theme-foreground);
 }
 
 .portfolio-detail-section {
@@ -196,7 +196,7 @@
 }
 
 .portfolio-link-url {
-  color: color-mix(in srgb, var(--color-theme-meta) 72%, transparent);
+  color: var(--color-theme-muted);
   font-size: calc(var(--size-theme-font) * 0.9);
   overflow: hidden;
   text-overflow: ellipsis;
