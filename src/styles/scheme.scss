@@ -11,6 +11,7 @@
 
   --color-theme-code-text: var(--color-theme-foreground);
   --color-theme-link: var(--color-theme-accent);
+  --color-theme-post-link: var(--color-theme-link);
   --color-theme-muted: var(--color-theme-meta);
   --color-theme-foreground-muted: color-mix(in srgb, var(--color-theme-foreground) 85%, var(--color-theme-background));
   --color-theme-accent-muted: color-mix(in srgb, var(--color-theme-accent) 60%, var(--color-theme-background));

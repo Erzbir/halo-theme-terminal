@@ -202,6 +202,7 @@ html[theme-color-scheme='matrix'] {
 | `--color-theme-header`           | 页头文字和边框       |
 | `--color-theme-code-text`        | 行内代码和代码块文字    |
 | `--color-theme-link`             | 链接            |
+| `--color-theme-post-link`        | 文章和页面正文链接     |
 | `--color-theme-muted`            | 次要文字          |
 | `--color-theme-foreground-muted` | 弱化前景色         |
 | `--color-theme-accent-muted`     | 弱化强调色         |

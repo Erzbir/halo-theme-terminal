@@ -16,7 +16,7 @@
             </div>
         </header>
         <section class="post-content">
-            <div th:utext="${post.content.content}" id="content">Post Content</div>
+            <div th:utext="${post.content.content}" id="content" class="post-content-body">Post Content</div>
         </section>
     </article>
     <nav id="toc" th:if="${theme.config.post_page.show_toc}" class="toc"

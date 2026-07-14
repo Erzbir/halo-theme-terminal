@@ -131,6 +131,10 @@
   margin-top: calc(var(--size-theme-font) * 1.5625);
 }
 
+.post-content-body a {
+  color: var(--color-theme-post-link);
+}
+
 .post-cover {
   margin: calc(var(--size-theme-font) * 1.5625) 0;
 }
