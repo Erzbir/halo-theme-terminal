@@ -1,3 +1,5 @@
+@use "sass:map";
+
 :root {
   --color-theme-background: #f4f4f4;
   --color-theme-foreground: #3e3e3e;
@@ -112,6 +114,10 @@ $color-schemes: (
   html[theme-color-scheme="#{$scheme-name}"] {
     @each $role, $color in $scheme-colors {
       --color-theme-#{$role}: #{$color};
+    }
+
+    @if map.get($scheme-colors, "foreground") == map.get($scheme-colors, "accent") {
+      --text-decoration-theme-post-link: underline;
     }
   }
 }

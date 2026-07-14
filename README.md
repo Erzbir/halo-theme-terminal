@@ -234,6 +234,7 @@ html[theme-color-scheme='matrix'] {
 | `--style-theme-title-divider`              | `dashed`                                |
 | `--radius-theme-border`                    | `0`                                     |
 | `--text-decoration-theme-link`             | `none`                                  |
+| `--text-decoration-theme-post-link`        | `var(--text-decoration-theme-link)`     |
 | `--lig-theme-font`                         | `none`                                  |
 | `--width-theme-scrollbar`                  | `thin`                                  |
 
