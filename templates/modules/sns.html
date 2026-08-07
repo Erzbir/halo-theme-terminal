@@ -4,6 +4,7 @@
         <a class="sns-icon"
            th:attr="aria-label=#{sns.email}"
            target="_blank"
+           rel="noopener noreferrer"
            th:href="'mailto:'+${theme.config.sns.email}"
            th:if="${not #strings.isEmpty(theme.config.sns.email)}">
             <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="icon-regular" viewBox="0 0 24 24">
@@ -20,6 +21,7 @@
         <!-- GitHub -->
         <a class="sns-icon"
            target="_blank"
+           rel="noopener noreferrer"
            th:attr="aria-label=#{sns.github}"
            th:href="'https://github.com/'+${theme.config.sns.github}"
            th:if="${not #strings.isEmpty(theme.config.sns.github)}">
@@ -34,6 +36,7 @@
         <!-- Discord -->
         <a class="sns-icon"
            target="_blank"
+           rel="noopener noreferrer"
            th:attr="aria-label=#{sns.discord}"
            th:href="${theme.config.sns.discord}"
            th:if="${not #strings.isEmpty(theme.config.sns.discord)}">
@@ -48,6 +51,7 @@
         <!-- Telegram -->
         <a class="sns-icon"
            target="_blank"
+           rel="noopener noreferrer"
            th:attr="aria-label=#{sns.telegram}"
            th:href="'https://t.me/'+${theme.config.sns.telegram}"
            th:if="${not #strings.isEmpty(theme.config.sns.telegram)}">
@@ -62,6 +66,7 @@
         <!-- Facebook -->
         <a class="sns-icon"
            target="_blank"
+           rel="noopener noreferrer"
            th:attr="aria-label=#{sns.facebook}"
            th:href="'https://www.facebook.com/'+${theme.config.sns.facebook}"
            th:if="${not #strings.isEmpty(theme.config.sns.facebook)}">
@@ -76,6 +81,7 @@
         <!-- Instagram -->
         <a class="sns-icon"
            target="_blank"
+           rel="noopener noreferrer"
            th:attr="aria-label=#{sns.instagram}"
            th:href="'https://www.instagram.com/'+${theme.config.sns.instagram}"
            th:if="${not #strings.isEmpty(theme.config.sns.instagram)}">
@@ -91,6 +97,7 @@
         <!-- X -->
         <a class="sns-icon"
            target="_blank"
+           rel="noopener noreferrer"
            th:attr="aria-label=#{sns.x}"
            th:href="'https://x.com/'+${theme.config.sns.x}"
            th:if="${not #strings.isEmpty(theme.config.sns.x)}">
@@ -108,6 +115,7 @@
         <!-- RSS -->
         <a class="sns-icon"
            target="_blank"
+           rel="noopener noreferrer"
            th:href="@{/rss.xml}"
            th:attr="aria-label=#{sns.rss}"
            th:if="${theme.config.sns.rss}">

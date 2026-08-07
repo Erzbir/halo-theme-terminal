@@ -20,7 +20,7 @@
                 <tbody>
                 <tr th:each="link : ${group.links}">
                     <td>
-                        <a th:href="${link.spec.url}" target="_blank" class="link-item">
+                        <a th:href="${link.spec.url}" target="_blank" rel="noopener noreferrer" class="link-item">
                             <div class="link-container">
                                 <div class="link-logo-wrap">
                                     <img class="link-logo" src="" th:src="${link.spec.logo}"

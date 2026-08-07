@@ -4,12 +4,12 @@
             <span th:text="#{footer.powered_by}">Powered by</span>
             <span>&nbsp;</span>
             <span>
-            <a target="_blank" href="http://www.halo.run">Halo</a>
+            <a target="_blank" rel="noopener noreferrer" href="http://www.halo.run">Halo</a>
             </span>
             <span>&nbsp;::&nbsp;</span>
             <span th:text="#{footer.theme}">Theme</span>
             <span>&nbsp;</span>
-            <a target="_blank" href="https://github.com/Erzbir/halo-theme-terminal">Terminal</a>
+            <a target="_blank" rel="noopener noreferrer" href="https://github.com/Erzbir/halo-theme-terminal">Terminal</a>
         </div>
         <div class="footer-copyright-site">
             <div class="footer-user">
@@ -21,12 +21,12 @@
             <div class="footer-icp">
                 <p>
                     <span th:if="${not #strings.isEmpty(theme.config.icp.icp_text)}">
-                    <a target="_blank" href="https://beian.miit.gov.cn/"
+                    <a target="_blank" rel="noopener noreferrer" href="https://beian.miit.gov.cn/"
                        th:href="${theme.config.icp.icp_link}"
                        th:text="${theme.config.icp.icp_text}"></a>
                     </span>
                     <span th:if="${not #strings.isEmpty(theme.config.icp.filing_text)}">
-                    <a target="_blank" href="https://www.beian.gov.cn/"
+                    <a target="_blank" rel="noopener noreferrer" href="https://www.beian.gov.cn/"
                        th:href="${theme.config.icp.filing_link}"
                        th:text="${theme.config.icp.filing_text}"></a>
                     </span>
