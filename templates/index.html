@@ -43,19 +43,12 @@
             </div>
         </article>
     </section>
-    <nav class="pagination" th:if="${posts.hasPrevious() || posts.hasNext()}">
-        <div class="pagination-buttons">
-          <span th:if="${posts.hasPrevious()}">
-            <a data-pjax th:href="@{${posts.prevUrl}}" class="button inline prev">
-              <span class="button-text" th:text="'< ' + #{page.pagination.prev}">&lt;&nbsp;Prev</span>
-            </a>
-          </span>
-            <span th:if="${posts.hasNext()}">
-            <a data-pjax th:href="@{${posts.nextUrl}}" class="button inline next">
-              <span class="button-text" th:text="#{page.pagination.next} + ' >'">Next&nbsp;&gt;</span>
-            </a>
-          </span>
-        </div>
-    </nav>
+    <th:block th:replace="~{modules/pagination :: page(
+        hasPrevious=${posts.hasPrevious()},
+        previousUrl=@{${posts.prevUrl}},
+        hasNext=${posts.hasNext()},
+        nextUrl=@{${posts.nextUrl}},
+        previousClass=''
+    )}"/>
 </th:block>
 </html>

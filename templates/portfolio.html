@@ -71,20 +71,13 @@
             </p>
         </section>
 
-        <nav class="pagination" th:if="${projects.hasPrevious() or projects.hasNext()}">
-            <div class="pagination-buttons">
-                <span th:if="${projects.hasPrevious()}">
-                    <a data-pjax th:href="@{/portfolio(page=${projects.page - 1})}" th:classappend="${projects.page == 1} ? 'first-page' : ''" class="button prev inline">
-                        <span class="button-text" th:text="'< ' + #{page.pagination.prev}">&lt;&nbsp;Prev</span>
-                    </a>
-                </span>
-                <span th:if="${projects.hasNext()}">
-                    <a data-pjax th:href="@{/portfolio(page=${projects.page + 1})}" class="button inline next">
-                        <span class="button-text" th:text="#{page.pagination.next} + ' >'">Next&nbsp;&gt;</span>
-                    </a>
-                </span>
-            </div>
-        </nav>
+        <th:block th:replace="~{modules/pagination :: page(
+            hasPrevious=${projects.hasPrevious()},
+            previousUrl=@{/portfolio(page=${projects.page - 1})},
+            hasNext=${projects.hasNext()},
+            nextUrl=@{/portfolio(page=${projects.page + 1})},
+            previousClass=${projects.page == 1 ? 'first-page' : ''}
+        )}"/>
     </article>
 </th:block>
 </html>

@@ -1,0 +1,38 @@
+<th:block th:fragment="page(hasPrevious, previousUrl, hasNext, nextUrl, previousClass)">
+    <nav class="pagination" th:if="${hasPrevious or hasNext}">
+        <div class="pagination-buttons">
+            <span th:if="${hasPrevious}">
+                <a data-pjax th:href="${previousUrl}" th:classappend="${previousClass}"
+                   class="button prev inline">
+                    <span class="button-text" th:text="'< ' + #{page.pagination.prev}">&lt;&nbsp;Prev</span>
+                </a>
+            </span>
+            <span th:if="${hasNext}">
+                <a data-pjax th:href="${nextUrl}" class="button inline next">
+                    <span class="button-text" th:text="#{page.pagination.next} + ' >'">Next&nbsp;&gt;</span>
+                </a>
+            </span>
+        </div>
+    </nav>
+</th:block>
+
+<th:block th:fragment="post(cursor)">
+    <nav class="pagination">
+        <div class="pagination-title">
+            <span class="pagination-title-h" th:text="#{page.post.pagination}">READ OTHER POSTS</span>
+            <hr/>
+        </div>
+        <div class="pagination-buttons">
+            <span th:if="${cursor.hasPrevious()}">
+                <a data-pjax th:href="@{${cursor.previous?.status?.permalink}}" class="button prev inline">
+                    <span class="button-text" th:text="|< ${cursor.previous?.spec?.title}|">Previous post</span>
+                </a>
+            </span>
+            <span th:if="${cursor.hasNext()}">
+                <a data-pjax th:href="@{${cursor.next?.status?.permalink}}" class="button next inline">
+                    <span class="button-text" th:text="|${cursor.next?.spec?.title} >|">Next post</span>
+                </a>
+            </span>
+        </div>
+    </nav>
+</th:block>

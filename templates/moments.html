@@ -98,19 +98,12 @@
                           )}"/>
         </div>
     </article>
-    <nav class="pagination" th:if="${moments.hasPrevious() || moments.hasNext()}">
-        <div class="pagination-buttons">
-         <span th:if="${moments.hasPrevious()}">
-            <a data-pjax th:href="@{${moments.prevUrl}}" class="button inline prev">
-              <span class="button-text" th:text="'< ' + #{page.pagination.prev}">&lt;&nbsp;Prev</span>
-            </a>
-          </span>
-            <span th:if="${moments.hasNext()}">
-            <a data-pjax th:href="@{${moments.nextUrl}}" class="button inline next">
-              <span class="button-text" th:text="#{page.pagination.next} + ' >'">Next&nbsp;&gt;</span>
-            </a>
-          </span>
-        </div>
-    </nav>
+    <th:block th:replace="~{modules/pagination :: page(
+        hasPrevious=${moments.hasPrevious()},
+        previousUrl=@{${moments.prevUrl}},
+        hasNext=${moments.hasNext()},
+        nextUrl=@{${moments.nextUrl}},
+        previousClass=''
+    )}"/>
 </th:block>
 </html>
