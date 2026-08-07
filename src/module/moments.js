@@ -15,6 +15,7 @@ const MOMENT_ACTIONS = {
 };
 
 let upvotedNames = readUpvotedNames();
+const pendingUpvoteNames = new Set();
 let actionListenerRegistered = false;
 
 function readUpvotedNames() {
@@ -55,30 +56,56 @@ function incrementUpvoteCount(name) {
 
 function syncUpvotedButtons() {
     document.querySelectorAll(UPVOTE_BUTTON_SELECTOR).forEach(btn => {
-        btn.classList.toggle("active", upvoted(btn.dataset.momentName));
+        const name = btn.dataset.momentName;
+        const pending = pendingUpvoteNames.has(name);
+
+        btn.classList.toggle("active", upvoted(name));
+        btn.disabled = pending;
+        btn.setAttribute("aria-busy", String(pending));
     });
+}
+
+function finishUpvote(name) {
+    pendingUpvoteNames.delete(name);
+    syncUpvotedButtons();
 }
 
 function handleUpvote(name) {
     if (!name) return;
-    if (upvoted(name)) return;
+    if (upvoted(name) || pendingUpvoteNames.has(name)) return;
+
+    pendingUpvoteNames.add(name);
+    syncUpvotedButtons();
 
     const xhr = new XMLHttpRequest();
     xhr.open("POST", UPVOTE_API);
     xhr.setRequestHeader("Content-Type", "application/json");
 
     xhr.onload = () => {
-        if (xhr.status < 200 || xhr.status >= 300) return;
-        recordUpvote(name);
-        incrementUpvoteCount(name);
-        syncUpvotedButtons();
+        try {
+            if (xhr.status >= 200 && xhr.status < 300) {
+                recordUpvote(name);
+                incrementUpvoteCount(name);
+            }
+        } finally {
+            finishUpvote(name);
+        }
     };
 
-    xhr.onerror = function () {
+    function handleRequestError() {
+        finishUpvote(name);
         alert(getMessage("networkError", "Network error. Please try again."));
-    };
+    }
 
-    xhr.send(JSON.stringify({group: RESOURCE_GROUP, plural: RESOURCE_PLURAL, name: name}));
+    xhr.onerror = handleRequestError;
+    xhr.ontimeout = handleRequestError;
+    xhr.onabort = () => finishUpvote(name);
+
+    try {
+        xhr.send(JSON.stringify({group: RESOURCE_GROUP, plural: RESOURCE_PLURAL, name: name}));
+    } catch {
+        handleRequestError();
+    }
 }
 
 function showComment(name) {
