@@ -1,76 +1,62 @@
-import esbuild from 'esbuild'
-import {sassPlugin} from 'esbuild-sass-plugin';
-import {readdirSync} from 'fs';
-import {join} from 'path';
-import * as fs from "node:fs";
+import esbuild from "esbuild";
+import {sassPlugin} from "esbuild-sass-plugin";
+import {readdirSync, rmSync} from "node:fs";
+import {join} from "node:path";
 
-async function build_main() {
-    const srcfile = 'src/main.js';
-    const outfile = 'templates/assets/dist/main.js';
+const OUTPUT_DIR = "templates/assets/dist";
+const FONT_LOADERS = {
+    ".woff": "file",
+    ".woff2": "file",
+    ".ttf": "file"
+};
+const COMMON_OPTIONS = {
+    bundle: true,
+    target: "es2020",
+    minify: true,
+    sourcemap: false
+};
 
-    await esbuild.build({
-        entryPoints: [srcfile],
-        bundle: true,
-        outfile: outfile,
-        assetNames: '[name]',
-        plugins: [
-            sassPlugin(),
-        ],
-        loader: {
-            '.woff': 'file',
-            '.woff2': 'file',
-            '.ttf': 'file',
-        },
-        format: 'esm',
-        target: 'es2020',
-        minify: true,
-        sourcemap: false
-    })
-
-    const tempEntry = "src/pixel.js"
-    const tempOutfile = "templates/assets/dist/pixel.js";
-    await esbuild.build({
-        entryPoints: [tempEntry],
-        bundle: true,
-        outfile: tempOutfile,
-        assetNames: '[name]',
-        plugins: [
-            sassPlugin(),
-        ],
-        loader: {
-            '.woff': 'file',
-            '.woff2': 'file',
-            '.ttf': 'file',
-        },
-        format: 'esm',
-        target: 'es2020',
-        minify: true,
-        sourcemap: false
-    })
-
-    if (fs.existsSync(tempOutfile)) {
-        fs.unlinkSync(tempOutfile);
-    }
-}
-
-
-async function build_libs() {
-    const srcDir = 'src/libs';
-    const outDir = 'templates/assets/dist/libs';
-
-    await esbuild.build({
-        entryPoints: readdirSync(srcDir)
-            .filter(file => file.endsWith('.js'))
-            .map(file => join(srcDir, file)),
-        bundle: true,
-        outdir: outDir,
-        format: 'esm',
-        target: 'es2020',
-        minify: true,
-        splitting: false,
-        sourcemap: false
+function buildMain() {
+    return esbuild.build({
+        ...COMMON_OPTIONS,
+        entryPoints: ["src/main.js"],
+        outfile: join(OUTPUT_DIR, "main.js"),
+        assetNames: "[name]",
+        plugins: [sassPlugin()],
+        loader: FONT_LOADERS,
+        format: "esm"
     });
 }
 
-await build_main();
-await build_libs();
+function buildPixelStyles() {
+    return esbuild.build({
+        ...COMMON_OPTIONS,
+        entryPoints: ["src/styles/pixel.scss"],
+        outfile: join(OUTPUT_DIR, "pixel.css"),
+        assetNames: "[name]",
+        plugins: [sassPlugin()],
+        loader: FONT_LOADERS
+    });
+}
+
+function buildLibraries() {
+    const sourceDirectory = "src/libs";
+
+    return esbuild.build({
+        ...COMMON_OPTIONS,
+        entryPoints: readdirSync(sourceDirectory)
+            .filter(file => file.endsWith(".js"))
+            .map(file => join(sourceDirectory, file)),
+        outdir: join(OUTPUT_DIR, "libs"),
+        format: "esm",
+        splitting: false
+    });
+}
+
+rmSync(OUTPUT_DIR, {recursive: true, force: true});
+
+await Promise.all([
+    buildMain(),
+    buildPixelStyles(),
+    buildLibraries()
+]);
