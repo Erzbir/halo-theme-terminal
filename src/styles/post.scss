@@ -24,11 +24,7 @@
 .post {
   width: 100%;
   text-align: left;
-  padding: calc(var(--size-theme-font) * 1.875) 0;
-}
-
-.post:not(:last-of-type) {
-  border-bottom: calc(var(--size-theme-font) * 0.0625) var(--style-theme-border) var(--color-theme-border-muted);
+  padding: calc(var(--size-theme-font) * 1.5) 0;
 }
 
 .post-meta {
