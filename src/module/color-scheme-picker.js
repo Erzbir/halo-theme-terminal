@@ -49,7 +49,7 @@ function createColorSchemeOption(scheme, label = scheme) {
 function populateColorSchemeMenu(menu) {
     menu.replaceChildren(createColorSchemeOption(
         "default",
-        getMessage("defaultColorScheme", "Default")
+        "Default"
     ));
 
     for (const scheme of getDefinedColorSchemes()) {
@@ -76,7 +76,7 @@ export function syncColorSchemePicker() {
 
     const selectedScheme = hasStoredOption ? storedScheme : "default";
     const selectedLabel = selectedScheme === "default"
-        ? getMessage("defaultColorScheme", "Default")
+        ? "Default"
         : selectedScheme;
     const trigger = picker.querySelector("#color-scheme-trigger");
     if (trigger) {
