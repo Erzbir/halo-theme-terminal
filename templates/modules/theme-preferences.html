@@ -10,7 +10,14 @@
             preferTTL: /*[[${theme.config.style.prefer_ttl ?: 24}]]*/ 24,
             pixelStyle: /*[[${theme.config.style.pixel_style}]]*/ false,
             pixelCssHref: /*[[@{/assets/dist/pixel.css?v={version}(version=${theme.spec.version})}]]*/ "",
-            customCss: /*[[${theme.config.style.custom}]]*/ ""
+            customCss: /*[[${theme.config.style.custom}]]*/ "",
+            messages: {
+                currentColorScheme: /*[[#{header.color_scheme.current}]]*/ "Current color scheme",
+                defaultColorScheme: /*[[#{header.color_scheme.default}]]*/ "Default",
+                showToc: /*[[#{toc.show}]]*/ "Show table of contents",
+                hideToc: /*[[#{toc.hide}]]*/ "Hide table of contents",
+                networkError: /*[[#{moment.network_error}]]*/ "Network error. Please try again."
+            }
         };
     </script>
     <script no-pjax>

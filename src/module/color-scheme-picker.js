@@ -2,6 +2,7 @@ import {
     PREFERENCE_KEYS,
     getStoredPreference
 } from "../utils/theme-preferences.js";
+import {getMessage} from "../utils/messages.js";
 
 const COLOR_SCHEME_SELECTOR_PATTERN = /html\[theme-color-scheme\s*=\s*(['"]?)([^'"\]\s]+)\1\]/g;
 
@@ -33,7 +34,7 @@ function getDefinedColorSchemes() {
     return schemes;
 }
 
-function createColorSchemeOption(scheme) {
+function createColorSchemeOption(scheme, label = scheme) {
     const option = document.createElement("button");
     option.className = "color-scheme-option";
     option.type = "button";
@@ -41,12 +42,15 @@ function createColorSchemeOption(scheme) {
     option.tabIndex = -1;
     option.dataset.colorScheme = scheme;
     option.setAttribute("aria-selected", "false");
-    option.textContent = scheme;
+    option.textContent = label;
     return option;
 }
 
 function populateColorSchemeMenu(menu) {
-    menu.replaceChildren(createColorSchemeOption("default"));
+    menu.replaceChildren(createColorSchemeOption(
+        "default",
+        getMessage("defaultColorScheme", "Default")
+    ));
 
     for (const scheme of getDefinedColorSchemes()) {
         menu.appendChild(createColorSchemeOption(scheme));
@@ -71,9 +75,13 @@ export function syncColorSchemePicker() {
     }
 
     const selectedScheme = hasStoredOption ? storedScheme : "default";
+    const selectedLabel = selectedScheme === "default"
+        ? getMessage("defaultColorScheme", "Default")
+        : selectedScheme;
     const trigger = picker.querySelector("#color-scheme-trigger");
     if (trigger) {
-        const description = `选择配色，当前：${selectedScheme}`;
+        const currentLabel = getMessage("currentColorScheme", "Current color scheme");
+        const description = `${currentLabel}: ${selectedLabel}`;
         trigger.setAttribute("aria-label", description);
         trigger.title = description;
     }

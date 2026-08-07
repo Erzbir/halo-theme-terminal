@@ -2,7 +2,7 @@
     <div class="sns-container">
         <!-- Email -->
         <a class="sns-icon"
-           aria-label="Find me on Email"
+           th:attr="aria-label=#{sns.email}"
            target="_blank"
            th:href="'mailto:'+${theme.config.sns.email}"
            th:if="${not #strings.isEmpty(theme.config.sns.email)}">
@@ -20,7 +20,7 @@
         <!-- GitHub -->
         <a class="sns-icon"
            target="_blank"
-           aria-label="Find me on GitHub"
+           th:attr="aria-label=#{sns.github}"
            th:href="'https://github.com/'+${theme.config.sns.github}"
            th:if="${not #strings.isEmpty(theme.config.sns.github)}">
             <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="icon-regular" viewBox="0 0 24 24">
@@ -34,7 +34,7 @@
         <!-- Discord -->
         <a class="sns-icon"
            target="_blank"
-           aria-label="Find me on Discord"
+           th:attr="aria-label=#{sns.discord}"
            th:href="${theme.config.sns.discord}"
            th:if="${not #strings.isEmpty(theme.config.sns.discord)}">
             <svg class="icon-regular" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
@@ -48,7 +48,7 @@
         <!-- Telegram -->
         <a class="sns-icon"
            target="_blank"
-           aria-label="Find me on Telegram"
+           th:attr="aria-label=#{sns.telegram}"
            th:href="'https://t.me/'+${theme.config.sns.telegram}"
            th:if="${not #strings.isEmpty(theme.config.sns.telegram)}">
             <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="icon-regular" viewBox="0 0 24 24">
@@ -62,7 +62,7 @@
         <!-- Facebook -->
         <a class="sns-icon"
            target="_blank"
-           aria-label="Find me on Facebook"
+           th:attr="aria-label=#{sns.facebook}"
            th:href="'https://www.facebook.com/'+${theme.config.sns.facebook}"
            th:if="${not #strings.isEmpty(theme.config.sns.facebook)}">
             <svg class="icon-regular" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
@@ -76,7 +76,7 @@
         <!-- Instagram -->
         <a class="sns-icon"
            target="_blank"
-           aria-label="Find me on Instagram"
+           th:attr="aria-label=#{sns.instagram}"
            th:href="'https://www.instagram.com/'+${theme.config.sns.instagram}"
            th:if="${not #strings.isEmpty(theme.config.sns.instagram)}">
             <svg class="icon-regular" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
@@ -91,7 +91,7 @@
         <!-- X -->
         <a class="sns-icon"
            target="_blank"
-           aria-label="Find me on X"
+           th:attr="aria-label=#{sns.x}"
            th:href="'https://x.com/'+${theme.config.sns.x}"
            th:if="${not #strings.isEmpty(theme.config.sns.x)}">
             <svg class="icon-regular" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
@@ -109,7 +109,7 @@
         <a class="sns-icon"
            target="_blank"
            th:href="@{/rss.xml}"
-           aria-label="Find me on RSS"
+           th:attr="aria-label=#{sns.rss}"
            th:if="${theme.config.sns.rss}">
             <svg class="icon-regular" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">

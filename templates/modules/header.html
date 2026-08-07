@@ -10,7 +10,7 @@
         </div>
         <button
                 id="search-button"
-                aria-label="Open Search"
+                th:attr="aria-label=#{header.search.open}"
                 type="button"
                 data-header-action="open-search"
                 th:if="${pluginFinder.available('PluginSearchWidget')}">
@@ -33,7 +33,7 @@
                     id="color-scheme-trigger"
                     class="color-scheme-trigger"
                     type="button"
-                    aria-label="Selector Scheme"
+                    th:attr="aria-label=#{header.color_scheme.open}"
                     aria-haspopup="listbox"
                     aria-expanded="false"
                     aria-controls="color-scheme-menu">
@@ -49,7 +49,7 @@
                     id="color-scheme-menu"
                     class="color-scheme-menu"
                     role="listbox"
-                    aria-label="Color Scheme List"
+                    th:attr="aria-label=#{header.color_scheme.list}"
                     hidden>
                 <button
                         class="color-scheme-option"
@@ -61,7 +61,7 @@
                 </button>
             </div>
         </div>
-        <button id="theme-toggle" aria-label="Toggle Theme" type="button">
+        <button id="theme-toggle" th:attr="aria-label=#{header.theme.toggle}" type="button">
             <svg class="icon-regular button-icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                  preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
                 <path
@@ -74,7 +74,7 @@
                       d="M11 0h2v4h-2zm1 12H8v2H4v2H2v4h2v2h10v-2h2v-4h-2v-2h-2zm0 2v2h2v4H4v-4h4v2h2v-2H8v-2zM8 6h6v2H8zm0 2v2H6V8zm8 2h-2V8h2zm0 0h2v2h-2zm4-8h2v2h-2zm0 2v2h-2V4zM2 2h2v2H2zm2 2h2v2H4zm20 7h-4v2h4z"/>
             </svg>
         </button>
-        <button id="pixel-toggle" aria-label="Toggle Pixel Style" type="button">
+        <button id="pixel-toggle" th:attr="aria-label=#{header.pixel_style.toggle}" type="button">
             <svg class="icon-pixel button-icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                 <path fill="currentColor"
                       d="M22 17h2v2h-2Zm-1 2h1v2h-1Zm1-6V9h1V6h-4v3h2v4h1zm-3 8h2v1h-2Zm0-8h2v1h-2Zm-1 9h1v2h-1Zm0-8h1v1h-1Zm-1 1h1v1h-1Zm-1 1h1v8h-1Zm1-3V3h1V0h-3v3h1v10ZM16 1h1v1h-1Zm-1 12h1v1h-1Zm-1 1h1v10h-1Zm-4-3h1v13h2V11h1V8h-4v3zm-1 3h1v10H9Zm-1-1h1v1H8Zm-1 5h1v6H7ZM8 7h1V3H6v4h1v6h1V7zM6 17h1v1H6Zm-1 5h1v2H5Zm0-6h1v1H5Zm1-1v-4H2v4h1v1h2v-1Zm-3-1v-1h2v1Zm0 7h2v1H3Zm-1-2h1v2H2Zm-2-2h2v2H0Z"/>

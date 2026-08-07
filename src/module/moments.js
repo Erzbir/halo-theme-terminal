@@ -1,4 +1,5 @@
 import {terminal} from "../terminal.js";
+import {getMessage} from "../utils/messages.js";
 
 const RESOURCE_KEY = "moment";
 const RESOURCE_GROUP = "moment.halo.run";
@@ -74,7 +75,7 @@ function handleUpvote(name) {
     };
 
     xhr.onerror = function () {
-        alert("Network Error");
+        alert(getMessage("networkError", "Network error. Please try again."));
     };
 
     xhr.send(JSON.stringify({group: RESOURCE_GROUP, plural: RESOURCE_PLURAL, name: name}));

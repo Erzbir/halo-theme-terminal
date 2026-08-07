@@ -1,5 +1,6 @@
 import {terminal} from "../terminal.js";
 import {debounce, toggleClass} from "../utils/dom.js";
+import {getMessage} from "../utils/messages.js";
 import tocbot from "tocbot";
 
 const TOC_SELECTOR = "#toc";
@@ -45,7 +46,12 @@ function syncToggleButton(toc = getToc()) {
 
     const isVisible = toc.classList.contains(TOC_VISIBLE_CLASS);
     tocToggle.textContent = isVisible ? TOC_CLOSE_ICON : TOC_OPEN_ICON;
-    tocToggle.setAttribute("aria-label", isVisible ? "Hide Table of Contents" : "Show Table of Contents");
+    tocToggle.setAttribute(
+        "aria-label",
+        isVisible
+            ? getMessage("hideToc", "Hide table of contents")
+            : getMessage("showToc", "Show table of contents")
+    );
 
     if (tocToggle.dataset.tocBound === "true") return;
     tocToggle.addEventListener("click", toggleToc);

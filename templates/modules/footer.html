@@ -1,12 +1,14 @@
 <th:block th:fragment="footer">
     <div class="footer-inner">
         <div class="footer-copyright-engine">
-            <span>Powered by&nbsp;</span>
+            <span th:text="#{footer.powered_by}">Powered by</span>
+            <span>&nbsp;</span>
             <span>
             <a target="_blank" href="http://www.halo.run">Halo</a>
             </span>
             <span>&nbsp;::&nbsp;</span>
-            <span>Theme&nbsp;</span>
+            <span th:text="#{footer.theme}">Theme</span>
+            <span>&nbsp;</span>
             <a target="_blank" href="https://github.com/Erzbir/halo-theme-terminal">Terminal</a>
         </div>
         <div class="footer-copyright-site">
