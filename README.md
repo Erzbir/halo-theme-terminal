@@ -317,7 +317,7 @@ make test
 make clean
 ```
 
-`make test` 会构建主题并将压缩包解压到 `dist/theme-terminal-ez`
+`make test` 会构建主题, 清理旧的测试目录并将压缩包解压到 `dist/theme-terminal-ez`
 
 ### 使用 pnpm
 
