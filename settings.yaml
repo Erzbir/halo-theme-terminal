@@ -312,7 +312,7 @@ spec:
           name: post_meta_divider
           value:
           placeholder: "::"
-          help: "控制文章时间、作者和标签等元信息之间的分隔符, 例如 :: / | / ·"
+          help: "控制文章元信息之间的分隔符, 例如 ::, |, ·"
 
         - $formkit: text
           label: 边线宽度
