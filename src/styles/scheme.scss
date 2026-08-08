@@ -12,6 +12,7 @@
   --color-theme-header: #3e3e3e;
 
   --color-theme-code-text: var(--color-theme-foreground);
+  --color-theme-code-background: var(--color-theme-surface-hover);
   --color-theme-link: var(--color-theme-accent);
   --color-theme-post-link: var(--color-theme-link);
   --color-theme-muted: var(--color-theme-meta);
@@ -67,14 +68,24 @@ $color-schemes: (
                 "accent": #4eee85
         ),
         "ink": (
-                "background": #000000,
-                "foreground": #e3e3e3,
-                "accent": #e3e3e3
+                "background": #121212,
+                "foreground": #C3C3C3,
+                "foreground-muted": #C1C1C1,
+                "accent": #FFFFFF,
+                "link": #5AC8FA,
+                "muted": #C1C1C1,
+                "code-text": #FFFFFF,
+                "code-background": #1F1F1F
         ),
         "paper": (
-                "background": #ffffff,
-                "foreground": #000000,
-                "accent": #000000
+                "background": #FFFFFF,
+                "foreground": #1B1B1B,
+                "foreground-muted": #595959,
+                "accent": #000000,
+                "link": #406ED2,
+                "muted": #595959,
+                "code-text": #1B1B1B,
+                "code-background": #EBEBEB
         ),
         "hopbush": (
                 "background": #fff6f6,
