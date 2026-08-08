@@ -26,32 +26,50 @@ spec:
           value: false
           help: 开启后隐藏左右侧边栏并让正文区域占满可用宽度
 
-        - $formkit: text
-          label: 正文区域最大宽度
-          name: max_width
-          value:
-          help: 控制正文区域最大宽度, 例如 960px / 80vw, 留空使用主题默认值
-
-        - $formkit: text
-          label: 正文区域内边距
-          name: content_padding
-          value:
-          placeholder: "calc(var(--size-theme-font) * 2.5)"
-          help: 控制正文容器内边距, 例如 2rem / 24px / calc(var(--size-theme-font) * 2), 留空使用主题默认值
-
-        - $formkit: text
-          label: 正文媒体最大宽度
-          name: media_max_width
-          value:
-          placeholder: "60%"
-          help: 控制文章内容中图片 / 视频 / figure 的最大宽度, 留空使用主题默认值
-
         - $formkit: checkbox
           label: 表格宽度铺满父元素
           name: table_full_width
           value: false
           help: 开启后文章内容中的 table 会占满正文内容区域宽度
 
+        - $formkit: checkbox
+          name: pixel_style
+          label: 默认像素化风格
+          value: false
+          help: 开启后将默认使用像素风格字体及图标
+          
+        - $formkit: checkbox
+          label: 使用系统字体
+          name: system_font_enable
+          value: false
+          help: 开启后将优先使用访问者的系统字体
+
+        - $formkit: checkbox
+          name: custom_font_enable
+          id: custom_font_enable
+          label: 启用自定义字体文件
+          value: false
+          help: '如果启用 "使用系统字体", 此配置项不生效'             
+        
+        - $formkit: attachment
+          if: "$get(custom_font_enable).value === true"
+          name: custom_font_file
+          label: 自定义字体文件
+          value: ""
+          
+        - $formkit: text
+          if: "$get(custom_font_enable).value === true"
+          name: custom_font_name
+          label: 字体名称
+          help: 填写字体文件中声明的字体全名或 PostScript 名, 名称不正确时无法加载字体
+          value: ""
+        
+        - $formkit: checkbox
+          name: color_scheme_switcher_enable
+          label: 启用访客配色切换
+          value: false
+          help: 开启后在页头显示配色选择下拉框
+          
         - $formkit: select
           name: default_scheme_mode
           label: 默认配色方案
@@ -64,17 +82,6 @@ spec:
               value: "light"
             - label: "跟随系统"
               value: "system"
-        - $formkit: number
-          name: prefer_ttl
-          label: 访客偏好有效期 (小时)
-          value: 24
-          min: 0
-          help: 访客手动选择的模式, 配色和像素风格过期后会在下次访问时恢复默认值, 设为 0 表示永久保存
-        - $formkit: checkbox
-          name: color_scheme_switcher_enable
-          label: 启用访客配色切换
-          value: false
-          help: 开启后在页头显示配色选择下拉框
         - $formkit: select
           name: dark_color_scheme
           id: dark_color_scheme
@@ -108,13 +115,6 @@ spec:
               value: "studio"
             - label: "vanilla"
               value: "vanilla"
-        - $formkit: text
-          name: custom_dark
-          if: "$get(dark_color_scheme).value === 'custom'"
-          value: ""
-          help: 填写自定义深色配色方案的名称
-          validation: "required"
-
         - $formkit: select
           name: light_color_scheme
           id: light_color_scheme
@@ -148,71 +148,6 @@ spec:
               value: "studio"
             - label: "vanilla"
               value: "vanilla"
-        - $formkit: text
-          name: custom_light
-          if: "$get(light_color_scheme).value === 'custom'"
-          value: ""
-          help: 填写自定义浅色配色方案的名称
-          validation: "required"
-
-        - $formkit: text
-          label: 基础字体大小
-          name: font_size
-          value:
-          placeholder: "1rem"
-          help: 控制全站基础字体大小, 例如 16px / 1rem / 18px, 留空使用主题默认值
-
-        - $formkit: text
-          label: 基础行高
-          name: line_height
-          value:
-          placeholder: "calc(var(--size-theme-font) * 1.8)"
-          help: 控制全站基础行高, 例如 1.8 / 28px / calc(var(--size-theme-font) * 1.8), 留空使用主题默认值
-
-        - $formkit: text
-          label: 文章段落间距
-          name: post_paragraph_spacing
-          value:
-          placeholder: "calc(var(--size-theme-font) * 1.5625)"
-          help: 控制文章正文段落的上下间距, 例如 1.5rem / 24px / calc(var(--size-theme-font) * 1.5), 留空使用主题默认值
-
-        - $formkit: text
-          label: 文章元信息分隔符
-          name: post_meta_divider
-          value:
-          placeholder: "::"
-          help: 控制文章时间、作者和标签等元信息之间的分隔符, 例如 :: / | / ·, 留空使用主题默认值
-
-        - $formkit: checkbox
-          label: 使用系统字体
-          name: system_font_enable
-          value: false
-          help: 开启后将优先使用访问者的系统字体
-
-        - $formkit: checkbox
-          name: pixel_style
-          label: 默认像素化风格
-          value: false
-          help: 开启后将默认使用像素风格字体及图标
-
-        - $formkit: checkbox
-          name: custom_font_enable
-          id: custom_font_enable
-          label: 启用自定义字体文件
-          value: false
-          help: '如果启用 "使用系统字体", 此配置项不生效'
-        - $formkit: attachment
-          if: "$get(custom_font_enable).value === true"
-          name: custom_font_file
-          label: 自定义字体文件
-          value: ""
-        - $formkit: text
-          if: "$get(custom_font_enable).value === true"
-          name: custom_font_name
-          label: 字体名称
-          help: 填写字体文件中声明的字体全名或 PostScript 名, 名称不正确时无法加载字体
-          value: ""
-
         - $formkit: select
           label: 无序列表标记
           name: list_marker
@@ -229,13 +164,6 @@ spec:
               value: '"+"'
             - label: ">"
               value: '">"'
-
-        - $formkit: text
-          label: 边线宽度
-          name: border_width
-          value:
-          placeholder: "calc(var(--size-theme-font) * 0.125)"
-          help: 控制主题通用边线宽度, 留空使用主题默认值
 
         - $formkit: select
           label: 边线样式
@@ -255,13 +183,6 @@ spec:
               value: "double"
             - label: "none"
               value: "none"
-
-        - $formkit: text
-          label: 表格边线宽度
-          name: table_border_width
-          value:
-          placeholder: "calc(var(--size-theme-font) * 0.0625)"
-          help: 控制表格边线宽度, 留空使用主题默认值
 
         - $formkit: select
           label: 表格边线样式
@@ -323,6 +244,89 @@ spec:
           label: 自定义时间格式
           placeholder: "yyyy-MM-dd"
           validation: "required"
+
+        - $formkit: number
+          name: prefer_ttl
+          label: 访客偏好有效期 (小时)
+          value: 24
+          min: 0
+          help: 访客手动选择的模式, 配色和像素风格过期后会在下次访问时恢复默认值, 设为 0 表示永久保存
+
+        - $formkit: text
+          name: custom_dark
+          if: "$get(dark_color_scheme).value === 'custom'"
+          value: ""
+          help: 填写自定义深色配色方案的名称
+          validation: "required"
+
+        - $formkit: text
+          name: custom_light
+          if: "$get(light_color_scheme).value === 'custom'"
+          value: ""
+          help: 填写自定义浅色配色方案的名称
+          validation: "required"
+
+        - $formkit: text
+          label: 正文区域最大宽度
+          name: max_width
+          value:
+          help: 控制正文区域最大宽度, 例如 960px / 80vw, 留空使用主题默认值
+
+        - $formkit: text
+          label: 正文区域内边距
+          name: content_padding
+          value:
+          placeholder: "calc(var(--size-theme-font) * 2.5)"
+          help: 控制正文容器内边距, 例如 2rem / 24px / calc(var(--size-theme-font) * 2), 留空使用主题默认值
+
+        - $formkit: text
+          label: 正文媒体最大宽度
+          name: media_max_width
+          value:
+          placeholder: "60%"
+          help: 控制文章内容中图片 / 视频 / figure 的最大宽度, 留空使用主题默认值
+
+        - $formkit: text
+          label: 基础字体大小
+          name: font_size
+          value:
+          placeholder: "1rem"
+          help: 控制全站基础字体大小, 例如 16px / 1rem / 18px, 留空使用主题默认值
+
+        - $formkit: text
+          label: 基础行高
+          name: line_height
+          value:
+          placeholder: "calc(var(--size-theme-font) * 1.8)"
+          help: 控制全站基础行高, 例如 1.8 / 28px / calc(var(--size-theme-font) * 1.8), 留空使用主题默认值
+
+        - $formkit: text
+          label: 文章段落间距
+          name: post_paragraph_spacing
+          value:
+          placeholder: "calc(var(--size-theme-font) * 1.5625)"
+          help: 控制文章正文段落的上下间距, 例如 1.5rem / 24px / calc(var(--size-theme-font) * 1.5), 留空使用主题默认值
+
+        - $formkit: text
+          label: 文章元信息分隔符
+          name: post_meta_divider
+          value:
+          placeholder: "::"
+          help: "控制文章时间、作者和标签等元信息之间的分隔符, 例如 :: / | / ·, 留空使用主题默认值"
+
+        - $formkit: text
+          label: 边线宽度
+          name: border_width
+          value:
+          placeholder: "calc(var(--size-theme-font) * 0.125)"
+          help: 控制主题通用边线宽度, 留空使用主题默认值
+
+        - $formkit: text
+          label: 表格边线宽度
+          name: table_border_width
+          value:
+          placeholder: "calc(var(--size-theme-font) * 0.0625)"
+          help: 控制表格边线宽度, 留空使用主题默认值
 
         - $formkit: code
           name: custom
