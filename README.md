@@ -12,6 +12,7 @@
 - 访客配色选择器
 - 常规图标和像素图标切换
 - JetBrains Mono, 系统字体, 自定义字体和内置像素字体
+- 基础行高, 文章段落间距和文章元信息分隔符配置
 - 首页公告打字效果
 - 文章目录和目录展开状态配置
 - 文章标签, 置顶标记和上一篇/下一篇导航
@@ -62,6 +63,9 @@
 | 正文媒体最大宽度 | `style.media_max_width`                                | 全屏布局中控制图片, 视频和 `figure` 宽度                        |
 | 表格铺满正文   | `style.table_full_width`                               | 让正文中的表格宽度为 `100%`                                 |
 | 基础字体大小   | `style.font_size`                                      | 接受 `16px`, `1rem` 等 CSS 长度                        |
+| 基础行高     | `style.line_height`                                    | 接受 `28px`, `1.75rem` 或 `calc(...)` 等 CSS 长度       |
+| 文章段落间距   | `style.post_paragraph_spacing`                         | 控制文章正文段落的上下间距                                    |
+| 元信息分隔符   | `style.post_meta_divider`                              | 控制文章时间, 作者和标签等元信息之间的分隔符                          |
 | 使用系统字体   | `style.system_font_enable`                             | 使用访问者的 `system-ui` 字体                             |
 | 默认像素风格   | `style.pixel_style`                                    | 使用像素字体和像素图标                                       |
 | 自定义字体    | `style.custom_font_enable`                             | 上传字体文件并填写字体内部名称                                   |
@@ -136,8 +140,8 @@
 | `night`     | `#101216` | `#8b949e` | `#6ca4f8` |
 | `niello`    | `#1a170f` | `#eceae5` | `#eec35e` |
 | `matrix`    | `#000000` | `#4eee85` | `#4eee85` |
-| `ink`       | `#000000` | `#e3e3e3` | `#e3e3e3` |
-| `paper`     | `#ffffff` | `#000000` | `#000000` |
+| `ink`       | `#121212` | `#c3c3c3` | `#ffffff` |
+| `paper`     | `#ffffff` | `#1b1b1b` | `#000000` |
 | `hopbush`   | `#fff6f6` | `#462d2d` | `#cc6099` |
 | `pistachio` | `#1d2021` | `#ebdbb2` | `#8ec07c` |
 | `blue`      | `#153489` | `#eceae5` | `#5ea5ee` |
@@ -146,6 +150,9 @@
 | `blood`     | `#221f29` | `#ffffff` | `#ff6266` |
 
 `day` 和 `night` 对标签, 元信息, 边框, 菜单和页头使用了额外的语义颜色, 其他配色默认从前景色和强调色派生这些颜色
+
+`ink` 使用 `#5ac8fa` 链接色, `#c1c1c1` 弱化色和 `#1f1f1f` 行内代码背景;
+`paper` 使用 `#406ed2` 链接色, `#595959` 弱化色和 `#ebebeb` 行内代码背景
 
 ## 自定义 CSS
 
@@ -201,6 +208,7 @@ html[theme-color-scheme='matrix'] {
 | `--color-theme-menu`             | 导航菜单          |
 | `--color-theme-header`           | 页头文字和边框       |
 | `--color-theme-code-text`        | 行内代码和代码块文字    |
+| `--color-theme-code-background`  | 行内代码背景        |
 | `--color-theme-link`             | 链接            |
 | `--color-theme-post-link`        | 文章和页面正文链接     |
 | `--color-theme-muted`            | 次要文字          |
@@ -221,7 +229,9 @@ html[theme-color-scheme='matrix'] {
 | 变量                                         | 默认值                                     |
 |--------------------------------------------|-----------------------------------------|
 | `--size-theme-font`                        | `1rem`                                  |
-| `--height-theme-line`                      | `calc(var(--size-theme-font) * 1.8)`    |
+| `--height-theme-line`                      | `calc(var(--size-theme-font) * 1.75)`   |
+| `--spacing-theme-post-paragraph`           | `calc(var(--size-theme-font) * 1.25)`   |
+| `--content-theme-post-meta-divider`        | `"::"`                                  |
 | `--family-theme-font`                      | `'JetBrains Mono'`                      |
 | `--list-theme-marker`                      | `"►"`                                   |
 | `--width-theme-border`                     | `calc(var(--size-theme-font) * 0.125)`  |
@@ -235,6 +245,7 @@ html[theme-color-scheme='matrix'] {
 | `--radius-theme-border`                    | `0`                                     |
 | `--text-decoration-theme-link`             | `none`                                  |
 | `--text-decoration-theme-post-link`        | `var(--text-decoration-theme-link)`     |
+| `--weight-theme-inline-code`                | `inherit`                               |
 | `--lig-theme-font`                         | `none`                                  |
 | `--width-theme-scrollbar`                  | `thin`                                  |
 
