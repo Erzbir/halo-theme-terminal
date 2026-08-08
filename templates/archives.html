@@ -26,7 +26,7 @@
                                     Time
                                 </time>
                                 <a data-pjax th:href="@{${post.status.permalink}}"><span class="post-list-title" th:text="${post.spec.title}">Post Title</span>
-                                </a><th:block th:replace="~{modules/tag-list(post = ${post}, show = ${theme.config.archives_page.show_tags})}"/></div></span>
+                                </a><th:block th:replace="~{modules/tag-list(post = ${post}, show = ${theme.config.archives_page.show_tags})}"/></div>
                         </li>
                     </th:block>
                 </ul>
