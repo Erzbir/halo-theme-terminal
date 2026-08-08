@@ -6,6 +6,7 @@
   --list-theme-marker: "►";
   --size-theme-font: 1rem;
   --height-theme-line: calc(var(--size-theme-font) * 1.8);
+  --spacing-theme-post-paragraph: calc(var(--size-theme-font) * 1.5625);
   --radius-theme-border: 0;
   --family-theme-font: 'JetBrains Mono';
   --family-theme-fallback-font: -apple-system, BlinkMacSystemFont, 'segoe ui', Roboto, Oxygen,
@@ -21,6 +22,7 @@
   --style-theme-border: solid;
   --style-theme-table-border: dashed;
   --style-theme-title-divider: dashed;
+  --weight-theme-inline-code: inherit;
 }
 
 html {
@@ -386,19 +388,21 @@ li::marker {
 
 code {
   color: var(--color-theme-code-text);
+  background: var(--color-theme-code-background);
+  font-weight: var(--weight-theme-inline-code);
 }
 
 code,
 kbd {
   font-family: inherit !important;
   font-feature-settings: normal;
-  background: var(--color-theme-surface-hover);
   padding: calc(var(--size-theme-font) * 0.0625) calc(var(--size-theme-font) * 0.375);
   margin: 0 calc(var(--size-theme-font) * 0.125);
   font-size: calc(var(--size-theme-font) * 0.95);
 }
 
 kbd {
+  background: var(--color-theme-surface-hover);
   border-top: calc(var(--width-theme-border) / 2) solid var(--color-theme-accent-subtle);
   border-left: calc(var(--width-theme-border) / 2) solid var(--color-theme-accent);
   border-right: calc(var(--width-theme-border) / 2) solid var(--color-theme-accent);
@@ -431,6 +435,7 @@ pre {
 
 pre code {
   background: none !important;
+  font-weight: inherit;
   margin: 0;
   padding: 0;
   border: none;
@@ -534,7 +539,7 @@ blockquote.twitter-tweet {
 
 blockquote.twitter-tweet a {
   color: var(--color-theme-accent);
-  text-decoration: underline;
+  text-decoration: var(--text-decoration-theme-post-link);
 }
 
 blockquote.twitter-tweet::before {

@@ -162,6 +162,20 @@ spec:
           placeholder: "1rem"
           help: 控制全站基础字体大小, 例如 16px / 1rem / 18px, 留空使用主题默认值
 
+        - $formkit: text
+          label: 基础行高
+          name: line_height
+          value:
+          placeholder: "calc(var(--size-theme-font) * 1.8)"
+          help: 控制全站基础行高, 例如 1.8 / 28px / calc(var(--size-theme-font) * 1.8), 留空使用主题默认值
+
+        - $formkit: text
+          label: 文章段落间距
+          name: post_paragraph_spacing
+          value:
+          placeholder: "calc(var(--size-theme-font) * 1.5625)"
+          help: 控制文章正文段落的上下间距, 例如 1.5rem / 24px / calc(var(--size-theme-font) * 1.5), 留空使用主题默认值
+
         - $formkit: checkbox
           label: 使用系统字体
           name: system_font_enable

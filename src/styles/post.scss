@@ -132,6 +132,10 @@
   text-decoration: var(--text-decoration-theme-post-link);
 }
 
+.post-body p {
+  margin-block: var(--spacing-theme-post-paragraph);
+}
+
 .post-cover {
   margin: calc(var(--size-theme-font) * 1.5625) 0;
 }
