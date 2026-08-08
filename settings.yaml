@@ -152,7 +152,7 @@ spec:
           label: 无序列表标记
           name: list_marker
           value: ""
-          help: 控制文章中无序列表项前的标记, 留空使用主题默认值
+          help: 控制文章中无序列表项前的标记
           options:
             - label: "default"
               value: ""
@@ -169,7 +169,7 @@ spec:
           label: 边线样式
           name: border_style
           value: ""
-          help: 控制主题通用边线样式, 留空使用主题默认值
+          help: 控制主题通用边线样式
           options:
             - label: "default"
               value: ""
@@ -188,7 +188,7 @@ spec:
           label: 表格边线样式
           name: table_border_style
           value: ""
-          help: 控制表格边线样式, 留空使用主题默认值
+          help: 控制表格边线样式
           options:
             - label: "default"
               value: ""
@@ -207,7 +207,7 @@ spec:
           label: 标题分隔线样式
           name: title_divider_style
           value: ""
-          help: 控制文章标题分隔线样式, 留空使用主题默认值
+          help: 控制文章标题分隔线样式
           options:
             - label: "default"
               value: ""
@@ -270,63 +270,63 @@ spec:
           label: 正文区域最大宽度
           name: max_width
           value:
-          help: 控制正文区域最大宽度, 例如 960px / 80vw, 留空使用主题默认值
+          help: 控制正文区域最大宽度, 例如 960px / 80vw
 
         - $formkit: text
           label: 正文区域内边距
           name: content_padding
           value:
           placeholder: "calc(var(--size-theme-font) * 2.5)"
-          help: 控制正文容器内边距, 例如 2rem / 24px / calc(var(--size-theme-font) * 2), 留空使用主题默认值
+          help: 控制正文容器内边距, 例如 2rem / 24px / calc(var(--size-theme-font) * 2)
 
         - $formkit: text
           label: 正文媒体最大宽度
           name: media_max_width
           value:
           placeholder: "60%"
-          help: 控制文章内容中图片 / 视频 / figure 的最大宽度, 留空使用主题默认值
+          help: 控制文章内容中图片 / 视频 / figure 的最大宽度
 
         - $formkit: text
           label: 基础字体大小
           name: font_size
           value:
           placeholder: "1rem"
-          help: 控制全站基础字体大小, 例如 16px / 1rem / 18px, 留空使用主题默认值
+          help: 控制全站基础字体大小, 例如 16px / 1rem / 18px
 
         - $formkit: text
           label: 基础行高
           name: line_height
           value:
           placeholder: "calc(var(--size-theme-font) * 1.8)"
-          help: 控制全站基础行高, 例如 1.8 / 28px / calc(var(--size-theme-font) * 1.8), 留空使用主题默认值
+          help: 控制全站基础行高, 例如 1.8 / 28px / calc(var(--size-theme-font) * 1.8)
 
         - $formkit: text
           label: 文章段落间距
           name: post_paragraph_spacing
           value:
           placeholder: "calc(var(--size-theme-font) * 1.5625)"
-          help: 控制文章正文段落的上下间距, 例如 1.5rem / 24px / calc(var(--size-theme-font) * 1.5), 留空使用主题默认值
+          help: 控制文章正文段落的上下间距, 例如 1.5rem / 24px / calc(var(--size-theme-font) * 1.5)
 
         - $formkit: text
           label: 文章元信息分隔符
           name: post_meta_divider
           value:
           placeholder: "::"
-          help: "控制文章时间、作者和标签等元信息之间的分隔符, 例如 :: / | / ·, 留空使用主题默认值"
+          help: "控制文章时间、作者和标签等元信息之间的分隔符, 例如 :: / | / ·"
 
         - $formkit: text
           label: 边线宽度
           name: border_width
           value:
           placeholder: "calc(var(--size-theme-font) * 0.125)"
-          help: 控制主题通用边线宽度, 留空使用主题默认值
+          help: 控制主题通用边线宽度
 
         - $formkit: text
           label: 表格边线宽度
           name: table_border_width
           value:
           placeholder: "calc(var(--size-theme-font) * 0.0625)"
-          help: 控制表格边线宽度, 留空使用主题默认值
+          help: 控制表格边线宽度
 
         - $formkit: code
           name: custom
