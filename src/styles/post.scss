@@ -35,6 +35,7 @@
 
 .post-meta > *:not(:first-child):not(:empty)::before {
   content: "::";
+  color: var(--color-theme-meta);
   display: inline-block;
   margin-right: 1ch;
 }
