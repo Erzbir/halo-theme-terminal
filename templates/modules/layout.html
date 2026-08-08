@@ -33,6 +33,11 @@
             --spacing-theme-post-paragraph: [(${theme.config.style.post_paragraph_spacing})];
         }
     </style>
+    <style no-pjax th:if="${not #strings.isEmpty(theme.config.style.post_meta_divider)}" th:inline="css">
+        :root {
+            --content-theme-post-meta-divider: "[(${theme.config.style.post_meta_divider})]";
+        }
+    </style>
     <style no-pjax th:if="${not #strings.isEmpty(theme.config.style.content_padding)}" th:inline="css">
         :root {
             --spacing-theme-container-padding: [(${theme.config.style.content_padding})];

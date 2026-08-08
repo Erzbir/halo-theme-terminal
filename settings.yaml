@@ -176,6 +176,13 @@ spec:
           placeholder: "calc(var(--size-theme-font) * 1.5625)"
           help: 控制文章正文段落的上下间距, 例如 1.5rem / 24px / calc(var(--size-theme-font) * 1.5), 留空使用主题默认值
 
+        - $formkit: text
+          label: 文章元信息分隔符
+          name: post_meta_divider
+          value:
+          placeholder: "::"
+          help: 控制文章时间、作者和标签等元信息之间的分隔符, 例如 :: / | / ·, 留空使用主题默认值
+
         - $formkit: checkbox
           label: 使用系统字体
           name: system_font_enable

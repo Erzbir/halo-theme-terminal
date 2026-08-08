@@ -3,6 +3,7 @@
 :root {
   --text-decoration-theme-link: none;
   --text-decoration-theme-post-link: var(--text-decoration-theme-link);
+  --content-theme-post-meta-divider: "::";
   --list-theme-marker: "►";
   --size-theme-font: 1rem;
   --height-theme-line: calc(var(--size-theme-font) * 1.75);
