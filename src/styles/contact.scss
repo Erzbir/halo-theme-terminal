@@ -1,0 +1,22 @@
+halo-contact-form {
+  --halo-contact-form-font-family: var(--family-theme-font), var(--family-theme-fallback-font) !important;
+  --halo-contact-form-font-size: var(--size-theme-font) !important;
+  --halo-contact-form-line-height: var(--height-theme-line) !important;
+  --halo-contact-form-border-radius: var(--radius-theme-border) !important;
+  --halo-contact-form-width-submit: auto !important;
+  --halo-contact-form-color-primary: var(--color-theme-accent) !important;
+  --halo-contact-form-color-label: var(--color-theme-foreground) !important;
+  --halo-contact-form-color-input: var(--color-theme-foreground) !important;
+  --halo-contact-form-color-input-selection: var(--color-theme-highlight) !important;
+  --halo-contact-form-color-border: var(--color-theme-foreground) !important;
+  // --halo-contact-form-color-danger: ;
+  --halo-contact-form-color-help: var(--color-theme-foreground-muted) !important;
+  --halo-contact-form-color-button: var(--color-theme-background) !important;
+  --halo-contact-form-color-button-hover: var(--halo-contact-form-color-button) !important;
+  --halo-contact-form-focus-ring-color: var(--color-theme-foreground);
+  // --halo-contact-form-error-ring-color: ;
+  // --halo-contact-form-error-ring-focus-color: ;
+  --halo-contact-form-bg-input: var(--color-theme-background) !important;
+  --halo-contact-form-bg-decorator: var(--color-theme-background) !important;
+  --halo-contact-form-auto-color-modal-bg: var(--color-theme-foreground) !important;
+}
