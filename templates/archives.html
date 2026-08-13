@@ -12,33 +12,45 @@
                 Archives
             </h1>
         </header>
-        <div>
-            <th:block th:each="archive : ${archives.items}">
-                <h2 th:text="${archive.year}"></h2>
-                <ul>
-                    <th:block th:each="month : ${archive.months}">
-                        <li class="post-list" th:each="post : ${month.posts}">
-                            <div class="post-meta">
-                                <time class="post-time"
-                                      th:text="${#dates.format(post.spec.publishTime, '__${theme.config.style.time_style == 'custom' ?
+        <div class="archives">
+            <th:block 
+                    th:each="archive, iter : ${theme.config.archives_page.pagination ? archives.items : postFinder.archives(1, archives.total).items}">
+                <details th:with="collapsibleMode=${theme.config.archives_page.collapsible}"
+                        th:open="${collapsibleMode == 'open' or (collapsibleMode == 'first' and iter.first)}">
+                    <summary>
+                        <h2 th:text="${archive.year}"></h2>
+                    </summary>
+                    <ul>
+                        <th:block th:each="month : ${archive.months}">
+                            <li class="post-list" th:each="post : ${month.posts}">
+                                <div class="post-meta">
+                                    <time class="post-time"
+                                          th:text="${#dates.format(post.spec.publishTime, '__${theme.config.style.time_style == 'custom' ?
                                       theme.config.style.custom_time_style : theme.config.style.time_style}__')}">
-                                    Publish
-                                    Time
-                                </time>
-                                <a data-pjax th:href="@{${post.status.permalink}}"><span class="post-list-title" th:text="${post.spec.title}">Post Title</span>
-                                </a><th:block th:replace="~{modules/tag-list(post = ${post}, show = ${theme.config.archives_page.show_tags})}"/></div>
-                        </li>
-                    </th:block>
-                </ul>
+                                        Publish
+                                        Time
+                                    </time>
+                                    <a data-pjax th:href="@{${post.status.permalink}}"><span class="post-list-title"
+                                                                                             th:text="${post.spec.title}">Post Title</span>
+                                    </a>
+                                    <th:block
+                                            th:replace="~{modules/tag-list(post = ${post}, show = ${theme.config.archives_page.show_tags})}"/>
+                                </div>
+                            </li>
+                        </th:block>
+                    </ul>
+                </details>
             </th:block>
         </div>
     </article>
-    <th:block th:replace="~{modules/pagination :: page(
+    <th:block th:if="${theme.config.archives_page.pagination}">
+        <th:block th:replace="~{modules/pagination :: page(
         hasPrevious=${archives.hasPrevious()},
         previousUrl=@{${archives.prevUrl}},
         hasNext=${archives.hasNext()},
         nextUrl=@{${archives.nextUrl}},
         previousClass=''
     )}"/>
+    </th:block>
 </th:block>
 </html>

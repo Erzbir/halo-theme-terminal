@@ -402,6 +402,21 @@ spec:
           name: show_tags
           label: 显示文章标签
           value: false
+        - $formkit: checkbox
+          name: pagination
+          label: 是否分页
+          value: true
+        - $formkit: select
+          name: collapsible
+          label: 展开模式
+          value: "open"
+          options:
+            - label: "只展开第一项"
+              value: "first"
+            - label: "全部展开"
+              value: "open"
+            - label: "全部收起"
+              value: "close"
 
     - group: categories_page
       label: 分类页
