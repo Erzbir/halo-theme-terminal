@@ -1,5 +1,5 @@
 comment-widget {
-  --halo-cw-base-font-family: var(--family-theme-font) !important;
+  --halo-cw-base-font-family: var(--family-theme-font), var(--family-theme-fallback-font) !important;
   --halo-cw-base-rounded: var(--radius-theme-border) !important;
   --halo-cw-base-font-size: var(--size-theme-font) !important;
 
