@@ -12,9 +12,9 @@
         </header>
         <section class="post-content link-section" th:each="group : ${groups}">
             <div class="link-section-header">
-            <h2 th:text="${!#strings.isEmpty(group.spec.displayName) ? group.spec.displayName : #messages.msg('page.links.title')}">
-                Links
-            </h2>
+                <h2 th:text="${!#strings.isEmpty(group.spec.displayName) ? group.spec.displayName : #messages.msg('page.links.title')}">
+                    Links
+                </h2>
             </div>
             <table class="link-table">
                 <tbody>
@@ -39,6 +39,97 @@
                 </tr>
                 </tbody>
             </table>
+        </section>
+        <section th:if="${pluginFinder.available('PluginLinks', '>=2.3.0') && linkApplicationEnabled}"
+                 id="plugin-links-apply-section"
+                 class="post-content link-section link-apply-section"
+                 th:attr="data-success-message=#{page.links.apply.success}, data-error-message=#{page.links.apply.error}">
+            <div class="link-section-header">
+                <h2>[[#{page.links.apply.title}]]</h2>
+            </div>
+            <div id="link-application-message"
+                 class="link-apply-message"
+                 hidden></div>
+            <form id="link-application-form"
+                  method="post"
+                  th:action="@{/links/apply/submit}">
+                <div class="link-apply-grid">
+                    <div class="link-apply-item">
+                        <label for="link-url">
+                            <span>[[#{page.links.apply.field.url}]]</span>
+                            <em class="link-required">*</em>
+                        </label>
+                        <input id="link-url" name="url" type="url" required placeholder="https://">
+                    </div>
+                    <div class="link-apply-item">
+                        <label for="link-displayName">
+                            <span>[[#{page.links.apply.field.displayName}]]</span>
+                            <em class="link-required">*</em>
+                        </label>
+                        <input id="link-displayName" name="displayName" type="text" required>
+                    </div>
+                    <div class="link-apply-item">
+                        <label for="link-logo">
+                            <span>[[#{page.links.apply.field.logo}]]</span>
+                        </label>
+                        <input id="link-logo" name="logo" type="url" placeholder="https://">
+                    </div>
+                    <div class="link-apply-item">
+                        <label for="link-email">
+                            <span>[[#{page.links.apply.field.email}]]</span>
+                        </label>
+                        <input id="link-email" name="email" type="email">
+                    </div>
+                    <div class="link-apply-item link-apply-item-full">
+                        <label for="link-description">
+                            <span>[[#{page.links.apply.field.description}]]</span>
+                        </label>
+                        <textarea id="link-description" name="description" rows="2"></textarea>
+                    </div>
+                    <div class="link-apply-item link-apply-item-full">
+                        <label for="link-feedUrls">
+                            <span>[[#{page.links.apply.field.feedUrls}]]</span>
+                        </label>
+                        <textarea id="link-feedUrls" name="feedUrls" rows="2"
+                                  th:placeholder="#{page.links.apply.field.feedUrls.placeholder}"></textarea>
+                    </div>
+                    <div class="link-apply-item">
+                        <label for="link-backlink">
+                            <span>[[#{page.links.apply.field.backlink}]]</span>
+                        </label>
+                        <input id="link-backlink" name="backlink" type="url" placeholder="https://">
+                    </div>
+                    <div class="link-apply-item link-apply-captcha">
+                        <label for="link-captchaCode">
+                            <span>[[#{page.links.apply.field.captcha}]]</span>
+                            <em class="link-required">*</em>
+                        </label>
+                        <div class="captcha-row">
+                            <input id="link-captchaCode" name="captchaCode" type="text" required minlength="5"
+                                   maxlength="5" autocomplete="off">
+                            <div class="captcha-img-wrapper">
+                                <img id="link-application-captcha" class="not-gallery" th:src="@{/links/apply/captcha}"
+                                     th:alt="#{page.links.apply.field.captcha.alt}"
+                                     th:title="#{page.links.apply.field.captcha.title}"
+                                     data-link-apply-action="refresh-captcha" width="140" height="40">
+                                <div id="captcha-expired-overlay"
+                                     class="captcha-expired"
+                                     data-link-apply-action="refresh-captcha"
+                                     th:title="#{page.links.apply.field.captcha.title}">
+                                    <span>[[#{page.links.apply.field.captcha.expired}]]</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="link-apply-item link-apply-item-submit">
+                        <button type="submit" class="link-apply-submit-btn">
+                            [[#{page.links.apply.submit}]]
+                        </button>
+                    </div>
+
+                </div>
+            </form>
         </section>
     </article>
 </th:block>
