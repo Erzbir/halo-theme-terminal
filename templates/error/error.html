@@ -4,16 +4,17 @@
         th:replace="~{modules/layout :: html(title = |#{page.error.title} - ${site.title}|, header = null, content = ~{::content}, footer = null)}"
 >
 <th:block th:fragment="content">
-    <div class="content">
-        <div class="post">
-            <h1 class="post-title" th:text="${error.title}">5xx</h1>
-            <div class="post-content">
-                <p th:text="${error?.detail}"></p>
-            </div>
-            <button type="button" th:onclick="|location.href='@{/}'|" th:text="#{page.error.back}">
-                Back to home page
-            </button>
+    <article class="post">
+        <header>
+            <h1 class="post-title" th:text="${error.status}">Error status</h1>
+        </header>
+        <div class="post-content">
+            <h2 th:text="${#strings.defaultString(error.title, #messages.msg('page.error.title'))}">Error</h2>
+            <p th:if="${not #strings.isEmpty(error.detail)}" th:text="${error.detail}">Error detail</p>
         </div>
-    </div>
+        <a data-pjax class="button inline" th:href="@{/}" th:text="#{page.error.back}">
+            Back to home page
+        </a>
+    </article>
 </th:block>
 </html>
