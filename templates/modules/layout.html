@@ -114,30 +114,20 @@
     </th:block>
 </head>
 
-<body th:attr="layout_mode=${theme.config.style.fullscreen_layout ? 'fullscreen' : 'normal'},
-               table_full_width=${theme.config.style.table_full_width ? 'true' : 'false'}">
-<div class="page">
-    <header role="banner">
-        <div id="header-slot" aria-hidden="true"></div>
-    </header>
-    <div class="wrapper">
-        <aside class="sidebar-left">
-        </aside>
-        <main class="container" role="main" th:attr="style=${#strings.isEmpty(theme.config.style.max_width) ? '' : 'max-width:' + theme.config.style.max_width}">
-            <header class="header">
-                <th:block th:replace="~{modules/header :: header(isHome = true)}"/>
-            </header>
-            <div class="content">
-                <th:block th:replace="${content}"/>
-            </div>
+<body th:attr="data-layout-mode=${theme.config.style.fullscreen_layout ? 'fullscreen' : 'normal'},
+               data-table-full-width=${theme.config.style.table_full_width ? 'true' : 'false'}">
+<div class="site-shell">
+    <div class="site-frame"
+         th:attr="style=${theme.config.style.fullscreen_layout or #strings.isEmpty(theme.config.style.max_width) ? '' : 'max-width:' + theme.config.style.max_width}">
+        <header class="header">
+            <th:block th:replace="~{modules/header :: header}"/>
+        </header>
+        <main class="content">
+            <th:block th:replace="${content}"/>
         </main>
-        <aside class="sidebar-right">
-        </aside>
     </div>
-    <footer class="footer" role="contentinfo">
-        <div id="footer-slot-head" aria-hidden="true"></div>
-        <th:block th:replace="~{modules/footer}"/>
-        <div id="footer-slot-tail" aria-hidden="true"></div>
+    <footer class="footer">
+        <th:block th:replace="~{modules/footer :: footer}"/>
     </footer>
 </div>
 </body>

@@ -43,10 +43,10 @@
 .post-title {
   position: relative;
   color: var(--color-theme-title);
-  margin-top: 0 !important;
-  margin-bottom: calc(var(--size-theme-font) * 0.9375) !important;
-  padding-bottom: calc(var(--size-theme-font) * 0.9375) !important;
-  text-decoration: none !important;
+  margin-top: 0;
+  margin-bottom: calc(var(--size-theme-font) * 0.9375);
+  padding-bottom: calc(var(--size-theme-font) * 0.9375);
+  text-decoration: none;
   font-weight: 400;
 }
 
@@ -82,10 +82,6 @@
 
 .post-meta > .post-time {
   color: inherit;
-}
-
-.post-author {
-
 }
 
 .post-tags {

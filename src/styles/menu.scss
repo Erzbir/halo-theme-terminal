@@ -68,10 +68,6 @@
     }
   }
 
-  .spacer {
-    flex-grow: 1 !important;
-  }
-
   .menu {
     display: flex;
     position: relative;
@@ -93,8 +89,8 @@
   .menu-trigger {
     all: unset;
     cursor: pointer;
-    background-color: var(--color-theme-background) !important;
-    margin-right: 0 !important;
+    background-color: var(--color-theme-background);
+    margin-right: 0;
     padding-left: calc(var(--size-theme-font) * 0.3125);
     padding-right: calc(var(--size-theme-font) * 0.3125);
     color: var(--color-theme-menu);
@@ -105,7 +101,7 @@
     @media (max-width: $phone-max-width) {
       padding-left: calc(var(--size-theme-font) * 0.625);
       padding-right: calc(var(--size-theme-font) * 0.625);
-      margin-bottom: 0 !important;
+      margin-bottom: 0;
       outline: none;
       -webkit-tap-highlight-color: transparent;
     }
@@ -146,7 +142,7 @@
 
   .sub-menu:hover .menu-dropdown,
   .sub-menu:active .menu-dropdown {
-    display: flex !important;
+    display: flex;
     opacity: 1;
     visibility: visible;
   }
