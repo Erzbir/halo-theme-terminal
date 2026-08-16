@@ -118,8 +118,8 @@
 
 <body th:attr="data-layout-mode=${theme.config.style.fullscreen_layout ? 'fullscreen' : 'normal'},
                data-table-full-width=${theme.config.style.table_full_width ? 'true' : 'false'}">
-<div class="site-shell">
-    <div class="site-frame"
+<div class="wrapper">
+    <div class="container"
          th:attr="style=${theme.config.style.fullscreen_layout or #strings.isEmpty(theme.config.style.max_width) ? null : 'max-width:' + theme.config.style.max_width}">
         <header class="header">
             <th:block th:replace="~{modules/header :: header}"/>
