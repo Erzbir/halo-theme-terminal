@@ -39,25 +39,6 @@
                 localStorage.removeItem(key + expirationSuffix);
             }
 
-            function migrateStoredPreference(oldKey, newKey) {
-                const oldValue = localStorage.getItem(oldKey);
-                if (oldValue === null) {
-                    localStorage.removeItem(oldKey + expirationSuffix);
-                    return;
-                }
-
-                if (localStorage.getItem(newKey) === null) {
-                    localStorage.setItem(newKey, oldValue);
-
-                    const oldExpiration = localStorage.getItem(oldKey + expirationSuffix);
-                    if (oldExpiration !== null) {
-                        localStorage.setItem(newKey + expirationSuffix, oldExpiration);
-                    }
-                }
-
-                removeStoredPreference(oldKey);
-            }
-
             function getStoredPreference(key) {
                 const value = localStorage.getItem(key);
                 if (value === null) return null;
@@ -187,7 +168,6 @@
                 syncPixelStyle
             };
 
-            migrateStoredPreference("pixel_style", storageKeys.pixelStyle);
             syncSystemFont();
             syncThemeMode();
             syncPixelStyle();
