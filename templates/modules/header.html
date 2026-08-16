@@ -1,7 +1,7 @@
 <th:block th:fragment="header" th:with="menu = ${menuFinder.getPrimary()}">
     <div class="header-inner">
         <div class="header-logo">
-            <a data-pjax href="/">
+            <a data-pjax th:href="@{/}">
                 <div class="logo"
                      th:text="${#strings.isEmpty(theme.config.basic.logo) ? site.title : theme.config.basic.logo}">
                     Blog Title
@@ -90,12 +90,16 @@
             class="navigation-menu-inner menu--desktop">
             <li th:each="menuItem : ${menu.menuItems}">
                 <div th:if="${#lists.isEmpty(menuItem.children)}">
-                    <a data-pjax th:href="@{${menuItem.status.href}}"
+                    <a data-pjax
+                       th:href="@{${menuItem.status.href}}"
+                       th:target="${menuItem.spec.target?.value}"
                        th:text="${menuItem.status.displayName}"></a>
                 </div>
 
                 <div th:if="${not #lists.isEmpty(menuItem.children)}" class="menu">
-                    <a data-pjax th:href="@{${menuItem.status.href}}">
+                    <a data-pjax
+                       th:href="@{${menuItem.status.href}}"
+                       th:target="${menuItem.spec.target?.value}">
                         <span th:text="${menuItem.status.displayName}"></span>
                     </a>
                     <div class="sub-menu">
@@ -103,7 +107,8 @@
                         <ul class="menu-dropdown">
                             <li th:each="childMenuItem : ${menuItem.children}">
                                 <a data-pjax
-                                   th:href="@{${childMenuItem.status.href}}">
+                                   th:href="@{${childMenuItem.status.href}}"
+                                   th:target="${childMenuItem.spec.target?.value}">
                                     <span th:text="${childMenuItem.status.displayName}"></span>
                                 </a>
                             </li>
