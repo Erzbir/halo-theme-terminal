@@ -31,11 +31,11 @@ html {
   scrollbar-gutter: stable;
 }
 
-html[pixel_style='true'] {
+html[data-pixel-style='true'] {
   --family-theme-font: 'Fusion Pixel 12px Prop zh_hans';
 }
 
-html[system_font_enable='true']:not([pixel_style='true']) {
+html[data-system-font-enabled='true']:not([data-pixel-style='true']) {
   --family-theme-font: system-ui;
 }
 

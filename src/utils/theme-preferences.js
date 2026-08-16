@@ -4,8 +4,6 @@ export const PREFERENCE_KEYS = Object.freeze({
     pixelStyle: "pixel-style"
 });
 
-export const PIXEL_STYLE_ATTRIBUTE = "pixel_style";
-
 export function getStoredPreference(key) {
     return window.TerminalTheme?.storage
         ? window.TerminalTheme.storage.get(key)

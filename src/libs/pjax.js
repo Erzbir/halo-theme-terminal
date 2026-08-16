@@ -63,7 +63,7 @@ function insertStyle(dom, parentElement, selectors) {
             if (old) {
                 parentElement.removeChild(old);
             } else {
-                let styles = parentElement.querySelectorAll('style:not([no-pjax])');
+                let styles = parentElement.querySelectorAll('style:not([data-no-pjax])');
                 styles.forEach((s) => {
                     if (s) {
                         if (djb2(s.innerHTML) === hash) {
@@ -72,7 +72,7 @@ function insertStyle(dom, parentElement, selectors) {
                     }
                 });
             }
-            style.setAttribute("data-hash", hash);
+            style.dataset.hash = hash;
             parentElement.appendChild(style);
         }
     });
@@ -114,7 +114,7 @@ function insertInlineScript(dom, parentElement, selectors) {
             if (old) {
                 parentElement.removeChild(old);
             } else {
-                let scripts = parentElement.querySelectorAll('script:not([src]):not([no-pjax])');
+                let scripts = parentElement.querySelectorAll('script:not([src]):not([data-no-pjax])');
                 scripts.forEach((s) => {
                     if (s) {
                         if (djb2(s.innerHTML) === hash) {
@@ -125,7 +125,7 @@ function insertInlineScript(dom, parentElement, selectors) {
             }
             const newScript = renewElement(script);
             newScript.innerHTML = script.innerHTML;
-            newScript.setAttribute("data-hash", hash);
+            newScript.dataset.hash = hash;
             parentElement.appendChild(newScript);
         }
     });
@@ -134,17 +134,17 @@ function insertInlineScript(dom, parentElement, selectors) {
 
 // 这个函数将请求的页面 head 中 script 和 link 都插入进来合成新页面
 function insertResourcesToHead(dom, parentElement) {
-    insertStyleLink(dom, parentElement, 'head link[rel="stylesheet"]:not([no-pjax])');
-    insertStyle(dom, parentElement, 'head style:not([no-pjax])');
-    insertScript(dom, parentElement, 'head script[src]:not([no-pjax])');
-    insertInlineScript(dom, parentElement, 'head script:not([src]):not([no-pjax])');
+    insertStyleLink(dom, parentElement, 'head link[rel="stylesheet"]:not([data-no-pjax])');
+    insertStyle(dom, parentElement, 'head style:not([data-no-pjax])');
+    insertScript(dom, parentElement, 'head script[src]:not([data-no-pjax])');
+    insertInlineScript(dom, parentElement, 'head script:not([src]):not([data-no-pjax])');
 }
 
 // 这个函数将请求的页面 footer 中 script 和 link 都插入进来合成新页面
 function insertResourcesToFooter(dom, parentElement) {
-    insertStyleLink(dom, parentElement, 'footer link[rel="stylesheet"][data-pjax]:not([no-pjax])');
-    insertScript(dom, parentElement, 'footer script[src][data-pjax]:not([no-pjax])');
-    insertInlineScript(dom, parentElement, 'footer script:not([src])[data-pjax]:not([no-pjax])');
+    insertStyleLink(dom, parentElement, 'footer link[rel="stylesheet"][data-pjax]:not([data-no-pjax])');
+    insertScript(dom, parentElement, 'footer script[src][data-pjax]:not([data-no-pjax])');
+    insertInlineScript(dom, parentElement, 'footer script:not([src])[data-pjax]:not([data-no-pjax])');
 }
 
 // 处理请求的页面新增样式和脚本
@@ -184,7 +184,7 @@ document.addEventListener("pjax:complete", function () {
     // 处理头和尾有新增的情况
     processNewScripts(_responseText);
     // 处理替换的内容中存在脚本的情况
-    let pjaxDoms = document.querySelectorAll(".content script[data-pjax]:not([no-pjax])");
+    let pjaxDoms = document.querySelectorAll(".content script[data-pjax]:not([data-no-pjax])");
     pjaxDoms.forEach((element) => {
         let code = element.text || element.textContent || element.innerHTML || "";
         let parent = element.parentNode;

@@ -4,7 +4,7 @@ import {
 } from "../utils/theme-preferences.js";
 import {getMessage} from "../utils/messages.js";
 
-const COLOR_SCHEME_SELECTOR_PATTERN = /html\[theme-color-scheme\s*=\s*(['"]?)([^'"\]\s]+)\1\]/g;
+const COLOR_SCHEME_SELECTOR_PATTERN = /html\[data-theme-color-scheme\s*=\s*(['"]?)([^'"\]\s]+)\1\]/g;
 
 function collectColorSchemes(cssRules, schemes) {
     for (const rule of cssRules) {

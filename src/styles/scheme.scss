@@ -27,7 +27,7 @@
   --color-theme-scrollbar: color-mix(in srgb, var(--color-theme-foreground) 45%, var(--color-theme-background)) transparent;
 }
 
-html[theme-color-scheme] {
+html[data-theme-color-scheme] {
   --color-theme-tag: var(--color-theme-accent);
   --color-theme-title: var(--color-theme-accent);
   --color-theme-meta: var(--color-theme-foreground);
@@ -122,7 +122,7 @@ $color-schemes: (
 );
 
 @each $scheme-name, $scheme-colors in $color-schemes {
-  html[theme-color-scheme="#{$scheme-name}"] {
+  html[data-theme-color-scheme="#{$scheme-name}"] {
     @each $role, $color in $scheme-colors {
       --color-theme-#{$role}: #{$color};
     }

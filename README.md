@@ -99,7 +99,7 @@
 | 自定义深色名称 | `style.custom_dark`                  | 深色配色选择 `custom` 时填写         |
 | 自定义浅色名称 | `style.custom_light`                 | 浅色配色选择 `custom` 时填写         |
 
-访客配色列表会从页面样式表中自动发现 `html[theme-color-scheme='name']` 选择器, 列表中的 `default` 用于清除访客选择并恢复主题设置,
+访客配色列表会从页面样式表中自动发现 `html[data-theme-color-scheme='name']` 选择器, 列表中的 `default` 用于清除访客选择并恢复主题设置,
 因此不要将 `default` 用作自定义配色名称
 
 ### 页面设置
@@ -163,7 +163,7 @@
 下面的示例增加名为 `forest` 的配色:
 
 ```css
-html[theme-color-scheme='forest'] {
+html[-data-theme-color-scheme='forest'] {
     --color-theme-background: #0f1a14;
     --color-theme-foreground: #c7d8cc;
     --color-theme-accent: #68d391;
@@ -187,7 +187,7 @@ html[theme-color-scheme='forest'] {
 直接使用内置配色名称即可覆盖对应变量:
 
 ```css
-html[theme-color-scheme='matrix'] {
+html[-data-theme-color-scheme='matrix'] {
     --color-theme-background: #07130b;
     --color-theme-foreground: #7dff9b;
     --color-theme-accent: #39ff68;
@@ -252,7 +252,7 @@ html[theme-color-scheme='matrix'] {
 修改特定配色下的字体:
 
 ```css
-html[theme-color-scheme='matrix'] {
+html[-data-theme-color-scheme='matrix'] {
     --family-theme-font: system-ui;
 }
 ```
@@ -293,11 +293,11 @@ OR:
 
 如果要注入 `<script>` 或 `<link rel="stylesheet">`, 根据插入的位置需要为标签添加一些属性才能保证行为正常
 
-- `<head>`: 重新执行所有请求页面新插入的无 `no-pjax` 属性的 `<script>` 和 `<link rel="stylesheet">`
+- `<head>`: 重新执行所有请求页面新插入的无 `data-no-pjax` 属性的 `<script>` 和 `<link rel="stylesheet">`
 - `<footer>`: 重新执行有 `data-pjax` 属性的 `<script>` 和 `<link rel="stylesheet">`
 - `.content`: 重新执行有 `data-pjax` 属性的 `<script>` 和 `<link rel="stylesheet">`
 
-设置 `no-pjax` 属性, 可以防止被 PJAX 处理
+设置 `data-no-pjax` 属性, 可以防止被 PJAX 处理
 
 ### 已知的问题
 

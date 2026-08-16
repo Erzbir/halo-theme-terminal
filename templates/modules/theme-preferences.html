@@ -1,5 +1,5 @@
 <th:block th:fragment="theme-preferences">
-    <script no-pjax th:inline="javascript">
+    <script data-no-pjax th:inline="javascript">
         window.TerminalThemeConfig = {
             systemFontEnabled: /*[[${theme.config.style.system_font_enable}]]*/ false,
             darkTheme: /*[[${theme.config.style.dark_color_scheme}]]*/ "dark",
@@ -19,7 +19,7 @@
             }
         };
     </script>
-    <script no-pjax>
+    <script data-no-pjax>
         (function () {
             const config = window.TerminalThemeConfig || {};
             const root = document.documentElement;
@@ -113,8 +113,8 @@
                 }
 
                 const actualMode = mode === "system" ? getSystemScheme() : mode;
-                root.setAttribute("data-color-scheme", actualMode);
-                root.setAttribute("theme-color-scheme", getStoredColorScheme() || resolveTheme(actualMode));
+                root.dataset.colorScheme = actualMode;
+                root.dataset.themeColorScheme = getStoredColorScheme() || resolveTheme(actualMode);
             }
 
             function applyColorScheme(scheme) {
@@ -125,23 +125,21 @@
                 }
 
                 setStoredPreference(storageKeys.colorScheme, scheme);
-                root.setAttribute("theme-color-scheme", scheme);
+                root.dataset.themeColorScheme = scheme;
             }
 
             function syncSystemFont() {
-                root.setAttribute("system_font_enable", String(config.systemFontEnabled));
+                root.dataset.systemFontEnabled = String(config.systemFontEnabled);
             }
 
             function syncPixelStyle() {
-                const storedStatus = getStoredPreference(storageKeys.pixelStyle)
+                root.dataset.pixelStyle = getStoredPreference(storageKeys.pixelStyle)
                     || String(config.pixelStyle);
-
-                root.setAttribute("pixel_style", storedStatus);
             }
 
             function syncPixelFont() {
                 const existingLink = document.getElementById("terminal-pixel-font");
-                const pixelEnabled = root.getAttribute("pixel_style") === "true";
+                const pixelEnabled = root.dataset.pixelStyle === "true";
 
                 if (!pixelEnabled && existingLink) {
                     existingLink.remove();
@@ -152,7 +150,7 @@
 
                 const link = document.createElement("link");
                 link.id = "terminal-pixel-font";
-                link.setAttribute("no-pjax", "");
+                link.dataset.noPjax = "";
                 link.rel = "stylesheet";
                 link.href = config.pixelCssHref;
                 document.head.appendChild(link);

@@ -8,72 +8,72 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title th:if="${head == null}" th:text="${site.title}">Site title</title>
     <th:block th:replace="~{modules/theme-preferences :: theme-preferences}"/>
-    <link no-pjax rel="stylesheet" th:href="@{/assets/dist/main.css?v={version}(version=${theme.spec.version})}"/>
-    <script no-pjax type="module" th:src="@{/assets/dist/main.js?v={version}(version=${theme.spec.version})}"></script>
-    <script no-pjax type="module" th:if="${theme.config.basic.pjax_enable}"
+    <link data-no-pjax rel="stylesheet" th:href="@{/assets/dist/main.css?v={version}(version=${theme.spec.version})}"/>
+    <script data-no-pjax type="module" th:src="@{/assets/dist/main.js?v={version}(version=${theme.spec.version})}"></script>
+    <script data-no-pjax type="module" th:if="${theme.config.basic.pjax_enable}"
             th:src="@{/assets/dist/libs/pjax.js?v={version}(version=${theme.spec.version})}"></script>
-    <style no-pjax th:if="${not #strings.isEmpty(theme.config.style.media_max_width)}" th:inline="css">
+    <style data-no-pjax th:if="${not #strings.isEmpty(theme.config.style.media_max_width)}" th:inline="css">
         :root {
             --width-theme-media-max: [(${theme.config.style.media_max_width})];
         }
     </style>
-    <style no-pjax th:if="${not #strings.isEmpty(theme.config.style.font_size)}" th:inline="css">
+    <style data-no-pjax th:if="${not #strings.isEmpty(theme.config.style.font_size)}" th:inline="css">
         :root {
             --size-theme-font: [(${theme.config.style.font_size})];
         }
     </style>
-    <style no-pjax th:if="${not #strings.isEmpty(theme.config.style.line_height)}" th:inline="css">
+    <style data-no-pjax th:if="${not #strings.isEmpty(theme.config.style.line_height)}" th:inline="css">
         :root {
             --height-theme-line: [(${theme.config.style.line_height})];
         }
     </style>
-    <style no-pjax th:if="${not #strings.isEmpty(theme.config.style.post_paragraph_spacing)}" th:inline="css">
+    <style data-no-pjax th:if="${not #strings.isEmpty(theme.config.style.post_paragraph_spacing)}" th:inline="css">
         :root {
             --spacing-theme-post-paragraph: [(${theme.config.style.post_paragraph_spacing})];
         }
     </style>
-    <style no-pjax th:if="${not #strings.isEmpty(theme.config.style.post_meta_divider)}" th:inline="css">
+    <style data-no-pjax th:if="${not #strings.isEmpty(theme.config.style.post_meta_divider)}" th:inline="css">
         :root {
             --content-theme-post-meta-divider: "[(${theme.config.style.post_meta_divider})]";
         }
     </style>
-    <style no-pjax th:if="${not #strings.isEmpty(theme.config.style.content_padding)}" th:inline="css">
+    <style data-no-pjax th:if="${not #strings.isEmpty(theme.config.style.content_padding)}" th:inline="css">
         :root {
             --spacing-theme-container-padding: [(${theme.config.style.content_padding})];
             --spacing-theme-container-padding-mobile: [(${theme.config.style.content_padding})];
         }
     </style>
-    <style no-pjax th:if="${not #strings.isEmpty(theme.config.style.list_marker)}" th:inline="css">
+    <style data-no-pjax th:if="${not #strings.isEmpty(theme.config.style.list_marker)}" th:inline="css">
         :root {
             --list-theme-marker: [(${theme.config.style.list_marker})];
         }
     </style>
-    <style no-pjax th:if="${not #strings.isEmpty(theme.config.style.border_width)}" th:inline="css">
+    <style data-no-pjax th:if="${not #strings.isEmpty(theme.config.style.border_width)}" th:inline="css">
         :root {
             --width-theme-border: [(${theme.config.style.border_width})];
         }
     </style>
-    <style no-pjax th:if="${not #strings.isEmpty(theme.config.style.border_style)}" th:inline="css">
+    <style data-no-pjax th:if="${not #strings.isEmpty(theme.config.style.border_style)}" th:inline="css">
         :root {
             --style-theme-border: [(${theme.config.style.border_style})];
         }
     </style>
-    <style no-pjax th:if="${not #strings.isEmpty(theme.config.style.table_border_width)}" th:inline="css">
+    <style data-no-pjax th:if="${not #strings.isEmpty(theme.config.style.table_border_width)}" th:inline="css">
         :root {
             --width-theme-table-border: [(${theme.config.style.table_border_width})];
         }
     </style>
-    <style no-pjax th:if="${not #strings.isEmpty(theme.config.style.table_border_style)}" th:inline="css">
+    <style data-no-pjax th:if="${not #strings.isEmpty(theme.config.style.table_border_style)}" th:inline="css">
         :root {
             --style-theme-table-border: [(${theme.config.style.table_border_style})];
         }
     </style>
-    <style no-pjax th:if="${not #strings.isEmpty(theme.config.style.title_divider_style)}" th:inline="css">
+    <style data-no-pjax th:if="${not #strings.isEmpty(theme.config.style.title_divider_style)}" th:inline="css">
         :root {
             --style-theme-title-divider: [(${theme.config.style.title_divider_style})];
         }
     </style>
-    <script no-pjax>
+    <script data-no-pjax>
         window.TerminalTheme?.applyCustomCss?.();
     </script>
     <th:block
