@@ -2,12 +2,11 @@
 <html
         xmlns:th="https://www.thymeleaf.org"
         th:lang="${#locale.toLanguageTag}"
-        th:fragment="html (header, content, footer)">
+        th:fragment="html (head, content)">
 <head>
     <meta charset="UTF-8"/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title th:text="${title}"></title>
+    <title th:if="${head == null}" th:text="${site.title}">Site title</title>
     <th:block th:replace="~{modules/theme-preferences :: theme-preferences}"/>
     <link no-pjax rel="stylesheet" th:href="@{/assets/dist/main.css?v={version}(version=${theme.spec.version})}"/>
     <script no-pjax type="module" th:src="@{/assets/dist/main.js?v={version}(version=${theme.spec.version})}"></script>
@@ -94,7 +93,7 @@
                 (ext == 'sfnt' ? 'font/sfnt' :
                 (ext == 'eot' ? 'application/vnd.ms-fontobject' :
                 ((ext == 'ttc' or ext == 'otc') ? 'font/collection' : 'application/octet-stream'))))))}">
-        <link rel="preload" th:href="${font}" as="font" th:type="${mime}" crossorigin />
+        <link rel="preload" th:href="${font}" as="font" th:type="${mime}" crossorigin/>
         <!--/*/
         <style th:inline="css">
           @font-face {
@@ -112,13 +111,16 @@
         </style>
         /*/-->
     </th:block>
+    <th:block th:if="${head != null}">
+        <th:block th:replace="${head}"/>
+    </th:block>
 </head>
 
 <body th:attr="data-layout-mode=${theme.config.style.fullscreen_layout ? 'fullscreen' : 'normal'},
                data-table-full-width=${theme.config.style.table_full_width ? 'true' : 'false'}">
 <div class="site-shell">
     <div class="site-frame"
-         th:attr="style=${theme.config.style.fullscreen_layout or #strings.isEmpty(theme.config.style.max_width) ? '' : 'max-width:' + theme.config.style.max_width}">
+         th:attr="style=${theme.config.style.fullscreen_layout or #strings.isEmpty(theme.config.style.max_width) ? null : 'max-width:' + theme.config.style.max_width}">
         <header class="header">
             <th:block th:replace="~{modules/header :: header}"/>
         </header>

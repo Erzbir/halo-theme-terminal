@@ -1,8 +1,11 @@
 <!DOCTYPE html>
 <html
         xmlns:th="https://www.thymeleaf.org"
-        th:replace="~{modules/layout :: html(title = |#{page.portfolio.title} - ${site.title}|, header = null, content = ~{::content}, footer = null)}"
+        th:replace="~{layout :: html(head = ~{::head}, content = ~{::content})}"
 >
+<th:block th:fragment="head">
+    <title th:text="|#{page.portfolio.title} - ${site.title}|">Portfolio</title>
+</th:block>
 <th:block th:fragment="content">
     <article class="portfolio-page">
         <header>

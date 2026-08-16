@@ -1,8 +1,11 @@
 <!DOCTYPE html>
 <html
         xmlns:th="https://www.thymeleaf.org"
-        th:replace="~{modules/layout :: html(title = ${site.title}, header = null, content = ~{::content}, footer = null)}"
+        th:replace="~{layout :: html(head = ~{::head}, content = ~{::content})}"
 >
+<th:block th:fragment="head">
+    <title th:text="${site.title}">Site title</title>
+</th:block>
 <th:block th:fragment="content">
     <section class="index-content framed"
              th:if="${not #strings.isEmpty(theme.config.index_page.notice_title) and not #strings.isEmpty(theme.config.index_page.notice_content)}">

@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html
         xmlns:th="https://www.thymeleaf.org"
-        th:replace="~{modules/layout :: html(title = |${project.title} - #{page.portfolio.title} - ${site.title}|, header = null, content = ~{::content}, footer = null)}"
+        th:replace="~{layout :: html(head = ~{::head}, content = ~{::content})}"
 >
+<th:block th:fragment="head">
+    <title th:text="|${project.title} - #{page.portfolio.title} - ${site.title}|">Project</title>
+</th:block>
 <th:block th:fragment="content"
           th:with="hasCover=${project.cover != null and !project.cover.isEmpty()},
                    hasRepoUrl=${project.repoUrl != null and !project.repoUrl.isEmpty()},
                    hasDemoUrl=${project.demoUrl != null and !project.demoUrl.isEmpty()},
                    hasDocsUrl=${project.docsUrl != null and !project.docsUrl.isEmpty()},
                    hasSummary=${project.summary != null and !project.summary.isEmpty()},
-                   hasContent=${project.content != null and !project.content.isEmpty()},
                    hasRenderedContent=${projectContentHtml != null and !projectContentHtml.isEmpty()},
                    platformLabel=${platformLabels != null and project.platform != null ? (platformLabels[project.platform] ?: project.platform) : project.platform},
                    typeLabel=${typeLabels != null and project.type != null ? (typeLabels[project.type] ?: project.type) : project.type}">

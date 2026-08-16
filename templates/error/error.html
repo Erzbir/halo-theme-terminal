@@ -1,8 +1,11 @@
 <!doctype html>
 <html
         xmlns:th="https://www.thymeleaf.org"
-        th:replace="~{modules/layout :: html(title = |#{page.error.title} - ${site.title}|, header = null, content = ~{::content}, footer = null)}"
+        th:replace="~{layout :: html(head = ~{::head}, content = ~{::content})}"
 >
+<th:block th:fragment="head">
+    <title th:text="|#{page.error.title} - ${site.title}|">Error</title>
+</th:block>
 <th:block th:fragment="content">
     <article class="post">
         <header>
