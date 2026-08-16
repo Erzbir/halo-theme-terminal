@@ -76,18 +76,6 @@ function insertStyle(dom, parentElement, selectors) {
             parentElement.appendChild(style);
         }
     });
-    const existingStyles = new Set();
-
-    document.querySelectorAll(selectors).forEach(style => {
-        let hash = djb2(style.innerHTML);
-        existingStyles.add(style);
-    });
-
-    dom.querySelectorAll(selectors).forEach(style => {
-        if (style && !existingStyles.has(style)) {
-            parentElement.appendChild(style);
-        }
-    });
 }
 
 function insertScript(dom, parentElement, selectors) {
