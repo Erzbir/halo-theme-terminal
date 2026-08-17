@@ -18,6 +18,10 @@
       width: calc(var(--size-theme-font) * 1.2);
       height: calc(var(--size-theme-font) * 1.2);
     }
+
+    span {
+      height: calc(var(--size-theme-font) * 1.2);
+    }
   }
 
   .divider {

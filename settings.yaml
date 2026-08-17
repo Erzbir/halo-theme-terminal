@@ -469,41 +469,36 @@ spec:
           name: rss
           label: RSS
           value: false
-        - $formkit: text
-          name: github
-          label: GitHub
-          placeholder: "用户名"
-          value:
-        - $formkit: text
-          name: email
-          label: Email
-          placeholder: "邮箱地址"
-          value:
-        - $formkit: text
-          name: discord
-          label: Discord
-          placeholder: "分享链接"
-          value:
-        - $formkit: text
-          name: telegram
-          label: Telegram
-          placeholder: "用户名"
-          value:
-        - $formkit: text
-          name: facebook
-          label: Facebook
-          placeholder: "用户名"
-          value:
-        - $formkit: text
-          name: instagram
-          label: Instagram
-          placeholder: "用户名"
-          value:
-        - $formkit: text
-          name: x
-          label: X
-          placeholder: "用户名"
-          value:
+          
+        - $formkit: array
+          name: social_media
+          label: 社交媒体
+          value: [ ]
+          itemLabels:
+            - type: "iconify"
+              label: "$value.iconify"
+            - type: "text"
+              label: "$value.name"
+            - type: "text"
+              label: "$value.url"
+          children:
+            - $formkit: iconify
+              name: iconify
+              label: 图标
+              format: svg
+              validation: "required"
+            - $formkit: iconify
+              name: pixel_iconify
+              label: 像素风格图标
+              format: svg
+              help: "留空时使用普通图标"
+            - $formkit: text
+              name: name
+              label: 名称
+            - $formkit: text
+              name: url
+              label: 链接
+              validation: "required"
 
     - group: icp
       label: 备案
