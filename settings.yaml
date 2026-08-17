@@ -151,6 +151,14 @@ spec:
               value: "studio"
             - label: "vanilla"
               value: "vanilla"
+
+        - $formkit: text
+          name: custom_dark_scheme
+          if: "$get(dark_color_scheme).value === 'custom'"
+          label: 自定义深色配色
+          help: 填写下方自定义配色的 ID
+          validation: "required"
+
         - $formkit: select
           name: light_color_scheme
           id: light_color_scheme
@@ -184,6 +192,88 @@ spec:
               value: "studio"
             - label: "vanilla"
               value: "vanilla"
+        - $formkit: text
+          name: custom_light_scheme
+          if: "$get(light_color_scheme).value === 'custom'"
+          label: 自定义浅色配色
+          help: 填写下方自定义配色的 ID
+          validation: "required"
+
+        - $formkit: array
+          name: custom_color_schemes
+          label: 自定义配色
+          value: [ ]
+          itemLabels:
+            - type: "text"
+              label: "$value.id"
+          children:
+            - $formkit: text
+              name: id
+              label: 配色 ID
+              validation: "required"
+            - $formkit: color
+              name: background
+              label: 背景色
+              validation: "required"
+            - $formkit: color
+              name: foreground
+              label: 前景色
+              validation: "required"
+            - $formkit: color
+              name: accent
+              label: 强调色
+              validation: "required"
+
+            - $formkit: checkbox
+              name: advanced
+              label: 高级颜色设置
+              value: false
+              help: 开启后可以单独设置标签, 标题, 元信息, 链接和代码等颜色
+            - $formkit: color
+              if: "$value.advanced === true"
+              name: foreground_muted
+              label: 次要前景色
+            - $formkit: color
+              if: "$value.advanced === true"
+              name: muted
+              label: 弱化文字颜色
+            - $formkit: color
+              if: "$value.advanced === true"
+              name: tag
+              label: 标签颜色
+            - $formkit: color
+              if: "$value.advanced === true"
+              name: title
+              label: 标题颜色
+            - $formkit: color
+              if: "$value.advanced === true"
+              name: meta
+              label: 元信息颜色
+            - $formkit: color
+              if: "$value.advanced === true"
+              name: framed
+              label: 强调框颜色
+            - $formkit: color
+              if: "$value.advanced === true"
+              name: menu
+              label: 菜单颜色
+            - $formkit: color
+              if: "$value.advanced === true"
+              name: header
+              label: 页头颜色
+            - $formkit: color
+              if: "$value.advanced === true"
+              name: link
+              label: 链接颜色
+            - $formkit: color
+              if: "$value.advanced === true"
+              name: code_text
+              label: 代码文字颜色
+            - $formkit: color
+              if: "$value.advanced === true"
+              name: code_background
+              label: 代码背景颜色
+
         - $formkit: select
           label: 无序列表标记
           name: list_marker
@@ -287,20 +377,6 @@ spec:
           value: 24
           min: 0
           help: 访客手动选择的模式, 配色和像素风格过期后会在下次访问时恢复默认值, 设为 0 表示永久保存
-
-        - $formkit: text
-          name: custom_dark
-          if: "$get(dark_color_scheme).value === 'custom'"
-          value: ""
-          help: 填写自定义深色配色方案的名称
-          validation: "required"
-
-        - $formkit: text
-          name: custom_light
-          if: "$get(light_color_scheme).value === 'custom'"
-          value: ""
-          help: 填写自定义浅色配色方案的名称
-          validation: "required"
 
         - $formkit: text
           label: 正文区域最大宽度

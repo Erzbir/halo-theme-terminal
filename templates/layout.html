@@ -81,6 +81,59 @@
     <script data-no-pjax>
         window.TerminalTheme?.applyCustomCss?.();
     </script>
+    <style th:inline="css">
+        [# th:each="scheme : ${theme.config.style.custom_color_schemes}"]
+        html[data-theme-color-scheme="[(${scheme.id})]"] {
+            --color-theme-background: [(${scheme.background})];
+            --color-theme-foreground: [(${scheme.foreground})];
+            --color-theme-accent: [(${scheme.accent})];
+
+            [# th:if="${not #strings.isEmpty(scheme.tag)}"]
+        --color-theme-tag: [(${scheme.tag})];
+            [/]
+
+        [# th:if="${not #strings.isEmpty(scheme.title)}"]
+        --color-theme-title: [(${scheme.title})];
+            [/]
+
+        [# th:if="${not #strings.isEmpty(scheme.meta)}"]
+        --color-theme-meta: [(${scheme.meta})];
+            [/]
+
+        [# th:if="${not #strings.isEmpty(scheme.framed)}"]
+        --color-theme-framed: [(${scheme.framed})];
+            [/]
+
+        [# th:if="${not #strings.isEmpty(scheme.menu)}"]
+        --color-theme-menu: [(${scheme.menu})];
+            [/]
+
+        [# th:if="${not #strings.isEmpty(scheme.header)}"]
+        --color-theme-header: [(${scheme.header})];
+            [/]
+
+        [# th:if="${not #strings.isEmpty(scheme.foreground_muted)}"]
+        --color-theme-foreground-muted: [(${scheme.foreground_muted})];
+            [/]
+
+        [# th:if="${not #strings.isEmpty(scheme.link)}"]
+        --color-theme-link: [(${scheme.link})];
+            [/]
+
+        [# th:if="${not #strings.isEmpty(scheme.muted)}"]
+        --color-theme-muted: [(${scheme.muted})];
+            [/]
+
+        [# th:if="${not #strings.isEmpty(scheme.code_text)}"]
+        --color-theme-code-text: [(${scheme.code_text})];
+            [/]
+
+        [# th:if="${not #strings.isEmpty(scheme.code_background)}"]
+        --color-theme-code-background: [(${scheme.code_background})];
+            [/]
+        }
+        [/]
+    </style>
     <th:block
             th:if="${theme.config?.style?.custom_font_enable
             and not theme.config?.style?.system_font_enable
