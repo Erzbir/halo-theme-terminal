@@ -51,10 +51,12 @@ spec:
         - $formkit: checkbox
           label: 使用系统字体
           name: system_font_enable
+          id: system_font_enable
           value: false
           help: 开启后将优先使用访问者的系统字体
 
         - $formkit: checkbox
+          if: "$get(system_font_enable).value != true"
           name: custom_font_enable
           id: custom_font_enable
           label: 启用自定义字体文件
