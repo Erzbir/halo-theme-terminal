@@ -62,19 +62,43 @@ spec:
           label: 启用自定义字体文件
           value: false
           help: '如果启用 "使用系统字体", 此配置项不生效'             
-        
-        - $formkit: attachment
+
+        - $formkit: array
           if: "$get(custom_font_enable).value === true"
-          name: custom_font_file
-          label: 自定义字体文件
-          value: ""
-          
-        - $formkit: text
-          if: "$get(custom_font_enable).value === true"
-          name: custom_font_name
-          label: 字体名称
-          help: 填写字体文件中声明的字体全名或 PostScript 名, 名称不正确时无法加载字体
-          value: ""
+          name: custom_fonts
+          label: 自定义字体
+          value: [ ]
+          itemLabels:
+            - type: "text"
+              label: "$value.name"
+            - type: "text"
+              label: "$value.file"
+          children:
+            - $formkit: text
+              name: name
+              label: 字体名称
+              placeholder: "JetBrains Mono"
+              validation: "required"
+              
+            - $formkit: attachment
+              name: file
+              label: 自定义字体文件
+              value: ""
+              validation: "required"
+
+            - $formkit: select
+              name: format
+              label: 字体格式
+              value: woff2
+              options:
+                - label: WOFF2
+                  value: woff2
+                - label: WOFF
+                  value: woff
+                - label: TrueType
+                  value: truetype
+                - label: OpenType
+                  value: opentype
         
         - $formkit: checkbox
           name: color_scheme_switcher_enable

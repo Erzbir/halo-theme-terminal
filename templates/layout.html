@@ -82,37 +82,41 @@
         window.TerminalTheme?.applyCustomCss?.();
     </script>
     <th:block
-            th:if="${theme.config?.style?.custom_font_enable and not theme.config?.style?.system_font_enable}"
-            th:with="font=${#objects.nullSafe(theme.config?.style?.custom_font_file, #theme.assets('/dist/JetBrainsMono-Regular.woff2'))},
-              ext=${font.substring(font.lastIndexOf('.') + 1)},
-              format=${ext == 'woff2' ? 'woff2' :
-                (ext == 'woff' ? 'woff' :
-                (ext == 'ttf' ? 'truetype' :
-                (ext == 'otf' ? 'opentype' :
-                (ext == 'eot' ? 'embedded-opentype' :
-                ((ext == 'ttc' or ext == 'otc') ? 'collection' : ext)))))},
-              mime=${ext == 'woff2' ? 'font/woff2' :
-                (ext == 'woff' ? 'font/woff' :
-                (ext == 'ttf' ? 'font/ttf' :
-                (ext == 'otf' ? 'font/otf' :
-                (ext == 'sfnt' ? 'font/sfnt' :
-                (ext == 'eot' ? 'application/vnd.ms-fontobject' :
-                ((ext == 'ttc' or ext == 'otc') ? 'font/collection' : 'application/octet-stream'))))))}">
-        <link rel="preload" th:href="${font}" as="font" th:type="${mime}" crossorigin/>
+            th:if="${theme.config?.style?.custom_font_enable
+            and not theme.config?.style?.system_font_enable
+            and theme.config?.style?.custom_fonts != null
+            and not #lists.isEmpty(theme.config.style.custom_fonts)}">
+
+        <!-- Preload primary font -->
+        <th:block th:with="font=${theme.config.style.custom_fonts[0]}">
+            <link rel="preload"
+                  th:href="${font.file}"
+                  as="font"
+                  th:type="${font.format == 'woff2' ? 'font/woff2' :
+                        (font.format == 'woff' ? 'font/woff' :
+                        (font.format == 'truetype' ? 'font/ttf' :
+                        (font.format == 'opentype' ? 'font/otf' : 'application/octet-stream')))}"
+                  crossorigin/>
+        </th:block>
+
         <!--/*/
         <style th:inline="css">
-          @font-face {
-            font-display: swap;
-            font-family: "custom";
-            font-style: normal;
-            font-weight: 400;
-            src:
-              local("[(${theme.config?.style?.custom_font_name})]"),
-              url("[(${font})]") format("[(${format})]");
-          }
-          :root {
-            --family-theme-font: custom;
-          }
+            [# th:each="font : ${theme.config.style.custom_fonts}"]
+            @font-face {
+                font-display: swap;
+                font-family: "[(${font.name})]";
+                font-style: normal;
+                font-weight: 400;
+                src: url("[(${font.file})]") format("[(${font.format})]");
+            }
+            [/]
+    
+            :root {
+                --family-theme-font:
+                [# th:each="font, stat : ${theme.config.style.custom_fonts}"]
+                    "[(${font.name})]"[# th:if="${!stat.last}"],[/]
+                [/];
+            }
         </style>
         /*/-->
     </th:block>
