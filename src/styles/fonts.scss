@@ -11,3 +11,35 @@
   font-display: swap;
   font-style: normal;
 }
+
+@font-face {
+  font-family: 'Hack';
+  src: url('../fonts/hack-regular.woff2?sha=3114f1256') format('woff2');
+  font-weight: 400;
+  font-display: swap;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Hack';
+  src: url('../fonts/hack-bold.woff2?sha=3114f1256') format('woff2');
+  font-weight: 700;
+  font-display: swap;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Hack';
+  src: url('../fonts/hack-italic.woff2?sha=3114f1256') format('woff2');
+  font-weight: 400;
+  font-display: swap;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Hack';
+  src: url('../fonts/hack-bolditalic.woff2?sha=3114f1256') format('woff2');
+  font-weight: 700;
+  font-display: swap;
+  font-style: italic;
+}

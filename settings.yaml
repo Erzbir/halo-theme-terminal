@@ -20,6 +20,16 @@ spec:
     - group: style
       label: 全局样式
       formSchema:
+        - $formkit: select
+          label: 默认字体
+          name: default_font
+          value: "JetBrains Mono"
+          options:
+            - label: "JetBrains Mono"
+              value: "JetBrains Mono"
+            - label: "Hack"
+              value: "Hack"
+
         - $formkit: checkbox
           label: 启用全屏布局
           name: fullscreen_layout

@@ -73,6 +73,11 @@
             --style-theme-title-divider: [(${theme.config.style.title_divider_style})];
         }
     </style>
+    <style data-no-pjax th:if="${not #strings.isEmpty(theme.config.style.default_font)}" th:inline="css">
+        :root {
+            --family-theme-font: [(${theme.config.style.default_font})];
+        }
+    </style>
     <script data-no-pjax>
         window.TerminalTheme?.applyCustomCss?.();
     </script>
