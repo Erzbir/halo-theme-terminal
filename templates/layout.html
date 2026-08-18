@@ -43,9 +43,9 @@
             --spacing-theme-container-padding-mobile: [(${theme.config.style.content_padding})];
         }
     </style>
-    <style data-no-pjax th:if="${not #strings.isEmpty(theme.config.style.list_marker)}" th:inline="css">
+    <style data-no-pjax th:if="${not #strings.isEmpty(theme.config.style.list_style)}" th:inline="css">
         :root {
-            --list-theme-marker: [(${theme.config.style.list_marker})];
+            --list-theme-style: [(${theme.config.style.list_style})];
         }
     </style>
     <style data-no-pjax th:if="${not #strings.isEmpty(theme.config.style.border_width)}" th:inline="css">

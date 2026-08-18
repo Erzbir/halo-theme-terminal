@@ -138,14 +138,7 @@
 }
 
 .post ul {
-  list-style: none;
-}
-
-.post ul li:not(:empty)::before {
-  content: var(--list-theme-marker);
-  position: absolute;
-  left: calc(var(--size-theme-font) * -1.25);
-  color: var(--color-theme-accent);
+  list-style: var(--list-theme-style);
 }
 
 .post--regulation h1 {

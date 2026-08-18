@@ -339,22 +339,12 @@ spec:
               if: "$value.advanced === true"
               name: code_background
               label: 代码背景颜色
-        - $formkit: select
-          label: 无序列表标记
-          name: list_marker
+        - $formkit: text
+          label: 无序列表样式
+          name: list_style
           value: ""
-          help: 控制文章中无序列表项前的标记
-          options:
-            - label: "default"
-              value: ""
-            - label: "-"
-              value: '"-"'
-            - label: "*"
-              value: '"*"'
-            - label: "+"
-              value: '"+"'
-            - label: ">"
-              value: '">"'
+          placeholder: "disc"
+          help: 等同 list-style
         - $formkit: select
           label: 边线样式
           name: border_style

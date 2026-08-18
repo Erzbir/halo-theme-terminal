@@ -66,8 +66,8 @@
 | 表格铺满正文   | `style.table_full_width`                               | 让正文中的表格宽度为 `100%`                                 |
 | 基础字体大小   | `style.font_size`                                      | 接受 `16px`, `1rem` 等 CSS 长度                        |
 | 基础行高     | `style.line_height`                                    | 接受 `28px`, `1.75rem` 或 `calc(...)` 等 CSS 长度       |
-| 文章段落间距   | `style.post_paragraph_spacing`                         | 控制文章正文段落的上下间距                                    |
-| 元信息分隔符   | `style.post_meta_divider`                              | 控制文章时间, 作者和标签等元信息之间的分隔符                          |
+| 文章段落间距   | `style.post_paragraph_spacing`                         | 控制文章正文段落的上下间距                                     |
+| 元信息分隔符   | `style.post_meta_divider`                              | 控制文章时间, 作者和标签等元信息之间的分隔符                           |
 | 默认像素风格   | `style.pixel_style`                                    | 使用像素字体和像素图标                                       |
 | 自定义字体    | `style.custom_font_enable`                             | 上传字体文件并填写字体内部名称                                   |
 | 无序列表标记   | `style.list_marker`                                    | 可选 `-`, `*`, `+`, `>` 或默认标记                       |
@@ -234,7 +234,7 @@ html[-data-theme-color-scheme='matrix'] {
 | `--spacing-theme-post-paragraph`           | `calc(var(--size-theme-font) * 1.25)`   |
 | `--content-theme-post-meta-divider`        | `"::"`                                  |
 | `--family-theme-font`                      | `'JetBrains Mono'`                      |
-| `--list-theme-marker`                      | `"►"`                                   |
+| `--list-theme-type`                        | `disc`                                  |
 | `--width-theme-border`                     | `calc(var(--size-theme-font) * 0.125)`  |
 | `--width-theme-table-border`               | `calc(var(--size-theme-font) * 0.0625)` |
 | `--width-theme-media-max`                  | `60%`                                   |
@@ -246,7 +246,7 @@ html[-data-theme-color-scheme='matrix'] {
 | `--radius-theme-border`                    | `0`                                     |
 | `--text-decoration-theme-link`             | `none`                                  |
 | `--text-decoration-theme-post-link`        | `var(--text-decoration-theme-link)`     |
-| `--weight-theme-inline-code`                | `inherit`                               |
+| `--weight-theme-inline-code`               | `inherit`                               |
 | `--lig-theme-font`                         | `none`                                  |
 | `--width-theme-scrollbar`                  | `thin`                                  |
 
