@@ -1,7 +1,6 @@
 <th:block th:fragment="theme-preferences">
     <script data-no-pjax th:inline="javascript">
         window.TerminalThemeConfig = {
-            systemFontEnabled: /*[[${theme.config.style.system_font_enable}]]*/ false,
             darkTheme: /*[[${theme.config.style.dark_color_scheme}]]*/ "dark",
             lightTheme: /*[[${theme.config.style.light_color_scheme}]]*/ "light",
             customDarkTheme: /*[[${theme.config.style.custom_dark_scheme}]]*/ "",
@@ -108,11 +107,7 @@
                 setStoredPreference(storageKeys.colorScheme, scheme);
                 root.dataset.themeColorScheme = scheme;
             }
-
-            function syncSystemFont() {
-                root.dataset.systemFontEnabled = String(config.systemFontEnabled);
-            }
-
+            
             function syncPixelStyle() {
                 root.dataset.pixelStyle = getStoredPreference(storageKeys.pixelStyle)
                     || String(config.pixelStyle);
@@ -168,7 +163,6 @@
                 syncPixelStyle
             };
 
-            syncSystemFont();
             syncThemeMode();
             syncPixelStyle();
             syncPixelFont();

@@ -25,12 +25,14 @@ spec:
           name: default_font
           value: "JetBrains Mono"
           options:
+            - label: "系统默认"
+              value: "system-ui"
             - label: "JetBrains Mono"
               value: "JetBrains Mono"
             - label: "Hack"
               value: "Hack"
             - label: "Fira Code"
-              value: "Fira Code"      
+              value: "Fira Code"
         - $formkit: checkbox
           label: 启用全屏布局
           name: fullscreen_layout
@@ -47,18 +49,10 @@ spec:
           value: false
           help: 开启后将默认使用像素风格字体及图标
         - $formkit: checkbox
-          label: 使用系统字体
-          name: system_font_enable
-          id: system_font_enable
-          value: false
-          help: 开启后将优先使用访问者的系统字体
-        - $formkit: checkbox
-          if: "$get(system_font_enable).value != true"
           name: custom_font_enable
           id: custom_font_enable
           label: 启用自定义字体文件
           value: false
-          help: '如果启用 "使用系统字体", 此配置项不生效'
         - $formkit: array
           if: "$get(custom_font_enable).value === true"
           name: custom_fonts

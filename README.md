@@ -68,7 +68,6 @@
 | 基础行高     | `style.line_height`                                    | 接受 `28px`, `1.75rem` 或 `calc(...)` 等 CSS 长度       |
 | 文章段落间距   | `style.post_paragraph_spacing`                         | 控制文章正文段落的上下间距                                    |
 | 元信息分隔符   | `style.post_meta_divider`                              | 控制文章时间, 作者和标签等元信息之间的分隔符                          |
-| 使用系统字体   | `style.system_font_enable`                             | 使用访问者的 `system-ui` 字体                             |
 | 默认像素风格   | `style.pixel_style`                                    | 使用像素字体和像素图标                                       |
 | 自定义字体    | `style.custom_font_enable`                             | 上传字体文件并填写字体内部名称                                   |
 | 无序列表标记   | `style.list_marker`                                    | 可选 `-`, `*`, `+`, `>` 或默认标记                       |

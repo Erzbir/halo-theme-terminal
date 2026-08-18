@@ -35,10 +35,6 @@ html[data-pixel-style='true'] {
   --family-theme-font: 'Fusion Pixel 12px Prop zh_hans';
 }
 
-html[data-system-font-enabled='true']:not([data-pixel-style='true']) {
-  --family-theme-font: system-ui;
-}
-
 * {
   scrollbar-width: var(--width-theme-scrollbar);
   scrollbar-color: var(--color-theme-scrollbar);
