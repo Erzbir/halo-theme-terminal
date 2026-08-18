@@ -72,7 +72,7 @@ spec:
               name: name
               label: 字体名称
               placeholder: "JetBrains Mono"
-              validation: "required"
+              validation: "required:trim|length:1,64"
             - $formkit: attachment
               name: file
               label: 自定义字体文件
@@ -147,7 +147,7 @@ spec:
           if: "$get(light_color_scheme).value === 'custom'"
           label: 自定义浅色配色
           help: 填写下方自定义配色的 ID
-          validation: "required"
+          validation: "required:trim|length:1,32|matches:/^[a-z0-9][a-z0-9_-]*$/"
         - $formkit: select
           name: dark_color_scheme
           id: dark_color_scheme
@@ -186,7 +186,7 @@ spec:
           if: "$get(dark_color_scheme).value === 'custom'"
           label: 自定义深色配色
           help: 填写下方自定义配色的 ID
-          validation: "required"
+          validation: "required:trim|length:1,32|matches:/^[a-z0-9][a-z0-9_-]*$/"
         - $formkit: array
           name: custom_color_schemes
           label: 自定义配色
@@ -198,7 +198,7 @@ spec:
             - $formkit: text
               name: id
               label: 配色 ID
-              validation: "required"
+              validation: "required:trim|length:1,32|matches:/^[a-z0-9][a-z0-9_-]*$/|not:custom,day,night,blood,niello,matrix,ink,paper,hopbush,pistachio,blue,studio,vanilla"
             - $formkit: color
               name: background
               label: 背景色
@@ -356,6 +356,7 @@ spec:
           label: 访客偏好有效期 (小时)
           value: 24
           min: 0
+          validation: "number|min:0"
           help: 访客手动选择的模式, 配色和像素风格过期后会在下次访问时恢复默认值, 设为 0 表示永久保存
         - $formkit: text
           label: 正文区域最大宽度
@@ -565,7 +566,12 @@ spec:
             - $formkit: text
               name: url
               label: 链接
-              validation: "required"
+              validation:
+                - - required
+                - - matches
+                  - "/^https?:\\/\\/\\S+$/"
+                  - "/^mailto:\\S+$/"
+                  - "/^tel:\\+?[0-9(). -]+$/"
     - group: icp
       label: 备案
       formSchema:
@@ -576,6 +582,7 @@ spec:
           name: icp_link
           label: ICP备案跳转链接
           value: https://beian.miit.gov.cn/
+          validation: "url"
         - $formkit: text
           name: filing_text
           label: 公安备案号
@@ -583,3 +590,4 @@ spec:
           name: filing_link
           label: 公安备案跳转链接
           value: https://www.beian.gov.cn/
+          validation: "url"
