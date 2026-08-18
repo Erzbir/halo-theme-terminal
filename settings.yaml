@@ -93,12 +93,95 @@ spec:
                   value: truetype
                 - label: OpenType
                   value: opentype
+            - $formkit: checkbox
+              name: advanced
+              label: 高级设置
+              value: false
+              help: "等同于直接写 css. 参考文档: https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/At-rules/@font-face)"
+            - $formkit: text
+              if: "$value.advanced === true"
+              name: weight
+              label: 字重
+              value: "400"
+            - $formkit: select
+              if: "$value.advanced === true"
+              name: style
+              label: 字体样式
+              value: normal
+              options:
+                - label: Auto
+                  value: auto
+                - label: Normal
+                  value: normal
+                - label: Italic
+                  value: italic
+                - label: Oblique
+                  value: oblique
+                - label: Left
+                  value: left
+                - label: Right
+                  value: right
+            - $formkit: text
+              if: "$value.advanced === true"
+              name: unicode_range
+              label: Unicode 范围
+              value: ""
+            - $formkit: text
+              if: "$value.advanced === true"
+              name: width
+              label: 字体宽度
+              value: "auto"
+            - $formkit: select
+              if: "$value.advanced === true"
+              name: display
+              label: 字体显示策略
+              value: swap
+              options:
+                - label: Auto
+                  value: auto
+                - label: Block
+                  value: block
+                - label: Swap
+                  value: swap
+                - label: Fallback
+                  value: fallback
+                - label: Optional
+                  value: optional
+            - $formkit: text
+              if: "$value.advanced === true"
+              name: feature_settings
+              label: OpenType 特性
+              value: "normal"
+            - $formkit: text
+              if: "$value.advanced === true"
+              name: variation_settings
+              label: 可变字体轴
+              value: "normal"
+            - $formkit: text
+              if: "$value.advanced === true"
+              name: size_adjust
+              label: 字体尺寸调整
+              value: "100%"
+            - $formkit: text
+              if: "$value.advanced === true"
+              name: ascent_override
+              label: 上升高度覆盖
+              value: "normal"
+            - $formkit: text
+              if: "$value.advanced === true"
+              name: descent_override
+              label: 下降高度覆盖
+              value: "normal"
+            - $formkit: text
+              if: "$value.advanced === true"
+              name: line_gap_override
+              label: 行间隙覆盖
+              value: "normal"
         - $formkit: checkbox
           name: color_scheme_switcher_enable
           label: 启用访客配色切换
           value: false
           help: 开启后在页头显示配色选择下拉框
-
         - $formkit: select
           name: default_scheme_mode
           label: 默认配色方案

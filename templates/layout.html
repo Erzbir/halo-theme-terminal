@@ -158,9 +158,34 @@
             @font-face {
                 font-display: swap;
                 font-family: "[(${font.name})]";
-                font-style: normal;
-                font-weight: 400;
-                src: url("[(${font.file})]") format("[(${font.format})]");
+                src: local("[(${font.name})]"), url("[(${font.file})]") format("[(${font.format})]");
+                font-style: [(${font.advanced ? #objects.nullSafe(font.style, 'normal') : 'normal'})];
+                font-weight: [(${font.advanced ? #objects.nullSafe(font.weight, '400') : '400'})];
+                font-display: [(${font.advanced ? #objects.nullSafe(font.display, 'swap') : 'swap'})];
+                [# th:if="${font.advanced && font.unicode_range != null && !#strings.isEmpty(font.unicode_range)}"]
+                unicode-range: [(${font.unicode_range})];
+                [/]
+                [# th:if="${font.advanced && font.width != null && !#strings.isEmpty(font.width)}"]
+                font-width: [(${font.width})];
+                [/]
+                [# th:if="${font.advanced && font.feature_settings != null && !#strings.isEmpty(font.feature_settings)}"]
+                font-feature-settings: [(${font.feature_settings})];
+                [/]
+                [# th:if="${font.advanced && font.variation_settings != null && !#strings.isEmpty(font.variation_settings)}"]
+                font-variation-settings: [(${font.variation_settings})];
+                [/]
+                [# th:if="${font.advanced && font.size_adjust != null && !#strings.isEmpty(font.size_adjust)}"]
+                size-adjust: [(${font.size_adjust})];
+                [/]
+                [# th:if="${font.advanced && font.ascent_override != null && !#strings.isEmpty(font.ascent_override)}"]
+                ascent-override: [(${font.ascent_override})];
+                [/]
+                [# th:if="${font.advanced && font.descent_override != null && !#strings.isEmpty(font.descent_override)}"]
+                descent-override: [(${font.descent_override})];
+                [/]
+                [# th:if="${font.advanced && font.line_gap_override != null && !#strings.isEmpty(font.line_gap_override)}"]
+                line-gap-override: [(${font.line_gap_override})];
+                [/]
             }
             [/]
     
