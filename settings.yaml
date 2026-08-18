@@ -29,6 +29,8 @@ spec:
               value: "JetBrains Mono"
             - label: "Hack"
               value: "Hack"
+            - label: "Fira Code"
+              value: "Fira Code"      
         - $formkit: checkbox
           label: 启用全屏布局
           name: fullscreen_layout
