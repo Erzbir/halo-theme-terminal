@@ -1,45 +1,59 @@
 @font-face {
-  font-family: 'JetBrains Mono';
-  src: local('JetBrains Mono'),
-  local('JetBrains Mono Regular'),
-  local('JetBrainsMono-Regular'),
-  local('JetBrainsMonoNL Nerd Font'),
-  local('JetBrainsMonoNL Nerd Font Mono'),
-  local('JetBrainsMono Nerd Font'),
-  local('JetBrainsMono Nerd Font Mono'),
-  url('../fonts/JetBrainsMono-Regular.woff2') format('woff2');
-  font-display: swap;
+  font-family: "JetBrains Mono";
+  src: local("JetBrains Mono"),
+  local("JetBrainsMono"),
+  url("../fonts/JetBrainsMono.woff2") format("woff2");;
   font-style: normal;
+  font-weight: 100 800;
+  font-display: swap;
 }
 
 @font-face {
-  font-family: 'Hack';
-  src: url('../fonts/hack-regular.woff2?sha=3114f1256') format('woff2');
-  font-weight: 400;
-  font-display: swap;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Hack';
-  src: url('../fonts/hack-bold.woff2?sha=3114f1256') format('woff2');
-  font-weight: 700;
-  font-display: swap;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Hack';
-  src: url('../fonts/hack-italic.woff2?sha=3114f1256') format('woff2');
-  font-weight: 400;
-  font-display: swap;
+  font-family: "JetBrains Mono";
+  src: local("JetBrains Mono Italic"),
+  local("JetBrainsMono-Italic"),
+  url("../fonts/JetBrainsMono-Italic.woff2") format("woff2");
   font-style: italic;
+  font-weight: 100 800;
+  font-display: swap;
 }
 
 @font-face {
-  font-family: 'Hack';
-  src: url('../fonts/hack-bolditalic.woff2?sha=3114f1256') format('woff2');
-  font-weight: 700;
+  font-family: "Hack";
+  src: local("Hack Regular"),
+  local("Hack-Regular"),
+  url("../fonts/hack-regular.woff2?sha=3114f1256") format("woff2");
+  font-weight: 400;
+  font-style: normal;
   font-display: swap;
+}
+
+@font-face {
+  font-family: "Hack";
+  src: local("Hack Bold"),
+  local("Hack-Bold"),
+  url("../fonts/hack-bold.woff2?sha=3114f1256") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Hack";
+  src: local("Hack Italic"),
+  local("Hack-Italic"),
+  url("../fonts/hack-italic.woff2?sha=3114f1256") format("woff2");
+  font-weight: 400;
   font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Hack";
+  src: local("Hack Bold Italic"),
+  local("Hack-BoldItalic"),
+  url("../fonts/hack-bolditalic.woff2?sha=3114f1256") format("woff2");
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
 }
