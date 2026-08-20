@@ -141,8 +141,7 @@
 
         <!-- Preload primary font -->
         <th:block th:with="font=${theme.config.style.custom_fonts[0]}">
-            <link rel="preload"
-                  th:href="${font.file}"
+            <link th:href="${font.file}"
                   as="font"
                   th:type="${font.format == 'woff2' ? 'font/woff2' :
                         (font.format == 'woff' ? 'font/woff' :
