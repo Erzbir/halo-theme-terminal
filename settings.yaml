@@ -51,8 +51,9 @@ spec:
         - $formkit: checkbox
           name: custom_font_enable
           id: custom_font_enable
-          label: 启用自定义字体文件
+          label: 启用自定义字体
           value: false
+          help: 可以添加多个字体, 优先级从上倒下组成 fallback
         - $formkit: array
           if: "$get(custom_font_enable).value === true"
           name: custom_fonts
@@ -74,6 +75,7 @@ spec:
               label: 自定义字体文件
               value: ""
               validation: "required"
+              help: "可以上传附件或直接填 URL"
             - $formkit: select
               name: format
               label: 字体格式
