@@ -66,10 +66,16 @@ spec:
               label: "$value.file"
           children:
             - $formkit: text
-              name: name
+              name: family_name
               label: 字体名称
               placeholder: "JetBrains Mono"
               validation: "required:trim|length:1,64"
+            - $formkit: text
+              name: postscript_name
+              label: PostScript Name
+              placeholder: "JetBrainsMono-Regular"
+              validation: "length:0,64"
+              help: "用于匹配系统中已安装的本地字体"
             - $formkit: attachment
               name: file
               label: 自定义字体文件

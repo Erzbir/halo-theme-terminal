@@ -155,8 +155,9 @@
             [# th:each="font : ${theme.config.style.custom_fonts}"]
             @font-face {
                 font-display: swap;
-                font-family: "[(${font.name})]";
-                src: local("[(${font.name})]"), url("[(${font.file})]") format("[(${font.format})]");
+                font-family: "[(${font.family_name})]";
+                src: local("[(${#strings.isEmpty(font.postscript_name) ? font.family_name : font.postscript_name})]"),
+                url("[(${font.file})]") format("[(${font.format})]");
                 font-style: [(${font.advanced ? #objects.nullSafe(font.style, 'normal') : 'normal'})];
                 font-weight: [(${font.advanced ? #objects.nullSafe(font.weight, '400') : '400'})];
                 font-display: [(${font.advanced ? #objects.nullSafe(font.display, 'swap') : 'swap'})];
@@ -190,7 +191,7 @@
             :root {
                 --family-theme-font:
                 [# th:each="font, stat : ${theme.config.style.custom_fonts}"]
-                    "[(${font.name})]"[# th:if="${!stat.last}"],[/]
+                    "[(${font.family_name})]"[# th:if="${!stat.last}"],[/]
                 [/];
             }
         </style>
