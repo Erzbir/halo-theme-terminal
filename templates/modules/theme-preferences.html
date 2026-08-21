@@ -1,15 +1,15 @@
 <th:block th:fragment="theme-preferences">
     <script data-no-pjax th:inline="javascript">
         window.TerminalThemeConfig = {
-            darkTheme: /*[[${theme.config.style.dark_color_scheme}]]*/ "dark",
-            lightTheme: /*[[${theme.config.style.light_color_scheme}]]*/ "light",
-            customDarkTheme: /*[[${theme.config.style.custom_dark_scheme}]]*/ "",
-            customLightTheme: /*[[${theme.config.style.custom_light_scheme}]]*/ "",
-            defaultMode: /*[[${theme.config.style.default_scheme_mode}]]*/ "system",
-            preferTTL: /*[[${theme.config.style.prefer_ttl ?: 24}]]*/ 24,
-            pixelStyle: /*[[${theme.config.style.pixel_style}]]*/ false,
+            darkTheme: /*[[${theme.config.color_scheme.dark_color_scheme}]]*/ "dark",
+            lightTheme: /*[[${theme.config.color_scheme.light_color_scheme}]]*/ "light",
+            customDarkTheme: /*[[${theme.config.color_scheme.custom_dark_scheme}]]*/ "",
+            customLightTheme: /*[[${theme.config.color_scheme.custom_light_scheme}]]*/ "",
+            defaultMode: /*[[${theme.config.color_scheme.default_scheme_mode}]]*/ "system",
+            preferTTL: /*[[${theme.config.general.prefer_ttl ?: 24}]]*/ 24,
+            pixelStyle: /*[[${theme.config.global_style.pixel_style}]]*/ false,
             pixelCssHref: /*[[@{/assets/dist/pixel.css?v={version}(version=${theme.spec.version})}]]*/ "",
-            customCss: /*[[${theme.config.style.custom}]]*/ "",
+            customCss: /*[[${theme.config.advanced.custom}]]*/ "",
             messages: {
                 currentColorScheme: /*[[#{header.color_scheme.current}]]*/ "Current color scheme",
                 currentAppearance: /*[[#{header.appearance.current}]]*/ "Current appearance",

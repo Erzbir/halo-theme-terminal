@@ -12,8 +12,8 @@
             <h1 class="post-title" th:text="${post.spec.title}">Post Title</h1>
             <div class="post-meta">
                 <time class="post-time"
-                      th:text="${#dates.format(post.spec.publishTime, '__${theme.config.style.time_style == 'custom' ?
-                                theme.config.style.custom_time_style : theme.config.style.time_style}__')}">Publish Time
+                      th:text="${#dates.format(post.spec.publishTime, '__${theme.config.general.time_style == 'custom' ?
+                                theme.config.general.custom_time_style : theme.config.general.time_style}__')}">Publish Time
                 </time>
                 <span class="post-author" th:text="${post.owner.displayName}">Author</span><th:block th:replace="~{modules/tag-list(post = ${post}, show = ${theme.config.post_page.show_tags})}"/>
             </div>
@@ -24,7 +24,7 @@
     </article>
     <nav id="toc" th:if="${theme.config.post_page.show_toc}" class="toc"
          th:with="tocDefaultOpen=${theme.config.post_page.toc_default_open ?: 'auto'}"
-         th:attr="data-default-open=${tocDefaultOpen == 'open' ? 'true' : (tocDefaultOpen == 'closed' ? 'false' : (theme.config.style.fullscreen_layout ? 'false' : 'true'))}">
+         th:attr="data-default-open=${tocDefaultOpen == 'open' ? 'true' : (tocDefaultOpen == 'closed' ? 'false' : (theme.config.layout.fullscreen_layout ? 'false' : 'true'))}">
         <button id="toc-toggle" class="toc-toggle" th:attr="aria-label=#{toc.hide}"></button>
         <div id="toc-content" class="toc-content"></div>
     </nav>

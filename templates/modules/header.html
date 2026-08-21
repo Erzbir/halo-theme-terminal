@@ -3,7 +3,7 @@
         <div class="header-logo">
             <a data-pjax th:href="@{/}">
                 <div class="logo"
-                     th:text="${#strings.isEmpty(theme.config.basic.logo) ? site.title : theme.config.basic.logo}">
+                     th:text="${#strings.isEmpty(theme.config.header.logo) ? site.title : theme.config.header.logo}">
                     Blog Title
                 </div>
             </a>
@@ -13,7 +13,7 @@
                 th:attr="aria-label=#{header.search.open}"
                 type="button"
                 data-header-action="open-search"
-                th:if="${theme.config.style.search_button_enable != false and pluginFinder.available('PluginSearchWidget')}">
+                th:if="${theme.config.header.search_button_enable != false and pluginFinder.available('PluginSearchWidget')}">
             <svg class="icon-regular button-icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                 <path
                         fill="currentColor"
@@ -28,7 +28,7 @@
         <div
                 id="color-scheme-picker"
                 class="color-scheme-picker"
-                th:if="${theme.config.style.color_scheme_switcher_enable != false}">
+                th:if="${theme.config.header.color_scheme_switcher_enable != false}">
             <button
                     id="color-scheme-trigger"
                     class="color-scheme-trigger"
@@ -64,7 +64,7 @@
         <button
                 id="appearance-toggle"
                 th:attr="aria-label=#{header.appearance.current}"
-                th:if="${theme.config.style.appearance_switcher_enable != false}"
+                th:if="${theme.config.header.appearance_switcher_enable != false}"
                 type="button">
             <svg class="appearance-icon icon-regular button-icon" data-appearance-mode="light" aria-hidden="true"
                  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -99,7 +99,7 @@
         <button
                 id="pixel-toggle"
                 th:attr="aria-label=#{header.pixel_style.toggle}"
-                th:if="${theme.config.style.pixel_style_switcher_enable != false}"
+                th:if="${theme.config.header.pixel_style_switcher_enable != false}"
                 type="button">
             <svg class="icon-pixel button-icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                 <path fill="currentColor"

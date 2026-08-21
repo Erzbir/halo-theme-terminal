@@ -10,79 +10,79 @@
     <th:block th:replace="~{modules/theme-preferences :: theme-preferences}"/>
     <link data-no-pjax rel="stylesheet" th:href="@{/assets/dist/main.css?v={version}(version=${theme.spec.version})}"/>
     <script data-no-pjax type="module" th:src="@{/assets/dist/main.js?v={version}(version=${theme.spec.version})}"></script>
-    <script data-no-pjax type="module" th:if="${theme.config.basic.pjax_enable}"
+    <script data-no-pjax type="module" th:if="${theme.config.general.pjax_enable}"
             th:src="@{/assets/dist/libs/pjax.js?v={version}(version=${theme.spec.version})}"></script>
-    <style data-no-pjax th:if="${not #strings.isEmpty(theme.config.style.media_max_width)}" th:inline="css">
+    <style data-no-pjax th:if="${not #strings.isEmpty(theme.config.layout.media_max_width)}" th:inline="css">
         :root {
-            --width-theme-media-max: [(${theme.config.style.media_max_width})];
+            --width-theme-media-max: [(${theme.config.layout.media_max_width})];
         }
     </style>
-    <style data-no-pjax th:if="${not #strings.isEmpty(theme.config.style.font_size)}" th:inline="css">
+    <style data-no-pjax th:if="${not #strings.isEmpty(theme.config.typography.font_size)}" th:inline="css">
         :root {
-            --size-theme-font: [(${theme.config.style.font_size})];
+            --size-theme-font: [(${theme.config.typography.font_size})];
         }
     </style>
-    <style data-no-pjax th:if="${not #strings.isEmpty(theme.config.style.line_height)}" th:inline="css">
+    <style data-no-pjax th:if="${not #strings.isEmpty(theme.config.typography.line_height)}" th:inline="css">
         :root {
-            --height-theme-line: [(${theme.config.style.line_height})];
+            --height-theme-line: [(${theme.config.typography.line_height})];
         }
     </style>
-    <style data-no-pjax th:if="${not #strings.isEmpty(theme.config.style.post_paragraph_spacing)}" th:inline="css">
+    <style data-no-pjax th:if="${not #strings.isEmpty(theme.config.typography.post_paragraph_spacing)}" th:inline="css">
         :root {
-            --spacing-theme-post-paragraph: [(${theme.config.style.post_paragraph_spacing})];
+            --spacing-theme-post-paragraph: [(${theme.config.typography.post_paragraph_spacing})];
         }
     </style>
-    <style data-no-pjax th:if="${not #strings.isEmpty(theme.config.style.post_meta_divider)}" th:inline="css">
+    <style data-no-pjax th:if="${not #strings.isEmpty(theme.config.global_style.post_meta_divider)}" th:inline="css">
         :root {
-            --content-theme-post-meta-divider: "[(${theme.config.style.post_meta_divider})]";
+            --content-theme-post-meta-divider: "[(${theme.config.global_style.post_meta_divider})]";
         }
     </style>
-    <style data-no-pjax th:if="${not #strings.isEmpty(theme.config.style.content_padding)}" th:inline="css">
+    <style data-no-pjax th:if="${not #strings.isEmpty(theme.config.layout.content_padding)}" th:inline="css">
         :root {
-            --spacing-theme-container-padding: [(${theme.config.style.content_padding})];
-            --spacing-theme-container-padding-mobile: [(${theme.config.style.content_padding})];
+            --spacing-theme-container-padding: [(${theme.config.layout.content_padding})];
+            --spacing-theme-container-padding-mobile: [(${theme.config.layout.content_padding})];
         }
     </style>
-    <style data-no-pjax th:if="${not #strings.isEmpty(theme.config.style.list_style)}" th:inline="css">
+    <style data-no-pjax th:if="${not #strings.isEmpty(theme.config.global_style.list_style)}" th:inline="css">
         :root {
-            --list-theme-style: [(${theme.config.style.list_style})];
+            --list-theme-style: [(${theme.config.global_style.list_style})];
         }
     </style>
-    <style data-no-pjax th:if="${not #strings.isEmpty(theme.config.style.border_width)}" th:inline="css">
+    <style data-no-pjax th:if="${not #strings.isEmpty(theme.config.global_style.border_width)}" th:inline="css">
         :root {
-            --width-theme-border: [(${theme.config.style.border_width})];
+            --width-theme-border: [(${theme.config.global_style.border_width})];
         }
     </style>
-    <style data-no-pjax th:if="${not #strings.isEmpty(theme.config.style.border_style)}" th:inline="css">
+    <style data-no-pjax th:if="${not #strings.isEmpty(theme.config.global_style.border_style)}" th:inline="css">
         :root {
-            --style-theme-border: [(${theme.config.style.border_style})];
+            --style-theme-border: [(${theme.config.global_style.border_style})];
         }
     </style>
-    <style data-no-pjax th:if="${not #strings.isEmpty(theme.config.style.table_border_width)}" th:inline="css">
+    <style data-no-pjax th:if="${not #strings.isEmpty(theme.config.global_style.table_border_width)}" th:inline="css">
         :root {
-            --width-theme-table-border: [(${theme.config.style.table_border_width})];
+            --width-theme-table-border: [(${theme.config.global_style.table_border_width})];
         }
     </style>
-    <style data-no-pjax th:if="${not #strings.isEmpty(theme.config.style.table_border_style)}" th:inline="css">
+    <style data-no-pjax th:if="${not #strings.isEmpty(theme.config.global_style.table_border_style)}" th:inline="css">
         :root {
-            --style-theme-table-border: [(${theme.config.style.table_border_style})];
+            --style-theme-table-border: [(${theme.config.global_style.table_border_style})];
         }
     </style>
-    <style data-no-pjax th:if="${not #strings.isEmpty(theme.config.style.title_divider_style)}" th:inline="css">
+    <style data-no-pjax th:if="${not #strings.isEmpty(theme.config.global_style.title_divider_style)}" th:inline="css">
         :root {
-            --style-theme-title-divider: [(${theme.config.style.title_divider_style})];
+            --style-theme-title-divider: [(${theme.config.global_style.title_divider_style})];
         }
     </style>
-    <style data-no-pjax th:if="${not #strings.isEmpty(theme.config.style.default_font)}" th:inline="css">
+    <style data-no-pjax th:if="${not #strings.isEmpty(theme.config.typography.default_font)}" th:inline="css">
         :root {
-            --family-theme-font: [(${theme.config.style.default_font})];
+            --family-theme-font: [(${theme.config.typography.default_font})];
         }
     </style>
     <script data-no-pjax>
         window.TerminalTheme?.applyCustomCss?.();
     </script>
     <style th:inline="css">
-        [# th:each="scheme : ${theme.config.style.custom_color_schemes}"]
+        [# th:each="scheme : ${theme.config.color_scheme.custom_color_schemes}"]
         html[data-theme-color-scheme="[(${scheme.id})]"] {
             --color-theme-background: [(${scheme.background})];
             --color-theme-text: [(${#strings.isEmpty(scheme.text) ? scheme.foreground : scheme.text})];
@@ -151,12 +151,12 @@
         [/]
     </style>
     <th:block
-            th:if="${theme.config?.style?.custom_font_enable
-            and theme.config?.style?.custom_fonts != null
-            and not #lists.isEmpty(theme.config.style.custom_fonts)}">
+            th:if="${theme.config?.typography?.custom_font_enable
+            and theme.config?.typography?.custom_fonts != null
+            and not #lists.isEmpty(theme.config.typography.custom_fonts)}">
 
         <!-- Preload primary font -->
-        <th:block th:with="font=${theme.config.style.custom_fonts[0]}">
+        <th:block th:with="font=${theme.config.typography.custom_fonts[0]}">
             <link th:href="${font.file}"
                   as="font"
                   th:type="${font.format == 'woff2' ? 'font/woff2' :
@@ -168,7 +168,7 @@
 
         <!--/*/
         <style th:inline="css">
-            [# th:each="font : ${theme.config.style.custom_fonts}"]
+            [# th:each="font : ${theme.config.typography.custom_fonts}"]
             @font-face {
                 font-display: swap;
                 font-family: "[(${font.family_name})]";
@@ -206,7 +206,7 @@
     
             :root {
                 --family-theme-font:
-                [# th:each="font, stat : ${theme.config.style.custom_fonts}"]
+                [# th:each="font, stat : ${theme.config.typography.custom_fonts}"]
                     "[(${font.family_name})]"[# th:if="${!stat.last}"],[/]
                 [/];
             }
@@ -218,11 +218,11 @@
     </th:block>
 </head>
 
-<body th:attr="data-layout-mode=${theme.config.style.fullscreen_layout ? 'fullscreen' : 'normal'},
-               data-table-full-width=${theme.config.style.table_full_width ? 'true' : 'false'}">
+<body th:attr="data-layout-mode=${theme.config.layout.fullscreen_layout ? 'fullscreen' : 'normal'},
+               data-table-full-width=${theme.config.layout.table_full_width ? 'true' : 'false'}">
 <div class="wrapper">
     <div class="container"
-         th:attr="style=${theme.config.style.fullscreen_layout or #strings.isEmpty(theme.config.style.max_width) ? null : 'max-width:' + theme.config.style.max_width}">
+         th:attr="style=${theme.config.layout.fullscreen_layout or #strings.isEmpty(theme.config.layout.max_width) ? null : 'max-width:' + theme.config.layout.max_width}">
         <header class="header">
             <th:block th:replace="~{modules/header :: header}"/>
         </header>

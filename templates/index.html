@@ -31,8 +31,8 @@
                 </h2>
                 <div class="post-meta">
                     <time class="post-date"
-                          th:text="${#dates.format(post.spec.publishTime, '__${theme.config.style.time_style == 'custom' ?
-                                      theme.config.style.custom_time_style : theme.config.style.time_style}__')}">Publish Time</time>
+                          th:text="${#dates.format(post.spec.publishTime, '__${theme.config.general.time_style == 'custom' ?
+                                      theme.config.general.custom_time_style : theme.config.general.time_style}__')}">Publish Time</time>
                     <span class="post-author"
                           th:with="contributor = ${post.contributors[0]}"
                           th:text="${contributor.displayName}">Author</span><th:block th:replace="~{modules/tag-list(post = ${post}, show = ${theme.config.index_page.show_tags})}"/>

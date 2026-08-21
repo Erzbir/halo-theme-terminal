@@ -28,8 +28,8 @@
                             <li class="post-list" th:each="post : ${month.posts}">
                                 <div class="post-meta">
                                     <time class="post-time"
-                                          th:text="${#dates.format(post.spec.publishTime, '__${theme.config.style.time_style == 'custom' ?
-                                      theme.config.style.custom_time_style : theme.config.style.time_style}__')}">
+                                          th:text="${#dates.format(post.spec.publishTime, '__${theme.config.general.time_style == 'custom' ?
+                                      theme.config.general.custom_time_style : theme.config.general.time_style}__')}">
                                         Publish
                                         Time
                                     </time>

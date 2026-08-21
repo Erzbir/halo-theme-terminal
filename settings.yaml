@@ -4,8 +4,45 @@ metadata:
   name: theme-terminal-ez-setting
 spec:
   forms:
-    - group: basic
-      label: 基本设置
+    - group: general
+      label: 通用设置
+      formSchema:
+        - $formkit: select
+          name: time_style
+          id: time_style
+          label: 时间格式
+          value: "yyyy-MM-dd"
+          help: 控制文章发布时间的显示格式
+          options:
+            - label: "yyyy-MM-ddTHH:mm:ssXXX"
+              value: "yyyy-MM-dd''T''HH:mm:ssXXX"
+            - label: "yyyy-MM-dd HH:mm:ss"
+              value: "yyyy-MM-dd'' ''HH:mm:ss"
+            - label: "yyyy-MM-dd"
+              value: "yyyy-MM-dd"
+            - label: "custom"
+              value: "custom"
+        - $formkit: text
+          if: "$get(time_style).value === 'custom'"
+          key: custom-time-style
+          name: custom_time_style
+          label: 自定义时间格式
+          placeholder: "yyyy-MM-dd"
+          validation: "required"
+        - $formkit: number
+          name: prefer_ttl
+          label: 访客偏好有效期 (小时)
+          value: 24
+          min: 0
+          validation: "number|min:0"
+          help: 访客手动选择的模式, 配色和像素风格过期后会在下次访问时恢复默认值, 设为 0 表示永久保存
+        - $formkit: checkbox
+          name: pjax_enable
+          label: 启用 PJAX
+          help: 开启后点击站内链接时只更新主要内容区域而不是整个页面 (可能与一些插件存在兼容问题)
+          value: false
+    - group: header
+      label: 页头
       formSchema:
         - $formkit: text
           label: logo
@@ -13,12 +50,27 @@ spec:
           value:
           help: 设置左上角 logo 文本, 不设置默认为 halo 中设置的站点标题
         - $formkit: checkbox
-          name: pjax_enable
-          label: 启用 PJAX
-          help: 开启后点击站内链接时只更新主要内容区域而不是整个页面 (可能与一些插件存在兼容问题)
+          name: search_button_enable
+          label: 展示搜索按钮
+          value: true
+          help: 搜索组件插件可用时在页头展示搜索按钮
+        - $formkit: checkbox
+          name: color_scheme_switcher_enable
+          label: 展示配色切换按钮
           value: false
-    - group: style
-      label: 全局样式
+          help: 在页头展示配色选择下拉框
+        - $formkit: checkbox
+          name: appearance_switcher_enable
+          label: 展示深浅切换按钮
+          value: true
+          help: 在页头展示浅色, 深色和跟随系统三态切换按钮
+        - $formkit: checkbox
+          name: pixel_style_switcher_enable
+          label: 展示像素化按钮
+          value: true
+          help: 在页头展示像素风格切换按钮
+    - group: typography
+      label: 字体与排版
       formSchema:
         - $formkit: select
           label: 默认字体
@@ -34,49 +86,20 @@ spec:
             - label: "Fira Code"
               value: "Fira Code"
         - $formkit: checkbox
-          label: 启用全屏布局
-          name: fullscreen_layout
-          value: false
-          help: 开启后让正文区域占满可用宽度
-        - $formkit: checkbox
-          label: 表格宽度铺满父元素
-          name: table_full_width
-          value: false
-          help: 开启后文章内容中的 table 会占满正文内容区域宽度
-        - $formkit: checkbox
-          name: pixel_style
-          label: 默认像素化风格
-          value: false
-          help: 开启后将默认使用像素风格字体及图标
-        - $formkit: checkbox
-          name: search_button_enable
-          label: 展示搜索按钮
-          value: true
-          help: 搜索组件插件可用时在页头展示搜索按钮
-        - $formkit: checkbox
-          name: appearance_switcher_enable
-          label: 展示深浅切换按钮
-          value: true
-          help: 在页头展示浅色, 深色和跟随系统三态切换按钮
-        - $formkit: checkbox
-          name: pixel_style_switcher_enable
-          label: 展示像素化按钮
-          value: true
-          help: 在页头展示像素风格切换按钮
-        - $formkit: checkbox
           name: custom_font_enable
           id: custom_font_enable
           label: 启用自定义字体
           value: false
-          help: 可以添加多个字体, 优先级从上倒下组成 fallback
+          help: 可以添加多个字体, 优先级从上到下组成 fallback
         - $formkit: array
           if: "$get(custom_font_enable).value === true"
+          key: custom-fonts
           name: custom_fonts
           label: 自定义字体
           value: [ ]
           itemLabels:
             - type: "text"
-              label: "$value.name"
+              label: "$value.family_name"
             - type: "text"
               label: "$value.file"
           children:
@@ -114,14 +137,16 @@ spec:
               name: advanced
               label: 高级设置
               value: false
-              help: "等同于直接写 css. 参考文档: https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/At-rules/@font-face)"
+              help: "等同于直接写 css. 参考文档: https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/At-rules/@font-face"
             - $formkit: text
               if: "$value.advanced === true"
+              key: custom-font-weight
               name: weight
               label: 字重
               value: "400"
             - $formkit: select
               if: "$value.advanced === true"
+              key: custom-font-style
               name: style
               label: 字体样式
               value: normal
@@ -140,16 +165,19 @@ spec:
                   value: right
             - $formkit: text
               if: "$value.advanced === true"
+              key: custom-font-unicode-range
               name: unicode_range
               label: Unicode 范围
               value: ""
             - $formkit: text
               if: "$value.advanced === true"
+              key: custom-font-width
               name: width
               label: 字体宽度
               value: "auto"
             - $formkit: select
               if: "$value.advanced === true"
+              key: custom-font-display
               name: display
               label: 字体显示策略
               value: swap
@@ -166,44 +194,96 @@ spec:
                   value: optional
             - $formkit: text
               if: "$value.advanced === true"
+              key: custom-font-feature-settings
               name: feature_settings
               label: OpenType 特性
               value: "normal"
             - $formkit: text
               if: "$value.advanced === true"
+              key: custom-font-variation-settings
               name: variation_settings
               label: 可变字体轴
               value: "normal"
             - $formkit: text
               if: "$value.advanced === true"
+              key: custom-font-size-adjust
               name: size_adjust
               label: 字体尺寸调整
               value: "100%"
             - $formkit: text
               if: "$value.advanced === true"
+              key: custom-font-ascent-override
               name: ascent_override
               label: 上升高度覆盖
               value: "normal"
             - $formkit: text
               if: "$value.advanced === true"
+              key: custom-font-descent-override
               name: descent_override
               label: 下降高度覆盖
               value: "normal"
             - $formkit: text
               if: "$value.advanced === true"
+              key: custom-font-line-gap-override
               name: line_gap_override
               label: 行间隙覆盖
               value: "normal"
+        - $formkit: text
+          label: 基础字体大小
+          name: font_size
+          value:
+          placeholder: "1rem"
+          help: 控制全站基础字体大小, 例如 16px / 1rem / 18px
+        - $formkit: text
+          label: 基础行高
+          name: line_height
+          value:
+          placeholder: "calc(var(--size-theme-font) * 1.8)"
+          help: 控制全站基础行高, 例如 1.8 / 28px / calc(var(--size-theme-font) * 1.8)
+        - $formkit: text
+          label: 文章段落间距
+          name: post_paragraph_spacing
+          value:
+          placeholder: "calc(var(--size-theme-font) * 1.5625)"
+          help: 控制文章正文段落的上下间距, 例如 1.5rem / 24px / calc(var(--size-theme-font) * 1.5)
+    - group: layout
+      label: 布局
+      formSchema:
         - $formkit: checkbox
-          name: color_scheme_switcher_enable
-          label: 启用访客配色切换
+          label: 启用全屏布局
+          name: fullscreen_layout
           value: false
-          help: 开启后在页头显示配色选择下拉框
+          help: 开启后让正文区域占满可用宽度
+        - $formkit: checkbox
+          label: 表格宽度铺满父元素
+          name: table_full_width
+          value: false
+          help: 开启后文章内容中的 table 会占满正文内容区域宽度
+        - $formkit: text
+          label: 正文区域最大宽度
+          name: max_width
+          value:
+          help: 控制正文区域最大宽度, 例如 960px / 80vw
+        - $formkit: text
+          label: 正文区域内边距
+          name: content_padding
+          value:
+          placeholder: "calc(var(--size-theme-font) * 2.5)"
+          help: 控制正文容器内边距, 例如 2rem / 24px / calc(var(--size-theme-font) * 2)
+        - $formkit: text
+          label: 正文媒体最大宽度
+          name: media_max_width
+          value:
+          placeholder: "60%"
+          help: 控制文章内容中图片 / 视频 / figure 的最大宽度
+    - group: color_scheme
+      label: 配色
+      formSchema:
         - $formkit: select
           name: default_scheme_mode
-          label: 默认配色方案
+          label: 默认模式
           value: "light"
-          help: 控制访客首次访问时使用的配色模式
+          help: 控制访客首次访问时使用的外观模式
           options:
             - label: "浅色"
               value: "light"
@@ -214,7 +294,7 @@ spec:
         - $formkit: select
           name: light_color_scheme
           id: light_color_scheme
-          label: 浅色配色方案
+          label: 浅色方案
           value: "day"
           help: 控制浅色模式使用的配色方案
           options:
@@ -247,13 +327,14 @@ spec:
         - $formkit: text
           name: custom_light_scheme
           if: "$get(light_color_scheme).value === 'custom'"
+          key: custom-light-scheme
           label: 自定义浅色配色
           help: 填写下方自定义配色的 ID
           validation: "required:trim|length:1,32|matches:/^[a-z0-9][a-z0-9_-]*$/"
         - $formkit: select
           name: dark_color_scheme
           id: dark_color_scheme
-          label: 深色配色方案
+          label: 深色方案
           value: "night"
           help: 控制深色模式使用的配色方案
           options:
@@ -286,12 +367,13 @@ spec:
         - $formkit: text
           name: custom_dark_scheme
           if: "$get(dark_color_scheme).value === 'custom'"
+          key: custom-dark-scheme
           label: 自定义深色配色
           help: 填写下方自定义配色的 ID
           validation: "required:trim|length:1,32|matches:/^[a-z0-9][a-z0-9_-]*$/"
         - $formkit: array
           name: custom_color_schemes
-          label: 自定义配色
+          label: 自定义方案
           value: [ ]
           itemLabels:
             - type: "text"
@@ -320,66 +402,89 @@ spec:
               help: 开启后可以单独设置辅助文本, 标题, 标签, 导航, 控件, 边框和代码等语义颜色
             - $formkit: color
               if: "$value.advanced === true"
+              key: scheme-text-secondary
               name: text_secondary
               label: 辅助文本色
             - $formkit: color
               if: "$value.advanced === true"
+              key: scheme-text-muted
               name: text_muted
               label: 弱化文字颜色
             - $formkit: color
               if: "$value.advanced === true"
+              key: scheme-text-inverse
               name: text_inverse
               label: 反色文字颜色
             - $formkit: color
               if: "$value.advanced === true"
+              key: scheme-heading
               name: heading
               label: 标题颜色
             - $formkit: color
               if: "$value.advanced === true"
+              key: scheme-label
               name: label
               label: 标签颜色
             - $formkit: color
               if: "$value.advanced === true"
+              key: scheme-link
               name: link
               label: 链接颜色
             - $formkit: color
               if: "$value.advanced === true"
+              key: scheme-navigation
               name: navigation
               label: 导航颜色
             - $formkit: color
               if: "$value.advanced === true"
+              key: scheme-control
               name: control
               label: 控件颜色
             - $formkit: color
               if: "$value.advanced === true"
+              key: scheme-border
               name: border
               label: 默认边框颜色
             - $formkit: color
               if: "$value.advanced === true"
+              key: scheme-border-accent
               name: border_accent
               label: 交互边框颜色
             - $formkit: color
               if: "$value.advanced === true"
+              key: scheme-border-emphasis
               name: border_emphasis
               label: 强调边框颜色
             - $formkit: color
               if: "$value.advanced === true"
+              key: scheme-selection
               name: selection
               label: 选中文本背景色
             - $formkit: color
               if: "$value.advanced === true"
+              key: scheme-caret
               name: caret
               label: 动态光标颜色
             - $formkit: color
               if: "$value.advanced === true"
+              key: scheme-code-text
               name: code_text
               label: 代码文字颜色
             - $formkit: color
               if: "$value.advanced === true"
+              key: scheme-code-background
               name: code_background
               label: 代码背景颜色
+    - group: global_style
+      label: 全局样式
+      formSchema:
+        - $formkit: checkbox
+          name: pixel_style
+          label: 默认像素化风格
+          value: false
+          help: 开启后将默认使用像素风格字体及图标
         - $formkit: text
-          label: 无序列表样式
+          label: 无序列表标记
           name: list_style
           value: ""
           placeholder: "disc"
@@ -402,6 +507,12 @@ spec:
               value: "double"
             - label: "none"
               value: "none"
+        - $formkit: text
+          label: 边线宽度
+          name: border_width
+          value:
+          placeholder: "calc(var(--size-theme-font) * 0.125)"
+          help: 控制主题通用边线宽度
         - $formkit: select
           label: 表格边线样式
           name: table_border_style
@@ -420,6 +531,12 @@ spec:
               value: "double"
             - label: "none"
               value: "none"
+        - $formkit: text
+          label: 表格边线宽度
+          name: table_border_width
+          value:
+          placeholder: "calc(var(--size-theme-font) * 0.0625)"
+          help: 控制表格边线宽度
         - $formkit: select
           label: 标题分隔线样式
           name: title_divider_style
@@ -438,90 +555,59 @@ spec:
               value: "double"
             - label: "none"
               value: "none"
-        - $formkit: select
-          name: time_style
-          id: time_style
-          label: 时间格式
-          value: "yyyy-MM-dd"
-          help: 控制文章发布时间的显示格式
-          options:
-            - label: "yyyy-MM-ddTHH:mm:ssXXX"
-              value: "yyyy-MM-dd''T''HH:mm:ssXXX"
-            - label: "yyyy-MM-dd HH:mm:ss"
-              value: "yyyy-MM-dd'' ''HH:mm:ss"
-            - label: "yyyy-MM-dd"
-              value: "yyyy-MM-dd"
-            - label: "custom"
-              value: "custom"
         - $formkit: text
-          if: "$get(time_style).value === 'custom'"
-          name: custom_time_style
-          label: 自定义时间格式
-          placeholder: "yyyy-MM-dd"
-          validation: "required"
-        - $formkit: number
-          name: prefer_ttl
-          label: 访客偏好有效期 (小时)
-          value: 24
-          min: 0
-          validation: "number|min:0"
-          help: 访客手动选择的模式, 配色和像素风格过期后会在下次访问时恢复默认值, 设为 0 表示永久保存
-        - $formkit: text
-          label: 正文区域最大宽度
-          name: max_width
-          value:
-          help: 控制正文区域最大宽度, 例如 960px / 80vw
-        - $formkit: text
-          label: 正文区域内边距
-          name: content_padding
-          value:
-          placeholder: "calc(var(--size-theme-font) * 2.5)"
-          help: 控制正文容器内边距, 例如 2rem / 24px / calc(var(--size-theme-font) * 2)
-        - $formkit: text
-          label: 正文媒体最大宽度
-          name: media_max_width
-          value:
-          placeholder: "60%"
-          help: 控制文章内容中图片 / 视频 / figure 的最大宽度
-        - $formkit: text
-          label: 基础字体大小
-          name: font_size
-          value:
-          placeholder: "1rem"
-          help: 控制全站基础字体大小, 例如 16px / 1rem / 18px
-        - $formkit: text
-          label: 基础行高
-          name: line_height
-          value:
-          placeholder: "calc(var(--size-theme-font) * 1.8)"
-          help: 控制全站基础行高, 例如 1.8 / 28px / calc(var(--size-theme-font) * 1.8)
-        - $formkit: text
-          label: 文章段落间距
-          name: post_paragraph_spacing
-          value:
-          placeholder: "calc(var(--size-theme-font) * 1.5625)"
-          help: 控制文章正文段落的上下间距, 例如 1.5rem / 24px / calc(var(--size-theme-font) * 1.5)
-        - $formkit: text
-          label: 文章元信息分隔符
+          label: 元信息分隔符
           name: post_meta_divider
           value:
           placeholder: "::"
           help: "控制文章元信息之间的分隔符, 例如 ::, |, ·"
-        - $formkit: text
-          label: 边线宽度
-          name: border_width
-          value:
-          placeholder: "calc(var(--size-theme-font) * 0.125)"
-          help: 控制主题通用边线宽度
-        - $formkit: text
-          label: 表格边线宽度
-          name: table_border_width
-          value:
-          placeholder: "calc(var(--size-theme-font) * 0.0625)"
-          help: 控制表格边线宽度
+    - group: sns
+      label: 社交资料
+      formSchema:
+        - $formkit: checkbox
+          name: rss
+          label: RSS
+          value: false
+        - $formkit: array
+          name: social_media
+          label: 社交媒体
+          value: [ ]
+          itemLabels:
+            - type: "iconify"
+              label: "$value.iconify"
+            - type: "text"
+              label: "$value.name"
+            - type: "text"
+              label: "$value.url"
+          children:
+            - $formkit: iconify
+              name: iconify
+              label: 图标
+              format: svg
+              validation: "required"
+            - $formkit: iconify
+              name: pixel_iconify
+              label: 像素风格图标
+              format: svg
+              help: "留空时使用普通图标"
+            - $formkit: text
+              name: name
+              label: 名称
+            - $formkit: text
+              name: url
+              label: 链接
+              validation:
+                - - required
+                - - matches
+                  - "/^https?:\\/\\/\\S+$/"
+                  - "/^mailto:\\S+$/"
+                  - "/^tel:\\+?[0-9(). -]+$/"
+    - group: advanced
+      label: 高级设置
+      formSchema:
         - $formkit: code
           name: custom
-          label: 自定义样式
+          label: 自定义 CSS
           language: css
           height: 150px
           value: ""
@@ -552,6 +638,7 @@ spec:
           value: true
         - $formkit: select
           if: "$get(show_pin).value === true"
+          key: pin-position
           name: pin_pos
           label: pin 图标显示位置
           options:
@@ -573,6 +660,7 @@ spec:
           value: true
         - $formkit: select
           if: "$get(show_toc).value === true"
+          key: toc-default-open
           name: toc_default_open
           label: 文章目录默认状态
           value: "auto"
@@ -639,47 +727,6 @@ spec:
           name: title
           label: 标题
           value:
-    - group: sns
-      label: 社交资料
-      formSchema:
-        - $formkit: checkbox
-          name: rss
-          label: RSS
-          value: false
-        - $formkit: array
-          name: social_media
-          label: 社交媒体
-          value: [ ]
-          itemLabels:
-            - type: "iconify"
-              label: "$value.iconify"
-            - type: "text"
-              label: "$value.name"
-            - type: "text"
-              label: "$value.url"
-          children:
-            - $formkit: iconify
-              name: iconify
-              label: 图标
-              format: svg
-              validation: "required"
-            - $formkit: iconify
-              name: pixel_iconify
-              label: 像素风格图标
-              format: svg
-              help: "留空时使用普通图标"
-            - $formkit: text
-              name: name
-              label: 名称
-            - $formkit: text
-              name: url
-              label: 链接
-              validation:
-                - - required
-                - - matches
-                  - "/^https?:\\/\\/\\S+$/"
-                  - "/^mailto:\\S+$/"
-                  - "/^tel:\\+?[0-9(). -]+$/"
     - group: icp
       label: 备案
       formSchema:
