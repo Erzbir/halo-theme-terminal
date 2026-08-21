@@ -2,7 +2,7 @@ search-modal {
   --halo-search-widget-base-font-size: var(--size-theme-font) !important;
   --halo-search-widget-base-font-family: var(--family-theme-font) !important;
   --halo-search-widget-base-bg-color: var(--color-theme-background) !important;
-  --halo-search-widget-primary-color: var(--color-theme-action) !important;
+  --halo-search-widget-primary-color: var(--color-theme-accent) !important;
   --halo-search-widget-muted-color: var(--color-theme-text-muted) !important;
   --halo-search-widget-content-color: var(--color-theme-text) !important;
   --halo-search-widget-hit-bg-color: var(--color-theme-background) !important;
@@ -17,9 +17,9 @@ search-modal {
   --halo-search-widget-color-form-divider: var(--color-theme-border-muted) !important;
   --halo-search-widget-color-result-empty: var(--color-theme-text-muted) !important;
   --halo-search-widget-color-result-item-bg: var(--color-theme-background) !important;
-  --halo-search-widget-color-result-item-hover-bg: var(--color-theme-surface-hover) !important;
-  --halo-search-widget-color-result-item-title: var(--color-theme-action) !important;
+  --halo-search-widget-color-result-item-hover-bg: var(--color-theme-background) !important;
+  --halo-search-widget-color-result-item-title: var(--color-theme-text-accent) !important;
   --halo-search-widget-color-result-item-content: var(--color-theme-text-muted) !important;
-  --halo-search-widget-color-command-kbd-item: var(--color-theme-action) !important;
+  --halo-search-widget-color-command-kbd-item: var(--color-theme-text-accent) !important;
   --halo-search-widget-color-command-kbd-borde: var(--color-theme-border-accent) !important;
 }

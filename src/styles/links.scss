@@ -18,7 +18,7 @@
       margin: 0;
 
       > span {
-        color: var(--color-theme-action);
+        color: var(--color-theme-text-accent);
         padding: 0.1em 0.45em;
         border-top: var(--width-theme-border) var(--style-theme-border) var(--color-theme-border-accent);
         border-bottom: var(--width-theme-border) var(--style-theme-border) var(--color-theme-border-accent);
@@ -133,7 +133,7 @@
   }
 
   &-required {
-    color: var(--color-theme-action);
+    color: var(--color-theme-text-accent);
     font-style: normal;
   }
 
@@ -182,7 +182,7 @@
       border: calc(var(--width-theme-border) / 2) var(--style-theme-border) var(--color-theme-border-accent);
 
       span {
-        color: var(--color-theme-action);
+        color: var(--color-theme-text-accent);
         font-size: calc(var(--size-theme-font) * 0.75);
         text-align: center;
       }
@@ -192,7 +192,7 @@
   &-apply-message {
     margin-bottom: calc(var(--size-theme-font) * 1);
     padding: calc(var(--size-theme-font) * 0.5) 0;
-    color: var(--color-theme-action);
+    color: var(--color-theme-text-accent);
     border-bottom: calc(var(--width-theme-border) / 2) var(--style-theme-table-border) var(--color-theme-border-accent);
   }
 

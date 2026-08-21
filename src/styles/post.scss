@@ -42,7 +42,7 @@
 
 .post-title {
   position: relative;
-  color: var(--color-theme-heading);
+  color: var(--color-theme-text-accent);
   margin-top: 0;
   margin-bottom: calc(var(--size-theme-font) * 0.9375);
   padding-bottom: calc(var(--size-theme-font) * 0.9375);
@@ -73,7 +73,7 @@
 
 .post-title a {
   text-decoration: none;
-  color: var(--color-theme-heading);
+  color: var(--color-theme-text-accent);
 }
 
 .post-time {
@@ -87,11 +87,11 @@
 .post-tags {
   margin-bottom: calc(var(--size-theme-font) * 0.3125);
   font-size: inherit;
-  color: var(--color-theme-label);
+  color: var(--color-theme-text-label);
 }
 
 .post-tag {
-  color: var(--color-theme-label);
+  color: var(--color-theme-text-label);
 
   a {
     color: inherit;
@@ -125,7 +125,7 @@
 }
 
 .post-body a {
-  color: var(--color-theme-link);
+  color: var(--color-theme-text-link);
   text-decoration: var(--text-decoration-theme-post-link);
 }
 
@@ -157,7 +157,7 @@
 
 .hanchor {
   position: absolute;
-  color: var(--color-theme-action);
+  color: var(--color-theme-text-accent);
   text-decoration: none;
   margin-left: calc(var(--size-theme-font) * 0.625);
   visibility: hidden;

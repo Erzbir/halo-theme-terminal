@@ -68,7 +68,7 @@ export function syncColorSchemePicker() {
 
     if (storedScheme && !hasStoredOption) {
         const storedMode = getStoredPreference(PREFERENCE_KEYS.themeMode)
-            || window.TerminalThemeConfig?.defaultMode
+            || window.TerminalThemeConfig?.defaultAppearance
             || "system";
 
         window.applyTheme?.(storedMode, {clearColorScheme: true});

@@ -3,48 +3,48 @@
 :root {
   --color-theme-background: #f4f4f4;
   --color-theme-text: #3e3e3e;
+  --color-theme-accent: #003e8a;
   --color-theme-text-secondary: color-mix(in srgb, var(--color-theme-text) 85%, var(--color-theme-background));
   --color-theme-text-muted: #2e6cba;
   --color-theme-text-inverse: var(--color-theme-background);
-  --color-theme-heading: #003e8a;
-  --color-theme-label: #07962a;
-  --color-theme-link: #003e8a;
-  --color-theme-action: #003e8a;
-  --color-theme-action-muted: color-mix(in srgb, var(--color-theme-action) 60%, var(--color-theme-background));
-  --color-theme-action-subtle: color-mix(in srgb, var(--color-theme-action) 30%, var(--color-theme-background));
+  --color-theme-text-accent: var(--color-theme-accent);
+  --color-theme-text-label: #07962a;
+  --color-theme-text-link: var(--color-theme-accent);
+  --color-theme-accent-muted: color-mix(in srgb, var(--color-theme-accent) 60%, var(--color-theme-background));
+  --color-theme-accent-subtle: color-mix(in srgb, var(--color-theme-accent) 30%, var(--color-theme-background));
   --color-theme-navigation: #3e3e3e;
   --color-theme-control: #3e3e3e;
   --color-theme-surface: color-mix(in srgb, var(--color-theme-text) 5%, var(--color-theme-background));
-  --color-theme-surface-hover: color-mix(in srgb, var(--color-theme-text) 10%, var(--color-theme-background));
+  --color-theme-surface-strong: color-mix(in srgb, var(--color-theme-text) 10%, var(--color-theme-background));
   --color-theme-border: var(--color-theme-text);
   --color-theme-border-muted: color-mix(in srgb, var(--color-theme-text) 18%, var(--color-theme-background));
-  --color-theme-border-accent: var(--color-theme-action);
+  --color-theme-border-accent: var(--color-theme-accent);
   --color-theme-border-emphasis: #970b16;
-  --color-theme-selection: color-mix(in srgb, var(--color-theme-action) 45%, var(--color-theme-background));
+  --color-theme-selection: color-mix(in srgb, var(--color-theme-accent) 45%, var(--color-theme-background));
   --color-theme-overlay: rgb(0 0 0 / 80%);
   --color-theme-scrollbar: color-mix(in srgb, var(--color-theme-text) 45%, var(--color-theme-background)) transparent;
   --color-theme-code-text: var(--color-theme-text);
-  --color-theme-code-background: var(--color-theme-surface-hover);
+  --color-theme-code-background: var(--color-theme-surface-strong);
   --color-theme-caret: #970b16;
 }
 
 html[data-theme-color-scheme] {
   --color-theme-text-muted: var(--color-theme-text);
-  --color-theme-heading: var(--color-theme-action);
-  --color-theme-label: var(--color-theme-action);
-  --color-theme-link: var(--color-theme-action);
-  --color-theme-navigation: var(--color-theme-action);
-  --color-theme-control: var(--color-theme-action);
-  --color-theme-border-emphasis: var(--color-theme-action);
-  --color-theme-caret: var(--color-theme-action);
+  --color-theme-text-accent: var(--color-theme-accent);
+  --color-theme-text-label: var(--color-theme-accent);
+  --color-theme-text-link: var(--color-theme-accent);
+  --color-theme-navigation: var(--color-theme-accent);
+  --color-theme-control: var(--color-theme-accent);
+  --color-theme-border-emphasis: var(--color-theme-accent);
+  --color-theme-caret: var(--color-theme-accent);
 }
 
 $color-schemes: (
         "day": (
                 "background": #f4f4f4,
                 "text": #3e3e3e,
-                "action": #003e8a,
-                "label": #07962a,
+                "accent": #003e8a,
+                "text-label": #07962a,
                 "text-muted": #2e6cba,
                 "border-emphasis": #970b16,
                 "caret": #970b16,
@@ -54,8 +54,8 @@ $color-schemes: (
         "night": (
                 "background": #101216,
                 "text": #8b949e,
-                "action": #6ca4f8,
-                "label": #56d364,
+                "accent": #6ca4f8,
+                "text-label": #56d364,
                 "text-muted": #6ca4f8,
                 "border-emphasis": #f78166,
                 "caret": #f78166,
@@ -65,19 +65,19 @@ $color-schemes: (
         "niello": (
                 "background": #1a170f,
                 "text": #eceae5,
-                "action": #eec35e
+                "accent": #eec35e
         ),
         "matrix": (
                 "background": #000000,
                 "text": #4eee85,
-                "action": #4eee85
+                "accent": #4eee85
         ),
         "ink": (
                 "background": #121212,
                 "text": #C3C3C3,
                 "text-secondary": #C1C1C1,
-                "action": #FFFFFF,
-                "link": #5AC8FA,
+                "accent": #FFFFFF,
+                "text-link": #5AC8FA,
                 "text-muted": #C1C1C1,
                 "code-text": #FFFFFF,
                 "code-background": #1F1F1F
@@ -86,8 +86,8 @@ $color-schemes: (
                 "background": #FFFFFF,
                 "text": #1B1B1B,
                 "text-secondary": #595959,
-                "action": #000000,
-                "link": #406ED2,
+                "accent": #000000,
+                "text-link": #406ED2,
                 "text-muted": #595959,
                 "code-text": #1B1B1B,
                 "code-background": #EBEBEB
@@ -95,33 +95,33 @@ $color-schemes: (
         "hopbush": (
                 "background": #fff6f6,
                 "text": #462d2d,
-                "action": #cc6099
+                "accent": #cc6099
         ),
         "pistachio": (
                 "background": #1d2021,
                 "text": #ebdbb2,
-                "action": #8ec07c
+                "accent": #8ec07c
         ),
         "blue": (
                 "background": #153489,
                 "text": #eceae5,
-                "action": #5ea5ee
+                "accent": #5ea5ee
         ),
         "vanilla": (
                 "background": #fff4f2,
                 "text": #424140,
-                "action": #8f6a5e
+                "accent": #8f6a5e
         ),
         "studio": (
                 "background": #f7f4ff,
                 "text": #403352,
-                "action": #6f49ab
+                "accent": #6f49ab
         ),
         "blood": (
                 "background": #221f29,
                 "text": #ffffff,
-                "action": #ff6266,
-                "text-muted": var(--color-theme-action),
+                "accent": #ff6266,
+                "text-muted": var(--color-theme-accent),
                 "navigation": var(--color-theme-text)
         )
 );
@@ -132,7 +132,7 @@ $color-schemes: (
       --color-theme-#{$role}: #{$color};
     }
 
-    @if map.get($scheme-colors, "text") == map.get($scheme-colors, "action") {
+    @if map.get($scheme-colors, "text") == map.get($scheme-colors, "accent") {
       --text-decoration-theme-post-link: underline;
     }
   }

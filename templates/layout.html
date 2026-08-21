@@ -86,7 +86,7 @@
         html[data-theme-color-scheme="[(${scheme.id})]"] {
             --color-theme-background: [(${scheme.background})];
             --color-theme-text: [(${#strings.isEmpty(scheme.text) ? scheme.foreground : scheme.text})];
-            --color-theme-action: [(${#strings.isEmpty(scheme.action) ? scheme.accent : scheme.action})];
+            --color-theme-accent: [(${#strings.isEmpty(scheme.accent) ? scheme.action : scheme.accent})];
 
             [# th:if="${not #strings.isEmpty(scheme.text_secondary) or not #strings.isEmpty(scheme.foreground_muted)}"]
         --color-theme-text-secondary: [(${#strings.isEmpty(scheme.text_secondary) ? scheme.foreground_muted : scheme.text_secondary})];
@@ -100,16 +100,16 @@
         --color-theme-text-inverse: [(${scheme.text_inverse})];
             [/]
 
-        [# th:if="${not #strings.isEmpty(scheme.heading) or not #strings.isEmpty(scheme.title)}"]
-        --color-theme-heading: [(${#strings.isEmpty(scheme.heading) ? scheme.title : scheme.heading})];
+        [# th:if="${not #strings.isEmpty(scheme.text_accent) or not #strings.isEmpty(scheme.heading) or not #strings.isEmpty(scheme.title)}"]
+        --color-theme-text-accent: [(${not #strings.isEmpty(scheme.text_accent) ? scheme.text_accent : (not #strings.isEmpty(scheme.heading) ? scheme.heading : scheme.title)})];
             [/]
 
-        [# th:if="${not #strings.isEmpty(scheme.label) or not #strings.isEmpty(scheme.tag)}"]
-        --color-theme-label: [(${#strings.isEmpty(scheme.label) ? scheme.tag : scheme.label})];
+        [# th:if="${not #strings.isEmpty(scheme.text_label) or not #strings.isEmpty(scheme.label) or not #strings.isEmpty(scheme.tag)}"]
+        --color-theme-text-label: [(${not #strings.isEmpty(scheme.text_label) ? scheme.text_label : (not #strings.isEmpty(scheme.label) ? scheme.label : scheme.tag)})];
             [/]
 
-        [# th:if="${not #strings.isEmpty(scheme.link)}"]
-        --color-theme-link: [(${scheme.link})];
+        [# th:if="${not #strings.isEmpty(scheme.text_link) or not #strings.isEmpty(scheme.link)}"]
+        --color-theme-text-link: [(${#strings.isEmpty(scheme.text_link) ? scheme.link : scheme.text_link})];
             [/]
 
         [# th:if="${not #strings.isEmpty(scheme.navigation) or not #strings.isEmpty(scheme.menu)}"]

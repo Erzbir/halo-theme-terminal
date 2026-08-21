@@ -5,7 +5,7 @@
             lightTheme: /*[[${theme.config.color_scheme.light_color_scheme}]]*/ "light",
             customDarkTheme: /*[[${theme.config.color_scheme.custom_dark_scheme}]]*/ "",
             customLightTheme: /*[[${theme.config.color_scheme.custom_light_scheme}]]*/ "",
-            defaultMode: /*[[${theme.config.color_scheme.default_scheme_mode}]]*/ "system",
+            defaultAppearance: /*[[${theme.config.color_scheme.default_appearance}]]*/ "light",
             preferTTL: /*[[${theme.config.general.prefer_ttl ?: 24}]]*/ 24,
             pixelStyle: /*[[${theme.config.global_style.pixel_style}]]*/ false,
             pixelCssHref: /*[[@{/assets/dist/pixel.css?v={version}(version=${theme.spec.version})}]]*/ "",
@@ -153,7 +153,7 @@
 
             function syncThemeMode() {
                 const storedMode = getStoredPreference(storageKeys.themeMode)
-                    || config.defaultMode
+                    || config.defaultAppearance
                     || "system";
 
                 applyTheme(storedMode);
@@ -179,7 +179,7 @@
 
             window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", () => {
                 const mode = getStoredPreference(storageKeys.themeMode)
-                    || config.defaultMode
+                    || config.defaultAppearance
                     || "system";
                 if (mode === "system") {
                     applyTheme("system");

@@ -280,8 +280,8 @@ spec:
       label: 配色
       formSchema:
         - $formkit: select
-          name: default_scheme_mode
-          label: 默认模式
+          name: default_appearance
+          label: 默认外观
           value: "light"
           help: 控制访客首次访问时使用的外观模式
           options:
@@ -392,14 +392,14 @@ spec:
               label: 主文本色
               validation: "required"
             - $formkit: color
-              name: action
-              label: 交互强调色
+              name: accent
+              label: 基础强调色
               validation: "required"
             - $formkit: checkbox
               name: advanced
               label: 高级颜色设置
               value: false
-              help: 开启后可以单独设置辅助文本, 标题, 标签, 导航, 控件, 边框和代码等语义颜色
+              help: 开启后可以基于基础色单独设置文字, 导航, 控件, 边框和代码等语义颜色
             - $formkit: color
               if: "$value.advanced === true"
               key: scheme-text-secondary
@@ -417,19 +417,19 @@ spec:
               label: 反色文字颜色
             - $formkit: color
               if: "$value.advanced === true"
-              key: scheme-heading
-              name: heading
-              label: 标题颜色
+              key: scheme-text-accent
+              name: text_accent
+              label: 强调文字颜色
             - $formkit: color
               if: "$value.advanced === true"
-              key: scheme-label
-              name: label
-              label: 标签颜色
+              key: scheme-text-label
+              name: text_label
+              label: 标签文字颜色
             - $formkit: color
               if: "$value.advanced === true"
-              key: scheme-link
-              name: link
-              label: 链接颜色
+              key: scheme-text-link
+              name: text_link
+              label: 链接文字颜色
             - $formkit: color
               if: "$value.advanced === true"
               key: scheme-navigation

@@ -7,7 +7,7 @@ const APPEARANCE_MODES = ["light", "dark", "system"];
 function getAppearanceMode() {
     const mode = document.documentElement.dataset.themeMode
         || getStoredPreference(PREFERENCE_KEYS.themeMode)
-        || window.TerminalThemeConfig?.defaultMode;
+        || window.TerminalThemeConfig?.defaultAppearance;
 
     return APPEARANCE_MODES.includes(mode) ? mode : "system";
 }

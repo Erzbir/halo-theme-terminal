@@ -76,13 +76,13 @@
 
     &:hover {
       background: transparent;
-      color: var(--color-theme-action);
+      color: var(--color-theme-text-accent);
     }
 
     &.is-active-link,
     .is-active-li > & {
       background: transparent;
-      color: var(--color-theme-action);
+      color: var(--color-theme-text-accent);
       font-weight: bold;
     }
   }
