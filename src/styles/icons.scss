@@ -14,3 +14,16 @@ html[data-pixel-style='false'] .icon-regular {
 html[data-pixel-style='true'] .icon-pixel {
   display: inline;
 }
+
+#appearance-toggle .appearance-icon {
+  display: none;
+}
+
+html[data-pixel-style='false'][data-theme-mode='light'] #appearance-toggle .icon-regular[data-appearance-mode='light'],
+html[data-pixel-style='false'][data-theme-mode='dark'] #appearance-toggle .icon-regular[data-appearance-mode='dark'],
+html[data-pixel-style='false'][data-theme-mode='system'] #appearance-toggle .icon-regular[data-appearance-mode='system'],
+html[data-pixel-style='true'][data-theme-mode='light'] #appearance-toggle .icon-pixel[data-appearance-mode='light'],
+html[data-pixel-style='true'][data-theme-mode='dark'] #appearance-toggle .icon-pixel[data-appearance-mode='dark'],
+html[data-pixel-style='true'][data-theme-mode='system'] #appearance-toggle .icon-pixel[data-appearance-mode='system'] {
+  display: inline;
+}

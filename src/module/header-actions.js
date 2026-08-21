@@ -1,5 +1,34 @@
 import {syncColorSchemePicker} from "./color-scheme-picker.js";
 import {getStoredPreference, PREFERENCE_KEYS, setStoredPreference} from "../utils/theme-preferences.js";
+import {getMessage} from "../utils/messages.js";
+
+const APPEARANCE_MODES = ["light", "dark", "system"];
+
+function getAppearanceMode() {
+    const mode = document.documentElement.dataset.themeMode
+        || getStoredPreference(PREFERENCE_KEYS.themeMode)
+        || window.TerminalThemeConfig?.defaultMode;
+
+    return APPEARANCE_MODES.includes(mode) ? mode : "system";
+}
+
+function syncAppearanceToggle(toggle) {
+    const mode = getAppearanceMode();
+    const fallbackLabels = {
+        light: "Light",
+        dark: "Dark",
+        system: "System"
+    };
+    const currentLabel = getMessage("currentAppearance", "Current appearance");
+    const modeLabel = getMessage(
+        `appearance${mode[0].toUpperCase()}${mode.slice(1)}`,
+        fallbackLabels[mode]
+    );
+    const description = `${currentLabel}: ${modeLabel}`;
+
+    toggle.setAttribute("aria-label", description);
+    toggle.title = description;
+}
 
 function registerSearchButton() {
     const searchButton = document.querySelector('[data-header-action="open-search"]');
@@ -12,16 +41,21 @@ function registerSearchButton() {
     });
 }
 
-function registerThemeToggle() {
-    const toggle = document.getElementById("theme-toggle");
+function registerAppearanceToggle() {
+    const toggle = document.getElementById("appearance-toggle");
     if (!toggle || typeof window.applyTheme !== "function") return;
 
+    syncAppearanceToggle(toggle);
+
     toggle.addEventListener("click", function () {
-        const currentScheme = document.documentElement.dataset.colorScheme;
-        const nextMode = currentScheme === "dark" ? "light" : "dark";
+        const currentMode = getAppearanceMode();
+        const nextMode = APPEARANCE_MODES[
+            (APPEARANCE_MODES.indexOf(currentMode) + 1) % APPEARANCE_MODES.length
+        ];
 
         window.applyTheme(nextMode, {clearColorScheme: true});
         setStoredPreference(PREFERENCE_KEYS.themeMode, nextMode);
+        syncAppearanceToggle(toggle);
         syncColorSchemePicker();
     });
 }
@@ -44,6 +78,6 @@ function registerPixelToggle() {
 
 export function registerHeaderActions() {
     registerSearchButton();
-    registerThemeToggle();
+    registerAppearanceToggle();
     registerPixelToggle();
 }

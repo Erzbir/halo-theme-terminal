@@ -49,6 +49,21 @@ spec:
           value: false
           help: 开启后将默认使用像素风格字体及图标
         - $formkit: checkbox
+          name: search_button_enable
+          label: 展示搜索按钮
+          value: true
+          help: 搜索组件插件可用时在页头展示搜索按钮
+        - $formkit: checkbox
+          name: appearance_switcher_enable
+          label: 展示深浅切换按钮
+          value: true
+          help: 在页头展示浅色, 深色和跟随系统三态切换按钮
+        - $formkit: checkbox
+          name: pixel_style_switcher_enable
+          label: 展示像素化按钮
+          value: true
+          help: 在页头展示像素风格切换按钮
+        - $formkit: checkbox
           name: custom_font_enable
           id: custom_font_enable
           label: 启用自定义字体

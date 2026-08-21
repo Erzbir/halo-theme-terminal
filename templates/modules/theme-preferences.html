@@ -12,6 +12,10 @@
             customCss: /*[[${theme.config.style.custom}]]*/ "",
             messages: {
                 currentColorScheme: /*[[#{header.color_scheme.current}]]*/ "Current color scheme",
+                currentAppearance: /*[[#{header.appearance.current}]]*/ "Current appearance",
+                appearanceLight: /*[[#{header.appearance.light}]]*/ "Light",
+                appearanceDark: /*[[#{header.appearance.dark}]]*/ "Dark",
+                appearanceSystem: /*[[#{header.appearance.system}]]*/ "System",
                 showToc: /*[[#{toc.show}]]*/ "Show table of contents",
                 hideToc: /*[[#{toc.hide}]]*/ "Hide table of contents",
                 networkError: /*[[#{moment.network_error}]]*/ "Network error. Please try again."
@@ -87,12 +91,18 @@
                 return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
             }
 
+            function normalizeThemeMode(mode) {
+                return ["light", "dark", "system"].includes(mode) ? mode : "system";
+            }
+
             function applyTheme(mode, options = {}) {
                 if (options.clearColorScheme) {
                     removeStoredPreference(storageKeys.colorScheme);
                 }
 
-                const actualMode = mode === "system" ? getSystemScheme() : mode;
+                const normalizedMode = normalizeThemeMode(mode);
+                const actualMode = normalizedMode === "system" ? getSystemScheme() : normalizedMode;
+                root.dataset.themeMode = normalizedMode;
                 root.dataset.colorScheme = actualMode;
                 root.dataset.themeColorScheme = getStoredColorScheme() || resolveTheme(actualMode);
             }

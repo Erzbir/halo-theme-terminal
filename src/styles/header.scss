@@ -72,7 +72,7 @@
     }
 
     #color-scheme-trigger,
-    #theme-toggle,
+    #appearance-toggle,
     #search-button,
     #pixel-toggle {
       background-color: transparent;
@@ -82,7 +82,7 @@
       padding: 0;
     }
 
-    #theme-toggle,
+    #appearance-toggle,
     #search-button,
     #pixel-toggle {
       margin-left: calc(var(--size-theme-font) * 0.5);
