@@ -106,14 +106,14 @@
 
 | 设置      | 配置名                                          | 说明                              |
 |---------|----------------------------------------------|---------------------------------|
-| 默认模式    | `color_scheme.default_scheme_mode`           | 可选浅色, 深色或跟随系统                   |
+| 默认外观    | `color_scheme.default_appearance`            | 可选浅色, 深色或跟随系统                   |
 | 浅色方案    | `color_scheme.light_color_scheme`            | 浅色模式使用的内置或自定义配色               |
 | 深色方案    | `color_scheme.dark_color_scheme`             | 深色模式使用的内置或自定义配色               |
 | 自定义方案   | `color_scheme.custom_color_schemes`          | 添加多套自定义配色                        |
 
 浅色或深色方案选择 `custom` 时, 分别通过 `color_scheme.custom_light_scheme` 或
-`color_scheme.custom_dark_scheme` 填写自定义方案 ID. 自定义方案至少需要 ID, 背景色, 主文本色和交互强调色;
-高级颜色设置可以覆盖辅助文字, 标题, 标签, 链接, 导航, 控件, 边框, 选中背景, 光标和代码颜色.
+`color_scheme.custom_dark_scheme` 填写自定义方案 ID. 自定义方案至少需要 ID, 背景色, 主文本色和基础强调色;
+高级颜色设置可以覆盖辅助文字, 强调文字, 标签文字, 链接文字, 导航, 控件, 边框, 选中背景, 光标和代码颜色.
 
 访客配色列表会从页面样式表中自动发现 `html[data-theme-color-scheme='name']` 选择器. 列表中的 `default`
 用于清除访客选择并恢复当前外观模式对应的主题方案, 因此不要将 `default` 用作自定义配色 ID.
@@ -165,7 +165,7 @@
 
 ## 内置配色
 
-| 名称          | 背景色       | 主文本色      | 交互强调色     |
+| 名称          | 背景色       | 主文本色      | 基础强调色     |
 |-------------|-----------|-----------|-----------|
 | `day`       | `#f4f4f4` | `#3e3e3e` | `#003e8a` |
 | `night`     | `#101216` | `#8b949e` | `#6ca4f8` |
@@ -181,7 +181,7 @@
 | `blood`     | `#221f29` | `#ffffff` | `#ff6266` |
 
 `day` 和 `night` 对弱化文字, 标签, 强调边框, 动态光标, 导航和控件使用了额外的语义颜色;
-其他配色默认从主文本色和交互强调色派生这些角色.
+其他配色默认从主文本色和基础强调色派生这些角色.
 
 `ink` 使用 `#5ac8fa` 链接色, `#c1c1c1` 弱化色和 `#1f1f1f` 行内代码背景;
 `paper` 使用 `#406ed2` 链接色, `#595959` 弱化色和 `#ebebeb` 行内代码背景
@@ -198,11 +198,12 @@
 html[data-theme-color-scheme='forest'] {
     --color-theme-background: #0f1a14;
     --color-theme-text: #c7d8cc;
-    --color-theme-action: #68d391;
+    --color-theme-accent: #68d391;
 
     /* Optional semantic colors */
     --color-theme-text-muted: #81a88d;
-    --color-theme-label: #9ae6b4;
+    --color-theme-text-accent: #8fe3a8;
+    --color-theme-text-label: #9ae6b4;
     --color-theme-border-emphasis: #48bb78;
     --color-theme-navigation: #c7d8cc;
     --color-theme-control: #68d391;
@@ -223,7 +224,7 @@ html[data-theme-color-scheme='forest'] {
 html[data-theme-color-scheme='matrix'] {
     --color-theme-background: #07130b;
     --color-theme-text: #7dff9b;
-    --color-theme-action: #39ff68;
+    --color-theme-accent: #39ff68;
 }
 ```
 
@@ -236,16 +237,16 @@ html[data-theme-color-scheme='matrix'] {
 | `--color-theme-text-secondary`   | 摘要, 插件等辅助文字                |
 | `--color-theme-text-muted`       | 时间, 作者, 占位符等弱化文字           |
 | `--color-theme-text-inverse`     | 强调色填充背景上的文字                |
-| `--color-theme-heading`          | 内容标题                       |
-| `--color-theme-label`            | 标签和技术标记                    |
-| `--color-theme-link`             | 普通链接                       |
-| `--color-theme-action`           | 按钮, 焦点和主要交互强调              |
-| `--color-theme-action-muted`     | 中等强度交互强调                   |
-| `--color-theme-action-subtle`    | 低强度交互强调                    |
+| `--color-theme-accent`           | 基础强调色, 用于填充和焦点等强调基础       |
+| `--color-theme-text-accent`      | 标题, 按钮文字等强调文字              |
+| `--color-theme-text-label`       | 标签和技术标记文字                  |
+| `--color-theme-text-link`        | 普通链接文字                     |
+| `--color-theme-accent-muted`     | 中等强度强调色                    |
+| `--color-theme-accent-subtle`    | 低强度强调色                     |
 | `--color-theme-navigation`       | 主导航文字                      |
 | `--color-theme-control`          | 页头控件和 Logo                 |
 | `--color-theme-surface`          | 代码块和组件表面                   |
-| `--color-theme-surface-hover`    | 悬停或激活表面                    |
+| `--color-theme-surface-strong`   | 对比度更高的代码和控件表面             |
 | `--color-theme-border`           | 默认边框                       |
 | `--color-theme-border-muted`     | 低对比度边框                     |
 | `--color-theme-border-accent`    | 交互元素和内容强调边框                |
@@ -257,7 +258,7 @@ html[data-theme-color-scheme='matrix'] {
 | `--color-theme-code-background`  | 行内代码背景                     |
 | `--color-theme-caret`            | 打字效果动态光标                   |
 
-派生颜色使用 CSS `color-mix()`. 自定义配色通常只需要设置背景色, 主文本色和交互强调色;
+派生颜色使用 CSS `color-mix()`. 自定义配色通常只需要设置背景色, 主文本色和基础强调色;
 相同语义在所有配色中保持一致, 只有确实需要不同视觉层级时才覆盖其他语义变量.
 
 ### 常用布局变量
