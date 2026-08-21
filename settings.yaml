@@ -291,54 +291,70 @@ spec:
               label: 背景色
               validation: "required"
             - $formkit: color
-              name: foreground
-              label: 前景色
+              name: text
+              label: 主文本色
               validation: "required"
             - $formkit: color
-              name: accent
-              label: 强调色
+              name: action
+              label: 交互强调色
               validation: "required"
             - $formkit: checkbox
               name: advanced
               label: 高级颜色设置
               value: false
-              help: 开启后可以单独设置标签, 标题, 元信息, 链接和代码等颜色
+              help: 开启后可以单独设置辅助文本, 标题, 标签, 导航, 控件, 边框和代码等语义颜色
             - $formkit: color
               if: "$value.advanced === true"
-              name: foreground_muted
-              label: 次要前景色
+              name: text_secondary
+              label: 辅助文本色
             - $formkit: color
               if: "$value.advanced === true"
-              name: muted
+              name: text_muted
               label: 弱化文字颜色
             - $formkit: color
               if: "$value.advanced === true"
-              name: tag
-              label: 标签颜色
+              name: text_inverse
+              label: 反色文字颜色
             - $formkit: color
               if: "$value.advanced === true"
-              name: title
+              name: heading
               label: 标题颜色
             - $formkit: color
               if: "$value.advanced === true"
-              name: meta
-              label: 元信息颜色
-            - $formkit: color
-              if: "$value.advanced === true"
-              name: framed
-              label: 强调框颜色
-            - $formkit: color
-              if: "$value.advanced === true"
-              name: menu
-              label: 菜单颜色
-            - $formkit: color
-              if: "$value.advanced === true"
-              name: header
-              label: 页头颜色
+              name: label
+              label: 标签颜色
             - $formkit: color
               if: "$value.advanced === true"
               name: link
               label: 链接颜色
+            - $formkit: color
+              if: "$value.advanced === true"
+              name: navigation
+              label: 导航颜色
+            - $formkit: color
+              if: "$value.advanced === true"
+              name: control
+              label: 控件颜色
+            - $formkit: color
+              if: "$value.advanced === true"
+              name: border
+              label: 默认边框颜色
+            - $formkit: color
+              if: "$value.advanced === true"
+              name: border_accent
+              label: 交互边框颜色
+            - $formkit: color
+              if: "$value.advanced === true"
+              name: border_emphasis
+              label: 强调边框颜色
+            - $formkit: color
+              if: "$value.advanced === true"
+              name: selection
+              label: 选中文本背景色
+            - $formkit: color
+              if: "$value.advanced === true"
+              name: caret
+              label: 动态光标颜色
             - $formkit: color
               if: "$value.advanced === true"
               name: code_text

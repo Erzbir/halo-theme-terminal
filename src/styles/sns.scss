@@ -11,7 +11,7 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    color: var(--color-theme-foreground);
+    color: var(--color-theme-text);
     text-decoration: none;
 
     svg {
@@ -25,7 +25,7 @@
   }
 
   .divider {
-    color: var(--color-theme-foreground);
+    color: var(--color-theme-text);
     font-weight: 300;
     user-select: none;
   }

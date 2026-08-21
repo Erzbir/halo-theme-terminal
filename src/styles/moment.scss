@@ -27,14 +27,14 @@
   gap: 0.35em;
   border: none;
   font-size: calc(var(--size-theme-font) * 0.85);
-  color: var(--color-theme-foreground);
+  color: var(--color-theme-text);
 
   &:hover {
     background: none;
   }
 
   &.active {
-    color: var(--color-theme-accent);
+    color: var(--color-theme-action);
   }
 }
 

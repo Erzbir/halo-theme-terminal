@@ -11,7 +11,7 @@
 
     hr {
       position: absolute;
-      background-color: var(--color-theme-accent-muted);
+      background-color: var(--color-theme-action-muted);
       left: 0;
       right: 0;
       width: 100%;
@@ -24,7 +24,7 @@
       margin: 0 auto;
       padding: calc(var(--size-theme-font) * 0.3125) calc(var(--size-theme-font) * 0.625);
       background: var(--color-theme-background);
-      color: var(--color-theme-muted);
+      color: var(--color-theme-text-muted);
       font-size: calc(var(--size-theme-font) * 0.8);
       text-decoration: none;
       letter-spacing: 0.1em;
@@ -72,7 +72,7 @@
       white-space: nowrap;
       overflow: hidden;
       text-decoration: none;
-      color: var(--color-theme-foreground);
+      color: var(--color-theme-text);
 
       @media (max-width: $phone-max-width) {
         width: 100%;

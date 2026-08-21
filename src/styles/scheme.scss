@@ -2,122 +2,127 @@
 
 :root {
   --color-theme-background: #f4f4f4;
-  --color-theme-foreground: #3e3e3e;
-  --color-theme-accent: #003e8a;
-  --color-theme-tag: #07962a;
-  --color-theme-title: #003e8a;
-  --color-theme-meta: #2e6cba;
-  --color-theme-framed: #970b16;
-  --color-theme-menu: #3e3e3e;
-  --color-theme-header: #3e3e3e;
-
-  --color-theme-code-text: var(--color-theme-foreground);
-  --color-theme-code-background: var(--color-theme-surface-hover);
-  --color-theme-link: var(--color-theme-accent);
-  --color-theme-post-link: var(--color-theme-link);
-  --color-theme-muted: var(--color-theme-meta);
-  --color-theme-foreground-muted: color-mix(in srgb, var(--color-theme-foreground) 85%, var(--color-theme-background));
-  --color-theme-accent-muted: color-mix(in srgb, var(--color-theme-accent) 60%, var(--color-theme-background));
-  --color-theme-accent-subtle: color-mix(in srgb, var(--color-theme-accent) 30%, var(--color-theme-background));
-  --color-theme-surface: color-mix(in srgb, var(--color-theme-foreground) 5%, var(--color-theme-background));
-  --color-theme-surface-hover: color-mix(in srgb, var(--color-theme-foreground) 10%, var(--color-theme-background));
-  --color-theme-border-muted: color-mix(in srgb, var(--color-theme-foreground) 18%, var(--color-theme-background));
-  --color-theme-highlight: color-mix(in srgb, var(--color-theme-accent) 45%, var(--color-theme-background));
+  --color-theme-text: #3e3e3e;
+  --color-theme-text-secondary: color-mix(in srgb, var(--color-theme-text) 85%, var(--color-theme-background));
+  --color-theme-text-muted: #2e6cba;
+  --color-theme-text-inverse: var(--color-theme-background);
+  --color-theme-heading: #003e8a;
+  --color-theme-label: #07962a;
+  --color-theme-link: #003e8a;
+  --color-theme-action: #003e8a;
+  --color-theme-action-muted: color-mix(in srgb, var(--color-theme-action) 60%, var(--color-theme-background));
+  --color-theme-action-subtle: color-mix(in srgb, var(--color-theme-action) 30%, var(--color-theme-background));
+  --color-theme-navigation: #3e3e3e;
+  --color-theme-control: #3e3e3e;
+  --color-theme-surface: color-mix(in srgb, var(--color-theme-text) 5%, var(--color-theme-background));
+  --color-theme-surface-hover: color-mix(in srgb, var(--color-theme-text) 10%, var(--color-theme-background));
+  --color-theme-border: var(--color-theme-text);
+  --color-theme-border-muted: color-mix(in srgb, var(--color-theme-text) 18%, var(--color-theme-background));
+  --color-theme-border-accent: var(--color-theme-action);
+  --color-theme-border-emphasis: #970b16;
+  --color-theme-selection: color-mix(in srgb, var(--color-theme-action) 45%, var(--color-theme-background));
   --color-theme-overlay: rgb(0 0 0 / 80%);
-  --color-theme-scrollbar: color-mix(in srgb, var(--color-theme-foreground) 45%, var(--color-theme-background)) transparent;
+  --color-theme-scrollbar: color-mix(in srgb, var(--color-theme-text) 45%, var(--color-theme-background)) transparent;
+  --color-theme-code-text: var(--color-theme-text);
+  --color-theme-code-background: var(--color-theme-surface-hover);
+  --color-theme-caret: #970b16;
 }
 
 html[data-theme-color-scheme] {
-  --color-theme-tag: var(--color-theme-accent);
-  --color-theme-title: var(--color-theme-accent);
-  --color-theme-meta: var(--color-theme-foreground);
-  --color-theme-framed: var(--color-theme-accent);
-  --color-theme-menu: var(--color-theme-accent);
-  --color-theme-header: var(--color-theme-accent);
+  --color-theme-text-muted: var(--color-theme-text);
+  --color-theme-heading: var(--color-theme-action);
+  --color-theme-label: var(--color-theme-action);
+  --color-theme-link: var(--color-theme-action);
+  --color-theme-navigation: var(--color-theme-action);
+  --color-theme-control: var(--color-theme-action);
+  --color-theme-border-emphasis: var(--color-theme-action);
+  --color-theme-caret: var(--color-theme-action);
 }
 
 $color-schemes: (
         "day": (
                 "background": #f4f4f4,
-                "foreground": #3e3e3e,
-                "accent": #003e8a,
-                "tag": #07962a,
-                "meta": #2e6cba,
-                "framed": #970b16,
-                "menu": var(--color-theme-foreground),
-                "header": var(--color-theme-foreground)
+                "text": #3e3e3e,
+                "action": #003e8a,
+                "label": #07962a,
+                "text-muted": #2e6cba,
+                "border-emphasis": #970b16,
+                "caret": #970b16,
+                "navigation": var(--color-theme-text),
+                "control": var(--color-theme-text)
         ),
         "night": (
                 "background": #101216,
-                "foreground": #8b949e,
-                "accent": #6ca4f8,
-                "tag": #56d364,
-                "meta": #6ca4f8,
-                "framed": #f78166,
-                "menu": var(--color-theme-foreground),
-                "header": var(--color-theme-foreground)
+                "text": #8b949e,
+                "action": #6ca4f8,
+                "label": #56d364,
+                "text-muted": #6ca4f8,
+                "border-emphasis": #f78166,
+                "caret": #f78166,
+                "navigation": var(--color-theme-text),
+                "control": var(--color-theme-text)
         ),
         "niello": (
                 "background": #1a170f,
-                "foreground": #eceae5,
-                "accent": #eec35e
+                "text": #eceae5,
+                "action": #eec35e
         ),
         "matrix": (
                 "background": #000000,
-                "foreground": #4eee85,
-                "accent": #4eee85
+                "text": #4eee85,
+                "action": #4eee85
         ),
         "ink": (
                 "background": #121212,
-                "foreground": #C3C3C3,
-                "foreground-muted": #C1C1C1,
-                "accent": #FFFFFF,
+                "text": #C3C3C3,
+                "text-secondary": #C1C1C1,
+                "action": #FFFFFF,
                 "link": #5AC8FA,
-                "muted": #C1C1C1,
+                "text-muted": #C1C1C1,
                 "code-text": #FFFFFF,
                 "code-background": #1F1F1F
         ),
         "paper": (
                 "background": #FFFFFF,
-                "foreground": #1B1B1B,
-                "foreground-muted": #595959,
-                "accent": #000000,
+                "text": #1B1B1B,
+                "text-secondary": #595959,
+                "action": #000000,
                 "link": #406ED2,
-                "muted": #595959,
+                "text-muted": #595959,
                 "code-text": #1B1B1B,
                 "code-background": #EBEBEB
         ),
         "hopbush": (
                 "background": #fff6f6,
-                "foreground": #462d2d,
-                "accent": #cc6099
+                "text": #462d2d,
+                "action": #cc6099
         ),
         "pistachio": (
                 "background": #1d2021,
-                "foreground": #ebdbb2,
-                "accent": #8ec07c
+                "text": #ebdbb2,
+                "action": #8ec07c
         ),
         "blue": (
                 "background": #153489,
-                "foreground": #eceae5,
-                "accent": #5ea5ee
+                "text": #eceae5,
+                "action": #5ea5ee
         ),
         "vanilla": (
                 "background": #fff4f2,
-                "foreground": #424140,
-                "accent": #8f6a5e
+                "text": #424140,
+                "action": #8f6a5e
         ),
         "studio": (
                 "background": #f7f4ff,
-                "foreground": #403352,
-                "accent": #6f49ab
+                "text": #403352,
+                "action": #6f49ab
         ),
         "blood": (
                 "background": #221f29,
-                "foreground": #ffffff,
-                "accent": #ff6266,
-                "meta": var(--color-theme-accent),
-                "menu": var(--color-theme-foreground)
+                "text": #ffffff,
+                "action": #ff6266,
+                "text-muted": var(--color-theme-action),
+                "navigation": var(--color-theme-text)
         )
 );
 
@@ -127,7 +132,7 @@ $color-schemes: (
       --color-theme-#{$role}: #{$color};
     }
 
-    @if map.get($scheme-colors, "foreground") == map.get($scheme-colors, "accent") {
+    @if map.get($scheme-colors, "text") == map.get($scheme-colors, "action") {
       --text-decoration-theme-post-link: underline;
     }
   }

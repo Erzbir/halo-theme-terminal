@@ -17,14 +17,14 @@
     display: inline-flex;
     align-items: center;
     gap: calc(var(--size-theme-font) * 0.35);
-    color: var(--color-theme-meta);
+    color: var(--color-theme-text-muted);
     text-decoration: none;
   }
 
   &-post-desc {
     margin: 0;
     padding: 0;
-    color: var(--color-theme-foreground);
+    color: var(--color-theme-text);
     font-size: calc(var(--size-theme-font) * 0.875);
   }
 }

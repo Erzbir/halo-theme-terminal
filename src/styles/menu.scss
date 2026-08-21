@@ -8,7 +8,7 @@
 
   a {
     text-decoration: none;
-    color: var(--color-theme-menu);
+    color: var(--color-theme-navigation);
   }
 
   @media (max-width: $phone-max-width) {
@@ -93,7 +93,7 @@
     margin-right: 0;
     padding-left: calc(var(--size-theme-font) * 0.3125);
     padding-right: calc(var(--size-theme-font) * 0.3125);
-    color: var(--color-theme-menu);
+    color: var(--color-theme-navigation);
     user-select: none;
     border: none;
     display: inline-flex;
@@ -112,8 +112,8 @@
     flex-direction: column;
     position: absolute;
     background: var(--color-theme-background);
-    color: var(--color-theme-accent);
-    border: calc(var(--size-theme-font) * 0.125) solid var(--color-theme-menu);
+    color: var(--color-theme-action);
+    border: calc(var(--size-theme-font) * 0.125) solid var(--color-theme-border);
     margin: 0;
     padding: calc(var(--size-theme-font) * 0.3125);
     top: calc(var(--size-theme-font) * 1.5625);

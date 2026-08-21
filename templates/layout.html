@@ -85,43 +85,59 @@
         [# th:each="scheme : ${theme.config.style.custom_color_schemes}"]
         html[data-theme-color-scheme="[(${scheme.id})]"] {
             --color-theme-background: [(${scheme.background})];
-            --color-theme-foreground: [(${scheme.foreground})];
-            --color-theme-accent: [(${scheme.accent})];
+            --color-theme-text: [(${#strings.isEmpty(scheme.text) ? scheme.foreground : scheme.text})];
+            --color-theme-action: [(${#strings.isEmpty(scheme.action) ? scheme.accent : scheme.action})];
 
-            [# th:if="${not #strings.isEmpty(scheme.tag)}"]
-        --color-theme-tag: [(${scheme.tag})];
+            [# th:if="${not #strings.isEmpty(scheme.text_secondary) or not #strings.isEmpty(scheme.foreground_muted)}"]
+        --color-theme-text-secondary: [(${#strings.isEmpty(scheme.text_secondary) ? scheme.foreground_muted : scheme.text_secondary})];
             [/]
 
-        [# th:if="${not #strings.isEmpty(scheme.title)}"]
-        --color-theme-title: [(${scheme.title})];
+        [# th:if="${not #strings.isEmpty(scheme.text_muted) or not #strings.isEmpty(scheme.muted) or not #strings.isEmpty(scheme.meta)}"]
+        --color-theme-text-muted: [(${not #strings.isEmpty(scheme.text_muted) ? scheme.text_muted : (not #strings.isEmpty(scheme.muted) ? scheme.muted : scheme.meta)})];
             [/]
 
-        [# th:if="${not #strings.isEmpty(scheme.meta)}"]
-        --color-theme-meta: [(${scheme.meta})];
+        [# th:if="${not #strings.isEmpty(scheme.text_inverse)}"]
+        --color-theme-text-inverse: [(${scheme.text_inverse})];
             [/]
 
-        [# th:if="${not #strings.isEmpty(scheme.framed)}"]
-        --color-theme-framed: [(${scheme.framed})];
+        [# th:if="${not #strings.isEmpty(scheme.heading) or not #strings.isEmpty(scheme.title)}"]
+        --color-theme-heading: [(${#strings.isEmpty(scheme.heading) ? scheme.title : scheme.heading})];
             [/]
 
-        [# th:if="${not #strings.isEmpty(scheme.menu)}"]
-        --color-theme-menu: [(${scheme.menu})];
-            [/]
-
-        [# th:if="${not #strings.isEmpty(scheme.header)}"]
-        --color-theme-header: [(${scheme.header})];
-            [/]
-
-        [# th:if="${not #strings.isEmpty(scheme.foreground_muted)}"]
-        --color-theme-foreground-muted: [(${scheme.foreground_muted})];
+        [# th:if="${not #strings.isEmpty(scheme.label) or not #strings.isEmpty(scheme.tag)}"]
+        --color-theme-label: [(${#strings.isEmpty(scheme.label) ? scheme.tag : scheme.label})];
             [/]
 
         [# th:if="${not #strings.isEmpty(scheme.link)}"]
         --color-theme-link: [(${scheme.link})];
             [/]
 
-        [# th:if="${not #strings.isEmpty(scheme.muted)}"]
-        --color-theme-muted: [(${scheme.muted})];
+        [# th:if="${not #strings.isEmpty(scheme.navigation) or not #strings.isEmpty(scheme.menu)}"]
+        --color-theme-navigation: [(${#strings.isEmpty(scheme.navigation) ? scheme.menu : scheme.navigation})];
+            [/]
+
+        [# th:if="${not #strings.isEmpty(scheme.control) or not #strings.isEmpty(scheme.header)}"]
+        --color-theme-control: [(${#strings.isEmpty(scheme.control) ? scheme.header : scheme.control})];
+            [/]
+
+        [# th:if="${not #strings.isEmpty(scheme.border)}"]
+        --color-theme-border: [(${scheme.border})];
+            [/]
+
+        [# th:if="${not #strings.isEmpty(scheme.border_accent)}"]
+        --color-theme-border-accent: [(${scheme.border_accent})];
+            [/]
+
+        [# th:if="${not #strings.isEmpty(scheme.border_emphasis) or not #strings.isEmpty(scheme.framed)}"]
+        --color-theme-border-emphasis: [(${#strings.isEmpty(scheme.border_emphasis) ? scheme.framed : scheme.border_emphasis})];
+            [/]
+
+        [# th:if="${not #strings.isEmpty(scheme.selection)}"]
+        --color-theme-selection: [(${scheme.selection})];
+            [/]
+
+        [# th:if="${not #strings.isEmpty(scheme.caret) or not #strings.isEmpty(scheme.framed)}"]
+        --color-theme-caret: [(${#strings.isEmpty(scheme.caret) ? scheme.framed : scheme.caret})];
             [/]
 
         [# th:if="${not #strings.isEmpty(scheme.code_text)}"]

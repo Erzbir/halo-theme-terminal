@@ -3,24 +3,24 @@ comment-widget {
   --halo-cw-base-rounded: var(--radius-theme-border) !important;
   --halo-cw-base-font-size: var(--size-theme-font) !important;
 
-  --halo-cw-primary-1-color: var(--color-theme-accent) !important;
-  --halo-cw-primary-2-color: var(--color-theme-accent-muted) !important;
-  --halo-cw-primary-3-color: var(--color-theme-accent-subtle) !important;
+  --halo-cw-primary-1-color: var(--color-theme-action) !important;
+  --halo-cw-primary-2-color: var(--color-theme-action-muted) !important;
+  --halo-cw-primary-3-color: var(--color-theme-action-subtle) !important;
 
-  --halo-cw-text-1-color: var(--color-theme-foreground) !important;
-  --halo-cw-text-2-color: var(--color-theme-foreground-muted) !important;
-  --halo-cw-text-3-color: var(--color-theme-foreground-muted) !important;
+  --halo-cw-text-1-color: var(--color-theme-text) !important;
+  --halo-cw-text-2-color: var(--color-theme-text-secondary) !important;
+  --halo-cw-text-3-color: var(--color-theme-text-secondary) !important;
 
-  --halo-cw-muted-1-color: var(--color-theme-muted) !important;
-  --halo-cw-muted-2-color: var(--color-theme-accent-subtle) !important;
+  --halo-cw-muted-1-color: var(--color-theme-text-muted) !important;
+  --halo-cw-muted-2-color: var(--color-theme-action-subtle) !important;
   --halo-cw-muted-3-color: var(--color-theme-surface) !important;
 
   --halo-cw-emoji-picker-rgb-color: var(--color-theme-background) !important;
-  --halo-cw-emoji-picker-rgb-accent: var(--color-theme-foreground) !important;
+  --halo-cw-emoji-picker-rgb-accent: var(--color-theme-text) !important;
   --halo-cw-emoji-picker-rgb-background: var(--color-theme-background) !important;
-  --halo-cw-emoji-picker-rgb-input: var(--color-theme-foreground) !important;
+  --halo-cw-emoji-picker-rgb-input: var(--color-theme-text) !important;
   --halo-cw-emoji-picker-color-border: var(--color-theme-border-muted) !important;
-  --halo-cw-emoji-picker-color-border-over: var(--color-theme-accent) !important;
+  --halo-cw-emoji-picker-color-border-over: var(--color-theme-border-accent) !important;
 
   // --halo-cw-avatar-rounded:
   // --halo-cw-avatar-size
@@ -29,32 +29,32 @@ comment-widget {
   --halo-comment-widget-base-border-radius: var(--radius-theme-border) !important;
   --halo-comment-widget-base-font-size: var(--size-theme-font) !important;
   --halo-comment-widget-base-line-height: var(--height-theme-line) !important;
-  --halo-comment-widget-base-color: var(--color-theme-foreground) !important;
-  --halo-comment-widget-base-info-color: var(--color-theme-muted) !important;
+  --halo-comment-widget-base-color: var(--color-theme-text) !important;
+  --halo-comment-widget-base-info-color: var(--color-theme-text-muted) !important;
   --halo-comment-widget-component-form-input-bg-color: var(--color-theme-surface) !important;
-  --halo-comment-widget-component-form-input-color: var(--color-theme-foreground) !important;
+  --halo-comment-widget-component-form-input-color: var(--color-theme-text) !important;
   --halo-comment-widget-component-form-input-border-color: var(--color-theme-border-muted) !important;
-  --halo-comment-widget-component-form-input-border-color-focus: var(--color-theme-accent) !important;
-  --halo-comment-widget-component-form-input-box-shadow-focus: var(--color-theme-accent) !important;
+  --halo-comment-widget-component-form-input-border-color-focus: var(--color-theme-border-accent) !important;
+  --halo-comment-widget-component-form-input-box-shadow-focus: var(--color-theme-action) !important;
   --halo-comment-widget-component-form-button-login-bg-color: var(--color-theme-background) !important;
   --halo-comment-widget-component-form-button-login-bg-color-hover: var(--color-theme-surface-hover) !important;
   --halo-comment-widget-component-form-button-login-border-color: var(--color-theme-border-muted) !important;
-  --halo-comment-widget-component-form-button-submit-bg-color: var(--color-theme-accent) !important;
-  --halo-comment-widget-component-form-button-submit-color: var(--color-theme-background) !important;
-  --halo-comment-widget-component-form-button-submit-border-color: var(--color-theme-accent) !important;
-  --halo-comment-widget-component-form-button-submit-border-color-hover: var(--color-theme-accent-muted) !important;
-  --halo-comment-widget-component-form-button-emoji-color: var(--color-theme-accent) !important;
+  --halo-comment-widget-component-form-button-submit-bg-color: var(--color-theme-action) !important;
+  --halo-comment-widget-component-form-button-submit-color: var(--color-theme-text-inverse) !important;
+  --halo-comment-widget-component-form-button-submit-border-color: var(--color-theme-border-accent) !important;
+  --halo-comment-widget-component-form-button-submit-border-color-hover: var(--color-theme-action-muted) !important;
+  --halo-comment-widget-component-form-button-emoji-color: var(--color-theme-action) !important;
   --halo-comment-widget-component-comment-item-action-bg-color-hover: var(--color-theme-surface-hover) !important;
-  --halo-comment-widget-component-comment-item-action-color-hover: var(--color-theme-accent) !important;
+  --halo-comment-widget-component-comment-item-action-color-hover: var(--color-theme-action) !important;
   --halo-comment-widget-component-pagination-button-bg-color-hover: var(--color-theme-surface-hover) !important;
   --halo-comment-widget-component-pagination-button-bg-color-active: var(--color-theme-surface-hover) !important;
-  --halo-comment-widget-component-pagination-button-border-color-active: var(--color-theme-accent) !important;
+  --halo-comment-widget-component-pagination-button-border-color-active: var(--color-theme-border-accent) !important;
   --halo-comment-widget-component-emoji-picker-rgb-color: var(--color-theme-background) !important;
-  --halo-comment-widget-component-emoji-picker-rgb-accent: var(--color-theme-foreground) !important;
+  --halo-comment-widget-component-emoji-picker-rgb-accent: var(--color-theme-text) !important;
   --halo-comment-widget-component-emoji-picker-rgb-background: var(--color-theme-background) !important;
-  --halo-comment-widget-component-emoji-picker-rgb-input: var(--color-theme-foreground) !important;
+  --halo-comment-widget-component-emoji-picker-rgb-input: var(--color-theme-text) !important;
   --halo-comment-widget-component-emoji-picker-color-border: var(--color-theme-border-muted) !important;
-  --halo-comment-widget-component-emoji-picker-color-border-over: var(--color-theme-accent) !important;
+  --halo-comment-widget-component-emoji-picker-color-border-over: var(--color-theme-border-accent) !important;
 }
 
 .comment {

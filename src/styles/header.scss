@@ -35,7 +35,7 @@
       margin: 0;
       padding: 0;
       background: var(--color-theme-background);
-      border: var(--width-theme-border) var(--style-theme-border) var(--color-theme-header);
+      border: var(--width-theme-border) var(--style-theme-border) var(--color-theme-border);
 
       &[hidden] {
         display: none;
@@ -47,10 +47,10 @@
       width: 100%;
       margin: 0;
       padding: calc(var(--size-theme-font) * 0.35) calc(var(--size-theme-font) * 0.4);
-      color: var(--color-theme-header);
+      color: var(--color-theme-control);
       background: var(--color-theme-background);
       border: 0;
-      border-bottom: calc(var(--width-theme-border) / 2) var(--style-theme-border) var(--color-theme-header);
+      border-bottom: calc(var(--width-theme-border) / 2) var(--style-theme-border) var(--color-theme-border);
       border-radius: 0;
       font-size: calc(var(--size-theme-font) * 0.8);
       font-weight: 500;
@@ -65,8 +65,8 @@
 
       &:focus-visible,
       &[aria-selected="true"] {
-        color: var(--color-theme-background);
-        background: var(--color-theme-header);
+        color: var(--color-theme-text-inverse);
+        background: var(--color-theme-control);
         outline: none;
       }
     }
@@ -76,8 +76,8 @@
     #search-button,
     #pixel-toggle {
       background-color: transparent;
-      color: var(--color-theme-header);
-      border: var(--width-theme-border) var(--style-theme-border) var(--color-theme-header);
+      color: var(--color-theme-control);
+      border: var(--width-theme-border) var(--style-theme-border) var(--color-theme-border);
       margin: 0;
       padding: 0;
     }
@@ -96,7 +96,7 @@
 
     &::after {
       content: "";
-      background: repeating-linear-gradient(90deg, var(--color-theme-header), var(--color-theme-header) var(--width-theme-border), transparent 0, transparent calc(var(--size-theme-font) * 0.625));
+      background: repeating-linear-gradient(90deg, var(--color-theme-control), var(--color-theme-control) var(--width-theme-border), transparent 0, transparent calc(var(--size-theme-font) * 0.625));
       display: block;
       width: 100%;
       right: calc(var(--size-theme-font) * 0.625);
@@ -114,8 +114,8 @@
   display: flex;
   align-items: center;
   text-decoration: none;
-  background: var(--color-theme-header);
-  color: var(--color-theme-background);
+  background: var(--color-theme-control);
+  color: var(--color-theme-text-inverse);
   font-weight: 500;
   padding: calc(var(--size-theme-font) * 0.3125) calc(var(--size-theme-font) * 0.625);
 }

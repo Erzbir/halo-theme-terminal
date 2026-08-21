@@ -18,7 +18,7 @@
   flex-direction: column;
   min-width: 0;
   padding: calc(var(--size-theme-font) * 0.875);
-  border: calc(var(--size-theme-font) * 0.0625) var(--style-theme-border) var(--color-theme-framed);
+  border: calc(var(--size-theme-font) * 0.0625) var(--style-theme-border) var(--color-theme-border-emphasis);
 }
 
 .portfolio-card-cover {
@@ -41,7 +41,7 @@
 }
 
 .portfolio-card-label {
-  color: var(--color-theme-tag);
+  color: var(--color-theme-label);
   font-size: calc(var(--size-theme-font) * 0.86);
   line-height: calc(var(--size-theme-font) * 1.4);
 }
@@ -93,7 +93,7 @@
 }
 
 .portfolio-meta .portfolio-term {
-  color: var(--color-theme-accent);
+  color: var(--color-theme-action);
 }
 
 .portfolio-meta .portfolio-term:not(:last-child),
@@ -104,13 +104,13 @@
 
 .portfolio-item .portfolio-tags,
 .portfolio-item .portfolio-tags .portfolio-tag {
-  color: var(--color-theme-tag);
+  color: var(--color-theme-label);
 }
 
 .portfolio-detail-post .portfolio-meta-line,
 .portfolio-detail-post .portfolio-meta-line .portfolio-card-label,
 .portfolio-detail-post .portfolio-meta-line .portfolio-tag {
-  color: var(--color-theme-meta);
+  color: var(--color-theme-text-muted);
 }
 
 .portfolio-detail-post .portfolio-meta-line.post-meta {
@@ -119,11 +119,11 @@
 
 .portfolio-detail-post .portfolio-techs,
 .portfolio-detail-post .portfolio-techs .portfolio-term {
-  color: var(--color-theme-accent);
+  color: var(--color-theme-action);
 }
 
 .portfolio-item .post-excerpt {
-  color: var(--color-theme-foreground);
+  color: var(--color-theme-text);
   font-size: calc(var(--size-theme-font) * 0.86);
   line-height: calc(var(--size-theme-font) * 1.55);
   margin-top: calc(var(--size-theme-font) * 0.625);
@@ -143,22 +143,22 @@
 }
 
 .portfolio-action {
-  color: var(--color-theme-accent);
+  color: var(--color-theme-action);
   font-size: calc(var(--size-theme-font) * 0.92);
 }
 
 .portfolio-action::before {
   content: "[ ";
-  color: var(--color-theme-accent);
+  color: var(--color-theme-action);
 }
 
 .portfolio-action::after {
   content: " ]";
-  color: var(--color-theme-accent);
+  color: var(--color-theme-action);
 }
 
 .portfolio-empty {
-  color: var(--color-theme-muted);
+  color: var(--color-theme-text-muted);
 }
 
 .portfolio-detail-nav {
@@ -173,7 +173,7 @@
 }
 
 .portfolio-detail-summary {
-  color: var(--color-theme-foreground);
+  color: var(--color-theme-text);
 }
 
 .portfolio-detail-section {
@@ -196,7 +196,7 @@
 }
 
 .portfolio-link-url {
-  color: var(--color-theme-muted);
+  color: var(--color-theme-text-muted);
   font-size: calc(var(--size-theme-font) * 0.9);
   overflow: hidden;
   text-overflow: ellipsis;

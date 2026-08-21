@@ -5,7 +5,7 @@
 }
 
 .framed {
-  border: calc(var(--size-theme-font) * 0.0625) var(--style-theme-border) var(--color-theme-framed);
+  border: calc(var(--size-theme-font) * 0.0625) var(--style-theme-border) var(--color-theme-border-emphasis);
   padding: calc(var(--size-theme-font) * 1.25);
 }
 
@@ -30,19 +30,19 @@
 .post-meta {
   font-size: calc(var(--size-theme-font) * 0.96);
   margin-bottom: calc(var(--size-theme-font) * 0.3125);
-  color: var(--color-theme-meta);
+  color: var(--color-theme-text-muted);
 }
 
 .post-meta > *:not(:first-child):not(:empty)::before {
   content: var(--content-theme-post-meta-divider);
-  color: var(--color-theme-meta);
+  color: var(--color-theme-text-muted);
   display: inline-block;
   margin-right: 1ch;
 }
 
 .post-title {
   position: relative;
-  color: var(--color-theme-title);
+  color: var(--color-theme-heading);
   margin-top: 0;
   margin-bottom: calc(var(--size-theme-font) * 0.9375);
   padding-bottom: calc(var(--size-theme-font) * 0.9375);
@@ -68,16 +68,16 @@
   bottom: calc(var(--size-theme-font) * 0.01);
   display: block;
   width: 100%;
-  border-bottom: calc(var(--size-theme-font) * 0.125) var(--style-theme-title-divider) var(--color-theme-accent);
+  border-bottom: calc(var(--size-theme-font) * 0.125) var(--style-theme-title-divider) var(--color-theme-border-accent);
 }
 
 .post-title a {
   text-decoration: none;
-  color: var(--color-theme-title);
+  color: var(--color-theme-heading);
 }
 
 .post-time {
-  color: var(--color-theme-foreground);
+  color: var(--color-theme-text);
 }
 
 .post-meta > .post-time {
@@ -87,11 +87,11 @@
 .post-tags {
   margin-bottom: calc(var(--size-theme-font) * 0.3125);
   font-size: inherit;
-  color: var(--color-theme-tag);
+  color: var(--color-theme-label);
 }
 
 .post-tag {
-  color: var(--color-theme-tag);
+  color: var(--color-theme-label);
 
   a {
     color: inherit;
@@ -125,7 +125,7 @@
 }
 
 .post-body a {
-  color: var(--color-theme-post-link);
+  color: var(--color-theme-link);
   text-decoration: var(--text-decoration-theme-post-link);
 }
 
@@ -157,7 +157,7 @@
 
 .hanchor {
   position: absolute;
-  color: var(--color-theme-accent);
+  color: var(--color-theme-action);
   text-decoration: none;
   margin-left: calc(var(--size-theme-font) * 0.625);
   visibility: hidden;
@@ -173,7 +173,7 @@ h6:hover .hanchor {
 }
 
 .footnotes {
-  color: var(--color-theme-muted);
+  color: var(--color-theme-text-muted);
 }
 
 .footnotes hr {
