@@ -7,13 +7,12 @@
 ## 功能
 
 - Terminal 风格的响应式页面布局
-- 深色, 浅色和跟随系统 3 种默认模式
-- 12 套内置配色
-- 访客配色选择器
+- 浅色, 深色和跟随系统 3 种外观模式, 页头按钮会显示太阳, 月亮或圆圈图标
+- 12 套内置配色和多套自定义配色
+- 可分别控制页头的搜索, 配色选择, 外观切换和像素化按钮
 - 常规图标和像素图标切换
-- 内置 JetBrains Mono, Hack 字体, 可切换
-- 可设置为访问者系统字体
-- 自定义字体
+- 内置 JetBrains Mono, Hack 和 Fira Code 字体, 也可使用访客系统字体
+- 支持多字体 fallback, PostScript Name 本地匹配和高级 `@font-face` 配置
 - 基础行高, 文章段落间距和文章元信息分隔符配置
 - 首页公告打字效果
 - 文章目录和目录展开状态配置
@@ -42,66 +41,97 @@
 | 朋友圈       | `templates/friends.html`, 需要朋友圈插件                                      |
 | 瞬间        | `templates/moments.html`, 需要瞬间插件                                       |
 | 项目作品集     | `templates/portfolio.html`, `templates/portfolio-detail.html`, 需要作品集插件 |
-| 搜索        | 启用搜索组件时页头显示搜索按钮                                                        |
+| 搜索        | 搜索组件可用且开启页头搜索按钮时显示                                                       |
 | 评论        | 启用评论插件并开启评论功能时显示评论组件                                                   |
 | 错误页       | 提供 `404`, `5xx` 和通用错误模板                                                |
 
 ## 主题设置
 
-### 基本设置
+### 通用设置
 
-| 设置      | 配置名                 | 说明                   |
-|---------|---------------------|----------------------|
-| Logo 文本 | `basic.logo`        | 留空时使用 Halo 站点标题      |
-| 启用 PJAX | `basic.pjax_enable` | 默认关闭, 开启后站内链接只更新主要内容 |
+| 设置       | 配置名                                              | 说明                                      |
+|----------|--------------------------------------------------|-----------------------------------------|
+| 时间格式     | `general.time_style`, `general.custom_time_style` | 支持预设格式或自定义 Java 时间格式字符串                  |
+| 偏好有效期    | `general.prefer_ttl`                             | 访客偏好的保存小时数, `0` 表示永久保存                   |
+| PJAX     | `general.pjax_enable`                            | 默认关闭, 开启后站内链接只更新主要内容                    |
 
-### 布局和样式
+访客手动选择的外观模式, 配色和像素风格会保存在浏览器的 `localStorage` 中. 默认有效期为 24 小时,
+偏好过期后会在下次访问时恢复主题默认值. 已有但没有过期时间的偏好会在升级后的首次访问时开始计算有效期.
 
-| 设置       | 配置名                                                    | 说明                                                |
-|----------|--------------------------------------------------------|---------------------------------------------------|
-| 全屏布局     | `style.fullscreen_layout`                              | 隐藏两侧占位区域, 正文使用全部可用宽度                              |
-| 正文最大宽度   | `style.max_width`                                      | 接受 `960px`, `80vw` 等 CSS 长度                       |
-| 正文内边距    | `style.content_padding`                                | 同时控制桌面端和移动端正文内边距                                  |
-| 正文媒体最大宽度 | `style.media_max_width`                                | 全屏布局中控制图片, 视频和 `figure` 宽度                        |
-| 表格铺满正文   | `style.table_full_width`                               | 让正文中的表格宽度为 `100%`                                 |
-| 基础字体大小   | `style.font_size`                                      | 接受 `16px`, `1rem` 等 CSS 长度                        |
-| 基础行高     | `style.line_height`                                    | 接受 `28px`, `1.75rem` 或 `calc(...)` 等 CSS 长度       |
-| 文章段落间距   | `style.post_paragraph_spacing`                         | 控制文章正文段落的上下间距                                     |
-| 元信息分隔符   | `style.post_meta_divider`                              | 控制文章时间, 作者和标签等元信息之间的分隔符                           |
-| 默认像素风格   | `style.pixel_style`                                    | 使用像素字体和像素图标                                       |
-| 自定义字体    | `style.custom_font_enable`                             | 上传字体文件并填写字体内部名称                                   |
-| 无序列表标记   | `style.list_marker`                                    | 可选 `-`, `*`, `+`, `>` 或默认标记                       |
-| 通用边线     | `style.border_width`, `style.border_style`             | 控制通用边线宽度和样式                                       |
-| 表格边线     | `style.table_border_width`, `style.table_border_style` | 控制表格边线宽度和样式                                       |
-| 标题分隔线    | `style.title_divider_style`                            | 可选 `solid`, `dashed`, `dotted`, `double` 或 `none` |
-| 时间格式     | `style.time_style`                                     | 支持预设格式或 Java 时间格式字符串                              |
-| 自定义 CSS  | `style.custom`                                         | 将 CSS 写入页面 `<head>` 中的 `<style>` 标签               |
+### 页头
+
+| 设置       | 配置名                                          | 说明                              |
+|----------|----------------------------------------------|---------------------------------|
+| Logo 文本  | `header.logo`                                | 留空时使用 Halo 站点标题                |
+| 搜索按钮     | `header.search_button_enable`                | 搜索组件插件可用时展示                    |
+| 配色切换按钮   | `header.color_scheme_switcher_enable`        | 展示自动发现的配色列表                    |
+| 深浅切换按钮   | `header.appearance_switcher_enable`          | 在浅色, 深色和跟随系统之间循环              |
+| 像素化按钮    | `header.pixel_style_switcher_enable`         | 切换像素字体和像素图标                    |
+
+外观切换顺序为 `浅色 -> 深色 -> 跟随系统`; 图标依次为太阳, 月亮和圆圈. 切换外观模式时会清除访客单独选择的配色,
+让浅色和深色模式重新使用主题设置中对应的方案.
+
+### 字体与排版
+
+| 设置       | 配置名                                  | 说明                                      |
+|----------|--------------------------------------|-----------------------------------------|
+| 默认字体     | `typography.default_font`            | 系统字体, JetBrains Mono, Hack 或 Fira Code |
+| 自定义字体    | `typography.custom_font_enable`       | 启用自定义字体列表                              |
+| 字体列表     | `typography.custom_fonts`             | 按顺序组成字体 fallback                         |
+| 字体大小     | `typography.font_size`                | 接受 `16px`, `1rem` 等 CSS 长度               |
+| 行高       | `typography.line_height`              | 接受 CSS 长度或 `calc(...)`                    |
+| 段落间距     | `typography.post_paragraph_spacing`   | 控制文章正文段落的上下间距                         |
+
+每项自定义字体可以填写字体名称, PostScript Name, 字体文件和格式. 浏览器会先用 PostScript Name
+匹配本地字体, 未命中时再加载文件. 高级设置支持字重, 样式, Unicode 范围, 显示策略, OpenType 特性,
+可变字体轴和字体度量覆盖等 `@font-face` 描述符.
 
 字体优先级如下:
 
 1. 开启像素风格时使用内置 `Fusion Pixel 12px Prop zh_hans`
-2. 未开启像素风格且开启系统字体时使用 `system-ui`
-3. 启用自定义字体且未开启系统字体时使用上传的字体
-4. 其他情况使用内置 `JetBrains Mono`
+2. 未开启像素风格且启用自定义字体时, 按自定义字体列表顺序组成 fallback
+3. 其他情况使用“默认字体”中选择的内置字体或 `system-ui`
 
-访客手动选择的模式, 配色和像素风格会保存在浏览器的 `localStorage` 中. 默认有效期为 24 小时,
-可通过 `style.prefer_ttl` 调整，设为 `0` 时永久保存. 偏好过期后会在下次访问时恢复默认值,
-已有偏好数据会在升级后的首次访问时开始计算有效期
+### 布局
 
-### 配色设置
+| 设置       | 配置名                         | 说明                              |
+|----------|-----------------------------|---------------------------------|
+| 全屏布局     | `layout.fullscreen_layout`  | 正文使用全部可用宽度                     |
+| 正文最大宽度   | `layout.max_width`          | 接受 `960px`, `80vw` 等 CSS 长度      |
+| 正文内边距    | `layout.content_padding`    | 同时控制桌面端和移动端正文内边距              |
+| 媒体最大宽度   | `layout.media_max_width`    | 全屏布局中控制图片, 视频和 `figure` 宽度    |
+| 表格铺满正文   | `layout.table_full_width`   | 让正文中的表格宽度为 `100%`              |
 
-| 设置      | 配置名                                  | 说明                          |
-|---------|--------------------------------------|-----------------------------|
-| 默认配色模式  | `style.default_scheme_mode`          | 可选深色, 浅色或跟随系统               |
-| 访客偏好有效期 | `style.prefer_ttl`                   | 模式, 配色和像素风格的保存小时数, `0` 表示永久 |
-| 访客配色切换  | `style.color_scheme_switcher_enable` | 在页头显示可用配色列表                 |
-| 深色配色    | `style.dark_color_scheme`            | 深色模式使用的内置或自定义配色             |
-| 浅色配色    | `style.light_color_scheme`           | 浅色模式使用的内置或自定义配色             |
-| 自定义深色名称 | `style.custom_dark`                  | 深色配色选择 `custom` 时填写         |
-| 自定义浅色名称 | `style.custom_light`                 | 浅色配色选择 `custom` 时填写         |
+### 配色
 
-访客配色列表会从页面样式表中自动发现 `html[data-theme-color-scheme='name']` 选择器, 列表中的 `default` 用于清除访客选择并恢复主题设置,
-因此不要将 `default` 用作自定义配色名称
+| 设置      | 配置名                                          | 说明                              |
+|---------|----------------------------------------------|---------------------------------|
+| 默认模式    | `color_scheme.default_scheme_mode`           | 可选浅色, 深色或跟随系统                   |
+| 浅色方案    | `color_scheme.light_color_scheme`            | 浅色模式使用的内置或自定义配色               |
+| 深色方案    | `color_scheme.dark_color_scheme`             | 深色模式使用的内置或自定义配色               |
+| 自定义方案   | `color_scheme.custom_color_schemes`          | 添加多套自定义配色                        |
+
+浅色或深色方案选择 `custom` 时, 分别通过 `color_scheme.custom_light_scheme` 或
+`color_scheme.custom_dark_scheme` 填写自定义方案 ID. 自定义方案至少需要 ID, 背景色, 主文本色和交互强调色;
+高级颜色设置可以覆盖辅助文字, 标题, 标签, 链接, 导航, 控件, 边框, 选中背景, 光标和代码颜色.
+
+访客配色列表会从页面样式表中自动发现 `html[data-theme-color-scheme='name']` 选择器. 列表中的 `default`
+用于清除访客选择并恢复当前外观模式对应的主题方案, 因此不要将 `default` 用作自定义配色 ID.
+
+### 全局样式
+
+| 设置       | 配置名                                                        | 说明                                                |
+|----------|------------------------------------------------------------|---------------------------------------------------|
+| 默认像素风格   | `global_style.pixel_style`                                 | 使用像素字体和像素图标                                       |
+| 列表标记     | `global_style.list_style`                                  | 接受 CSS `list-style` 值                               |
+| 通用边线     | `global_style.border_width`, `global_style.border_style`   | 控制通用边线宽度和样式                                       |
+| 表格边线     | `global_style.table_border_width`, `global_style.table_border_style` | 控制表格边线宽度和样式                              |
+| 标题分隔线    | `global_style.title_divider_style`                         | 可选 `solid`, `dashed`, `dotted`, `double` 或 `none` |
+| 元信息分隔符   | `global_style.post_meta_divider`                           | 控制时间, 作者和标签等元信息之间的分隔符                           |
+
+### 高级设置
+
+`advanced.custom` 用于填写自定义 CSS. 内容会写入页面 `<head>` 中并在主题主样式之后生效.
 
 ### 页面设置
 
@@ -135,7 +165,7 @@
 
 ## 内置配色
 
-| 名称          | 背景色       | 前景色       | 强调色       |
+| 名称          | 背景色       | 主文本色      | 交互强调色     |
 |-------------|-----------|-----------|-----------|
 | `day`       | `#f4f4f4` | `#3e3e3e` | `#003e8a` |
 | `night`     | `#101216` | `#8b949e` | `#6ca4f8` |
@@ -150,80 +180,85 @@
 | `studio`    | `#f7f4ff` | `#403352` | `#6f49ab` |
 | `blood`     | `#221f29` | `#ffffff` | `#ff6266` |
 
-`day` 和 `night` 对标签, 元信息, 边框, 菜单和页头使用了额外的语义颜色, 其他配色默认从前景色和强调色派生这些颜色
+`day` 和 `night` 对弱化文字, 标签, 强调边框, 动态光标, 导航和控件使用了额外的语义颜色;
+其他配色默认从主文本色和交互强调色派生这些角色.
 
 `ink` 使用 `#5ac8fa` 链接色, `#c1c1c1` 弱化色和 `#1f1f1f` 行内代码背景;
 `paper` 使用 `#406ed2` 链接色, `#595959` 弱化色和 `#ebebeb` 行内代码背景
 
 ## 自定义 CSS
 
-在主题设置的 `全局样式 -> 自定义样式` 中填写原始 CSS, 自定义内容在主题主样式之后加载, 可以覆盖内置规则
+在主题设置的 `高级设置 -> 自定义 CSS` 中填写原始 CSS. 自定义内容在主题主样式之后加载, 可以覆盖内置规则.
 
 ### 新增自定义配色
 
 下面的示例增加名为 `forest` 的配色:
 
 ```css
-html[-data-theme-color-scheme='forest'] {
+html[data-theme-color-scheme='forest'] {
     --color-theme-background: #0f1a14;
-    --color-theme-foreground: #c7d8cc;
-    --color-theme-accent: #68d391;
+    --color-theme-text: #c7d8cc;
+    --color-theme-action: #68d391;
 
     /* Optional semantic colors */
-    --color-theme-tag: #9ae6b4;
-    --color-theme-meta: #81a88d;
-    --color-theme-framed: #48bb78;
-    --color-theme-menu: #c7d8cc;
-    --color-theme-header: #68d391;
+    --color-theme-text-muted: #81a88d;
+    --color-theme-label: #9ae6b4;
+    --color-theme-border-emphasis: #48bb78;
+    --color-theme-navigation: #c7d8cc;
+    --color-theme-control: #68d391;
+    --color-theme-caret: #48bb78;
 }
 ```
 
 保存后可以使用以下任一方式启用:
 
-1. 在 `深色配色方案` 或 `浅色配色方案` 中选择 `custom`, 再填写名称 `forest`
-2. 开启 `启用访客配色切换`, 然后由访客在页头选择 `forest`
+1. 在 `深色方案` 或 `浅色方案` 中选择 `custom`, 再填写 ID `forest`
+2. 开启 `展示配色切换按钮`, 然后由访客在页头选择 `forest`
 
 ### 覆盖内置配色
 
 直接使用内置配色名称即可覆盖对应变量:
 
 ```css
-html[-data-theme-color-scheme='matrix'] {
+html[data-theme-color-scheme='matrix'] {
     --color-theme-background: #07130b;
-    --color-theme-foreground: #7dff9b;
-    --color-theme-accent: #39ff68;
+    --color-theme-text: #7dff9b;
+    --color-theme-action: #39ff68;
 }
 ```
 
 ### 常用颜色变量
 
-| 变量                               | 用途            |
-|----------------------------------|---------------|
-| `--color-theme-background`       | 页面背景          |
-| `--color-theme-foreground`       | 正文和主要文本       |
-| `--color-theme-accent`           | 链接, 按钮和主要强调元素 |
-| `--color-theme-tag`              | 文章标签          |
-| `--color-theme-title`            | 文章标题          |
-| `--color-theme-meta`             | 时间, 作者和其他元信息  |
-| `--color-theme-framed`           | 公告框和强调边框      |
-| `--color-theme-menu`             | 导航菜单          |
-| `--color-theme-header`           | 页头文字和边框       |
-| `--color-theme-code-text`        | 行内代码和代码块文字    |
-| `--color-theme-code-background`  | 行内代码背景        |
-| `--color-theme-link`             | 链接            |
-| `--color-theme-post-link`        | 文章和页面正文链接     |
-| `--color-theme-muted`            | 次要文字          |
-| `--color-theme-foreground-muted` | 弱化前景色         |
-| `--color-theme-accent-muted`     | 弱化强调色         |
-| `--color-theme-accent-subtle`    | 低对比度强调色       |
-| `--color-theme-surface`          | 代码块和组件表面      |
-| `--color-theme-surface-hover`    | 组件悬停表面        |
-| `--color-theme-border-muted`     | 低对比度边框        |
-| `--color-theme-highlight`        | 高亮文本背景        |
-| `--color-theme-overlay`          | 遮罩层           |
-| `--color-theme-scrollbar`        | 滚动条           |
+| 变量                               | 用途                         |
+|----------------------------------|----------------------------|
+| `--color-theme-background`       | 页面和基础背景                    |
+| `--color-theme-text`             | 正文和主要文字                    |
+| `--color-theme-text-secondary`   | 摘要, 插件等辅助文字                |
+| `--color-theme-text-muted`       | 时间, 作者, 占位符等弱化文字           |
+| `--color-theme-text-inverse`     | 强调色填充背景上的文字                |
+| `--color-theme-heading`          | 内容标题                       |
+| `--color-theme-label`            | 标签和技术标记                    |
+| `--color-theme-link`             | 普通链接                       |
+| `--color-theme-action`           | 按钮, 焦点和主要交互强调              |
+| `--color-theme-action-muted`     | 中等强度交互强调                   |
+| `--color-theme-action-subtle`    | 低强度交互强调                    |
+| `--color-theme-navigation`       | 主导航文字                      |
+| `--color-theme-control`          | 页头控件和 Logo                 |
+| `--color-theme-surface`          | 代码块和组件表面                   |
+| `--color-theme-surface-hover`    | 悬停或激活表面                    |
+| `--color-theme-border`           | 默认边框                       |
+| `--color-theme-border-muted`     | 低对比度边框                     |
+| `--color-theme-border-accent`    | 交互元素和内容强调边框                |
+| `--color-theme-border-emphasis`  | 公告框, 作品卡片等强调边框              |
+| `--color-theme-selection`        | 选中文字的背景                    |
+| `--color-theme-overlay`          | 模态遮罩层                      |
+| `--color-theme-scrollbar`        | 滚动条                        |
+| `--color-theme-code-text`        | 行内代码和代码块文字                 |
+| `--color-theme-code-background`  | 行内代码背景                     |
+| `--color-theme-caret`            | 打字效果动态光标                   |
 
-派生颜色使用 CSS `color-mix()`, 自定义配色通常只需要设置背景色, 前景色和强调色, 其余变量可以按需要覆盖
+派生颜色使用 CSS `color-mix()`. 自定义配色通常只需要设置背景色, 主文本色和交互强调色;
+相同语义在所有配色中保持一致, 只有确实需要不同视觉层级时才覆盖其他语义变量.
 
 ### 常用布局变量
 
@@ -234,7 +269,7 @@ html[-data-theme-color-scheme='matrix'] {
 | `--spacing-theme-post-paragraph`           | `calc(var(--size-theme-font) * 1.25)`   |
 | `--content-theme-post-meta-divider`        | `"::"`                                  |
 | `--family-theme-font`                      | `'JetBrains Mono'`                      |
-| `--list-theme-type`                        | `disc`                                  |
+| `--list-theme-style`                       | `disc`                                  |
 | `--width-theme-border`                     | `calc(var(--size-theme-font) * 0.125)`  |
 | `--width-theme-table-border`               | `calc(var(--size-theme-font) * 0.0625)` |
 | `--width-theme-media-max`                  | `60%`                                   |
@@ -253,7 +288,7 @@ html[-data-theme-color-scheme='matrix'] {
 修改特定配色下的字体:
 
 ```css
-html[-data-theme-color-scheme='matrix'] {
+html[data-theme-color-scheme='matrix'] {
     --family-theme-font: system-ui;
 }
 ```
