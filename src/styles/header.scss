@@ -35,7 +35,7 @@
       margin: 0;
       padding: 0;
       background: var(--color-theme-background);
-      border: var(--width-theme-border) var(--style-theme-border) var(--color-theme-border);
+      border: var(--width-theme-border) var(--style-theme-border) var(--color-theme-control);
 
       &[hidden] {
         display: none;
@@ -50,7 +50,7 @@
       color: var(--color-theme-control);
       background: var(--color-theme-background);
       border: 0;
-      border-bottom: calc(var(--width-theme-border) / 2) var(--style-theme-border) var(--color-theme-border);
+      border-bottom: calc(var(--width-theme-border) / 2) var(--style-theme-border) var(--color-theme-control);
       border-radius: 0;
       font-size: calc(var(--size-theme-font) * 0.8);
       font-weight: 500;
@@ -77,7 +77,7 @@
     #pixel-toggle {
       background-color: transparent;
       color: var(--color-theme-control);
-      border: var(--width-theme-border) var(--style-theme-border) var(--color-theme-border);
+      border: var(--width-theme-border) var(--style-theme-border) var(--color-theme-control);
       margin: 0;
       padding: 0;
     }
