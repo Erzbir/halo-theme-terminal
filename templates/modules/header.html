@@ -9,13 +9,17 @@
             </a>
         </div>
         <button
-                id="search-button"
-                th:with="regularIcon=${theme.config.header.search_icon != null ? theme.config.header.search_icon.value : null},
-                         pixelIcon=${theme.config.header.search_pixel_icon != null ? theme.config.header.search_pixel_icon.value : null}"
+                th:each="button, buttonStat : ${theme.config.header.buttons}"
+                th:id="|search-button-${buttonStat.index}|"
+                class="header-action-button search-button"
+                th:with="buttonOptions=${button.options},
+                         regularIcon=${buttonOptions?.iconify?.value},
+                         pixelIcon=${buttonOptions?.pixel_iconify?.value}"
                 th:attr="aria-label=#{header.search.open}"
+                th:style="|order: ${buttonStat.index}|"
                 type="button"
                 data-header-action="open-search"
-                th:if="${theme.config.header.search_button_enable != false and pluginFinder.available('PluginSearchWidget')}">
+                th:if="${button.value == 'search' and pluginFinder.available('PluginSearchWidget')}">
             <span class="icon-regular button-icon" aria-hidden="true">
                 <th:block th:if="${not #strings.isEmpty(regularIcon) or not #strings.isEmpty(pixelIcon)}"
                           th:utext="${not #strings.isEmpty(regularIcon) ? regularIcon : pixelIcon}"></th:block>
@@ -38,19 +42,21 @@
             </span>
         </button>
         <div
-                id="color-scheme-picker"
+                th:each="button, buttonStat : ${theme.config.header.buttons}"
+                th:id="|color-scheme-picker-${buttonStat.index}|"
                 class="color-scheme-picker"
-                th:if="${theme.config.header.color_scheme_switcher_enable == true}">
+                th:with="buttonOptions=${button.options},
+                         regularIcon=${buttonOptions?.iconify?.value},
+                         pixelIcon=${buttonOptions?.pixel_iconify?.value}"
+                th:style="|order: ${buttonStat.index}|"
+                th:if="${button.value == 'color_scheme'}">
             <button
-                    id="color-scheme-trigger"
                     class="color-scheme-trigger"
-                    th:with="regularIcon=${theme.config.header.color_scheme_icon != null ? theme.config.header.color_scheme_icon.value : null},
-                             pixelIcon=${theme.config.header.color_scheme_pixel_icon != null ? theme.config.header.color_scheme_pixel_icon.value : null}"
                     type="button"
-                    th:attr="aria-label=#{header.color_scheme.open}"
+                    th:attr="aria-label=#{header.color_scheme.open},
+                             aria-controls=|color-scheme-menu-${buttonStat.index}|"
                     aria-haspopup="listbox"
-                    aria-expanded="false"
-                    aria-controls="color-scheme-menu">
+                    aria-expanded="false">
                 <span class="icon-regular button-icon" aria-hidden="true">
                     <th:block th:if="${not #strings.isEmpty(regularIcon) or not #strings.isEmpty(pixelIcon)}"
                               th:utext="${not #strings.isEmpty(regularIcon) ? regularIcon : pixelIcon}"></th:block>
@@ -69,7 +75,7 @@
                 </span>
             </button>
             <div
-                    id="color-scheme-menu"
+                    th:id="|color-scheme-menu-${buttonStat.index}|"
                     class="color-scheme-menu"
                     role="listbox"
                     th:attr="aria-label=#{header.color_scheme.list}"
@@ -85,15 +91,19 @@
             </div>
         </div>
         <button
-                id="appearance-toggle"
-                th:with="lightRegularIcon=${theme.config.header.appearance_light_icon != null ? theme.config.header.appearance_light_icon.value : null},
-                         lightPixelIcon=${theme.config.header.appearance_light_pixel_icon != null ? theme.config.header.appearance_light_pixel_icon.value : null},
-                         darkRegularIcon=${theme.config.header.appearance_dark_icon != null ? theme.config.header.appearance_dark_icon.value : null},
-                         darkPixelIcon=${theme.config.header.appearance_dark_pixel_icon != null ? theme.config.header.appearance_dark_pixel_icon.value : null},
-                         systemRegularIcon=${theme.config.header.appearance_system_icon != null ? theme.config.header.appearance_system_icon.value : null},
-                         systemPixelIcon=${theme.config.header.appearance_system_pixel_icon != null ? theme.config.header.appearance_system_pixel_icon.value : null}"
+                th:each="button, buttonStat : ${theme.config.header.buttons}"
+                th:id="|appearance-toggle-${buttonStat.index}|"
+                class="header-action-button appearance-toggle"
+                th:with="buttonOptions=${button.options},
+                         lightRegularIcon=${buttonOptions?.light_iconify?.value},
+                         lightPixelIcon=${buttonOptions?.light_pixel_iconify?.value},
+                         darkRegularIcon=${buttonOptions?.dark_iconify?.value},
+                         darkPixelIcon=${buttonOptions?.dark_pixel_iconify?.value},
+                         systemRegularIcon=${buttonOptions?.system_iconify?.value},
+                         systemPixelIcon=${buttonOptions?.system_pixel_iconify?.value}"
                 th:attr="aria-label=#{header.appearance.current}"
-                th:if="${theme.config.header.appearance_switcher_enable != false}"
+                th:style="|order: ${buttonStat.index}|"
+                th:if="${button.value == 'appearance'}"
                 type="button">
             <span class="appearance-icon icon-regular button-icon" data-appearance-mode="light" aria-hidden="true">
                 <th:block th:if="${not #strings.isEmpty(lightRegularIcon) or not #strings.isEmpty(lightPixelIcon)}"
@@ -145,11 +155,15 @@
             </span>
         </button>
         <button
-                id="pixel-toggle"
-                th:with="regularIcon=${theme.config.header.pixel_style_icon != null ? theme.config.header.pixel_style_icon.value : null},
-                         pixelIcon=${theme.config.header.pixel_style_pixel_icon != null ? theme.config.header.pixel_style_pixel_icon.value : null}"
+                th:each="button, buttonStat : ${theme.config.header.buttons}"
+                th:id="|pixel-toggle-${buttonStat.index}|"
+                class="header-action-button pixel-toggle"
+                th:with="buttonOptions=${button.options},
+                         regularIcon=${buttonOptions?.iconify?.value},
+                         pixelIcon=${buttonOptions?.pixel_iconify?.value}"
                 th:attr="aria-label=#{header.pixel_style.toggle}"
-                th:if="${theme.config.header.pixel_style_switcher_enable != false}"
+                th:style="|order: ${buttonStat.index}|"
+                th:if="${button.value == 'pixel_style'}"
                 type="button">
             <span class="icon-pixel button-icon" aria-hidden="true">
                 <th:block th:if="${not #strings.isEmpty(regularIcon) or not #strings.isEmpty(pixelIcon)}"
@@ -168,6 +182,29 @@
                 </svg>
             </span>
         </button>
+        <th:block th:each="button, buttonStat : ${theme.config.header.buttons}">
+            <button
+                    class="header-action-button custom-header-button"
+                    type="button"
+                    data-header-action="custom"
+                    th:with="buttonOptions=${button.options},
+                             regularIcon=${buttonOptions?.iconify?.value},
+                             pixelIcon=${buttonOptions?.pixel_iconify?.value}"
+                    th:if="${button.value == 'custom'
+                             and button.options != null
+                             and not #strings.isEmpty(button.options.name)
+                             and (not #strings.isEmpty(button.options.iconify?.value)
+                                  or not #strings.isEmpty(button.options.pixel_iconify?.value))}"
+                    th:style="|order: ${buttonStat.index}|"
+                    th:attr="aria-label=${buttonOptions.name},
+                             title=${buttonOptions.name},
+                             data-onclick=${buttonOptions.onclick}">
+                <span class="icon-regular button-icon" aria-hidden="true"
+                      th:utext="${not #strings.isEmpty(regularIcon) ? regularIcon : pixelIcon}"></span>
+                <span class="icon-pixel button-icon" aria-hidden="true"
+                      th:utext="${not #strings.isEmpty(pixelIcon) ? pixelIcon : regularIcon}"></span>
+            </button>
+        </th:block>
     </div>
     <nav class="navigation-menu">
         <ul th:if="${menu != null} and ${not #lists.isEmpty(menu.menuItems)}"

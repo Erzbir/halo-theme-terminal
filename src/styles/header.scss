@@ -71,10 +71,8 @@
       }
     }
 
-    #color-scheme-trigger,
-    #appearance-toggle,
-    #search-button,
-    #pixel-toggle {
+    .color-scheme-trigger,
+    .header-action-button {
       background-color: transparent;
       color: var(--color-theme-control);
       border: var(--width-theme-border) var(--style-theme-border) var(--color-theme-control);
@@ -82,9 +80,7 @@
       padding: 0;
     }
 
-    #appearance-toggle,
-    #search-button,
-    #pixel-toggle {
+    .header-action-button {
       margin-left: calc(var(--size-theme-font) * 0.5);
     }
   }

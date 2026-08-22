@@ -49,114 +49,117 @@ spec:
           name: logo
           value:
           help: 设置左上角 logo 文本, 不设置默认为 halo 中设置的站点标题
-        - $formkit: checkbox
-          name: search_button_enable
-          id: search_button_enable
-          label: 展示搜索按钮
-          value: true
-          help: 搜索组件插件可用时在页头展示搜索按钮
-        - $formkit: iconify
-          if: "$get(search_button_enable).value === true"
-          key: search-icon
-          name: search_icon
-          label: 搜索按钮图标
-          format: svg
-          help: 留空时使用自定义像素风格图标; 像素图标也未设置时使用内置图标
-        - $formkit: iconify
-          if: "$get(search_button_enable).value === true"
-          key: search-pixel-icon
-          name: search_pixel_icon
-          label: 搜索按钮像素风格图标
-          format: svg
-          help: 留空时使用自定义普通图标; 普通图标也未设置时使用内置像素图标
-        - $formkit: checkbox
-          name: color_scheme_switcher_enable
-          id: color_scheme_switcher_enable
-          label: 展示配色切换按钮
-          value: false
-          help: 在页头展示配色选择下拉框
-        - $formkit: iconify
-          if: "$get(color_scheme_switcher_enable).value === true"
-          key: color-scheme-icon
-          name: color_scheme_icon
-          label: 配色切换按钮图标
-          format: svg
-          help: 留空时使用自定义像素风格图标; 像素图标也未设置时使用内置图标
-        - $formkit: iconify
-          if: "$get(color_scheme_switcher_enable).value === true"
-          key: color-scheme-pixel-icon
-          name: color_scheme_pixel_icon
-          label: 配色切换按钮像素风格图标
-          format: svg
-          help: 留空时使用自定义普通图标; 普通图标也未设置时使用内置像素图标
-        - $formkit: checkbox
-          name: appearance_switcher_enable
-          id: appearance_switcher_enable
-          label: 展示深浅切换按钮
-          value: true
-          help: 在页头展示浅色, 深色和跟随系统三态切换按钮
-        - $formkit: iconify
-          if: "$get(appearance_switcher_enable).value === true"
-          key: appearance-light-icon
-          name: appearance_light_icon
-          label: 浅色模式图标
-          format: svg
-          help: 留空时使用自定义像素风格图标; 像素图标也未设置时使用内置图标
-        - $formkit: iconify
-          if: "$get(appearance_switcher_enable).value === true"
-          key: appearance-light-pixel-icon
-          name: appearance_light_pixel_icon
-          label: 浅色模式像素风格图标
-          format: svg
-          help: 留空时使用自定义普通图标; 普通图标也未设置时使用内置像素图标
-        - $formkit: iconify
-          if: "$get(appearance_switcher_enable).value === true"
-          key: appearance-dark-icon
-          name: appearance_dark_icon
-          label: 深色模式图标
-          format: svg
-          help: 留空时使用自定义像素风格图标; 像素图标也未设置时使用内置图标
-        - $formkit: iconify
-          if: "$get(appearance_switcher_enable).value === true"
-          key: appearance-dark-pixel-icon
-          name: appearance_dark_pixel_icon
-          label: 深色模式像素风格图标
-          format: svg
-          help: 留空时使用自定义普通图标; 普通图标也未设置时使用内置像素图标
-        - $formkit: iconify
-          if: "$get(appearance_switcher_enable).value === true"
-          key: appearance-system-icon
-          name: appearance_system_icon
-          label: 跟随系统模式图标
-          format: svg
-          help: 留空时使用自定义像素风格图标; 像素图标也未设置时使用内置图标
-        - $formkit: iconify
-          if: "$get(appearance_switcher_enable).value === true"
-          key: appearance-system-pixel-icon
-          name: appearance_system_pixel_icon
-          label: 跟随系统模式像素风格图标
-          format: svg
-          help: 留空时使用自定义普通图标; 普通图标也未设置时使用内置像素图标
-        - $formkit: checkbox
-          name: pixel_style_switcher_enable
-          id: pixel_style_switcher_enable
-          label: 展示像素化按钮
-          value: true
-          help: 在页头展示像素风格切换按钮
-        - $formkit: iconify
-          if: "$get(pixel_style_switcher_enable).value === true"
-          key: pixel-style-icon
-          name: pixel_style_icon
-          label: 像素化按钮图标
-          format: svg
-          help: 留空时使用自定义像素风格图标; 像素图标也未设置时使用内置图标
-        - $formkit: iconify
-          if: "$get(pixel_style_switcher_enable).value === true"
-          key: pixel-style-pixel-icon
-          name: pixel_style_pixel_icon
-          label: 像素化按钮像素风格图标
-          format: svg
-          help: 留空时使用自定义普通图标; 普通图标也未设置时使用内置像素图标
+        - $formkit: array
+          name: buttons
+          label: 功能按钮
+          value:
+            - value: search
+            - value: color_scheme
+            - value: appearance
+            - value: pixel_style
+          help: 数组顺序即页头按钮顺序; 内置按钮每种建议只添加一次
+          itemLabels:
+            - type: "text"
+              if: "$value.value !== 'custom'"
+              label: "$value.value"
+            - type: "text"
+              if: "$value.value === 'custom'"
+              label: "$value.options.name"
+          children:
+            - $formkit: select
+              name: value
+              label: 按钮
+              validation: "required"
+              options:
+                - label: 搜索
+                  value: search
+                - label: 配色切换
+                  value: color_scheme
+                - label: 外观切换
+                  value: appearance
+                - label: 像素化
+                  value: pixel_style
+                - label: 自定义功能
+                  value: custom
+            - $formkit: group
+              if: "$value.value !== 'custom'"
+              name: options
+              key: standard-button-options
+              label: 图标选项
+              children:
+                - $formkit: iconify
+                  name: iconify
+                  label: 图标
+                  format: svg
+                  help: 留空时使用主题内置图标
+                - $formkit: iconify
+                  name: pixel_iconify
+                  label: 像素风格图标
+                  format: svg
+                  help: 留空时优先使用自定义普通图标, 否则使用主题内置像素图标
+            - $formkit: group
+              if: "$value.value === appearance"
+              name: options
+              key: appearance-button-options
+              label: 外观切换
+              children:
+                - $formkit: iconify
+                  name: light_iconify
+                  label: 浅色模式图标
+                  format: svg
+                  help: 留空时使用主题内置图标
+                - $formkit: iconify
+                  name: light_pixel_iconify
+                  label: 浅色模式像素风格图标
+                  format: svg
+                  help: 留空时优先使用自定义普通图标, 否则使用主题内置像素图标
+                - $formkit: iconify
+                  name: dark_iconify
+                  label: 深色模式图标
+                  format: svg
+                  help: 留空时使用主题内置图标
+                - $formkit: iconify
+                  name: dark_pixel_iconify
+                  label: 深色模式像素风格图标
+                  format: svg
+                  help: 留空时优先使用自定义普通图标, 否则使用主题内置像素图标
+                - $formkit: iconify
+                  name: system_iconify
+                  label: 跟随系统模式图标
+                  format: svg
+                  help: 留空时使用主题内置图标
+                - $formkit: iconify
+                  name: system_pixel_iconify
+                  label: 跟随系统模式像素风格图标
+                  format: svg
+                  help: 留空时优先使用自定义普通图标, 否则使用主题内置像素图标
+            - $formkit: group
+              if: "$value.value === custom"
+              name: options
+              key: custom-button-options
+              label: 自定义功能按钮选项
+              children:
+                - $formkit: text
+                  name: name
+                  label: 按钮名称
+                  validation: "required:trim|length:1,64"
+                  help: 用于按钮的无障碍名称和鼠标提示
+                - $formkit: code
+                  name: onclick
+                  label: onclick
+                  language: js
+                  validation: "required:trim"
+                  help: 点击按钮时执行的 JavaScript, 可使用 event 和 this
+                - $formkit: iconify
+                  name: iconify
+                  label: 图标
+                  format: svg
+                  validation: "required"
+                - $formkit: iconify
+                  name: pixel_iconify
+                  label: 像素风格图标
+                  format: svg
+                  help: 留空时使用普通图标
     - group: typography
       label: 字体与排版
       formSchema:

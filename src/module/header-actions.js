@@ -31,48 +31,75 @@ function syncAppearanceToggle(toggle) {
 }
 
 function registerSearchButton() {
-    const searchButton = document.querySelector('[data-header-action="open-search"]');
-    if (!searchButton) return;
-
-    searchButton.addEventListener("click", function () {
-        if (typeof window.SearchWidget?.open === "function") {
-            window.SearchWidget.open();
-        }
+    document.querySelectorAll('[data-header-action="open-search"]').forEach(searchButton => {
+        searchButton.addEventListener("click", function () {
+            if (typeof window.SearchWidget?.open === "function") {
+                window.SearchWidget.open();
+            }
+        });
     });
 }
 
 function registerAppearanceToggle() {
-    const toggle = document.getElementById("appearance-toggle");
-    if (!toggle || typeof window.applyTheme !== "function") return;
+    if (typeof window.applyTheme !== "function") return;
 
-    syncAppearanceToggle(toggle);
-
-    toggle.addEventListener("click", function () {
-        const currentMode = getAppearanceMode();
-        const nextMode = APPEARANCE_MODES[
-            (APPEARANCE_MODES.indexOf(currentMode) + 1) % APPEARANCE_MODES.length
-        ];
-
-        window.applyTheme(nextMode, {clearColorScheme: true});
-        setStoredPreference(PREFERENCE_KEYS.themeMode, nextMode);
+    document.querySelectorAll(".appearance-toggle").forEach(toggle => {
         syncAppearanceToggle(toggle);
-        syncColorSchemePicker();
+
+        toggle.addEventListener("click", function () {
+            const currentMode = getAppearanceMode();
+            const nextMode = APPEARANCE_MODES[
+                (APPEARANCE_MODES.indexOf(currentMode) + 1) % APPEARANCE_MODES.length
+            ];
+
+            window.applyTheme(nextMode, {clearColorScheme: true});
+            setStoredPreference(PREFERENCE_KEYS.themeMode, nextMode);
+            document.querySelectorAll(".appearance-toggle").forEach(syncAppearanceToggle);
+            syncColorSchemePicker();
+        });
     });
 }
 
 function registerPixelToggle() {
-    const pixelToggle = document.getElementById("pixel-toggle");
-    if (!pixelToggle) return;
+    document.querySelectorAll(".pixel-toggle").forEach(pixelToggle => {
+        pixelToggle.addEventListener("click", function () {
+            const storedStatus = getStoredPreference(PREFERENCE_KEYS.pixelStyle);
+            const currentStatus = storedStatus
+                || document.documentElement.dataset.pixelStyle;
+            const newStatus = currentStatus === "true" ? "false" : "true";
 
-    pixelToggle.addEventListener("click", function () {
-        const storedStatus = getStoredPreference(PREFERENCE_KEYS.pixelStyle);
-        const currentStatus = storedStatus
-            || document.documentElement.dataset.pixelStyle;
-        const newStatus = currentStatus === "true" ? "false" : "true";
+            document.documentElement.dataset.pixelStyle = newStatus;
+            setStoredPreference(PREFERENCE_KEYS.pixelStyle, newStatus);
+            window.TerminalTheme?.syncPixelFont?.();
+        });
+    });
+}
 
-        document.documentElement.dataset.pixelStyle = newStatus;
-        setStoredPreference(PREFERENCE_KEYS.pixelStyle, newStatus);
-        window.TerminalTheme?.syncPixelFont?.();
+function registerCustomButtons() {
+    document.querySelectorAll('[data-header-action="custom"]').forEach(button => {
+        const source = button.dataset.onclick?.trim();
+        if (!source || button.dataset.customActionReady === "true") return;
+
+        let handler;
+        try {
+            handler = new Function("event", source);
+        } catch (error) {
+            console.error("Invalid custom header button onclick:", error);
+            return;
+        }
+
+        button.dataset.customActionReady = "true";
+        button.addEventListener("click", function (event) {
+            try {
+                const result = handler.call(this, event);
+                if (result === false) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                }
+            } catch (error) {
+                console.error("Custom header button onclick failed:", error);
+            }
+        });
     });
 }
 
@@ -80,4 +107,5 @@ export function registerHeaderActions() {
     registerSearchButton();
     registerAppearanceToggle();
     registerPixelToggle();
+    registerCustomButtons();
 }
