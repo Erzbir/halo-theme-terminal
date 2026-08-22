@@ -641,6 +641,7 @@ spec:
           key: pin-position
           name: pin_pos
           label: pin 图标显示位置
+          value: "left"
           options:
             - label: "left"
               value: "left"
