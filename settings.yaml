@@ -373,15 +373,15 @@ spec:
         - $formkit: select
           name: default_appearance
           label: 默认外观
-          value: "light"
+          value: "system"
           help: 控制访客首次访问时使用的外观模式
           options:
+            - label: "跟随系统"
+              value: "system"
             - label: "浅色"
               value: "light"
             - label: "深色"
               value: "dark"
-            - label: "跟随系统"
-              value: "system"
         - $formkit: select
           name: light_color_scheme
           id: light_color_scheme
