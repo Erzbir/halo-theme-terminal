@@ -623,6 +623,7 @@ spec:
           name: notice_content
           label: 公告内容
           value: "一款 Terminal 风格的 Halo 主题."
+          help: 支持 HTML, 请仅填写可信内容
         - $formkit: checkbox
           name: show_sns
           label: 展示社交资料
