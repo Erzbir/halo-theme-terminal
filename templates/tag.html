@@ -18,9 +18,9 @@
         <div class="post-content">
             <ul>
                 <li class="post-list" th:each="post : ${posts.items}">
-                    <a data-pjax th:href="@{${post.status.permalink}}">
-                        <time th:text="${#dates.format(post.spec.publishTime,'yyyy-MM-dd')}">Publish Time</time>
-                        <span>&nbsp;::&nbsp;</span>
+                    <a data-pjax class="post-meta" th:href="@{${post.status.permalink}}">
+                        <time th:text="${#dates.format(post.spec.publishTime, '__${theme.config.general.time_style == 'custom' ?
+                                      theme.config.general.custom_time_style : theme.config.general.time_style}__')}">Publish Time</time>
                         <span class="post-list-title" th:text="${post.spec.title}">Post Title</span>
                     </a>
                 </li>
