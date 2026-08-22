@@ -4,15 +4,25 @@
 }
 
 .button-icon {
+  align-items: center;
+  justify-content: center;
   width: calc(var(--size-theme-font) * 1.85);
+  height: calc(var(--size-theme-font) * 1.85);
+  line-height: 0;
+
+  > svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
 }
 
 html[data-pixel-style='false'] .icon-regular {
-  display: inline;
+  display: inline-flex;
 }
 
 html[data-pixel-style='true'] .icon-pixel {
-  display: inline;
+  display: inline-flex;
 }
 
 #appearance-toggle .appearance-icon {
@@ -25,5 +35,5 @@ html[data-pixel-style='false'][data-theme-mode='system'] #appearance-toggle .ico
 html[data-pixel-style='true'][data-theme-mode='light'] #appearance-toggle .icon-pixel[data-appearance-mode='light'],
 html[data-pixel-style='true'][data-theme-mode='dark'] #appearance-toggle .icon-pixel[data-appearance-mode='dark'],
 html[data-pixel-style='true'][data-theme-mode='system'] #appearance-toggle .icon-pixel[data-appearance-mode='system'] {
-  display: inline;
+  display: inline-flex;
 }

@@ -51,24 +51,112 @@ spec:
           help: 设置左上角 logo 文本, 不设置默认为 halo 中设置的站点标题
         - $formkit: checkbox
           name: search_button_enable
+          id: search_button_enable
           label: 展示搜索按钮
           value: true
           help: 搜索组件插件可用时在页头展示搜索按钮
+        - $formkit: iconify
+          if: "$get(search_button_enable).value === true"
+          key: search-icon
+          name: search_icon
+          label: 搜索按钮图标
+          format: svg
+          help: 留空时使用自定义像素风格图标; 像素图标也未设置时使用内置图标
+        - $formkit: iconify
+          if: "$get(search_button_enable).value === true"
+          key: search-pixel-icon
+          name: search_pixel_icon
+          label: 搜索按钮像素风格图标
+          format: svg
+          help: 留空时使用自定义普通图标; 普通图标也未设置时使用内置像素图标
         - $formkit: checkbox
           name: color_scheme_switcher_enable
+          id: color_scheme_switcher_enable
           label: 展示配色切换按钮
           value: false
           help: 在页头展示配色选择下拉框
+        - $formkit: iconify
+          if: "$get(color_scheme_switcher_enable).value === true"
+          key: color-scheme-icon
+          name: color_scheme_icon
+          label: 配色切换按钮图标
+          format: svg
+          help: 留空时使用自定义像素风格图标; 像素图标也未设置时使用内置图标
+        - $formkit: iconify
+          if: "$get(color_scheme_switcher_enable).value === true"
+          key: color-scheme-pixel-icon
+          name: color_scheme_pixel_icon
+          label: 配色切换按钮像素风格图标
+          format: svg
+          help: 留空时使用自定义普通图标; 普通图标也未设置时使用内置像素图标
         - $formkit: checkbox
           name: appearance_switcher_enable
+          id: appearance_switcher_enable
           label: 展示深浅切换按钮
           value: true
           help: 在页头展示浅色, 深色和跟随系统三态切换按钮
+        - $formkit: iconify
+          if: "$get(appearance_switcher_enable).value === true"
+          key: appearance-light-icon
+          name: appearance_light_icon
+          label: 浅色模式图标
+          format: svg
+          help: 留空时使用自定义像素风格图标; 像素图标也未设置时使用内置图标
+        - $formkit: iconify
+          if: "$get(appearance_switcher_enable).value === true"
+          key: appearance-light-pixel-icon
+          name: appearance_light_pixel_icon
+          label: 浅色模式像素风格图标
+          format: svg
+          help: 留空时使用自定义普通图标; 普通图标也未设置时使用内置像素图标
+        - $formkit: iconify
+          if: "$get(appearance_switcher_enable).value === true"
+          key: appearance-dark-icon
+          name: appearance_dark_icon
+          label: 深色模式图标
+          format: svg
+          help: 留空时使用自定义像素风格图标; 像素图标也未设置时使用内置图标
+        - $formkit: iconify
+          if: "$get(appearance_switcher_enable).value === true"
+          key: appearance-dark-pixel-icon
+          name: appearance_dark_pixel_icon
+          label: 深色模式像素风格图标
+          format: svg
+          help: 留空时使用自定义普通图标; 普通图标也未设置时使用内置像素图标
+        - $formkit: iconify
+          if: "$get(appearance_switcher_enable).value === true"
+          key: appearance-system-icon
+          name: appearance_system_icon
+          label: 跟随系统模式图标
+          format: svg
+          help: 留空时使用自定义像素风格图标; 像素图标也未设置时使用内置图标
+        - $formkit: iconify
+          if: "$get(appearance_switcher_enable).value === true"
+          key: appearance-system-pixel-icon
+          name: appearance_system_pixel_icon
+          label: 跟随系统模式像素风格图标
+          format: svg
+          help: 留空时使用自定义普通图标; 普通图标也未设置时使用内置像素图标
         - $formkit: checkbox
           name: pixel_style_switcher_enable
+          id: pixel_style_switcher_enable
           label: 展示像素化按钮
           value: true
           help: 在页头展示像素风格切换按钮
+        - $formkit: iconify
+          if: "$get(pixel_style_switcher_enable).value === true"
+          key: pixel-style-icon
+          name: pixel_style_icon
+          label: 像素化按钮图标
+          format: svg
+          help: 留空时使用自定义像素风格图标; 像素图标也未设置时使用内置图标
+        - $formkit: iconify
+          if: "$get(pixel_style_switcher_enable).value === true"
+          key: pixel-style-pixel-icon
+          name: pixel_style_pixel_icon
+          label: 像素化按钮像素风格图标
+          format: svg
+          help: 留空时使用自定义普通图标; 普通图标也未设置时使用内置像素图标
     - group: typography
       label: 字体与排版
       formSchema:
