@@ -16,34 +16,41 @@
         <th:block th:replace="~{modules/sns}"/>
     </section>
     <section class="posts">
-        <article class="post on-list" th:each="post : ${posts.items}">
-            <header>
-                <h2 class="post-title">
-                    <span class="pin" th:classappend="${theme.config?.index_page?.pin_pos}"  th:if="${post.spec.pinned} and ${theme.config?.index_page?.show_pin}">
-                        <svg class="icon-regular" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                            <path fill="currentColor" d="M5 2h14a1 1 0 0 1 1 1v19.143a.5.5 0 0 1-.766.424L12 18.03l-7.234 4.536A.5.5 0 0 1 4 22.143V3a1 1 0 0 1 1-1m13 2H6v15.432l6-3.761l6 3.761z" />
-                        </svg>
-                        <svg class="icon-pixel" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                            <path fill="currentColor" d="M18 2H6v2h12v16h-2v-2h-2v-2h-4v2H8v2H6V2H4v20h4v-2h2v-2h4v2h2v2h4V2z" />
-                        </svg>
-                    </span>
-                    <a data-pjax th:text="${post.spec.title}" th:href="@{${post.status.permalink}}">Post Title</a>
-                </h2>
-                <div class="post-meta">
-                    <time class="post-date"
-                          th:text="${#dates.format(post.spec.publishTime, '__${theme.config.general.time_style == 'custom' ?
-                                      theme.config.general.custom_time_style : theme.config.general.time_style}__')}">Publish Time</time>
-                    <span class="post-author"
-                          th:with="contributor = ${post.contributors[0]}"
-                          th:text="${contributor.displayName}">Author</span><th:block th:replace="~{modules/tag-list(post = ${post}, show = ${theme.config.index_page.show_tags})}"/>
+        <article class="post on-list" th:each="post : ${posts.items}"
+                 th:classappend="${not #strings.isEmpty(post.spec.cover)} ? 'on-list--with-cover'">
+            <div class="post-list-main">
+                <header>
+                    <h2 class="post-title">
+                        <span class="pin" th:classappend="${theme.config?.index_page?.pin_pos}"  th:if="${post.spec.pinned} and ${theme.config?.index_page?.show_pin}">
+                            <svg class="icon-regular" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path fill="currentColor" d="M5 2h14a1 1 0 0 1 1 1v19.143a.5.5 0 0 1-.766.424L12 18.03l-7.234 4.536A.5.5 0 0 1 4 22.143V3a1 1 0 0 1 1-1m13 2H6v15.432l6-3.761l6 3.761z" />
+                            </svg>
+                            <svg class="icon-pixel" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path fill="currentColor" d="M18 2H6v2h12v16h-2v-2h-2v-2h-4v2H8v2H6V2H4v20h4v-2h2v-2h4v2h2v2h4V2z" />
+                            </svg>
+                        </span>
+                        <a data-pjax th:text="${post.spec.title}" th:href="@{${post.status.permalink}}">Post Title</a>
+                    </h2>
+                    <div class="post-meta">
+                        <time class="post-date"
+                              th:text="${#dates.format(post.spec.publishTime, '__${theme.config.general.time_style == 'custom' ?
+                                          theme.config.general.custom_time_style : theme.config.general.time_style}__')}">Publish Time</time>
+                        <span class="post-author"
+                              th:with="contributor = ${post.contributors[0]}"
+                              th:text="${contributor.displayName}">Author</span><th:block th:replace="~{modules/tag-list(post = ${post}, show = ${theme.config.index_page.show_tags})}"/>
+                    </div>
+                </header>
+                <div class="post-excerpt">
+                    <span th:text="${post.status.excerpt}">Post Excerpt...</span>
                 </div>
-            </header>
-            <div class="post-excerpt">
-                <span th:text="${post.status.excerpt}">Post Excerpt...</span>
+                <div>
+                    <a data-pjax class="read-more button inline" th:href="@{${post.status.permalink}}" th:text="#{page.post.more} + ' >'">READ MORE ></a>
+                </div>
             </div>
-            <div>
-                <a data-pjax class="read-more button inline" th:href="@{${post.status.permalink}}" th:text="#{page.post.more} + ' >'">READ MORE ></a>
-            </div>
+            <a data-pjax class="post-list-cover" th:if="${not #strings.isEmpty(post.spec.cover)}"
+               th:href="@{${post.status.permalink}}" th:attr="aria-label=${post.spec.title}">
+                <img th:src="${post.spec.cover}" th:alt="${post.spec.title}" loading="lazy"/>
+            </a>
         </article>
     </section>
     <th:block th:replace="~{modules/pagination :: page(

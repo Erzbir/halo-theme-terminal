@@ -6,8 +6,10 @@
 <th:block th:fragment="head">
     <title th:text="|${post.spec.title} - ${site.title}|">Post title</title>
 </th:block>
-<th:block th:fragment="content">
-    <article class="post">
+<th:block th:fragment="content"
+          th:with="showCover=${theme.config.post_page.show_cover != false},
+                   coverUrl=${post.spec.cover}">
+    <article class="post" th:classappend="${showCover and not #strings.isEmpty(coverUrl)} ? 'post--with-cover'">
         <header>
             <h1 class="post-title" th:text="${post.spec.title}">Post Title</h1>
             <div class="post-meta">
@@ -18,6 +20,12 @@
                 <span class="post-author" th:text="${post.owner.displayName}">Author</span><th:block th:replace="~{modules/tag-list(post = ${post}, show = ${theme.config.post_page.show_tags})}"/>
             </div>
         </header>
+        <aside class="post-cover-aside" th:if="${showCover and not #strings.isEmpty(coverUrl)}">
+            <img class="post-cover-image"
+                 th:src="${coverUrl}"
+                 th:alt="${post.spec.title}"
+                 loading="lazy"/>
+        </aside>
         <section class="post-content">
             <div th:utext="${post.content.content}" id="content" class="post-body">Post Content</div>
         </section>
